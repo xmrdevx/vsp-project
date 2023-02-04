@@ -63,6 +63,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/logger/tsconfig.lib.json"
       }
+    },
+    "rtmp-media-server": {
+      "type": "application",
+      "root": "apps/rtmp-media-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/rtmp-media-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/rtmp-media-server/tsconfig.app.json"
+      }
     }
   }
 }
