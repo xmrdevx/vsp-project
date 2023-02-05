@@ -31,14 +31,16 @@ export class AccountsService implements IAccountsService {
   public async register(registration: RegistrationDto): Promise<UserDto | null> {
     // Get roles for account owner's user
     const accountOwnerRoles: Role[] = await this._rolesRepository
-      .findWithRelations({ where: { name: In([RoleTypes.ADMIN, RoleTypes.USER]) }});
+      .findWithRelations({ where: [{ name: In([RoleTypes.ADMIN, RoleTypes.USER]) }]});
 
-    // Get claims for account owner's user - This is all claims that are flagged as isSetByTenant
+    // Get claims for account owner's user 
+    // - This is all claims that are flagged as isSetByTenant
     const accountOwnClaims: Claim[] = await this._claimsRepository
-      .findAll({ where: { isSetByTenant: true }});
+      .findAll({ where: [{ isSetByTenant: true }]});
 
     // Create new User from registration
     const user: User = this._createUserEntityFromRegistration(registration, accountOwnerRoles, accountOwnClaims)
+
     return new UserDto(await this._usersRepository.save(user));
   }
 
@@ -46,7 +48,7 @@ export class AccountsService implements IAccountsService {
     return this._usersRepository.create({
       ...registration.user,
       username: registration?.user?.username?.trim()?.toLowerCase(),
-      email: registration?.user?.username?.trim().toLowerCase(),
+      email: registration?.user?.email?.trim().toLowerCase(),
       roles: roles,
       claims: claims,
       profile: {

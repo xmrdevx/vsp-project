@@ -62,7 +62,10 @@ export class UsersService implements IUsersService {
       
       // Validate that user can access that client.
       const client: Client | null = await this._clientsRepository
-        .findByCondition({ relations: ['requiredRoles'], where: [{ identifier: credentials?.clientId || ''}]} as FindOneOptions);
+        .findByCondition({ 
+          relations: ['requiredRoles'], 
+          where: [{ identifier: credentials?.clientId || ''}]
+        } as FindOneOptions);
       
       if (!canUserAccessClient(user, client)) {
         console.log("client not found");
@@ -148,7 +151,7 @@ export class UsersService implements IUsersService {
     try {
       const user: User | null = await this._usersRepository
         .findByCondition({ 
-          where: { username: query?.query?.trim()?.toLowerCase() }
+          where: [{ username: query?.query?.trim()?.toLowerCase() }]
         });
       
       if (!user) {
@@ -168,11 +171,11 @@ export class UsersService implements IUsersService {
     try {
       const user: User | null = await this._usersRepository
         .findByCondition({ 
-          where: { 
+          where: [{ 
             email: confirmation?.email?.trim()?.toLowerCase() || '',
             emailConfirmationToken: confirmation?.confirmationToken,
             emailConfirmationTokenExpiration: MoreThan(new Date().toISOString())
-          } as any
+          } as any]
         });
       
       if (!user) {
