@@ -1,3 +1,3 @@
-import { ClaimKeys } from '../enums/claim-keys.enum';
+import { ClaimTypes } from '../enums/claim-types.enum';
 
-export type Claims = { [key: ClaimKeys | string]: any };
+export type Claims = { [key: ClaimTypes | string]: any };

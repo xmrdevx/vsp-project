@@ -1,6 +1,6 @@
 import { BadRequestException, Inject, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
-import { MoreThan } from 'typeorm';
+import { FindOneOptions, MoreThan } from 'typeorm';
 
 import { v4 as uuid } from 'uuid';
 
@@ -45,14 +45,15 @@ export class UsersService implements IUsersService {
       const user: User | null = await this._usersRepository
         .findByCondition({ 
           relations: ['roles', 'profile', 'claims', 'tenant', 'tenant.account'], 
-          where: { 
+          where: [{ 
             username: credentials.username,
             isEmailConfirmed: true,
             isLockedOut: false,
             tenant: {
               isLockedOut: false
             }
-        }});
+          }]
+        });
 
       // Validate that the user exists.
       if (!user) {
@@ -61,9 +62,10 @@ export class UsersService implements IUsersService {
       
       // Validate that user can access that client.
       const client: Client | null = await this._clientsRepository
-        .findByCondition({ relations: ['requiredRoles'], where: { indentifier: credentials.clientId }});
+        .findByCondition({ relations: ['requiredRoles'], where: [{ identifier: credentials?.clientId || ''}]} as FindOneOptions);
       
       if (!canUserAccessClient(user, client)) {
+        console.log("client not found");
         return null;
       }
       
@@ -84,6 +86,7 @@ export class UsersService implements IUsersService {
         claims: user?.claims?.map(claim => new ClaimDto(claim)) || []
       } satisfies UserDetails);
     } catch (error) {
+      console.log("erro inf validate user", error)
       this._logger.error('Error validating user', error);
       throw error;
     }

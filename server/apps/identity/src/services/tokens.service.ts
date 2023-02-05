@@ -9,7 +9,7 @@ import { IRefreshTokensRepository, REFRESH_TOKENS_REPOSITORY_TOKEN } from '../in
 import { ITokensService } from '../interfaces/tokens-service.interface';
 
 import { v4 as uuid } from 'uuid';
-import { ClaimKeys } from '@vsp/common/enums/claim-keys.enum';
+import { ClaimTypes } from '@vsp/common/enums/claim-types.enum';
 
 
 @Injectable()
@@ -30,7 +30,7 @@ export class TokensService implements ITokensService {
       let existingRefreshToken: RefreshToken | null = await this._refreshTokensRepository
         .findByCondition({
           relations: ['user'],
-          where: { isBlacklisted: false, user: { id: claims[ClaimKeys.SUBJECT] } }
+          where: { isBlacklisted: false, user: { id: claims[ClaimTypes.SUBJECT] } }
         });
 
       // If existing refresh token doesnt exist create a new one.
@@ -38,7 +38,7 @@ export class TokensService implements ITokensService {
         existingRefreshToken = await this._refreshTokensRepository.save(
           this._refreshTokensRepository.create({ 
             refreshToken:  uuid(), 
-            user: { id : claims[ClaimKeys.SUBJECT] } 
+            user: { id : claims[ClaimTypes.SUBJECT] } 
           })
         );
       }
@@ -58,10 +58,10 @@ export class TokensService implements ITokensService {
       // Check that the refreshToken isn't blacklisted.
       const validRefreshToken: RefreshToken | null = await this._refreshTokensRepository
         .findByCondition({ 
-          where: { 
-            refreshToken: tokens?.refreshToken, 
-            isBlacklisted: false 
-          }
+          where: [
+            { refreshToken: tokens?.refreshToken }, 
+            { isBlacklisted: false }
+          ]
         });
 
       if (!validRefreshToken) {

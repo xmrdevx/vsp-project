@@ -7,7 +7,7 @@ export class Client extends BaseEntity {
   @Column({ unique: true })
   @Generated('uuid')
   @Index()
-  public indentifier: string;
+  public identifier: string;
 
   @Column()
   public name: string;

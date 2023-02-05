@@ -1,4 +1,4 @@
-import { ClaimKeys } from '../enums/claim-keys.enum';
+import { ClaimTypes } from '../enums/claim-types.enum';
 import { UserDetails } from '../models/identity/user-details.model'
 import { Claims } from '../types/claims.type';
 
@@ -16,15 +16,15 @@ export const claimsFromUserDetails = (user: UserDetails | null): Claims | null =
   });
 
   return {
-    [ClaimKeys.SUBJECT]: user.id,
-    [ClaimKeys.FIRST_NAME]: user.firstName,
-    [ClaimKeys.LAST_NAME]: user.lastName,
-    [ClaimKeys.FULL_NAME]: `${user.firstName} ${user.lastName}`,
-    [ClaimKeys.USERNAME]: user.username,
-    [ClaimKeys.EMAIL]: user.email,
-    [ClaimKeys.ACCOUNT_ID]: user.accountId,
-    [ClaimKeys.TENANT_ID]: user.tenantId,
-    [ClaimKeys.ROLES]: user?.roles || [],
+    [ClaimTypes.SUBJECT]: user.id,
+    [ClaimTypes.FIRST_NAME]: user.firstName,
+    [ClaimTypes.LAST_NAME]: user.lastName,
+    [ClaimTypes.FULL_NAME]: `${user.firstName} ${user.lastName}`,
+    [ClaimTypes.USERNAME]: user.username,
+    [ClaimTypes.EMAIL]: user.email,
+    [ClaimTypes.ACCOUNT_ID]: user.accountId,
+    [ClaimTypes.TENANT_ID]: user.tenantId,
+    [ClaimTypes.ROLES]: user?.roles || [],
     ...Object.fromEntries(claimsMap)
   } satisfies Claims;
 };
@@ -35,14 +35,14 @@ export const userDetailsFromClaims = (claims: Claims | null): UserDetails | null
   // @TODO will need to add additional claims user.claims
 
   return {
-    id: claims[ClaimKeys.SUBJECT],
-    firstName: claims[ClaimKeys.FIRST_NAME],
-    lastName: claims[ClaimKeys.LAST_NAME],
-    username: claims[ClaimKeys.USERNAME],
-    email: claims[ClaimKeys.EMAIL],
-    accountId: claims[ClaimKeys.ACCOUNT_ID],
-    tenantId: claims[ClaimKeys.TENANT_ID],
-    roles: claims[ClaimKeys.ROLES],
+    id: claims[ClaimTypes.SUBJECT],
+    firstName: claims[ClaimTypes.FIRST_NAME],
+    lastName: claims[ClaimTypes.LAST_NAME],
+    username: claims[ClaimTypes.USERNAME],
+    email: claims[ClaimTypes.EMAIL],
+    accountId: claims[ClaimTypes.ACCOUNT_ID],
+    tenantId: claims[ClaimTypes.TENANT_ID],
+    roles: claims[ClaimTypes.ROLES],
     claims: []
     // @TODO map claims here
   } satisfies UserDetails;

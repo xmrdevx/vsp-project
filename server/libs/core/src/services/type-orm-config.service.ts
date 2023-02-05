@@ -20,7 +20,8 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       database: this._environmentService.get('TYPEORM_DATABASE'),
       synchronize: this._environmentService.get('TYPEORM_SYNCRONIZE'),
       autoLoadEntities: true,
-      namingStrategy: new SnakeNamingStrategy()
+      namingStrategy: new SnakeNamingStrategy(),
+      
     } as TypeOrmModuleOptions;
   }
 }
