@@ -13,9 +13,9 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 
-import { Credentials } from '@vsp/core';
+import { adminClientIdentifier, Credentials } from '@vsp/core';
 
-import { fadeAnimation, EnvironmentService, ResponseMessage, Roles } from '@vsp/core';
+import { fadeAnimation, EnvironmentService, ResponseMessage, RoleTypes } from '@vsp/core';
 
 import { RootState } from '@vsp/admin/store';
 import { AuthenticationActions, AuthenticationSelectors } from '../../store';
@@ -75,7 +75,7 @@ export class SignInComponent {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       rememberMe: [false, [Validators.required]],
-      requiredRoles: this._formBuilder.array([Roles.Admin])
+      clientId: [adminClientIdentifier, [Validators.required]]
     });
   }
 }

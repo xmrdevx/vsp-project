@@ -22,6 +22,12 @@ export * from './lib/entities/template-permission.entity';
 export * from './lib/entities/user-module-permission.entity';
 export * from './lib/entities/user-permission.entity';
 export * from './lib/entities/tenant.entity';
+
+// Enums
+export * from './lib/enums/claim-types.enum';
+export * from './lib/enums/claim-values.enum';
+export * from './lib/enums/role-types.enum';
+
 // Models
 export * from './lib/models/api/reponse-message.model';
 export * from './lib/models/api/response-status.enum';
@@ -59,7 +65,6 @@ export * from './lib/models/authentication/refresh-token-request.model';
 export * from './lib/models/authentication/registration-profile.model';
 export * from './lib/models/authentication/registration-user.model';
 export * from './lib/models/authentication/registration.model';
-export * from './lib/models/authentication/roles.enum';
 export * from './lib/models/authentication/reset-password.model';
 export * from './lib/models/user/user-account.model';
 export * from './lib/models/user/user-permissions.model';

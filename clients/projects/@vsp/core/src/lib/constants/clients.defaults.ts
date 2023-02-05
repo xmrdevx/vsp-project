@@ -1,2 +1,2 @@
-export const adminClientIdentifier = '02f60adf-dbe0-4db1-af00-3ff5a7404a31';
-export const publicClientIdentifier = '793d84f7-40f7-4917-99b4-0240e387d048';
+export const adminClientIdentifier = '6c3d4d4e-2135-4267-bb4e-d6b781fd1f84';
+export const publicClientIdentifier = '9daa9152-1c03-4865-843b-7dc9597c82e2';
