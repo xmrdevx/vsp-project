@@ -33,8 +33,6 @@ export class TokensService implements ITokensService {
           where: [{ isBlacklisted: false, userId: claims[ClaimTypes.SUBJECT] }]
         });
 
-      console.log("existing token is ", existingRefreshToken)
-
       // If existing refresh token doesnt exist create a new one.
       if (!existingRefreshToken) {
         existingRefreshToken = await this._refreshTokensRepository.save(
@@ -63,7 +61,6 @@ export class TokensService implements ITokensService {
           where: [{ refreshToken: tokens?.refreshToken, isBlacklisted: false }]
         });
 
-      console.log("tokenfound? ", validRefreshToken)
       if (!validRefreshToken) {
         console.log("no valid refresh token")
         throw new RpcException(
@@ -78,6 +75,7 @@ export class TokensService implements ITokensService {
           new UnauthorizedException("Invalid refresh/access token!")
         );
       }
+
       const { exp, iat, ...tokenOptions } = decodedTokenMap;
 
       return new TokenPair({
