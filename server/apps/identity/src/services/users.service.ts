@@ -5,6 +5,7 @@ import { MoreThan } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
 import { 
+  ClaimDto,
   Client, 
   ConfirmEmailDto, 
   Credentials, 
@@ -43,7 +44,7 @@ export class UsersService implements IUsersService {
       // that isn't locked out and whose tenant isnt locked out.
       const user: User | null = await this._usersRepository
         .findByCondition({ 
-          relations: ['roles', 'profile', 'tenant', 'tenant.account'], 
+          relations: ['roles', 'profile', 'claims', 'tenant', 'tenant.account'], 
           where: { 
             username: credentials.username,
             isEmailConfirmed: true,
@@ -80,7 +81,7 @@ export class UsersService implements IUsersService {
         tenantId: user?.tenant?.identifier || 'unknown',
         accountId: user?.tenant?.account?.identifier || 'unknown',
         roles: user.roles?.map(role => role.name) || [],
-        claims: []
+        claims: user?.claims?.map(claim => new ClaimDto(claim)) || []
       } satisfies UserDetails);
     } catch (error) {
       this._logger.error('Error validating user', error);

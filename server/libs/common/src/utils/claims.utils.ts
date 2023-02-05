@@ -5,7 +5,15 @@ import { Claims } from '../types/claims.type';
 export const claimsFromUserDetails = (user: UserDetails | null): Claims | null => {
   if (!user) return null;
   
-  // @TODO will need to add additional claims user.claims
+  // Remaps claims for token
+  const claimsMap = new Map<string, string[]>();
+  user.claims.forEach((claim) => {
+    if (claimsMap.has(claim.type)) {
+      claimsMap.get(claim.type)?.push(claim.value);
+    } else {
+      claimsMap.set(claim.type, [claim.value]);
+    }
+  });
 
   return {
     [ClaimKeys.SUBJECT]: user.id,
@@ -17,6 +25,7 @@ export const claimsFromUserDetails = (user: UserDetails | null): Claims | null =
     [ClaimKeys.ACCOUNT_ID]: user.accountId,
     [ClaimKeys.TENANT_ID]: user.tenantId,
     [ClaimKeys.ROLES]: user?.roles || [],
+    ...Object.fromEntries(claimsMap)
   } satisfies Claims;
 };
 
@@ -35,5 +44,6 @@ export const userDetailsFromClaims = (claims: Claims | null): UserDetails | null
     tenantId: claims[ClaimKeys.TENANT_ID],
     roles: claims[ClaimKeys.ROLES],
     claims: []
+    // @TODO map claims here
   } satisfies UserDetails;
 };

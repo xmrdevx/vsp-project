@@ -41,6 +41,9 @@ import { TenantsRepository } from './repositories/tenants.repository';
 import { ROLES_REPOSITORY_TOKEN } from './interfaces/roles-repository.interface';
 import { RolesRepository } from './repositories/roles.repository';
 
+import { CLAIMS_REPOSITORY_TOKEN } from './interfaces/claims-repository.interface';
+import { ClaimsRepository } from './repositories/claims.repository';
+
 @Module({
   imports: [
     CoreModule.forRoot(),
@@ -103,7 +106,11 @@ import { RolesRepository } from './repositories/roles.repository';
     {
       provide: ROLES_REPOSITORY_TOKEN,
       useClass: RolesRepository
-    }
+    },
+    {
+      provide: CLAIMS_REPOSITORY_TOKEN,
+      useClass: ClaimsRepository
+    },
   ],
 })
 export class IdentityModule {}

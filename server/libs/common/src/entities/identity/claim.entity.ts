@@ -8,4 +8,7 @@ export class Claim extends BaseEntity {
 
   @Column()
   public value: string;
+
+  @Column({ default: false })
+  public isSetByTenant: boolean = false;
 }
