@@ -21,6 +21,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       synchronize: this._environmentService.get('TYPEORM_SYNCRONIZE'),
       autoLoadEntities: true,
       namingStrategy: new SnakeNamingStrategy(),
+      logging: this._environmentService.get('TYPEORM_LOGGING') === 'true'
       
     } as TypeOrmModuleOptions;
   }
