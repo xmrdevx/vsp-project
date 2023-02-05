@@ -48,6 +48,8 @@ export * from './entities/identity/user.entity';
 // Enums
 export * from './enums/role-types.enum';
 export * from './enums/claim-keys.enum';
+export * from './enums/feature-claim-values.enum';
+export * from './enums/feature-claim-types.enum';
 
 // Interfaces
 export * from './interfaces/repository.interface';
