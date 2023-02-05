@@ -30,8 +30,10 @@ export class TokensService implements ITokensService {
       let existingRefreshToken: RefreshToken | null = await this._refreshTokensRepository
         .findByCondition({
           relations: ['user'],
-          where: { isBlacklisted: false, user: { id: claims[ClaimTypes.SUBJECT] } }
+          where: [{ isBlacklisted: false, userId: claims[ClaimTypes.SUBJECT] }]
         });
+
+      console.log("existing token is ", existingRefreshToken)
 
       // If existing refresh token doesnt exist create a new one.
       if (!existingRefreshToken) {
@@ -58,13 +60,12 @@ export class TokensService implements ITokensService {
       // Check that the refreshToken isn't blacklisted.
       const validRefreshToken: RefreshToken | null = await this._refreshTokensRepository
         .findByCondition({ 
-          where: [
-            { refreshToken: tokens?.refreshToken }, 
-            { isBlacklisted: false }
-          ]
+          where: [{ refreshToken: tokens?.refreshToken, isBlacklisted: false }]
         });
 
+      console.log("tokenfound? ", validRefreshToken)
       if (!validRefreshToken) {
+        console.log("no valid refresh token")
         throw new RpcException(
           new UnauthorizedException("Invalid refresh/access token!")
         );

@@ -40,7 +40,6 @@ export abstract class BaseRepository<T extends HasId, ID> implements IRepository
   }
 
   public async findByCondition(filterCondition: FindOneOptions<T>): Promise<T | null> {
-    console.log('where options are ', filterCondition)
     return await this.repository.findOne(filterCondition);
   }
 

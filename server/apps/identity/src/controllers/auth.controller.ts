@@ -4,7 +4,9 @@ import { MessagePattern } from '@nestjs/microservices';
 import { LoggerService } from '@vsp/logger';
 import { 
   Credentials,
+  refreshTokenCommand,
   signInCommand, 
+  TokenPair, 
   UserDetails, 
   validateUserCommand } from '@vsp/common';
 
@@ -37,6 +39,16 @@ export class AuthController {
       return await this._authService.signIn(user);
     } catch (error) {
       this._logger.error('Error signing in user', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(refreshTokenCommand)
+  public async refreshToken(tokens: TokenPair): Promise<any> {
+    try {
+      return await this._authService.refreshToken(tokens);
+    } catch (error) {
+      this._logger.error('Error refreshing access token', error);
       throw error;
     }
   }
