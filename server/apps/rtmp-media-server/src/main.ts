@@ -1,19 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 
 import { loadEnvironmentVariables } from '@vsp/env';
+import { IRtmpMediaServerService } from './interfaces/rtmp-media-server-service.interface';
 
 import { RtmpMediaServerModule } from './rtmp-media-server.module';
-import { RtmpMediaServerService } from './rtmp-media-server.service';
-
-const NodeMediaServer = require('node-media-server');
-
+import { RtmpMediaServerService } from './services/rtmp-media-server.service';
 
 // Load env file from NODE_ENV
 loadEnvironmentVariables('./environments');
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(RtmpMediaServerModule);
-  const rtmpMediaServerService: RtmpMediaServerService = app.get(RtmpMediaServerService);
+  const rtmpMediaServerService: IRtmpMediaServerService = app.get(RtmpMediaServerService);
   
   try {
     rtmpMediaServerService.start();

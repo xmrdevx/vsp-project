@@ -4,6 +4,7 @@ export * from './common.module';
 export * from './commands/accounts.commands';
 export * from './commands/auth.commands';
 export * from './commands/permission.commands';
+export * from './commands/streams.commands';
 
 // Constants
 export * from './constants/client-identifiers.constants';
@@ -32,6 +33,7 @@ export * from './dtos/identity/reset-password.dto';
 export * from './dtos/identity/role.dto';
 export * from './dtos/identity/tenant.dto';
 export * from './dtos/identity/user.dto';
+export * from './dtos/streams/stream-pre-connect-validation-request.dto';
 
 // Entities
 export * from './entities/base.entity';
@@ -45,7 +47,8 @@ export * from './entities/identity/refresh-token.entity';
 export * from './entities/identity/role.entity';
 export * from './entities/identity/tenant.entity';
 export * from './entities/identity/user.entity';
-export * from './entities/streaming/stream-key.entity';
+export * from './entities/streams/stream-key.entity';
+export * from './entities/streams/stream.entity';
 
 // Enums
 export * from './enums/role-types.enum';

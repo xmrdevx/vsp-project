@@ -43,6 +43,9 @@ import { RolesRepository } from './repositories/roles.repository';
 
 import { CLAIMS_REPOSITORY_TOKEN } from './interfaces/claims-repository.interface';
 import { ClaimsRepository } from './repositories/claims.repository';
+import { PermissionsController } from './controllers/permissions.controller';
+import { PermissionsService } from './services/permissions.service';
+import { PERMISSIONS_SERVICE_TOKEN } from './interfaces/permissions-service.interface';
 
 @Module({
   imports: [
@@ -69,6 +72,7 @@ import { ClaimsRepository } from './repositories/claims.repository';
   controllers: [
     AccountsController,
     AuthController,
+    PermissionsController,
   ],
   providers: [
     {
@@ -111,6 +115,10 @@ import { ClaimsRepository } from './repositories/claims.repository';
       provide: CLAIMS_REPOSITORY_TOKEN,
       useClass: ClaimsRepository
     },
+    {
+      provide: PERMISSIONS_SERVICE_TOKEN,
+      useClass: PermissionsService
+    }
   ],
 })
 export class IdentityModule {}

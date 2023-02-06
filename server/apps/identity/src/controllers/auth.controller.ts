@@ -14,8 +14,6 @@ import { AUTH_SERVICE_TOKEN, IAuthService } from '../interfaces/auth-service.int
 
 @Controller()
 export class AuthController {
-  
-
   @Inject(AUTH_SERVICE_TOKEN)
   private readonly _authService: IAuthService;
 

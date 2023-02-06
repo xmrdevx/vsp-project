@@ -7,11 +7,12 @@ import { LoggerModule } from '@vsp/logger';
 
 import { AuthController } from './controllers/auth.controller';
 import { AccountsController } from './controllers/accounts.controller';
-import { identityMicroserviceProvider } from './gateway.providers';
+import { identityMicroserviceProvider, streamsMicroserviceProvider } from './gateway.providers';
 import { LocalStrategy } from './strategies/local.strategy';
 
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { PermissionsController } from './controllers/permissions.controller';
+import { StreamsController } from './controllers/streams.controller';
 
 @Module({
   imports: [
@@ -28,10 +29,12 @@ import { PermissionsController } from './controllers/permissions.controller';
   controllers: [
     AuthController,
     AccountsController,
-    PermissionsController
+    PermissionsController,
+    StreamsController
   ],
   providers: [
     identityMicroserviceProvider,
+    streamsMicroserviceProvider,
     JwtStrategy,
     LocalStrategy,
     HttpCacheInterceptor

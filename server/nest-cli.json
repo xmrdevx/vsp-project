@@ -72,6 +72,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/rtmp-media-server/tsconfig.app.json"
       }
+    },
+    "streams": {
+      "type": "application",
+      "root": "apps/streams",
+      "entryFile": "main",
+      "sourceRoot": "apps/streams/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/streams/tsconfig.app.json"
+      }
     }
   }
 }

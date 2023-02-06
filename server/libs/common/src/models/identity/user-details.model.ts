@@ -1,4 +1,5 @@
 import { ClaimDto } from '@vsp/common/dtos/identity/claim.dto';
+import { Claims } from '@vsp/common/types/claims.type';
 
 export class UserDetails {
   public id: string;
@@ -10,6 +11,8 @@ export class UserDetails {
   public tenantId: string;
   public roles: string[];
   public claims: ClaimDto[];
+
+  public payload?: Claims;
 
   constructor(args: any) {
     Object.assign(this, args);

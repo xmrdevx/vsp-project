@@ -9,7 +9,8 @@ import { Role } from './role.entity';
 import { Tenant } from './tenant.entity';
 
 import { HashingUtils } from '../../utils/hashing.utils';
-import { StreamKey } from '../streaming/stream-key.entity';
+import { StreamKey } from '../streams/stream-key.entity';
+import { Stream } from '../streams/stream.entity';
 
 @Entity({ name: 'app_user' })
 export class User extends BaseEntity {

@@ -43,7 +43,8 @@ export const userDetailsFromClaims = (claims: Claims | null): UserDetails | null
     accountId: claims[ClaimTypes.ACCOUNT_ID],
     tenantId: claims[ClaimTypes.TENANT_ID],
     roles: claims[ClaimTypes.ROLES],
-    claims: []
+    claims: [],
+    payload: claims
     // @TODO map claims here
   } satisfies UserDetails;
 };
