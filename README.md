@@ -1,3 +1,6 @@
-# NestJS Microservices with Angular Clients
+# VSP Project
 
-This is an example project structure for a NestJS microservices backend with Angular clients.
+Each project contains a README of how to setup and run the prjoect
+
+
+**Note**: Database, queue, and cache are used for dev purposes only.

@@ -1,27 +1,19 @@
-# Clients
+# VSP Clients
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
+There are currently 2 Angular client for this project.  One is a public facing application that the general public will use.  The second is an Admin application.
 
-## Development server
+## Dependencies
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. [NodeJS V16 or greater](https://nodejs.org/en/) OR use NVM [Linux/macOS](https://github.com/nvm-sh/nvm) | [Windows](https://github.com/coreybutler/nvm-windows)
+2. [Angular CLI](https://angular.io/cli)
+3. [Server project running locally](https://github.com/xmrdevx/vsp-project/tree/master/server)
+   
 
-## Code scaffolding
+### Running
+1. Open terminal window.
+2. Navigate to the clients directory from the root of the project. `cd clients`.
+3. Install all Node dependencies `npm install`
+4. Build project libraries `npm run build:libs` (these are shared libraries used between client applications)
+5. To start a client run `npm run start:<application-name>` example `npm run start:client` or `npm run start:admin`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Additional scripts to run can be seen in the `package.json`'s scripts section.
