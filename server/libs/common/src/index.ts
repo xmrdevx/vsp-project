@@ -3,6 +3,7 @@ export * from './common.module';
 // Commands
 export * from './commands/accounts.commands';
 export * from './commands/auth.commands';
+export * from './commands/permission.commands';
 
 // Constants
 export * from './constants/client-identifiers.constants';
@@ -44,6 +45,7 @@ export * from './entities/identity/refresh-token.entity';
 export * from './entities/identity/role.entity';
 export * from './entities/identity/tenant.entity';
 export * from './entities/identity/user.entity';
+export * from './entities/streaming/stream-key.entity';
 
 // Enums
 export * from './enums/role-types.enum';

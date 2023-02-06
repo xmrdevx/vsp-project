@@ -9,6 +9,7 @@ import { Role } from './role.entity';
 import { Tenant } from './tenant.entity';
 
 import { HashingUtils } from '../../utils/hashing.utils';
+import { StreamKey } from '../streaming/stream-key.entity';
 
 @Entity({ name: 'app_user' })
 export class User extends BaseEntity {
@@ -84,6 +85,14 @@ export class User extends BaseEntity {
   @ManyToOne(type => Tenant, tenant => tenant.users, { nullable: false, cascade: ['insert'] })
   @JoinColumn({ name: 'app_tenant_id' })
   public tenant: Tenant;
+
+  @ManyToMany(type => User, { eager: false })
+  @JoinTable({ 
+    name: 'user_stream_key',
+    joinColumn: { name: 'app_user_id', referencedColumnName: "id" },
+    inverseJoinColumn: { name: 'stream_key_id', referencedColumnName: "id" }
+  })
+  public streamKeys: StreamKey[];
 
   @BeforeInsert()
   public hashPassword() {
