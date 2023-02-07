@@ -11,8 +11,8 @@ export class CreateProfileDto {
   @IsNotEmpty()
   public lastName: string;
 
-  public summary: string;
-  public avatarUrl: string;
+  public summary?: string;
+  public avatarUrl?: string;
 
   @IsDefined()
   @IsNotEmpty()

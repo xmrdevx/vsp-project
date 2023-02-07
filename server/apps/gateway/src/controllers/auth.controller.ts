@@ -1,5 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Inject, Post, Request, UseGuards } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { ApiTags } from '@nestjs/swagger';
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { LoggerService } from '@vsp/logger';
@@ -13,6 +14,7 @@ import {
   TokenPair, 
   UserDetails } from '@vsp/common';
 
+@ApiTags('identity')
 @Controller('auth')
 export class AuthController {
   @Inject(IDENTITY_SERVICE_TOKEN)

@@ -1,5 +1,6 @@
 import { Controller, Get, Inject, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { ApiTags } from '@nestjs/swagger';
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { HttpCacheInterceptor } from '@vsp/core';
@@ -7,6 +8,7 @@ import { LoggerService } from '@vsp/logger';
 import { JwtAuthGuard } from '@vsp/authorization';
 import { IDENTITY_SERVICE_TOKEN, getAvailablePermissions } from '@vsp/common';
 
+@ApiTags('identity')
 @Controller('permissions')
 @UseInterceptors(HttpCacheInterceptor)
 @UseGuards(JwtAuthGuard)

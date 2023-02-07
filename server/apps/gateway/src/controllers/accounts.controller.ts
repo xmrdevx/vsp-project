@@ -1,5 +1,6 @@
 import { Body, Controller, Head, HttpCode, HttpStatus, Inject, Post, Query } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
+import { ApiTags } from '@nestjs/swagger';
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { LoggerService } from '@vsp/logger';
@@ -19,6 +20,7 @@ import {
   SimpleQueryRequestDto, 
   UserDto } from '@vsp/common';
 
+@ApiTags('identity')
 @Controller('accounts')
 export class AccountsController {
   @Inject(IDENTITY_SERVICE_TOKEN)

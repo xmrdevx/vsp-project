@@ -32,13 +32,14 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1', { exclude: routesToExcludeFromGlobalRoutePrefix });
   
   const options = new DocumentBuilder()
-    .setTitle('API Docs')
-    .addTag('auth')
+    .setTitle('Vsp API Docs')
+    .addTag('identity')
+    .addTag('streams')
     .setVersion('1.0')
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('docs/api', app, document);
   
   await app.listen(environmentService.get('API_GATEWAY_PORT'));
 }
