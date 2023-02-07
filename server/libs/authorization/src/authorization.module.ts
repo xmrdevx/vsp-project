@@ -5,6 +5,9 @@ import { CoreModule, EnvironmentService } from '@vsp/core';
 
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
+import { HasAccessGuard } from './guards/has-access.guard';
+import { HasPermissionsGuard } from './guards/has-permissions.guard';
+import { HasRolesGuard } from './guards/has-roles.guard';
 
 @Module({
   imports: [
@@ -29,10 +32,16 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
   ],
   providers: [
     JwtAuthGuard,
+    HasAccessGuard,
+    HasPermissionsGuard,
+    HasRolesGuard,
     LocalAuthGuard,
   ],
   exports: [
     JwtAuthGuard,
+    HasAccessGuard,
+    HasPermissionsGuard,
+    HasRolesGuard,
     LocalAuthGuard,
     JwtModule,
   ],

@@ -1,3 +1,5 @@
+import { ClaimValues } from './claim-values.enum';
+
 export enum ClaimTypes {
   // User Details
   SUBJECT = 'sub',
@@ -15,11 +17,28 @@ export enum ClaimTypes {
   EMAIL = 'email',
   ACCOUNT_ID = 'accid',
   CLIENTS = 'cli',
-  
+}
+
+export enum ClaimAuthorizationTypes {
   // Permissions/access
   CAN_ACCESS = 'access',
   CAN_CREATE = 'create',
   CAN_READ = 'read',
   CAN_UPDATE = 'update',
   CAN_DELETE = 'delete'
+}
+
+export enum ClaimAuthorizationOperations {
+  ALL = 'all',
+  ANY = 'anny'
+}
+
+export interface ClaimPermission {
+  key: string,
+  value: string;
+}
+
+export interface ClaimPermissions {
+  operation: ClaimAuthorizationOperations,
+  permissions: ClaimPermission[];
 }
