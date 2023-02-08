@@ -17,7 +17,9 @@
       "sourceRoot": "apps/gateway/src",
       "compilerOptions": {
         "tsConfigPath": "apps/gateway/tsconfig.app.json",
-        "plugins": ["@nestjs/swagger"]
+        "plugins": [
+          "@nestjs/swagger"
+        ]
       }
     },
     "core": {
@@ -81,6 +83,15 @@
       "sourceRoot": "apps/streams/src",
       "compilerOptions": {
         "tsConfigPath": "apps/streams/tsconfig.app.json"
+      }
+    },
+    "geocoding": {
+      "type": "application",
+      "root": "apps/geocoding",
+      "entryFile": "main",
+      "sourceRoot": "apps/geocoding/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/geocoding/tsconfig.app.json"
       }
     }
   }

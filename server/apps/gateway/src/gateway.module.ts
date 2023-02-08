@@ -1,4 +1,4 @@
-import { CacheModule, CacheModuleOptions, Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 
 import { AuthorizationModule } from '@vsp/authorization';
@@ -7,12 +7,17 @@ import { LoggerModule } from '@vsp/logger';
 
 import { AuthController } from './controllers/auth.controller';
 import { AccountsController } from './controllers/accounts.controller';
-import { identityMicroserviceProvider, streamsMicroserviceProvider } from './gateway.providers';
-import { LocalStrategy } from './strategies/local.strategy';
+import { 
+  geocodingMicroserviceProvider, 
+  identityMicroserviceProvider, 
+  streamsMicroserviceProvider } from './gateway.providers';
 
+import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
+
 import { PermissionsController } from './controllers/permissions.controller';
 import { StreamsController } from './controllers/streams.controller';
+import { GeocodingController } from './controllers/geocoding.controller';
 
 @Module({
   imports: [
@@ -30,11 +35,13 @@ import { StreamsController } from './controllers/streams.controller';
     AuthController,
     AccountsController,
     PermissionsController,
-    StreamsController
+    StreamsController,
+    GeocodingController
   ],
   providers: [
     identityMicroserviceProvider,
     streamsMicroserviceProvider,
+    geocodingMicroserviceProvider, 
     JwtStrategy,
     LocalStrategy,
     HttpCacheInterceptor

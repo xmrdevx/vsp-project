@@ -5,6 +5,7 @@ export * from './commands/accounts.commands';
 export * from './commands/auth.commands';
 export * from './commands/permission.commands';
 export * from './commands/streams.commands';
+export * from './commands/geocoding.command';
 
 // Constants
 export * from './constants/client-identifiers.constants';
@@ -17,6 +18,12 @@ export * from './dtos/api/response-message.dto';
 export * from './dtos/api/response-status.enum';
 export * from './dtos/api/simple-query-request.dto';
 export * from './dtos/api/simple-exist-query-response.dto';
+export * from './dtos/geocoding/geo-location.dto';
+export * from './dtos/geocoding/geocoding-location.dto';
+export * from './dtos/geocoding/map-bounds.dto';
+export * from './dtos/geocoding/map-coordinate.dto';
+export * from './dtos/geocoding/map-marker.dto';
+export * from './dtos/geocoding/search-geo-location-by-text-request.dto';
 export * from './dtos/identity/account.dto';
 export * from './dtos/identity/address.dto';
 export * from './dtos/identity/claim.dto';
@@ -37,6 +44,7 @@ export * from './dtos/streams/stream-pre-connect-validation-request.dto';
 
 // Entities
 export * from './entities/base.entity';
+export * from './entities/geocoding/geo-location.entity';
 export * from './entities/identity/account.entity';
 export * from './entities/identity/address.entity';
 export * from './entities/identity/claim.entity';
