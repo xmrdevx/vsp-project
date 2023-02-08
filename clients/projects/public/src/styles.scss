@@ -1,0 +1,12 @@
+// Global
+@import '../../@assets/scss/variables';
+@import '../../@assets/scss/main';
+
+// Local
+@import './assets/scss/variables';
+@import './assets/scss/main';
+
+body {
+  background: var(--nz-layout-body-background);
+}
+
