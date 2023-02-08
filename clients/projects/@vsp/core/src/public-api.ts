@@ -22,6 +22,15 @@ export * from './lib/entities/template-permission.entity';
 export * from './lib/entities/user-module-permission.entity';
 export * from './lib/entities/user-permission.entity';
 export * from './lib/entities/tenant.entity';
+export * from './lib/entities/case.entity';
+export * from './lib/entities/media.entity';
+export * from './lib/entities/missing-person.entity';
+export * from './lib/entities/offender.entity';
+export * from './lib/entities/person.entity';
+export * from './lib/entities/team.entity';
+export * from './lib/entities/team-announcement.entity';
+export * from './lib/entities/comment.entity';
+export * from './lib/entities/geo-location.entity';
 
 // Enums
 export * from './lib/enums/claim-types.enum';
@@ -80,6 +89,11 @@ export * from './lib/services/cache-service.interface';
 export * from './lib/services/crud-operations.interface';
 export * from './lib/services/environment.service';
 export * from './lib/services/session-cache.service';
+export * from './lib/services/geocoding.service';
+export * from './lib/services/media.service';
+export * from './lib/services/missing.service';
+export * from './lib/services/offenders.service';
+export * from './lib/services/teams.service';
 
 // Defaults
 export * from './lib/defaults/infinite-scroll-settings.defaults';

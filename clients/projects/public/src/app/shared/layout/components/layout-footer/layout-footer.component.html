@@ -1,0 +1,18 @@
+<section class="footer-section p-5">
+  <div *ngIf="links?.length" class="container mx-auto">
+    <div class="footer-logo">
+      <img src="assets/images/logo.svg" style="height: 22px;">
+    </div>
+    <ul class="footer-links w-100 mx-auto">
+      <li *ngFor="let link of links">
+        <a [routerLink]="link.routerLink">{{ link.label }}</a>
+      </li>
+      <li>
+        <a routerLink="/contact">Contact</a>
+      </li>
+    </ul>
+    <div class="footer-copyright">
+      <small>©2020 Project Offender</small>
+    </div>
+  </div>
+</section>

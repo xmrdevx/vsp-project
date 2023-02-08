@@ -1,0 +1,64 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <nz-row [nzGutter]="[16, 16]">
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="6" [nzXl]="6">
+      <nz-form-item class="mb-0">
+        <nz-form-control nzErrorTip="Please input search keywords!">
+          <nz-input-group nzPrefixIcon="search">
+            <input 
+                pjoAutoFocusControl
+                type="text" 
+                nz-input 
+                formControlName="searchKeywords"
+                placeholder="Search keywords...." />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="6" [nzXl]="6">
+      <nz-form-item class="mb-0">
+        <nz-form-control nzErrorTip="Please input your address!">
+          <nz-input-group nzSearch nzSuffixIcon="search">
+            <input
+              placeholder="Enter an address, city, or zip..."
+              nz-input
+              row="4"
+              formControlName="location"
+              (input)="onSearchGeocodingLocations($event)"
+              [nzAutocomplete]="geocodingLocationsSearchResultsTemplate" />
+          </nz-input-group>
+          <nz-autocomplete 
+              #geocodingLocationsSearchResultsTemplate 
+              (selectionChange)="onGeocodingLocationSelection($event)">
+            <nz-auto-option 
+                *ngFor="let location of (geocodingLocationsResult$ | async)" 
+                [nzValue]="location"
+                [nzLabel]="location.fullAddressString">
+              <div>{{ location.fullAddressString }}</div>
+            </nz-auto-option>
+          </nz-autocomplete>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="6" [nzXl]="6">
+      <nz-form-item class="mb-0">
+        <nz-form-control nzErrorTip="Please input your distance!">
+          <input 
+              type="number" 
+              nz-input 
+              formControlName="distance"
+              placeholder="Distance radius..." />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="6" [nzXl]="6">
+      <nz-form-item class="mb-0">
+        <nz-form-control nzErrorTip="Please input your distance measurement!">
+          <nz-select formControlName="distanceUnit">
+            <nz-option [nzValue]="DistanceUnit.Miles" nzLabel="Miles"></nz-option>
+            <nz-option [nzValue]="DistanceUnit.Kilometers" nzLabel="Kilometers"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+</ng-container>

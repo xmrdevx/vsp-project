@@ -1,0 +1,173 @@
+<div class="block container mx-auto" [@fadeAnimation]>
+  <nz-page-header 
+      class="bordered-bottom bg-white" 
+      nzTitle="Missing Children">
+  </nz-page-header>
+
+  <div>
+    <nz-page-header>
+      <!-- <nz-page-header-title>Search Offenders</nz-page-header-title> -->
+      <nz-page-header-content>
+        <nz-row [nzGutter]="[16, 16]">
+          <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="8">
+            <nz-page-header 
+                class="bordered-bottom bg-white px-2 py-0" 
+                nzTitle="Filters">
+            </nz-page-header>
+            <div class="px-2 py-4">
+              <form [formGroup]="missingSearchForm" (ngSubmit)="onSearchMissing(missingSearchForm.value)" novalidate>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input search term!">
+                    <nz-input-group nzPrefixIcon="user">
+                      <input 
+                          pjoAutoFocusControl
+                          type="text" 
+                          nz-input 
+                          formControlName="searchTerm"
+                          placeholder="Search Term" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your address!">
+                    <nz-input-group nzSearch nzSuffixIcon="search">
+                      <input
+                        placeholder="Enter an address, city, or zip..."
+                        nz-input
+                        row="4"
+                        formControlName="location"
+                        (input)="onSearchGeocodingLocations($event)"
+                        [nzAutocomplete]="geocodingLocationsSearchResultsTemplate" />
+                    </nz-input-group>
+                    <nz-autocomplete 
+                        #geocodingLocationsSearchResultsTemplate 
+                        (selectionChange)="onGeocodingLocationSelection($event)">
+                      <nz-auto-option 
+                          *ngFor="let location of (geocodingLocationsResult$ | async)" 
+                          [nzValue]="location"
+                          [nzLabel]="location.fullAddressString">
+                        <div>{{ location.fullAddressString }}</div>
+                      </nz-auto-option>
+                    </nz-autocomplete>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-row [nzGutter]="[16, 16]">
+                  <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="12">
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="Please input your distance!">
+                        <input 
+                            type="number" 
+                            nz-input 
+                            formControlName="distance"
+                            placeholder="Radius" />
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-col>
+                  <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="12">
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="Please input your distance measurement!">
+                        <nz-select formControlName="distanceUnit">
+                          <nz-option [nzValue]="DistanceUnit.Miles" nzLabel="Miles"></nz-option>
+                          <nz-option [nzValue]="DistanceUnit.Kilometers" nzLabel="Kilometers"></nz-option>
+                        </nz-select>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-col>
+                </nz-row>
+                <div>
+                  <button
+                      class="mr-2"
+                      nz-button
+                      type="submit"
+                      role="button"
+                      nzType="primary">
+                    Search
+                  </button>
+                  <button
+                      nz-button
+                      type="button"
+                      role="button"
+                      nzType="default"
+                      (click)="onResetOffenders()">
+                    Clear
+                  </button>
+                </div>
+              </form>
+            </div>
+          </nz-col>
+          <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="16">
+
+            <ng-container *ngIf="missingSearchPageLoadingState$ | async as loadingState">
+              <!-- Show Skeletons if page not loaded -->
+              <ng-container *ngIf="loadingState !== LoadingState.LOADED; else currentMissingSearchPageTemplate">
+                <nz-row [nzGutter]="[16, 16]">
+                  <nz-col [nzSpan]="24">
+                    <nz-pagination
+                        class="flex flex-row justify-content-end mb-2"
+                        [nzPageIndex]="1"
+                        [nzTotal]="1"
+                        [nzSize]="'small'">
+                    </nz-pagination>
+                  </nz-col>
+                </nz-row>
+                <nz-row [nzGutter]="[16, 16]">
+                  <ng-container *ngFor="let i of [1,2,3,4]">
+                    <nz-col [nzSpan]="24">
+                      <nz-card class="mb-4 p-0 shadow-lg">
+                        <vsp-missing-person-simple-profile-skeleton></vsp-missing-person-simple-profile-skeleton>
+                      </nz-card>
+                    </nz-col>
+                  </ng-container>
+                </nz-row>
+              </ng-container>
+
+              <!-- Show Page if loaded -->
+              <ng-template #currentMissingSearchPageTemplate>
+                <ng-container *ngIf="(currentMissingPage$ | async)?.elements?.length; else noMissingToDisplayTemplate">
+                  <ng-container *ngIf="currentMissingPage$ | async as currentMissingPage">
+                    <nz-row [nzGutter]="[16, 16]">
+                      <nz-col [nzSpan]="24">
+                        <nz-pagination
+                            class="flex flex-row justify-content-end mb-2"
+                            [nzPageIndex]="currentMissingPage.current.index + 1"
+                            [nzTotal]="currentMissingPage.totalElements"
+                            [nzSize]="'small'"
+                            (nzPageIndexChange)="pageIndexChanges($event, currentMissingPage)">
+                        </nz-pagination>
+                        <ng-template 
+                            #totalTemplate let-total>
+                          Total {{ total }} items
+                        </ng-template>
+                      </nz-col>
+                    </nz-row>
+                    <nz-row [nzGutter]="[16, 16]">
+                      <ng-container *ngFor="let missingPerson of currentMissingPage?.elements">
+                        <nz-col [nzSpan]="24">
+                          <nz-card [@fadeAnimation] class="shadow-lg">
+                            <vsp-missing-person-simple-profile 
+                                [missingPerson]="missingPerson">
+                            </vsp-missing-person-simple-profile>
+                          </nz-card>
+                        </nz-col>
+                      </ng-container>
+                    </nz-row>
+                  </ng-container>
+                </ng-container>
+              </ng-template>
+            </ng-container>
+            
+          </nz-col>
+        </nz-row>
+      </nz-page-header-content>
+    </nz-page-header>
+  </div>
+</div>
+
+<ng-template #noMissingToDisplayTemplate>
+  <nz-card>
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No missing data to display!">
+    </nz-empty>
+  </nz-card>
+</ng-template>

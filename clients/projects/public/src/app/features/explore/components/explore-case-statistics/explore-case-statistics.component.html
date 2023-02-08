@@ -1,0 +1,17 @@
+<nz-row *ngIf="cases?.length" [nzGutter]="[16, 16]">
+  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="8">
+    <nz-card class="shadow-lg">
+      <nz-statistic nzTitle="Total" [nzValue]="totalCases"></nz-statistic>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="8">
+    <nz-card class="shadow-lg">
+      <nz-statistic nzTitle="Open" [nzValue]="openCases"></nz-statistic>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="8">
+    <nz-card class="shadow-lg">
+      <nz-statistic nzTitle="Closed" [nzValue]="closedCases"></nz-statistic>
+    </nz-card>
+  </nz-col>
+</nz-row>

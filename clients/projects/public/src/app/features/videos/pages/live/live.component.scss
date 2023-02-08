@@ -1,0 +1,28 @@
+@import '../../../../../assets/scss/variables';
+
+$explore-search-bar-height: 61px;
+
+.live-video-feed {
+  display: block;
+  height: calc(100vh - ($header-height + $footer-height + $explore-search-bar-height));
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.live-chat-feed {
+  display: block;
+  height: calc(100vh - ($header-height + $footer-height + $explore-search-bar-height));
+  width: 100%;
+  overflow-y: auto;
+}
+
+::ng-deep {
+  .live-chat-feed {
+    nz-card {
+      .ant-card-body {
+        height: 100%;
+      }
+    }
+  }
+}

@@ -15,6 +15,6 @@ export interface MapMarker<T> {
 }
 
 export interface GeocodingLocation {
-  coordinate: MapCoordinate,
-  formattedAddress: string
+  location: MapCoordinate,
+  fullAddressString: string
 }

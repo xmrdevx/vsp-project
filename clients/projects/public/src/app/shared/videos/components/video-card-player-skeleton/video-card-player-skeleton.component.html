@@ -1,0 +1,10 @@
+<nz-card [nzCover]="coverTemplate" class="shadow-lg">
+  <ng-template #coverTemplate>
+    <img 
+        class="block rounded-top w-100" 
+        src="assets/images/thumbnail-video-placeholder.jpeg" />
+  </ng-template>
+  <nz-skeleton 
+      [nzParagraph]="{ rows: 2 }">
+  </nz-skeleton>
+</nz-card>

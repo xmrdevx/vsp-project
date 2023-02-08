@@ -1,0 +1,54 @@
+<div [@fadeAnimation] *ngIf="(selectedTeam$ | async) as team" class="mt-4 p-3">
+  <nz-row [nzGutter]="[16, 16]" class="mb-4">
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="10" [nzLg]="8" [nzXl]="8">
+      <form [formGroup]="announcementsSearchForm" (ngSubmit)="searchAnnouncements(team, announcementsSearchForm.value)" novalidate>
+        <div>
+          <vsp-teams-announcments-search-filter></vsp-teams-announcments-search-filter>
+        </div>
+        <div class="flex flex-row justify-content-start">
+          <button
+              class="mr-1"
+              nz-button 
+              nzType="primary" 
+              role="button" 
+              type="submit">
+            Search
+          </button>
+          <button 
+              nz-button 
+              nzType="default" 
+              role="button" 
+              type="button"
+              (click)="resetAnnouncementsSearchFilter()">
+            Clear
+          </button>
+        </div>
+      </form>
+    </nz-col>
+
+    <!-- Announcments Page Lists -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="14" [nzLg]="16" [nzXl]="16">
+      <ng-container *ngIf="(currentAnnouncementsSearchPage$ | async) !== null; else skeletonAnnouncementsTemplate">
+        <div
+            *ngIf="currentAnnouncementsSearchPage$ | async as page;"
+            style="height: 100%;"
+            infinite-scroll
+            [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+            [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+            (scrolled)="onScrollDownAnnouncements(team, page.next || null)">
+          <div [@fadeAnimation]>
+            <vsp-teams-announcement-card-list
+                [loadedPages]="loadedAnnouncementsPages$ | async">
+            </vsp-teams-announcement-card-list>
+          </div>
+        </div>
+      </ng-container>
+      <!-- Skeleton Template -->
+      <ng-template #skeletonAnnouncementsTemplate>
+        <div>
+          <vsp-teams-announcement-card-list-skeleton></vsp-teams-announcement-card-list-skeleton>
+        </div>
+      </ng-template>
+    </nz-col>
+  </nz-row>
+</div>

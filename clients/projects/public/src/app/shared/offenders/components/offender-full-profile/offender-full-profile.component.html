@@ -1,0 +1,32 @@
+<div class="flex flex-row w-100 align-items-top mb-4">
+  <span class="mr-2">
+    <nz-avatar 
+        [nzShape]="'square'" 
+        [nzSize]="128" 
+        [nzIcon]="'user'">
+    </nz-avatar>
+  </span>
+
+  <!-- Deteails Section -->
+  <span class="flex-grow-1">
+    <h3 class="fw-bold mb-0">
+      <a 
+          [routerLink]="offenderRouterLink"
+          title="View full offender profile">
+        {{ offender?.firstName }} {{ offender?.lastName }}
+      </a>
+    </h3>
+    <div class="flex flex-row justify-content-between">
+      <small>First Offense: </small>
+      <small>{{ offender?.createdOn | date }}</small>
+    </div>
+    <div class="flex flex-row justify-content-between">
+      <small>Last Update: </small>
+      <small>{{ offender?.updatedOn | date }}</small>
+    </div>
+    <div class="flex flex-row justify-content-between">
+      <small>Total Offenses: </small>
+      <small>1</small>
+    </div>
+  </span>
+</div>

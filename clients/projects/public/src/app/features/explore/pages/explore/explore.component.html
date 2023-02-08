@@ -1,0 +1,216 @@
+<div [@fadeAnimation]>
+  <div class="bordered-bottom p-2 bg-white">
+    <div>
+      <nz-row [nzGutter]="[16, 16]">
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="10" [nzLg]="6" [nzXl]="6" [nzXXl]="4">
+          <nz-form-item class="mb-0">
+            <nz-form-control>
+              <nz-input-group nzSearch nzSuffixIcon="search">
+                <input
+                  placeholder="Enter an address, city, or zip..."
+                  nz-input
+                  row="4"
+                  (input)="onSearchGeocodingLocations($event)"
+                  [nzAutocomplete]="geocodingLocationsSearchResultsTemplate" />
+              </nz-input-group>
+              <nz-autocomplete 
+                  #geocodingLocationsSearchResultsTemplate 
+                  (selectionChange)="onGeocodingLocationSelection($event)">
+                <nz-auto-option 
+                    *ngFor="let location of (geocodingLocationsResult$ | async)" 
+                    [nzValue]="location"
+                    [nzLabel]="location.fullAddressString">
+                  <div>{{ location.fullAddressString }}</div>
+                </nz-auto-option>
+              </nz-autocomplete>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+        <!-- <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="10" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
+          <nz-form-item class="mb-0">
+            <nz-form-control>
+              <nz-radio-group>
+                <label nz-radio-button nzValue="large">Show All</label>
+                <label nz-radio-button nzValue="default">Offenders Only</label>
+                <label nz-radio-button nzValue="small">Missing Only</label>
+              </nz-radio-group>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col> -->
+      </nz-row>
+    </div>
+  </div>
+  <nz-row class="h-100">
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="16" class="position-relative">
+      <div 
+          class="map"
+          leaflet
+          [leafletOptions]="defaultLeafletOptions"
+          [leafletLayersControl]="defaultLeafletLayerControls"
+          [leafletMarkerCluster]="activeMarkers"
+          [leafletMarkerClusterOptions]="markerClusterOptions"
+          (leafletMarkerClusterReady)="markerClusterReady($event)"
+          (leafletMapReady)="onMapReady($event)"
+          (leafletMapMoveEnd)="onMapMoveEnd($event)">
+      </div>
+      <button 
+          nz-button 
+          nzType="default" 
+          class="drawer-toggle d-none-lg"
+          (click)="onOpenDrawer()">
+        <i nz-icon nzType="team" nzTheme="outline"></i>
+      </button>
+    </nz-col>
+    <nz-col [nzXs]="0" [nzSm]="0" [nzMd]="0" [nzLg]="8" class="bg-white">
+      <div class="map-results p-4">
+        <ng-container 
+            [ngTemplateOutlet]="exploreRightPanelContent"
+            [ngTemplateOutletContext]="{ isDrawer: false }">
+        </ng-container>
+      </div>
+    </nz-col>
+  </nz-row>
+</div>
+
+<nz-drawer
+    nzWrapClassName="explore-drawer-lg"
+    [nzHeight]="'100%'"
+    [nzClosable]="false"
+    [nzMask]="false"
+    [nzVisible]="drawerVisibility"
+    [nzPlacement]="drawerPlacement"
+    (nzOnClose)="onCloseDrawer()">
+  <div class="">
+    <ng-container 
+        *nzDrawerContent 
+        [ngTemplateOutlet]="exploreRightPanelContent"
+        [ngTemplateOutletContext]="{ isDrawer: true }">
+    </ng-container>
+  </div>
+</nz-drawer>
+
+<ng-template #exploreRightPanelContent let-isDrawer="isDrawer">
+  <div *ngIf="isDrawer" class="text-right">
+    <button nz-button nzType="default" (click)="onCloseDrawer()">X</button>
+  </div>
+  <nz-page-header
+      class="p-0"
+      [nzTitle]="(exploreMarkerTypes | titlecase) + ' In Region'">
+    <nz-page-header-content>
+      <!-- Explore List Toggle -->
+      <div class="block w-100 mb-5">
+        <nz-radio-group
+            class="w-100 flex flex-row"
+            [(ngModel)]="exploreMarkerTypes"
+            nzButtonStyle="solid">
+          <label 
+              class="flex-grow-1 text-center"
+              nz-radio-button 
+              [nzValue]="ExploreMarkerType.OFFENDERS">
+            Offenders
+          </label>
+          <label 
+              class="flex-grow-1 text-center"
+              nz-radio-button 
+              [nzValue]="ExploreMarkerType.MISSING">
+            Missing
+          </label>
+        </nz-radio-group>
+      </div>
+
+      <!-- Stats Section -->
+      <ng-container [ngSwitch]="exploreMarkerTypes">
+        <ng-container *ngSwitchCase="ExploreMarkerType.OFFENDERS">
+          <vsp-explore-case-statistics 
+              [cases]="currentCasesWithinBounds$ | async">
+          </vsp-explore-case-statistics>
+        </ng-container>
+        <ng-container *ngSwitchCase="ExploreMarkerType.MISSING">
+          <vsp-explore-missing-statistics
+              [missingPeople]="currentMissingWithinBounds$ | async">
+          </vsp-explore-missing-statistics>
+        </ng-container>
+      </ng-container>
+      
+    </nz-page-header-content>
+  </nz-page-header>
+  <nz-divider class="p-0"></nz-divider>
+  
+  
+  <!-- <nz-divider></nz-divider> -->
+  <ng-container [ngSwitch]="exploreMarkerTypes">
+    <ng-container *ngSwitchCase="ExploreMarkerType.OFFENDERS">
+      <ng-template 
+        [ngTemplateOutlet]="offendersListTemplate">
+      </ng-template>
+    </ng-container>
+    <ng-container *ngSwitchCase="ExploreMarkerType.MISSING">
+      <ng-template 
+        [ngTemplateOutlet]="missingListTemplate">
+      </ng-template>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #offendersListTemplate let-isDrawer="isDrawer">
+  <ng-container *ngIf="currentOffendersMapMarkersLoadingState$ | async as loadingState">
+    <!-- Show Skeletons if markers not loaded -->
+    <ng-container *ngIf="loadingState !== LoadingState.LOADED; else currentMapMarkersTemplate">
+      <ng-container *ngFor="let i of [1,2,3,4]">
+        <nz-card class="mb-4 p-0 shadow-lg">
+          <vsp-offender-simple-profile-skeleton></vsp-offender-simple-profile-skeleton>
+        </nz-card>
+      </ng-container>
+    </ng-container>
+    <!-- Show Markers if loaded -->
+    <ng-template #currentMapMarkersTemplate>
+      <ng-container *ngIf="currentOffendersMapMarkers$ | async as currentMapMarkers">
+        <ng-container *ngIf="(currentMapMarkers || []).length > 0; else noMapMarkerDataToDisplayTemplate">
+          <ng-container *ngFor="let marker of currentMapMarkers">
+            <nz-card class="mb-4 p-0 shadow-lg"  [@fadeAnimation]>
+              <vsp-offender-simple-profile [offender]="marker?.payload?.offender || null"></vsp-offender-simple-profile>
+            </nz-card>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</ng-template>
+
+<ng-template #missingListTemplate let-isDrawer="isDrawer">
+  <ng-container *ngIf="currentMissingMapMarkersLoadingState$ | async as loadingState">
+    <!-- Show Skeletons if markers not loaded -->
+    <ng-container *ngIf="loadingState !== LoadingState.LOADED; else currentMapMarkersTemplate">
+      <ng-container *ngFor="let i of [1,2,3,4]">
+        <nz-card class="mb-4 p-0 shadow-lg">
+          <vsp-missing-person-simple-profile-skeleton></vsp-missing-person-simple-profile-skeleton>
+        </nz-card>
+      </ng-container>
+    </ng-container>
+    <!-- Show Markers if loaded -->
+    <ng-template #currentMapMarkersTemplate>
+      <ng-container *ngIf="currentMissingMapMarkers$ | async as currentMapMarkers">
+        <ng-container *ngIf="(currentMapMarkers || []).length > 0; else noMapMarkerDataToDisplayTemplate">
+          <ng-container *ngFor="let marker of currentMapMarkers">
+            <nz-card class="mb-4 p-0 shadow-lg"  [@fadeAnimation]>
+              <vsp-missing-person-simple-profile 
+                  [missingPerson]="marker?.payload || null">
+              </vsp-missing-person-simple-profile>
+            </nz-card>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</ng-template>
+
+<ng-template #noMapMarkerDataToDisplayTemplate>
+  <div class="map-results p-4">
+    <nz-card>
+      <nz-empty 
+          nzNotFoundImage="simple"
+          nzNotFoundContent="No offenders found within the mapping region!">
+      </nz-empty>
+    </nz-card>
+  </div>
+</ng-template>

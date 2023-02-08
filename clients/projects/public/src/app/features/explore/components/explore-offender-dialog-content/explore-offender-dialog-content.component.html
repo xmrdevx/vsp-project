@@ -1,0 +1,39 @@
+<nz-row [nzGutter]="[24, 16]">
+  <nz-col>
+    <h4 class="mx-2 mb-0" nz-typography>Offender Profile</h4>
+  </nz-col>
+</nz-row>
+<nz-row [nzGutter]="[24,16]">
+  <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="24">
+    <nz-card>
+      <ng-container *ngIf="(selectedOffenderLoadingState$ | async) === LoadingState.LOADED; else offenderSimpleProfileSkeletonTemplate">
+        <ng-container *ngIf="selectedOffender$ | async as offender; else offenderSimpleProfileEmptyTemplate">
+          <vsp-offender-simple-profile 
+              [offender]="selectedOffender$ | async"
+              [includeProfileLinks]="false">
+          </vsp-offender-simple-profile>
+        </ng-container>
+      </ng-container>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="24">
+    <nz-page-header 
+        class="bordered-bottom bg-white px-2 py-0" 
+        nzTitle="Cases">
+    </nz-page-header>
+    <div class="px-2 py-4">
+      List of all cases with details and evidence will go here....
+    </div>
+  </nz-col>
+</nz-row>
+
+<ng-template #offenderSimpleProfileEmptyTemplate>
+  <nz-empty 
+      nzNotFoundImage="simple"
+      nzNotFoundContent="No offender profile to display!">
+  </nz-empty>
+</ng-template>
+
+<ng-template #offenderSimpleProfileSkeletonTemplate>
+  <vsp-offender-simple-profile-skeleton></vsp-offender-simple-profile-skeleton>
+</ng-template>

@@ -1,0 +1,119 @@
+<!-- Avatar Section -->
+<div class="teams-simple-profile-header mb-4">
+  <span class="teams-simple-profile-header-avatar mr-2">
+    <nz-avatar 
+        [nzShape]="'square'" 
+        [nzSize]="74" 
+        [nzIcon]="'user'"
+        [nzSrc]="team?.logoUrl || undefined">
+    </nz-avatar>
+  </span>
+
+  <!-- Deteails Section -->
+  <span class="teams-simple-profile-header-details">
+    <h3 class="teams-simple-profile-header-details-title fw-bold mb-0">
+      <a 
+          [routerLink]="['/teams', team?.id]"
+          title="View full offender profile">
+        {{ team?.name }}
+      </a>
+    </h3>
+    <div>
+      <button
+          class="mr-1"
+          title="Notify when team posts updates."
+          nz-button 
+          nzType="default"
+          nzShape="circle">
+        <span nz-icon nzType="bell" nzTheme="outline"></span>
+      </button>
+      <button 
+          title="Subscribe to team"
+          nz-button 
+          nzType="primary">
+        Subscribe
+      </button>
+    </div>
+  </span>
+</div>
+<div class="teams-simple-profile-content">
+  <h4 class="fw-bold">Summary</h4>
+  <p>{{ team?.summary || '' }}</p>
+  <div>
+    <a
+        [routerLink]="['/teams', team?.id]"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View full team profile">
+      <i nz-icon nzType="folder-view"></i>
+    </a>
+    <button 
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Contact this team">
+      <i nz-icon nzType="mail"></i>
+    </button>
+    <button 
+        *ngIf="team?.website?.length"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View teams website">
+      <a [href]="team?.website" target="_blank">
+        <i nz-icon nzType="global"></i>
+      </a>
+    </button>
+    <button 
+        *ngIf="team?.website?.length"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View teams YouTube channel">
+      <a [href]="team?.website" target="_blank">
+        <i nz-icon nzType="youtube"></i>
+      </a>
+    </button>
+    <button 
+        *ngIf="team?.paypalAddress?.length"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Donate paypal to this team">
+      <ng-icon style="margin-top: 2px;" name="simple-paypal"></ng-icon>
+    </button>
+    <button 
+        *ngIf="team?.cashAppAddress?.length"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Donate Cashapp to this team">
+      <ng-icon style="margin-top: 2px;" name="simple-cashapp"></ng-icon>
+    </button>
+    <button 
+        *ngIf="team?.bitcoinAddress?.length"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Donate Bitcoin to this team.">
+      <ng-icon style="margin-top: 2px;" name="crypto-btc"></ng-icon>
+    </button>
+    <button 
+        *ngIf="team?.ethereumAddress?.length"
+        class="mr-2 mb-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Donate Ethereum to this team.">
+      <ng-icon style="margin-top: 2px;" name="crypto-eth"></ng-icon>
+    </button>
+  </div>
+</div>

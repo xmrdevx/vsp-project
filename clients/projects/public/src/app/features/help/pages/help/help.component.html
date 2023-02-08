@@ -1,0 +1,117 @@
+<div [@fadeAnimation]>
+  <nz-page-header 
+      class="bordered-bottom bg-white" 
+      nzTitle="Help">
+  </nz-page-header>
+
+  <div class="">
+    <nz-page-header>
+      <!-- <nz-page-header-title>Search Offenders</nz-page-header-title> -->
+      <nz-page-header-content>
+
+        <!-- FAQ Section -->
+        <nz-row [nzGutter]="[16,16]">
+          <nz-col [nzSpan]="24">
+            <h4 nz-typography>Frequently Asked Questions</h4>
+            <nz-divider></nz-divider>
+            <nz-collapse>
+              <nz-collapse-panel 
+                  *ngFor="let faq of defaultFaqItems" 
+                  [nzHeader]="faq.question" 
+                  [nzActive]="false">
+                <p>{{ faq.answer }}</p>
+              </nz-collapse-panel>
+            </nz-collapse>
+          </nz-col>
+        </nz-row>
+
+        <br /><br />
+
+        <!-- Help Form -->
+        <nz-row [nzGutter]="[16,16]">
+          <nz-col [nzSpan]="24">
+            <h4 nz-typography>Interested In Helping?</h4>
+            <nz-divider></nz-divider>
+            <nz-card class="shadow-lg">
+              <form [formGroup]="helpForm" (ngSubmit)="onSubmitHelpForm(helpForm.value)" novalidate>
+                <nz-row [nzGutter]="[16, 16]">
+                  <!-- Field - First Name -->
+                  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8">
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="Please input your First Name!">
+                        <nz-input-group nzPrefixIcon="user">
+                          <input
+                              type="text" 
+                              nz-input 
+                              formControlName="firstName" 
+                              placeholder="First Name" />
+                        </nz-input-group>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-col>
+
+                  <!-- Field - Last Name -->
+                  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8">
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="Please input your First Name!">
+                        <nz-input-group nzPrefixIcon="user">
+                          <input
+                              type="text" 
+                              nz-input 
+                              formControlName="lastName" 
+                              placeholder="Last Name" />
+                        </nz-input-group>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-col>
+
+                  <!-- Field - Email -->
+                  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8">
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="Please input your Email!">
+                        <nz-input-group nzPrefixIcon="mail">
+                          <input
+                              type="text" 
+                              nz-input 
+                              formControlName="email" 
+                              placeholder="Email" />
+                        </nz-input-group>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-col>
+                </nz-row>
+
+                <!-- Field - Message -->
+                <nz-row [nzGutter]="[16, 16]">
+                  <nz-col [nzSpan]="24">
+                    <nz-form-item>
+                      <nz-form-control nzErrorTip="Please input your Message!">
+                        <textarea
+                            rows="6"
+                            nz-input
+                            formControlName="message" 
+                            placeholder="Message">
+                        </textarea>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </nz-col>
+                </nz-row>
+
+                <nz-row [nzGutter]="[16,16,]">
+                  <nz-col [nzSpan]="24">
+                    <button 
+                        nz-button 
+                        nzType="primary">
+                      Send Message
+                    </button>
+                  </nz-col>
+                </nz-row>
+              </form>
+            </nz-card>
+          </nz-col>
+        </nz-row>
+
+      </nz-page-header-content>
+    </nz-page-header>
+  </div>
+</div>

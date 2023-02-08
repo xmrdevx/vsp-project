@@ -1,0 +1,18 @@
+<nz-row *ngIf="missingPeople?.length" [nzGutter]="[16, 16]">
+  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12">
+    <nz-card class="shadow-lg">
+      <nz-statistic 
+          nzTitle="Total" 
+          [nzValue]="missingPeople?.length || 0">
+      </nz-statistic>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12">
+    <nz-card class="shadow-lg">
+      <nz-statistic 
+          nzTitle="Open" 
+          [nzValue]="missingPeople?.length || 0">
+      </nz-statistic>
+    </nz-card>
+  </nz-col>
+</nz-row>

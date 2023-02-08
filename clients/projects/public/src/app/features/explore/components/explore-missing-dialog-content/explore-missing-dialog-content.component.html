@@ -1,0 +1,42 @@
+<nz-row [nzGutter]="[24, 16]">
+  <nz-col>
+    <h4 class="mx-2 mb-0" nz-typography>Missing Profile</h4>
+  </nz-col>
+</nz-row>
+<nz-row [nzGutter]="[24,16]">
+  <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="24">
+    <nz-card>
+      <ng-container *ngIf="(selectedMissingLoadingState$ | async) === LoadingState.LOADED; else missingSimpleProfileSkeletonTemplate">
+        <ng-container *ngIf="selectedMissing$ | async as missing; else missingSimpleProfileEmptyTemplate">
+          <vsp-missing-person-simple-profile 
+              [missingPerson]="selectedMissing$ | async"
+              [includeProfileLinks]="false"
+              [includeSummary]="false">
+          </vsp-missing-person-simple-profile>
+        </ng-container>
+      </ng-container>
+    </nz-card>
+  </nz-col>
+  <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="24">
+    <nz-page-header 
+        class="bordered-bottom bg-white px-2 py-0" 
+        nzTitle="Summary">
+    </nz-page-header>
+    <div class="px-2 py-4">
+      <p *ngIf="selectedMissing$ | async as missing">
+        {{ missing?.summary || '' }}
+      </p>
+    </div>
+  </nz-col>
+</nz-row>
+
+<ng-template #missingSimpleProfileEmptyTemplate>
+  <nz-empty 
+      nzNotFoundImage="simple"
+      nzNotFoundContent="No missing child profile to display!">
+  </nz-empty>
+</ng-template>
+
+<ng-template #missingSimpleProfileSkeletonTemplate>
+  <vsp-missing-person-simple-profile-skeleton></vsp-missing-person-simple-profile-skeleton>
+</ng-template>

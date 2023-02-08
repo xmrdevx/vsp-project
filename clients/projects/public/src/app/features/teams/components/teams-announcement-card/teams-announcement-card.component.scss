@@ -1,0 +1,18 @@
+.comment-icon-margin {
+  margin-right: 4px;
+}
+
+::ng-deep {
+  .announcement-card {
+    .ant-card-body {
+      padding: 1.5rem;
+    }
+  }
+
+  .announcment-comment {
+    .ant-comment-inner {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}

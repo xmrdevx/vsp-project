@@ -1,0 +1,105 @@
+<div [@fadeAnimation] *ngIf="selectedTeam$ | async as team" class="mt-4 p-3">
+  <nz-row [nzGutter]="[16, 16]" class="mb-4">
+    <nz-col [nzSpan]="24">
+      <div class="flex flex-row justify-content-end mb-3">
+        <!-- Video Results Layout Style Buttons -->
+        <nz-button-group class="mr-1">
+          <button 
+              title="Display as grid" 
+              nz-button 
+              nzType="default" 
+              role="button"
+              (click)="changeVideoSearchLayoutStyle(DataLayoutStyle.Grid)">
+            <span nz-icon nzType="table" nzTheme="outline"></span>
+          </button>
+          <button 
+              title="Display as list" 
+              nz-button 
+              nzType="default" 
+              role="button"
+              (click)="changeVideoSearchLayoutStyle(DataLayoutStyle.List)">
+            <span nz-icon nzType="unordered-list" nzTheme="outline"></span>
+          </button> 
+        </nz-button-group>
+        
+        <!-- Video Search Filter Toggle -->
+        <button 
+            title="Toggle advanced search filter."
+            nz-button nzType="primary" 
+            role="button" 
+            (click)="showAdvancedFilter = !showAdvancedFilter">
+          <span nz-icon nzType="filter" nzTheme="outline"></span>
+          Advanced Search
+        </button>
+      </div>
+      <div class="mb-3" [@slideUpDownAnimation]="{ value: showAdvancedFilter ? 'down' : 'up' }">
+        <nz-card>
+          <form [formGroup]="videosSearchForm" (ngSubmit)="searchVideos(team.id, videosSearchForm.value)" novalidate>
+            <div class="mb-3">
+              <vsp-teams-videos-search-filter></vsp-teams-videos-search-filter>
+            </div>
+            <div class="flex flex-row justify-content-end">
+              <button
+                  class="mr-1"
+                  nz-button 
+                  nzType="primary" 
+                  role="button" 
+                  type="submit">
+                Search
+              </button>
+              <button 
+                  nz-button 
+                  nzType="default" 
+                  role="button" 
+                  type="button"
+                  (click)="resetVideosSearchFilter()">
+                Reset
+              </button>
+            </div>
+          </form>
+        </nz-card>
+      </div>
+    </nz-col>
+  </nz-row>
+
+  <!-- Video Search Results -->
+  <ng-container *ngIf="(currentVideosSearchPage$ | async) !== null; else skeletonTemplate">
+    <div
+        *ngIf="currentVideosSearchPage$ | async as page;"
+        style="height: 100%;"
+        infinite-scroll
+        [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+        [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+        (scrolled)="onScrollDown(team.id, page.next || null)">
+      <!-- Display videos based on layout set -->
+      <ng-container *ngIf="(videosSearchLayoutStyle$ | async) === DataLayoutStyle.Grid; else videosSearchLayoutListStyleTemplate">
+        <div [@fadeAnimation]>
+          <vsp-video-grid
+              [loadedPages]="loadedVideosPages$ | async">
+          </vsp-video-grid>
+        </div>
+      </ng-container>
+      <ng-template #videosSearchLayoutListStyleTemplate>
+        <div [@fadeAnimation]>
+          <vsp-video-list
+              [loadedPages]="loadedVideosPages$ | async">
+          </vsp-video-list>
+        </div>
+      </ng-template>
+    </div>
+  </ng-container>
+  
+  <!-- Skeleton Template -->
+  <ng-template #skeletonTemplate>
+    <ng-container *ngIf="(videosSearchLayoutStyle$ | async) === DataLayoutStyle.Grid; else videosSearchLayoutListStyleTemplate">
+      <div [@fadeAnimation]>
+        <vsp-video-grid-skeleton></vsp-video-grid-skeleton>
+      </div>
+    </ng-container>
+    <ng-template #videosSearchLayoutListStyleTemplate>
+      <div [@fadeAnimation]>
+        <vsp-video-list-skeleton></vsp-video-list-skeleton>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

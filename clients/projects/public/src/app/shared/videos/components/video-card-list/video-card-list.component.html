@@ -1,0 +1,54 @@
+<nz-card *ngIf="video" class="video-card-list shadow-lg">
+  <div class="flex flex-row p-3">
+    <div>
+      <nz-avatar 
+          [nzSize]="120"
+          [nzShape]="'square'"
+          [nzSrc]="video.thumbnailSrcUrl || defaultVideoThumnailSrcUrl"
+          nzIcon="play-circle">
+      </nz-avatar>
+    </div>
+    <div class="p-3">
+      <nz-card-meta 
+          [nzTitle]="titleTemplate" 
+          [nzDescription]="generateCardDescription">
+        <ng-template #titleTemplate>
+          <a 
+              class="text-wrap" 
+              nz-typography 
+              [routerLink]="['/videos/watch']" 
+              [queryParams]="{ vid: video.id }">
+            {{ video.title || '[No Title]'}}
+          </a>
+        </ng-template>
+      </nz-card-meta>
+    </div>
+  </div>
+  <div class="flex flex-row p-3 bordered-top">
+    <a
+        class="mr-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View full offender profile"
+        [routerLink]="['/videos/watch']" 
+        [queryParams]="{ vid: video.id }">
+      <i nz-icon nzType="video-camera"></i>
+    </a>
+    <a
+        class="mr-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View full offender profile">
+      <i nz-icon nzType="folder-view"></i>
+    </a>
+    <button 
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Contact about this offender">
+      <i nz-icon nzType="mail"></i>
+    </button>
+  </div>
+</nz-card>

@@ -1,0 +1,31 @@
+@import '../../../@assets/scss/variables';
+@import '../assets/scss/variables';
+
+.main-content {
+  min-height: calc(100vh - ($header-height + $footer-height));
+}
+
+
+.navigation-desktop {
+  display: flex;
+}
+
+.navigation-mobile {
+  display: none;
+}
+
+.user-dropdown-menu {
+  width: 300px;
+}
+
+@media only screen and (max-width: $screen-lg) {
+  .navigation-desktop {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: $screen-lg) {
+  .navigation-mobile {
+    display: flex;
+  }
+}

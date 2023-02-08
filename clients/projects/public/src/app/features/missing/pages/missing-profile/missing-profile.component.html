@@ -1,0 +1,110 @@
+<div [@fadeAnimation]>
+  <nz-page-header 
+      class="bordered-bottom bg-white" 
+      nzTitle="Missing Child Profile">
+  </nz-page-header>
+
+  <div class="">
+    <nz-page-header>
+      <!-- <nz-page-header-title>Search Offenders</nz-page-header-title> -->
+      <nz-page-header-content>
+        <nz-row [nzGutter]="[24,16]">
+          <nz-col [nzSm]="24" [nzMd]="12" [nzLg]="10">
+            <ng-container *ngIf="selectedMissing$ | async as missingPerson; else missingProfileSimpleProfileEmptyTemplate">
+              <nz-card>
+                <vsp-missing-person-simple-profile 
+                    [missingPerson]="missingPerson"
+                    [includeSummary]="false">
+                </vsp-missing-person-simple-profile >
+              </nz-card>
+            </ng-container>
+          </nz-col>
+          <nz-col [nzSm]="24" [nzMd]="12" [nzLg]="14">
+            <nz-row>
+              <nz-col>
+                <nz-page-header 
+                    class="bordered-bottom bg-white px-2 py-0" 
+                    nzTitle="Summary">
+                </nz-page-header>
+                <div class="px-2 py-4">
+                  <p 
+                    style="min-height: 100px;"
+                    *ngIf="selectedMissing$ | async as missingPerson">
+                  {{ missingPerson?.summary || '' }}</p>
+                </div>
+              </nz-col>
+            </nz-row>
+            <nz-row [nzGutter]="[16]">
+              <nz-col [nzSpan]="24">
+                <nz-page-header 
+                    class="bordered-bottom bg-white px-2 py-0" 
+                    nzTitle="Comments">
+                </nz-page-header>
+                <div class="px-2 py-4">
+                  
+                  <nz-row [nzGutter]="[16, 16]">
+                    <nz-col [nzSpan]="24">
+                      <div class="my-2">
+                        <nz-row *pjoIfAuthenticated="true" [nzGutter]="[16, 16]">
+                          <nz-col [nzSpan]="24">
+                            <nz-form-item>
+                              <nz-form-control class="mb-3" [nzSpan]="24" nzErrorTip="Please write something here!">
+                                <textarea nz-input rows="4" placeholder="Add a Comment..."></textarea>
+                              </nz-form-control>
+                              <div class="text-right block w-100">
+                                <button nz-button nzType="primary">Comment</button>
+                              </div>
+                            </nz-form-item>
+                          </nz-col>
+                        </nz-row>
+                        <nz-divider *pjoIfAuthenticated="true" class="mt-0 mb-2"></nz-divider>
+
+                        <nz-row [nzGutter]="[16,16]">
+                          <nz-col [nzSpan]="24">
+                            <ng-container *ngIf="(currentMissingCommentsPage$ | async) !== null; else skeletonCommentsTemplate">
+                              <div
+                                  *ngIf="currentMissingCommentsPage$ | async as page;"
+                                  style="height: 100%;"
+                                  infinite-scroll
+                                  [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+                                  [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+                                  (scrolled)="onScrollDownComments(page.next || null)">
+                                <div [@fadeAnimation]>
+                                  <vsp-comment-list 
+                                      [loadedPages]="loadedMissingCommentsPages$ | async">
+                                  </vsp-comment-list>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <!-- Skeleton Template -->
+                            <ng-template #skeletonCommentsTemplate>
+                              <div class="block w-100">
+                                <vsp-comment-list-skeleton></vsp-comment-list-skeleton>
+                              </div>
+                            </ng-template>
+                          </nz-col>
+                        </nz-row>
+                      </div>
+                    </nz-col>
+                  </nz-row>
+
+
+                </div>
+              </nz-col>
+            </nz-row>
+          </nz-col>
+        </nz-row>
+        
+      </nz-page-header-content>
+    </nz-page-header>
+  </div>
+
+  <ng-template #missingProfileSimpleProfileEmptyTemplate>
+    <nz-card>
+      <nz-empty 
+          nzNotFoundImage="simple"
+          nzNotFoundContent="No missing child profile to display!">
+      </nz-empty>
+    </nz-card>
+  </ng-template>
+</div>

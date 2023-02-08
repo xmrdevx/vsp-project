@@ -1,0 +1,121 @@
+<form nz-form [formGroup]="registrationForm" (ngSubmit)="registerAccount(registrationForm.value)" novalidate>
+  <div *ngIf="(registerUserResponseMessage$ | async) as message" class="mb-3">
+    <nz-alert 
+        nzType="success" 
+        [nzMessage]="message?.message || null" 
+        nzShowIcon>
+    </nz-alert>
+  </div>
+  <nz-row [nzGutter]="16" [formGroup]="profileFormGroup">
+    <nz-col [nzXs]="24" [nzSm]="12">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your first name!">
+          <nz-input-group nzPrefixIcon="user">
+            <input 
+                type="text" 
+                nz-input 
+                formControlName="firstName" 
+                placeholder="First Name" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="12">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your last name!">
+          <nz-input-group nzPrefixIcon="user">
+            <input 
+                type="text" 
+                nz-input 
+                formControlName="lastName" 
+                placeholder="Last Name" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+  <ng-container [formGroup]="userFormGroup">
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="emailErrorTemplate">
+        <nz-input-group nzPrefixIcon="mail">
+          <input 
+              type="text" 
+              nz-input 
+              formControlName="email" 
+              placeholder="Email" />
+        </nz-input-group>
+        <ng-template #emailErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">Email is required!</ng-container>
+          <ng-container *ngIf="control.hasError('email')">Invalid email format!</ng-container>
+          <ng-container *ngIf="control.hasError('emailExists')">Email already exists!</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="userNameErrorTemplate">
+        <nz-input-group nzPrefixIcon="user">
+          <input 
+              type="text" 
+              nz-input 
+              formControlName="userName" 
+              placeholder="User Name" />
+        </nz-input-group>
+        <ng-template #userNameErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">User Name is required!</ng-container>
+          <ng-container *ngIf="control.hasError('pattern')">User Name should only contain numbers and letters!</ng-container>
+          <ng-container *ngIf="control.hasError('minlength')">User Name must be atleast 6 characters!</ng-container>
+          <ng-container *ngIf="control.hasError('userNameExists')">User Name already exists!</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="passwordErrorTemplate">
+        <nz-input-group nzPrefixIcon="lock">
+          <input 
+              type="password" 
+              nz-input 
+              formControlName="password" 
+              placeholder="Password" />
+        </nz-input-group>
+        <ng-template #passwordErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">Password is required!</ng-container>
+          <ng-container *ngIf="control.hasError('pattern')">Password must be 6 characters (upper/lower case, numbers and symbols)!</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="confirmPasswordErrorTemplate">
+        <nz-input-group nzPrefixIcon="lock">
+          <input 
+              type="password" 
+              nz-input 
+              formControlName="confirmPassword" 
+              placeholder="Confirm Password" />
+        </nz-input-group>
+        <ng-template #confirmPasswordErrorTemplate let-control>
+          <ng-container *ngIf="control.hasError('required')">Confirm Password is required!</ng-container>
+          <ng-container *ngIf="control.hasError('mustMatch')">Confirm Password must match Password!</ng-container>
+          <ng-container *ngIf="control.hasError('pattern')">Password must be 6 characters (upper/lower case, numbers and symbols)!</ng-container>
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <nz-form-item>
+      <nz-form-control class="flex flex-row justify-content-center">
+        <ngx-recaptcha2
+            [siteKey]="recaptchaSiteKey"
+            [useGlobalDomain]="true"
+            >
+        </ngx-recaptcha2>
+      </nz-form-control>
+    </nz-form-item> -->
+  </ng-container>
+  <button 
+      nz-button 
+      class="block w-100 mb-3" 
+      [nzType]="'primary'">
+    Register
+  </button>
+  <div class="text-center">
+    Or <a (click)="selectedIndexChange.emit(0)">sign in!</a>
+  </div>
+</form>

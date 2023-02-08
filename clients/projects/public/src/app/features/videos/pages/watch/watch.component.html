@@ -1,0 +1,115 @@
+<div [@fadeAnimation] class="mt-4 p-3">
+  <nz-row [nzGutter]="[16, 16]" class="mb-4">
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="14" [nzLg]="16">
+      <nz-row [nzGutter]="[16, 16]" class="mb-5">
+        <nz-col [nzSpan]="24">
+          <ng-container *ngIf="(currentWatchVideoLoadingState$ | async) === LoadingState.LOADED; else videoPlayerSkeletonTemplate">
+            <vsp-video-card-player 
+                [loadingState]="currentWatchVideoLoadingState$ | async"
+                [video]="currentWatchVideo$ | async">
+            </vsp-video-card-player>
+          </ng-container>
+          <ng-template #videoPlayerSkeletonTemplate>
+            <vsp-video-card-player-skeleton></vsp-video-card-player-skeleton>
+          </ng-template>
+        </nz-col>
+      </nz-row>
+      <br />
+      <nz-row [nzGutter]="[16, 16]">
+        <nz-col [nzSpan]="24">
+          <nz-card class="shadow-lg">
+            <nz-row *pjoIfAuthenticated="true" [nzGutter]="[16, 16]">
+              <nz-col [nzSpan]="24">
+                <nz-form-item>
+                  <nz-form-control class="mb-3" [nzSpan]="24" nzErrorTip="Please write something here!">
+                    <textarea nz-input rows="4" placeholder="Add a Comment..."></textarea>
+                  </nz-form-control>
+                  <div class="text-right block w-100">
+                    <button nz-button nzType="primary">Comment</button>
+                  </div>
+                </nz-form-item>
+              </nz-col>
+            </nz-row>
+            <nz-divider *pjoIfAuthenticated="true" class="mt-0 mb-2"></nz-divider>
+
+            <nz-row [nzGutter]="[16,16]">
+              <nz-col [nzSpan]="24">
+                <ng-container *ngIf="(currentWatchVideoCommentsPage$ | async) !== null; else skeletonCommentsTemplate">
+                  <div
+                      *ngIf="currentWatchVideoCommentsPage$ | async as page;"
+                      style="height: 100%;"
+                      infinite-scroll
+                      [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+                      [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+                      (scrolled)="onScrollDownComments(page.next || null)">
+                    <div [@fadeAnimation]>
+                      <vsp-comment-list 
+                          [loadedPages]="loadedWatchVideoCommentsPages$ | async">
+                      </vsp-comment-list>
+                    </div>
+                  </div>
+                </ng-container>
+                <!-- Skeleton Template -->
+                <ng-template #skeletonCommentsTemplate>
+                  <div>
+                    <vsp-comment-list-skeleton></vsp-comment-list-skeleton>
+                  </div>
+                </ng-template>
+              </nz-col>
+            </nz-row>
+          </nz-card>
+        </nz-col>
+      </nz-row>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="10" [nzLg]="8">
+      <nz-row [nzGutter]="[16, 16]">
+        <nz-col [nzSpan]="24">
+          <h4 nz-typography>Near By</h4>
+          <nz-divider class="my-2"></nz-divider>
+        </nz-col>
+      </nz-row>
+
+      <!-- Near By Video List -->
+      <nz-row [nzGutter]="[16, 16]">
+        <nz-col [nzSpan]="24">
+          <!-- Near By Results -->
+          <ng-container *ngIf="(currentNearByPage$ | async) !== null; else skeletonVideoListTemplate">
+            <div
+                *ngIf="currentNearByPage$ | async as page;"
+                style="height: 100%;"
+                infinite-scroll
+                [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+                [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+                (scrolled)="onScrollDownNearByCards(page.next || null)">
+              <div [@fadeAnimation]>
+                <vsp-video-list
+                    [loadedPages]="loadedNearByPages$ | async"
+                    [showDescriptions]="true"
+                    [truncateDescriptionsAt]="100">
+                </vsp-video-list>
+              </div>
+            </div>
+          </ng-container>
+          <!-- Skeleton Template -->
+          <ng-template #skeletonVideoListTemplate>
+            <div>
+              <vsp-video-list-skeleton></vsp-video-list-skeleton>
+            </div>
+          </ng-template>
+        </nz-col>
+      </nz-row>
+
+    </nz-col>
+  </nz-row>
+</div>
+
+<ng-template #noCommentsTemplate>
+  <nz-col [nzSpan]="24">
+    <nz-card class="mt-4">
+      <nz-empty 
+          nzNotFoundImage="simple"
+          nzNotFoundContent="No comments on this video yet!">
+      </nz-empty>       
+    </nz-card>
+  </nz-col>
+</ng-template>

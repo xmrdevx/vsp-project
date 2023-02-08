@@ -1,0 +1,54 @@
+<div [@fadeAnimation] *ngIf="(selectedTeam$ | async) as team" class="mt-4 p-3">
+  <nz-row [nzGutter]="[16, 16]" class="mb-4">
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="10" [nzLg]="8" [nzXl]="8">
+      <form [formGroup]="casesSearchForm" (ngSubmit)="searchCases(team, casesSearchForm.value)" novalidate>
+        <div>
+          <vsp-teams-cases-search-filter></vsp-teams-cases-search-filter>
+        </div>
+        <div class="flex flex-row justify-content-start">
+          <button
+              class="mr-1"
+              nz-button 
+              nzType="primary" 
+              role="button" 
+              type="submit">
+            Search
+          </button>
+          <button 
+              nz-button 
+              nzType="default" 
+              role="button" 
+              type="button"
+              (click)="resetCasesSearchFilter()">
+            Clear
+          </button>
+        </div>
+      </form>
+    </nz-col>
+
+    <!-- Cases Page Lists -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="14" [nzLg]="16" [nzXl]="16">
+      <ng-container *ngIf="(currentCasesSearchPage$ | async) !== null; else skeletonCasesTemplate">
+        <div
+            *ngIf="currentCasesSearchPage$ | async as page;"
+            style="height: 100%;"
+            infinite-scroll
+            [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+            [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+            (scrolled)="onScrollDownCases(team, page.next || null)">
+          <div [@fadeAnimation]>
+            <vsp-cases-card-list
+                [loadedPages]="loadedCasesPages$ | async">
+            </vsp-cases-card-list>
+          </div>
+        </div>
+      </ng-container>
+      <!-- Skeleton Template -->
+      <ng-template #skeletonCasesTemplate>
+        <div>
+          <vsp-cases-card-list-skeleton></vsp-cases-card-list-skeleton>
+        </div>
+      </ng-template>
+    </nz-col>
+  </nz-row>
+</div>

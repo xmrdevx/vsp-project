@@ -1,0 +1,36 @@
+<ng-container *ngIf="form" [formGroup]="form">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input search keywords!">
+      <nz-input-group nzSearch nzPrefixIcon="search">
+        <input
+          placeholder="Search keywords..."
+          nz-input
+          formControlName="searchKeywords" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-row [nzGutter]="[16, 16]">
+    <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="12">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input start date!">
+          <nz-date-picker
+            class="block w-100"
+            nzPlaceholder="Start Date"
+            formControlName="startDate">
+          </nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col [nzSm]="24" [nzMd]="24" [nzLg]="12">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input end date!">
+          <nz-date-picker
+            class="block w-100"
+            nzPlaceholder="End Date"
+            formControlName="endDate">
+          </nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+</ng-container>

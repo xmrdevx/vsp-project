@@ -18,6 +18,9 @@
       "@vsp/admin/*": [
         "projects/admin/src/app/*"
       ],
+      "@vsp/public/*": [
+        "projects/public/src/app/*"
+      ],
       "@vsp/admin/env/*": [
         "projects/admin/src/environments/*"
       ]

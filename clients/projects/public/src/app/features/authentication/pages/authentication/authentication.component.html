@@ -1,0 +1,31 @@
+<nz-row [nzGutter]="[16,16]">
+  <nz-col [nzSpan]="24">
+    <h3 nz-typography class="text-primary text-center">Welcome</h3>
+    <!-- <img class="block mx-auto mb-4" style="min-height: 32px; max-height: 32px;" src="assets/images/logo.svg"> -->
+  </nz-col>
+</nz-row>
+<nz-row [nzGutter]="[16,16]">
+  <nz-col [nzSpan]="24">
+    <nz-tabset [nzSelectedIndex]="selectedTabIndex">
+      <nz-tab (nzClick)="selectedTabIndex = 0">
+        <h4 nz-typography class="text-primary fw-bold">Sign In To Your Account</h4>
+        <vsp-login-form 
+            [(selectedIndex)]="selectedTabIndex">
+        </vsp-login-form>
+      </nz-tab>
+      <nz-tab (nzClick)="selectedTabIndex = 1">
+        <h4 nz-typography class="text-primary fw-bold">Register A New Account</h4>
+        <vsp-registration-form
+            [(selectedIndex)]="selectedTabIndex">
+        </vsp-registration-form>
+      </nz-tab>
+      <nz-tab (nzClick)="selectedTabIndex = 2">
+        <h4 nz-typography class="text-primary fw-bold">Forgot Password?</h4>
+        <p>Enter your email address and we'll send you a link to set your password.</p>
+        <vsp-forgot-password-form
+            [(selectedIndex)]="selectedTabIndex">
+        </vsp-forgot-password-form>
+      </nz-tab>
+    </nz-tabset>
+  </nz-col>
+</nz-row>

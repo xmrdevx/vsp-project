@@ -1,0 +1,84 @@
+@import '../../../../../assets/scss/variables';
+@import '../../../../../../../@assets/scss/variables';
+
+$explore-search-bar-height: 61px;
+
+.map {
+  display: block;
+  height: calc(100vh - ($header-height + $footer-height + $explore-search-bar-height));
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.map-results {
+  display: block;
+  height: calc(100vh - ($header-height + $footer-height + $explore-search-bar-height));
+  width: 100%;
+  overflow-y: auto;
+}
+
+.drawer-toggle {
+  position: absolute;
+  padding: 0;
+  z-index: 1000; 
+  top: calc(44px + 1.5rem); 
+  right: 10px; width: 48px; 
+  height: 48px; 
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep {
+  .leaflet-popup-close-button {
+    display: none;
+  }
+
+  .leaflet-popup-content {
+    margin: 1rem 1rem;
+  }
+
+  .leaflet-popup-content-wrapper {
+    border-radius: 6px;
+  }
+}
+
+
+::ng-deep {
+  .ant-drawer-content-wrapper.explore-drawer-lg {
+    width: unset !important;
+    max-width: 736px !important;
+  }
+  .ant-modal.offender-profile-dialog {
+    height: 100vh;
+    transform-origin: 0px 0px 0px !important;
+    top: 0;
+    padding: 0;
+    width: 75% !important;
+
+    .ant-modal-content {
+      height: 100%;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+
+  @media only screen and (max-width: $screen-lg) {
+    .ant-modal.offender-profile-dialog {
+      width: 90% !important;
+    }
+  }
+
+  @media only screen and (max-width: $screen-md) {
+    .ant-modal.offender-profile-dialog {
+      width: 100% !important;
+      max-width: 100%;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+  }
+}
+
+

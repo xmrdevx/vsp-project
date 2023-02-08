@@ -1,0 +1,23 @@
+<nz-card [nzCover]="coverTemplate" class="shadow-lg">
+  <ng-template #coverTemplate>
+    <ng-container *ngIf="video">
+      <ng-container *ngIf="video.id; else noVideoTemplate">
+        <video 
+            class="rounded-top" 
+            width="100%" 
+            height="100%" 
+            [controls]="showControls" 
+            [autoplay]="autoplay">
+          <source [src]="baseApiVideoWatchUrl + '?vid=' + video.id || ''" type="video/mp4">
+        </video>
+      </ng-container>
+      <ng-template #noVideoTemplate>
+        No video to display
+      </ng-template>
+    </ng-container>
+  </ng-template>
+  <nz-card-meta 
+      [nzTitle]="video?.title || null" 
+      [nzDescription]="video?.description || null">
+  </nz-card-meta>
+</nz-card>

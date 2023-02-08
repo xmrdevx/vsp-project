@@ -1,4 +1,190 @@
-<!-- NG-ZORRO -->
-<a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
-  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
-</a>
+<nz-layout>
+  <nz-header class="flex flex-row mx-auto bordered-bottom w-100 justify-content-center bg-white position-sticky p-0 top-0" style="z-index: 1;">
+    
+    <!-- Desktop Navigation -->
+    <div class="flex flex-row w-100 justify-content-between container align-items-center p-4 navigation-desktop">
+      <!-- Left Navigation -->
+      <ul nz-menu nzTheme="light" nzMode="horizontal">
+        <ng-container *ngFor="let link of defaultLeftNavigationMenu">
+          <li nz-menu-item [nzMatchRouter]="true">
+            <a [routerLink]="[link.routerLink]" class="block h-100">{{ link.label }}</a>
+          </li>
+        </ng-container>
+      </ul>
+
+      <!-- Logo -->
+      <div class="logo">
+        <img class="block" style="min-height: 32px; max-height: 32px;" src="assets/images/logo.svg">
+      </div>
+
+      <!-- Right Navigation -->
+      <div class="flex flex-row align-items-center">
+        <ul nz-menu nzTheme="light" nzMode="horizontal">
+          <ng-container *ngFor="let link of defaultRightNavigationMenu">
+            <li nz-menu-item [nzMatchRouter]="true">
+              <a [routerLink]="[link.routerLink]" class="block h-100">{{ link.label }}</a>
+            </li>
+          </ng-container>
+          <li
+              *ngIf="(authenticatedStatus$ | async) !== AuthenticatedStatus.AUTHENTICATED"
+              nz-menu-item 
+              [nzMatchRouter]="true">
+            <a (click)="showAuthenicationModal()" class="block h-100">
+              Sign In
+            </a>
+          </li>
+        </ul>
+        <div *ngIf="(authenticatedStatus$ | async) === AuthenticatedStatus.AUTHENTICATED" class="mx-3">
+          <ng-container 
+              [ngTemplateOutlet]="signedInUserMenuTemplate">
+          </ng-container>
+        </div>
+        
+      </div>
+      
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="flex flex-row w-100 justify-content-between container align-items-center py-4 px-1 navigation-mobile">
+      <!-- Left Navigation -->
+      <div>
+        <button 
+            nz-button 
+            nzType="default" 
+            nz-dropdown 
+            [nzDropdownMenu]="mobileNavigation"
+            nzTrigger="click">
+          <i nz-icon [nzType]="'menu-unfold'"></i>
+        </button>
+        <nz-dropdown-menu #mobileNavigation="nzDropdownMenu">
+          <ul nz-menu style="width: 300px;" class="py-2">
+            <li class="px-3" nz-menu-item *ngFor="let link of defaultNavigationMenuAll">
+              <a [routerLink]="[link.routerLink]">
+                <i class="mr-2" nz-icon [nzType]="link.icon || ''"></i>
+                <span>{{ link.label }}</span>
+              </a>
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+
+      <!-- Logo -->
+      <div class="logo">
+        <img class="block" style="min-height: 28px; max-height: 28px;" src="assets/images/logo.svg">
+      </div>
+
+      <!-- Right Navigation -->
+      <div>
+        <ng-container 
+            *ngIf="(authenticatedStatus$ | async) === AuthenticatedStatus.AUTHENTICATED; else signInMobileButtonTemplate"
+            [ngTemplateOutlet]="signedInUserMenuTemplate">
+        </ng-container>
+        <ng-template #signInMobileButtonTemplate>
+          <button 
+              nz-button 
+              nzType="default"
+              (click)="showAuthenicationModal()">
+            <i nz-icon nzType="login"></i>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+
+  </nz-header>
+  
+  <nz-content class="main-content bg-white">
+    <router-outlet></router-outlet>
+  </nz-content>
+  
+  <!-- <nz-footer class="flex flex-row justify-content-center bordered-top" style="background: white;">
+    Project Offender ©2022
+  </nz-footer> -->
+</nz-layout>
+
+<ng-template #signedInUserMenuTemplate>
+  <nz-avatar
+      class="cursor-pointer"
+      [nzSrc]="(userSettings$ | async)?.userDetails?.profile?.avatarUrl || undefined"
+      nz-dropdown
+      nzTrigger="click"
+      [nzDropdownMenu]="accountDropdown" 
+      [nzShape]="'circle'" 
+      [nzSize]="'large'" 
+      [nzIcon]="'user'"
+      nzPlacement="bottomRight">
+  </nz-avatar>
+  <nz-dropdown-menu #accountDropdown="nzDropdownMenu" style="width: 400px;">
+    <ul nz-menu style="width: 300px;" class="py-2">
+      <li *ngIf="userSettings$ | async as settings" class="px-4 py-2 mb-1 bordered-bottom flex flex-row">
+        <nz-avatar
+            class="mr-4"
+            [nzSrc]="settings?.userDetails?.profile?.avatarUrl || undefined"
+            [nzShape]="'circle'" 
+            [nzSize]="'large'" 
+            [nzIcon]="'user'"
+            nzPlacement="bottomRight">
+        </nz-avatar>
+        <div>
+          <h4 class="m-0 fw-bold">{{ settings?.userDetails?.profile?.firstName }} {{ settings?.userDetails?.profile?.lastName }}</h4>
+          <h4 class="m-0">{{ settings?.userDetails?.email }}</h4>
+        </div>
+      </li>
+      <li class="px-3" nz-menu-item *ngFor="let link of defaultAccountNavigationMenu">
+        <a [routerLink]="[link.routerLink]" class="block h-100">
+          <i class="mr-2" nz-icon [nzType]="link.icon || ''"></i>
+          <span>{{ link.label }}</span>
+        </a>
+      </li>
+      <li class="px-3" nz-menu-item [nzMatchRouter]="true">
+        <a 
+            (click)="signOutUser()"
+            class="block h-100">
+          <i class="mr-2" nz-icon nzType="poweroff"></i>Sign Out
+        </a>
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+  <nz-dropdown-menu #accountDropdown="nzDropdownMenu" style="width: 400px;">
+    <ul nz-menu class="user-dropdown-menu">
+      <li nz-menu-item class="py-2 px-3">
+        <div class="flex flex-row">
+          <nz-avatar
+              class="mr-4"
+              [nzSrc]="undefined"
+              [nzShape]="'circle'" 
+              [nzSize]="'large'" 
+              [nzIcon]="'user'"
+              nzPlacement="bottomRight">
+          </nz-avatar>
+          <!-- <nz-avatar
+              class="mr-4"
+              [nzSrc]="settings?.userDetails?.profile?.avatarUrl"
+              [nzShape]="'circle'" 
+              [nzSize]="'large'" 
+              [nzIcon]="'user'"
+              nzPlacement="bottomRight">
+          </nz-avatar> -->
+          <div>
+            <h4 class="m-0 fw-bold">Firstname Lastname</h4>
+            <h4 class="m-0">Email</h4>
+            <!-- <h4 class="m-0 fw-bold">{{ settings?.userDetails?.profile?.firstName }} {{ settings?.userDetails?.profile?.lastName }}</h4>
+            <h4 class="m-0">{{ settings?.userDetails?.email }}</h4> -->
+          </div>
+        </div>
+      </li>
+      <li nz-menu-divider></li>
+      <li nz-menu-item class="py-1 px-4">
+        <i class="mr-2" nz-icon nzType="user" nzTheme="outline"></i>
+        <a class="text-dark" routerLink="/account/profile">Profile</a>
+      </li>
+      <li nz-menu-item class="py-1 px-4">
+        <i class="mr-2" nz-icon nzType="unlock" nzTheme="outline"></i>
+        <a routerLink="/account/settings">Account Settings</a>
+      </li>
+      <li nz-menu-item class="py-1 px-4">
+        <i class="mr-2" nz-icon nzType="poweroff" nzTheme="outline"></i>
+        <a routerLink="/auth/logging-out">Log out</a>
+      </li>
+    </ul>
+  </nz-dropdown-menu>
+</ng-template>

@@ -1,0 +1,58 @@
+<nz-card *ngIf="video" [nzCover]="coverTemplate" class="nz-card-padding-none shadow-lg">
+  <ng-template #coverTemplate>
+    <a [routerLink]="['./watch', ]" [queryParams]="{ vid: video.id }">
+      <img style="width: 100%;" [src]="video.thumbnailSrcUrl || 'assets/images/thumbnail-video-placeholder.jpeg'" />
+    </a>
+  </ng-template>
+  <nz-card-meta 
+      class="p-4"
+      [nzAvatar]="videoAvatarTemplate"
+      [nzTitle]="titleTemplate" 
+      [nzDescription]="(video.description || '') | pjoEllipsis: 50 ">
+
+    <!-- Avatar Template -->
+    <ng-template #videoAvatarTemplate>
+      <nz-avatar 
+          nzIcon="user" 
+          [nzSrc]="undefined">
+      </nz-avatar>
+    </ng-template>
+
+    <!-- Title Template -->
+    <ng-template #titleTemplate>
+      <a 
+          nz-typography 
+          [routerLink]="['/videos/watch']" 
+          [queryParams]="{ vid: video.id }">
+        {{ video.title || '[No Title]'}}
+      </a>
+    </ng-template>
+  </nz-card-meta>
+  <div class="flex flex-row w-100 bordered-top p-2">
+    <a
+        class="mr-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View full offender profile"
+        [routerLink]="['/videos/watch']" 
+        [queryParams]="{ vid: video.id }">
+      <i nz-icon nzType="video-camera"></i>
+    </a>
+    <a
+        class="mr-2"
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="View full offender profile">
+      <i nz-icon nzType="folder-view"></i>
+    </a>
+    <button 
+        nz-button 
+        nzType="default" 
+        nzShape="circle"
+        title="Contact about this offender">
+      <i nz-icon nzType="mail"></i>
+    </button>
+  </div>
+</nz-card>

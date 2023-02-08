@@ -277,7 +277,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/public",
+            "outputPath": "dist/public/browser",
             "index": "projects/public/src/index.html",
             "main": "projects/public/src/main.ts",
             "polyfills": [
@@ -365,6 +365,66 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/public/server",
+            "main": "projects/public/server.ts",
+            "tsConfig": "projects/public/tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/public/src/environments/environment.ts",
+                  "with": "projects/public/src/environments/environment.development.ts"
+                }
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "public:build:development",
+              "serverTarget": "public:server:development"
+            },
+            "production": {
+              "browserTarget": "public:build:production",
+              "serverTarget": "public:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "public:build:production",
+              "serverTarget": "public:server:production"
+            },
+            "development": {
+              "browserTarget": "public:build:development",
+              "serverTarget": "public:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

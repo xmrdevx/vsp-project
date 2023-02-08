@@ -1,0 +1,23 @@
+<nz-row [nzGutter]="[16, 16,]">
+  <ng-container *ngIf="loadedPages">
+    <ng-container *ngIf="(loadedPages | pjoFlattenPageCollection)?.length; else emptyCommentsResults">
+      <ng-container *ngFor="let comment of loadedPages | pjoFlattenPageCollection">
+        <nz-col [nzSpan]="24">
+          <vsp-comment [comment]="comment"></vsp-comment>
+        </nz-col>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</nz-row>
+
+<!-- Empty Template -->
+<ng-template #emptyCommentsResults>
+  <nz-col [nzSpan]="24" class="mt-4">
+    <nz-card>
+      <nz-empty 
+          nzNotFoundImage="simple"
+          nzNotFoundContent="Be the first to comment!">
+      </nz-empty> 
+    </nz-card>
+  </nz-col>
+</ng-template>

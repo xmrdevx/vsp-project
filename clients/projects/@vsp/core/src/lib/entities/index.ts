@@ -11,3 +11,13 @@ export * from './template-permission.entity';
 export * from './user-module-permission.entity';
 export * from './user-permission.entity';
 export * from './tenant.entity';
+
+export * from './case.entity';
+export * from './media.entity';
+export * from './missing-person.entity';
+export * from './offender.entity';
+export * from './person.entity';
+export * from './team-announcement.entity';
+export * from './comment.entity';
+export * from './geo-location.entity';
+export * from './team.entity';

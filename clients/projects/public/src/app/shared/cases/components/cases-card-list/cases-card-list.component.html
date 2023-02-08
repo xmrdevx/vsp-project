@@ -1,0 +1,23 @@
+<nz-row [nzGutter]="[16, 16]">
+  <ng-container *ngIf="loadedPages">
+    <ng-container *ngIf="(loadedPages | pjoFlattenPageCollection)?.length; else emptyCaseResults">
+      <ng-container *ngFor="let case of loadedPages | pjoFlattenPageCollection">
+        <nz-col [nzSpan]="24">
+          <vsp-case-simple-profile [case]="case"></vsp-case-simple-profile>
+        </nz-col>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</nz-row>
+
+<!-- Empty Template -->
+<ng-template #emptyCaseResults>
+  <nz-col [nzSpan]="24" class="mt-4">
+    <nz-card>
+      <nz-empty 
+          nzNotFoundImage="simple"
+          nzNotFoundContent="No case results to display!">
+      </nz-empty> 
+    </nz-card>
+  </nz-col>
+</ng-template>

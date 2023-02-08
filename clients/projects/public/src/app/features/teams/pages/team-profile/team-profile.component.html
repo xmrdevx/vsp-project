@@ -1,0 +1,56 @@
+<div class="flex flex-column" [@fadeAnimation]>
+  <section class="w-100 gradient-primary slanted-positive-bottom">
+    <div class="w-100 gradient-primary-overlay-white shadow-inset-sm">
+      <div class="container w-100 h-100 mx-auto flex flex-column justify-content-center align-items-center">
+        <div class="p-4" style="padding-top: 4rem !important; padding-bottom: 6rem !important;">
+          <nz-row [nzGutter]="[16, 16,]">
+            <nz-col [nzSpan]="24">
+              <ng-container *ngIf="selectedTeamLoadingState$ | async as loadingState">
+                <!-- Team Profile Skeleton -->
+                <ng-container *ngIf="loadingState !== LoadingState.LOADED; else teamTemplate">
+                  <nz-card class="mb-4 p-0">
+                    <vsp-teams-simple-profile-skeleton></vsp-teams-simple-profile-skeleton>
+                  </nz-card>
+                </ng-container>
+                
+                <!-- Team Profile Card -->
+                <ng-template #teamTemplate>
+                  <nz-card class="block shadow-lg">
+                    <vsp-teams-simple-profile 
+                        [team]="selectedTeam$ | async">
+                    </vsp-teams-simple-profile>
+                  </nz-card>
+                </ng-template>
+              </ng-container>
+            </nz-col>
+          </nz-row>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="w-100 ">
+    <div class="container w-100 mx-auto">
+      <div class="p-4">
+        <nz-row>
+          <nz-col [nzSpan]="24">
+            <nz-tabset nzLinkRouter>
+              <nz-tab *ngFor="let link of defaultTeamProfileTabLinks">
+                <a 
+                    *nzTabLink 
+                    nz-tab-link 
+                    [routerLink]="[link.routerLink]" 
+                    [queryParams]="link.queryParams" 
+                    [queryParamsHandling]="link.queryParamsHandling">
+                  {{ link.label }}
+                </a>
+              </nz-tab>
+            </nz-tabset>
+          </nz-col>
+          <nz-col [nzSpan]="24">
+            <router-outlet></router-outlet>
+          </nz-col>
+        </nz-row>
+      </div>
+    </div>
+  </section>
+</div>

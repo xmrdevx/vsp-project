@@ -1,0 +1,71 @@
+<div class="flex flex-column" [@fadeAnimation]>
+  <section class="w-100 search-section gradient-primary slanted-positive-bottom">
+    <div class="search-section-container w-100 gradient-primary-overlay-white shadow-inset-sm">
+      <div class="container w-100 h-100 mx-auto flex flex-column justify-content-center align-items-center">
+        <div class="p-4">
+          
+
+          <h2 class="fw-bold text-white mb-4 block title-desktop text-center" nz-typography>Search Offenders In Your Area!</h2>
+          <h4 class="fw-bold text-white mb-4 d-none title-mobile text-center" nz-typography>Search Offenders In Your Area!</h4>
+          <br />
+          <nz-form-item class="mb-0">
+            <nz-form-control>
+              <nz-input-group nzSearch nzSuffixIcon="search" nzSize="large">
+                <input
+                  placeholder="Enter an address, city, or zip..."
+                  nz-input
+                  row="4"
+                  nzSize="large"
+                  (input)="onSearchGeocodingLocations($event)"
+                  [nzAutocomplete]="geocodingLocationsSearchResultsTemplate" />
+              </nz-input-group>
+              <nz-autocomplete 
+                  #geocodingLocationsSearchResultsTemplate 
+                  (selectionChange)="onGeocodingLocationSelection($event)">
+                <nz-auto-option 
+                    *ngFor="let location of (geocodingLocationsResult$ | async)" 
+                    [nzValue]="location"
+                    [nzLabel]="location.fullAddressString">
+                  <div>{{ location.fullAddressString }}</div>
+                </nz-auto-option>
+              </nz-autocomplete>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container mx-auto w-100 latest-cases-section py-5 px-2">
+    <!-- Latest Offenders Section -->
+    <nz-page-header
+        class="pb-0 px-2"
+        nzTitle="Latest Offenders">
+      <!-- <nz-page-header-content>
+        Maybe some stats here ??
+      </nz-page-header-content> -->
+    </nz-page-header>
+    <nz-divider></nz-divider>
+    <vsp-latest-offenders-grid
+        [loadingState]="latestOffendersLoadingState$ | async"
+        [offenders]="latestOffenders$ | async">
+    </vsp-latest-offenders-grid>
+    <br /><br />
+
+    <!-- Latest Missing Children Section -->
+    <nz-page-header
+        class="pb-0 px-2"
+        nzTitle="Latest Missing Children">
+    </nz-page-header>
+    <nz-divider></nz-divider>
+    <vsp-latest-missing-children-grid
+        [loadingState]="latestMissingLoadingState$ | async"
+        [missingChildren]="latestMissing$ | async">
+    </vsp-latest-missing-children-grid>
+    <br /><br />
+  </section>
+
+  <vsp-layout-footer 
+      [links]="footerLinks">
+  </vsp-layout-footer>
+</div>

@@ -1,0 +1,52 @@
+<form nz-form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" novalidate>
+  <div *ngIf="(signInResponseMessage$ | async) as message" class="mb-3">
+    <nz-alert 
+        nzType="error" 
+        [nzMessage]="message?.message || null" 
+        nzShowIcon>
+    </nz-alert>
+  </div>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your username!">
+      <nz-input-group nzPrefixIcon="user">
+        <input 
+            type="text" 
+            nz-input 
+            formControlName="userName" 
+            placeholder="User Name" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-input-group nzPrefixIcon="lock">
+        <input 
+            type="password" 
+            nz-input 
+            formControlName="password" 
+            placeholder="Password" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row class="mb-4">
+    <div nz-col [nzSpan]="12">
+      <label nz-checkbox formControlName="rememberMe">
+        <span>Remember me</span>
+      </label>
+    </div>
+    <div nz-col [nzSpan]="12" class="text-right">
+      <a (click)="selectedIndexChange.emit(2)">
+        Forgot password
+      </a>
+    </div>
+  </div>
+  <button 
+      nz-button 
+      class="block w-100 mb-3" 
+      [nzType]="'primary'">
+    Sign in
+  </button>
+  <div class="text-center">
+    Or <a (click)="selectedIndexChange.emit(1)">register now!</a>
+  </div>
+</form>

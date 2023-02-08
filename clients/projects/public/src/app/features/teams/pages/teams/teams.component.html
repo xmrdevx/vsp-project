@@ -1,0 +1,69 @@
+<div [@fadeAnimation]>
+  <nz-page-header 
+      class="bordered-bottom bg-white" 
+      nzTitle="Support The Teams">
+  </nz-page-header>
+
+  <div class="">
+    <nz-page-header>
+      <nz-page-header-content>
+        <nz-row [nzGutter]="[16, 16]">
+          <nz-col [nzSm]="24" [nzMd]="12" [nzLg]="8" [nzXl]="6">
+            <form [formGroup]="teamsSearchForm">
+              <nz-form-item class="mb-2">
+                <nz-form-control>
+                  <nz-input-group nzSearch nzSuffixIcon="search">
+                    <input
+                      placeholder="Search for team..."
+                      nz-input
+                      formControlName="query" />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+          </nz-col>
+        </nz-row>
+        <nz-row [nzGutter]="[24,16]">
+
+          <ng-container *ngIf="teamsLoadingState$ | async as loadingState">
+            <!-- Teams Skeletons -->
+            <ng-container *ngIf="loadingState !== LoadingState.LOADED; else teamsTemplate">
+              <ng-container *ngFor="let i of [1,2,3,4,5,6]">
+                <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="12">
+                  <nz-card class="mb-4 p-0 shadow-lg">
+                    <vsp-teams-simple-profile-skeleton></vsp-teams-simple-profile-skeleton>
+                  </nz-card>
+                </nz-col>
+              </ng-container>
+            </ng-container>
+            
+            <!-- Teams List -->
+            <ng-template #teamsTemplate>
+              <ng-container *ngIf="filteredTeams?.length;else emptyTemplate">
+                <ng-container *ngFor="let team of filteredTeams">
+                  <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="12">
+                    <nz-card class="block shadow-lg">
+                      <vsp-teams-simple-profile [team]="team"></vsp-teams-simple-profile>
+                    </nz-card>
+                  </nz-col>
+                </ng-container>
+              </ng-container>
+            </ng-template>
+          </ng-container>
+          
+        </nz-row>
+      </nz-page-header-content>
+    </nz-page-header>
+  </div>
+
+  <ng-template #emptyTemplate>
+    <nz-col [nzSpan]="24">
+      <nz-card>
+        <nz-empty 
+            nzNotFoundImage="simple"
+            nzNotFoundContent="No teams to display!">
+        </nz-empty>
+      </nz-card>
+    </nz-col>
+  </ng-template>
+</div>

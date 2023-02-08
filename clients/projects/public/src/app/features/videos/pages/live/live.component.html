@@ -1,0 +1,107 @@
+<div [@fadeAnimation]>
+  <nz-row class="h-100">
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="14" [nzLg]="18" class="position-relative">
+      <div class="live-video-feed">
+        <video width="100%" controls autoplay>
+          <source src="https://localhost:5001" type="video/mp4">
+        </video>
+      </div>
+    </nz-col>
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="10" [nzLg]="6" class="bg-white">
+      <div class="live-chat-feed p-4 bordered-left">
+        <nz-card class="h-100 shadow-lg feed-card">
+          <div class="flex flex-column h-100">
+            
+            <nz-tabset class="flex-grow-1" [(nzSelectedIndex)]="index">
+              <nz-tab [nzTitle]="'Chat'">
+                <ng-template nz-tab>
+                  <div>Chat {{ (currentLiveChatState$ | async) | titlecase }}</div>
+                  <pre>{{ (currentChatMessages$ | async) | json }}</pre>
+                </ng-template>
+              </nz-tab>
+              <nz-tab [nzTitle]="'Users'">
+                <ng-template nz-tab>
+                  <div *ngFor="let user of currentChatUsers$ | async" class="flex flex-row mb-2">
+                    <nz-avatar
+                        class="mr-2"
+                        [nzSrc]="user?.profile?.avatarUrl || undefined"
+                        [nzShape]="'circle'" 
+                        [nzSize]="'small'" 
+                        [nzIcon]="'user'"
+                        nzPlacement="bottomRight">
+                    </nz-avatar>
+                    <div>
+                      <h4 class="m-0 fw-bold">{{ user?.userName }}</h4>
+                    </div>
+                  </div>
+                  <div class="bordered-top p-2 text-left fs-italic">
+                    And {{ (currentAnonymousChatUserCount$ | async) || 0 }} anonymous users.
+                  </div>
+                </ng-template>
+              </nz-tab>
+            </nz-tabset>
+            
+            
+            <div *pjoIfAuthenticated="true" class="flex flex-column">
+              <div class="flex flex-row mb-2" *ngIf="userSettings$ | async as settings">
+                <nz-avatar
+                    class="mr-4"
+                    [nzSrc]="settings?.userDetails?.profile?.avatarUrl || undefined"
+                    [nzShape]="'circle'" 
+                    [nzSize]="'large'" 
+                    [nzIcon]="'user'"
+                    nzPlacement="bottomRight">
+                </nz-avatar>
+                <div>
+                  <h4 class="m-0 fw-bold">{{ settings?.userDetails?.profile?.firstName }} {{ settings?.userDetails?.profile?.lastName }}</h4>
+                  <h4 class="m-0">{{ settings?.userDetails?.email }}</h4>
+                </div>
+              </div>
+              <form [formGroup]="liveChatForm" (ngSubmit)="onSendMessage()">
+                <div class="flex flex-row mb-2">
+                  <input 
+                      nz-input 
+                      type="text" 
+                      placeholder="Say something..."
+                      formControlName="message" />
+                  <button 
+                      nz-button 
+                      nzType="default"
+                      nzShape="circle"
+                      class="ml-1">
+                    <span nz-icon nzType="smile" nzTheme="outline"></span>
+                  </button>
+                </div>
+                <button 
+                    class="block w-100" 
+                    nz-button 
+                    type="submit" 
+                    nzType="primary">
+                  Send
+                </button>
+              </form>
+            </div>
+            <div *pjoIfAuthenticated="false">
+              <div class="flex flex-row mb-2">
+                <input 
+                    disabled    
+                    nz-input 
+                    type="text" 
+                    placeholder="Please login to say something!" />
+                <button
+                    disabled
+                    nz-button 
+                    nzType="default"
+                    nzShape="circle"
+                    class="ml-1">
+                  <span nz-icon nzType="smile" nzTheme="outline"></span>
+                </button>
+              </div>
+              <button disabled class="block w-100" nz-button nzType="primary">Send</button>
+            </div>
+          </div>
+        </nz-card>
+      </div>
+    </nz-col>
+  </nz-row>
+</div>

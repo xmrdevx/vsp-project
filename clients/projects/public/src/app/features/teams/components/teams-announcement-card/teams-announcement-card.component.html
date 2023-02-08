@@ -1,0 +1,65 @@
+<nz-card *ngIf="announcement" class="shadow-lg announcement-card">
+  <ng-container *ngIf="announcement">
+    <ng-template 
+        [ngTemplateOutlet]="announcementTemplate" 
+        [ngTemplateOutletContext]="{ announcement: announcement }">
+    </ng-template>
+  </ng-container>
+</nz-card>
+
+<ng-template #announcementTemplate let-announcment="announcement">
+  <nz-comment 
+      [nzAuthor]="announcementAuthor" 
+      [nzDatetime]="announcement | pjoAnnouncementTimeString"
+      class="announcment-comment">
+    <nz-avatar 
+        nz-comment-avatar 
+        nzIcon="user" 
+        [nzSrc]="announcement?.announcedBy?.profile?.avatarUrl || undefined">
+    </nz-avatar>
+    <nz-comment-content>
+      <p>{{ announcement?.message || '' }}</p>
+    </nz-comment-content>
+    
+    <!-- Likes Section -->
+    <!-- <nz-comment-action>
+      <span
+          class="announcement-icon-margin"
+          nz-tooltip
+          nzTitle="Like"
+          nz-icon
+          nzType="like"
+          [nzTheme]="'outline'"
+          (click)="like()">
+      </span>
+      <span class="count like">{{ comment?.likes || 0 }}</span>
+    </nz-comment-action> -->
+
+    <!-- Dislikes Section -->
+    <!-- <nz-comment-action>
+      <span
+          class="announcement-icon-margin"
+          nz-tooltip
+          nzTitle="Dislike"
+          nz-icon
+          nzType="dislike"
+          [nzTheme]="'outline'"
+          (click)="dislike()">
+      </span>
+      <span class="count dislike">{{ comment?.dislikes || 0 }}</span>
+    </nz-comment-action> -->
+
+    <!-- Reply Section -->
+    <nz-comment-action>Reply to</nz-comment-action>
+
+    <!-- Comment Children -->
+    <!-- <ng-container *ngIf="announcement.children && comment.children.length">
+      <ng-template ngFor let-child [ngForOf]="announcement.children">
+        <ng-template
+          [ngTemplateOutlet]="announcementTemplate"
+          [ngTemplateOutletContext]="{ comment: child }"
+        ></ng-template>
+      </ng-template>
+    </ng-container> -->
+  </nz-comment>
+</ng-template>

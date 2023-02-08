@@ -1,0 +1,38 @@
+<ng-container *ngIf="loadingState">
+  <!-- Show Skeletons if markers not loaded -->
+  <ng-container *ngIf="loadingState !== LoadingState.LOADED; else latestOffendersTemplate">
+    <nz-row [nzGutter]="[16, 16]">
+      <ng-container *ngFor="let i of [1,2,3,4,5,6]">
+        <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8">
+          <nz-card class="mb-4 p-0 shadow-lg">
+            <vsp-offender-simple-profile-skeleton></vsp-offender-simple-profile-skeleton>
+          </nz-card>
+        </nz-col>
+      </ng-container>
+    </nz-row>
+  </ng-container>
+
+  <!-- Show Markers if loaded -->
+  <ng-template #latestOffendersTemplate>
+    <ng-container *ngIf="offenders?.length; else noLatestOffendersTemplate">
+      <nz-row [nzGutter]="[16, 16]">
+        <ng-container *ngFor="let offender of offenders">
+          <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12" [nzLg]="8">
+            <nz-card class="shadow-lg" [@fadeAnimation]>
+              <vsp-offender-simple-profile [offender]="offender"></vsp-offender-simple-profile>
+            </nz-card>
+          </nz-col>
+        </ng-container>
+      </nz-row>
+    </ng-container>
+  </ng-template>
+</ng-container>
+
+<ng-template #noLatestOffendersTemplate>
+  <nz-card>
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No current offenders to display!">
+    </nz-empty> 
+  </nz-card>
+</ng-template>

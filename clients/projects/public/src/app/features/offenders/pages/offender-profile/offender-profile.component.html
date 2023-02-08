@@ -1,0 +1,42 @@
+<div [@fadeAnimation]>
+  <nz-page-header 
+      class="bordered-bottom bg-white" 
+      nzTitle="Offender Profile">
+  </nz-page-header>
+
+  <div class="">
+    <nz-page-header>
+      <!-- <nz-page-header-title>Search Offenders</nz-page-header-title> -->
+      <nz-page-header-content>
+        <nz-row [nzGutter]="[24,16]">
+          <nz-col [nzSm]="24" [nzMd]="12" [nzLg]="10">
+            <ng-container *ngIf="selectedOffender$ | async as offender; else offenderSimpleProfileEmptyTemplate">
+              <nz-card>
+                <vsp-offender-simple-profile [offender]="offender"></vsp-offender-simple-profile>
+              </nz-card>
+            </ng-container>
+          </nz-col>
+          <nz-col [nzSm]="24" [nzMd]="12" [nzLg]="14">
+            <nz-page-header 
+                class="bordered-bottom bg-white px-2 py-0" 
+                nzTitle="Cases">
+            </nz-page-header>
+            <div class="px-2 py-4">
+              List of all cases with details and evidence will go here....
+            </div>
+          </nz-col>
+        </nz-row>
+        
+      </nz-page-header-content>
+    </nz-page-header>
+  </div>
+
+  <ng-template #offenderSimpleProfileEmptyTemplate>
+    <nz-card>
+      <nz-empty 
+          nzNotFoundImage="simple"
+          nzNotFoundContent="No offender profile to display!">
+      </nz-empty>
+    </nz-card>
+  </ng-template>
+</div>
