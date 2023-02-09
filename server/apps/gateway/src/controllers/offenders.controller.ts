@@ -1,8 +1,18 @@
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Controller, Get, Inject, Query } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
-import { getOffendersCommand, OffenderDto, OFFENDERS_SERVICE_TOKEN } from '@vsp/common';
+
+import { 
+  IPageable, 
+  OffenderDto, 
+  OffendersSearchFilter, 
+  OFFENDERS_SERVICE_TOKEN, 
+  PageRequest, 
+  searchOffendersCommand, 
+  SearchOffendersRequest } from '@vsp/common';
+
 import { LoggerService } from '@vsp/logger';
 import { catchError, Observable, throwError } from 'rxjs';
+import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
 
 @Controller('offenders')
 export class OffendersController {
@@ -13,10 +23,19 @@ export class OffendersController {
     this._logger.setContext(OffendersController.name);
   }
 
-  @Get()
-  public getOffenders(): Observable<OffenderDto[]> {
+  @Get('search')
+  public searchOffenders(
+    @Query('query') query: string | null = null,
+    @Query('index') index: number = 0,
+    @Query('size') size: number = 10,
+    @Query('column') column: string = defaultSortColumn,
+    @Query('direction') direction: string = defaultSortDirection
+  ): Observable<OffenderDto[]> {
+    const filter: OffendersSearchFilter = new OffendersSearchFilter({ query });
+    const pageable: IPageable = PageRequest.from(index, size, column, direction);
+
     return this._offendersServiceClient
-      .send(getOffendersCommand, {})
+      .send(searchOffendersCommand, new SearchOffendersRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 }

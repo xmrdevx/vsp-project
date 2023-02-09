@@ -1,6 +1,6 @@
 import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { getOffendersCommand } from '@vsp/common';
+import { OffenderDto, Page, PageRequest, searchOffendersCommand, SearchOffendersRequest } from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 import { IOffendersService, OFFENDERS_SERVICE_TOKEN } from '../interfaces/offenders-service.interface';
@@ -14,8 +14,15 @@ export class OffendersController {
     this._logger.setContext(OffendersController.name);
   }
 
-  @MessagePattern(getOffendersCommand)
-  public async getOffenders(): Promise<string> {
-    return "success";
+  @MessagePattern(searchOffendersCommand)
+  public async searchOffenders(request: SearchOffendersRequest): Promise<Page<OffenderDto>> {
+    try {
+      // @NOTE Have to remap this because of the pageRequest has is methods removed when serialized.
+      request = new SearchOffendersRequest(request);
+      return this._offendersService.search(request.filter, request.pageable);
+    } catch (error) {
+      this._logger.error('Error searching offenders', error);
+      throw error;
+    }
   }
 }
