@@ -27,7 +27,7 @@ async function bootstrap() {
   const app = await NestFactory.create(GatewayModule);
 
   app.useGlobalPipes(new ValidationPipe(globalValidationPipeOptions));
-  app.enableCors({ origin: environmentService.get('CORS_ORIGIN') });
+  app.enableCors({ origin: environmentService.get('CORS_ORIGIN').split(',') || [] });
   app.useGlobalFilters(new RpcExceptionFilter());
   app.setGlobalPrefix('api/v1', { exclude: routesToExcludeFromGlobalRoutePrefix });
   
