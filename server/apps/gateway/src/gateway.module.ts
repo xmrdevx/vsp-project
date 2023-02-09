@@ -10,6 +10,7 @@ import { AccountsController } from './controllers/accounts.controller';
 import { 
   geocodingMicroserviceProvider, 
   identityMicroserviceProvider, 
+  offendersMicroserviceProvider, 
   streamsMicroserviceProvider } from './gateway.providers';
 
 import { LocalStrategy } from './strategies/local.strategy';
@@ -18,6 +19,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { PermissionsController } from './controllers/permissions.controller';
 import { StreamsController } from './controllers/streams.controller';
 import { GeocodingController } from './controllers/geocoding.controller';
+import { OffendersController } from './controllers/offenders.controller';
 
 @Module({
   imports: [
@@ -36,12 +38,14 @@ import { GeocodingController } from './controllers/geocoding.controller';
     AccountsController,
     PermissionsController,
     StreamsController,
-    GeocodingController
+    GeocodingController,
+    OffendersController
   ],
   providers: [
     identityMicroserviceProvider,
     streamsMicroserviceProvider,
-    geocodingMicroserviceProvider, 
+    geocodingMicroserviceProvider,
+    offendersMicroserviceProvider,
     JwtStrategy,
     LocalStrategy,
     HttpCacheInterceptor

@@ -6,6 +6,7 @@ export * from './commands/auth.commands';
 export * from './commands/permission.commands';
 export * from './commands/streams.commands';
 export * from './commands/geocoding.command';
+export * from './commands/offenders.commands';
 
 // Constants
 export * from './constants/client-identifiers.constants';
@@ -24,14 +25,19 @@ export * from './dtos/geocoding/map-bounds.dto';
 export * from './dtos/geocoding/map-coordinate.dto';
 export * from './dtos/geocoding/map-marker.dto';
 export * from './dtos/geocoding/search-geo-location-by-text-request.dto';
+export * from './dtos/offenders/case.dto';
+export * from './dtos/offenders/offender.dto';
 export * from './dtos/identity/account.dto';
 export * from './dtos/identity/address.dto';
+export * from './dtos/identity/authenticated-status.enum';
+export * from './dtos/identity/authenticated-user.dto';
 export * from './dtos/identity/claim.dto';
 export * from './dtos/identity/confirm-email.dto';
 export * from './dtos/identity/create-account.dto';
 export * from './dtos/identity/create-address.dto';
 export * from './dtos/identity/create-profile.dto';
 export * from './dtos/identity/create-user.dto';
+export * from './dtos/identity/credentials.dto';
 export * from './dtos/identity/forgot-password.dto';
 export * from './dtos/identity/profile.dto';
 export * from './dtos/identity/refresh-token-request.dto';
@@ -39,7 +45,9 @@ export * from './dtos/identity/registration.dto';
 export * from './dtos/identity/reset-password.dto';
 export * from './dtos/identity/role.dto';
 export * from './dtos/identity/tenant.dto';
+export * from './dtos/identity/token-pair.dto';
 export * from './dtos/identity/user.dto';
+export * from './dtos/identity/user-details.dto';
 export * from './dtos/streams/stream-pre-connect-validation-request.dto';
 
 // Entities
@@ -55,6 +63,8 @@ export * from './entities/identity/refresh-token.entity';
 export * from './entities/identity/role.entity';
 export * from './entities/identity/tenant.entity';
 export * from './entities/identity/user.entity';
+export * from './entities/offenders/case.entity';
+export * from './entities/offenders/offender.entity';
 export * from './entities/streams/stream-key.entity';
 export * from './entities/streams/stream.entity';
 
@@ -67,11 +77,6 @@ export * from './enums/claim-types.enum';
 export * from './interfaces/repository.interface';
 
 // Models
-export * from './models/identity/authenticated-status.enum';
-export * from './models/identity/authenticated-user.model';
-export * from './models/identity/credentials.model';
-export * from './models/identity/token-pair.model';
-export * from './models/identity/user-details.model';
 export * from './models/message-pattern-command.model';
 
 // Repositories

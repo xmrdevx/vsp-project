@@ -1,5 +1,5 @@
 import { AuthenticatedStatus } from './authenticated-status.enum'
-import { TokenPair } from './token-pair.model';
+import { TokenPair } from './token-pair.dto';
 
 export class AuthenticatedUser {
   public status: AuthenticatedStatus;

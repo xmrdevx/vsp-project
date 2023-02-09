@@ -1,5 +1,5 @@
 import { ClaimTypes } from '../enums/claim-types.enum';
-import { UserDetails } from '../models/identity/user-details.model'
+import { UserDetails } from '../dtos/identity/user-details.dto'
 import { Claims } from '../types/claims.type';
 
 export const claimsFromUserDetails = (user: UserDetails | null): Claims | null => {

@@ -93,6 +93,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/geocoding/tsconfig.app.json"
       }
+    },
+    "offenders": {
+      "type": "application",
+      "root": "apps/offenders",
+      "entryFile": "main",
+      "sourceRoot": "apps/offenders/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/offenders/tsconfig.app.json"
+      }
     }
   }
 }
