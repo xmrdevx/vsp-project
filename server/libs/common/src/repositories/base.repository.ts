@@ -4,6 +4,8 @@ import {
   FindOneOptions, 
   FindOptionsWhere, 
   Repository } from 'typeorm';
+import { PageRequest } from '../dtos/paging/page-request.dto';
+import { IPageable } from '../dtos/paging/pageable.interface';
 
 import { IRepository } from '../interfaces/repository.interface';
 
@@ -49,6 +51,17 @@ export abstract class BaseRepository<T extends HasId, ID> implements IRepository
 
   public async findAll(options?: FindManyOptions<T>): Promise<T[]> {
     return await this.repository.find(options);
+  }
+
+  public async findByPageable(pageable: IPageable, options?: FindManyOptions<T>): Promise<[T[], number]> {
+    return await this.repository.findAndCount({
+      ...(options || {}),
+      order: {
+        [pageable.getSort().getSortColumn()]: pageable.getSort().getSortDirection()
+      },
+      skip: pageable.getPageNumber() * pageable.getPageSize(),
+      take: pageable.getPageSize()
+    } as FindManyOptions<T>);
   }
 
   public async remove(data: T): Promise<T> {
