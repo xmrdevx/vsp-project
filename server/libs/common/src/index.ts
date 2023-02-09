@@ -25,8 +25,6 @@ export * from './dtos/geocoding/map-bounds.dto';
 export * from './dtos/geocoding/map-coordinate.dto';
 export * from './dtos/geocoding/map-marker.dto';
 export * from './dtos/geocoding/search-geo-location-by-text-request.dto';
-export * from './dtos/offenders/case.dto';
-export * from './dtos/offenders/offender.dto';
 export * from './dtos/identity/account.dto';
 export * from './dtos/identity/address.dto';
 export * from './dtos/identity/authenticated-status.enum';
@@ -48,6 +46,14 @@ export * from './dtos/identity/tenant.dto';
 export * from './dtos/identity/token-pair.dto';
 export * from './dtos/identity/user.dto';
 export * from './dtos/identity/user-details.dto';
+export * from './dtos/offenders/case.dto';
+export * from './dtos/offenders/offender.dto';
+export * from './dtos/paging/page-request.dto';
+export * from './dtos/paging/page.dto';
+export * from './dtos/paging/pageable.interface';
+export * from './dtos/paging/sort-direction.enum';
+export * from './dtos/paging/sort.dto';
+export * from './dtos/paging/sortable.interface';
 export * from './dtos/streams/stream-pre-connect-validation-request.dto';
 
 // Entities
