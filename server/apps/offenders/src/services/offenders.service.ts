@@ -1,4 +1,5 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { RpcException } from '@nestjs/microservices';
 
 import { 
   DistanceUnit, 
@@ -8,7 +9,9 @@ import {
   OffendersSearchFilter, 
   Page,
   milesToMeters,
-  kilometersToMeters } from '@vsp/common';
+  kilometersToMeters, 
+  PageRequest,
+  MapBoundsDto} from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 
@@ -49,7 +52,8 @@ export class OffendersService implements IOffendersService {
         ? kilometersToMeters(filter.distance || 0)
         : milesToMeters(filter.distance || 0);
 
-      sourceQuery = sourceQuery.innerJoin('o.cases', 'c')
+      sourceQuery = sourceQuery
+        .innerJoin('o.cases', 'c')
         .innerJoin(
           'c.caughtAt', 'ca', 
           'ST_Distance("location" , ST_MakePoint(:longitude,:latitude)) <= :distance', {
@@ -59,7 +63,7 @@ export class OffendersService implements IOffendersService {
           }
         );
     }
-    
+
     const [elements, count]: [Offender[], number] = await sourceQuery
       .orderBy(`o.${pageable.getSort().getSortColumn()}`, pageable.getSort().getSortDirection())
       .limit(+pageable.getPageSize())
@@ -67,6 +71,57 @@ export class OffendersService implements IOffendersService {
       .getManyAndCount();
     
     return new Page<OffenderDto>(elements, count, pageable);
+  }
+
+  public async searchByBounds(mapBounds: MapBoundsDto, pageable: IPageable): Promise<Page<OffenderDto>> {
+    // @Notes - ST_MakeEnvelope params
+    // ST_MakeEnvelope(min_lng, min_lat, max_lng, max_lat) Or ST_MakeEnvelope(ne_lng, sw_lat, sw_lng, ne_lat)
+    const [elements, count]: [Offender[], number] = await this._offendersRepository
+      .getRepository()
+      .createQueryBuilder('o')
+      .select(['o'])
+      .innerJoin('o.cases', 'c')
+      .innerJoin(
+        'c.caughtAt', 'ca', 
+        'location	&& ST_MakeEnvelope(:northEastLongitude, :southWestLatitude, :southWestLongitude, :nortEastLatitude, 4326)', {
+          northEastLongitude: mapBounds.northEast.longitude,
+          southWestLatitude: mapBounds.southWest.latitude,
+          southWestLongitude: mapBounds.southWest.longitude,
+          nortEastLatitude: mapBounds.northEast.latitude
+        }
+      )
+      .orderBy(`o.${pageable.getSort().getSortColumn()}`, pageable.getSort().getSortDirection())
+      .limit(+pageable.getPageSize())
+      .offset(+pageable.getPageNumber() * +pageable.getPageSize())
+      .getManyAndCount();
+
+    return new Page<OffenderDto>(elements, count, pageable);
+  }
+
+  public async getLatestOffendersByCount(count: number): Promise<OffenderDto[]> {
+    return await this._offendersRepository
+      .getRepository()
+      .createQueryBuilder('o')
+      .select(['o', 'c'])
+      .innerJoin('o.cases', 'c')
+      .orderBy('c.openedOn', 'DESC')
+      .take(count)
+      .getMany();
+  }
+
+  public async getOffenderById(offenderId: string): Promise<OffenderDto> {
+    const offender: Offender | null =  await this._offendersRepository.findByCondition({
+      relations: ['cases'],
+      where: [{ id: offenderId }]
+    });
+
+    if (!offender) {
+      throw new RpcException(
+        new NotFoundException("Offender was not found!")
+      );
+    }
+
+    return offender;
   }
 
   private _isLocationFilterValid(filter: OffendersSearchFilter): boolean {

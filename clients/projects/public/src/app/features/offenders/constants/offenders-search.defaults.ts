@@ -3,7 +3,7 @@ import { DistanceUnit, OffendersSearchFilter, PageRequest, PagingUtils } from '@
 export const defaultOffendersSearchPageRequest: PageRequest = PagingUtils.from(0, 10, 'id', 'descend');
   
 export const defaultOffendersSearchFilter: OffendersSearchFilter = {
-  offenderName: '',
+  query: '',
   location: null,
   distance: 20,
   distanceUnit: DistanceUnit.Miles

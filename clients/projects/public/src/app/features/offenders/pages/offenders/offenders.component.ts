@@ -77,7 +77,7 @@ export class OffendersComponent implements OnInit, OnDestroy {
   public geocodingLocationsResult$: Observable<GeocodingLocation[] | null> = this._geocodingStore.geocodingLocationsResult$;
 
   public offendersSearchForm: UntypedFormGroup  = this._formBuilder.group({
-    offenderName: [''],
+    query: [''],
     location: [null],
     distance: [null],
     distanceUnit: [DistanceUnit.Miles]
@@ -103,6 +103,7 @@ export class OffendersComponent implements OnInit, OnDestroy {
   }
 
   public onSearchOffenders(searchFilter: OffendersSearchFilter): void {
+    console.log('filter', searchFilter)
     this._offendersStore.setCurrentOffendersSearchFilter(searchFilter);
     this._searchOffenders(searchFilter, this._defaultPageRequest);
   }

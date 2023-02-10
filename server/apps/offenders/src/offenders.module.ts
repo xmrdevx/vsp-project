@@ -18,6 +18,7 @@ import { OffendersRepository } from './repositories/offenders.repository';
 
 import { OFFENDERS_SERVICE_TOKEN } from './interfaces/offenders-service.interface';
 import { OffendersService } from './services/offenders.service';
+import { CasesController } from './controllers/cases.controller';
 
 @Module({
   imports: [
@@ -43,7 +44,8 @@ import { OffendersService } from './services/offenders.service';
     ])
   ],
   controllers: [
-    OffendersController
+    OffendersController,
+    CasesController
   ],
   providers: [
     {

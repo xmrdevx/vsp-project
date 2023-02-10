@@ -4,22 +4,23 @@ import { LatestOffendersLoadedGuard, LatestMissingLoadedGuard } from './core/gua
 import { AuthenticatedGuard } from './features/authentication/guards/authenticated.guard';
 
 export const appRoutes: Routes = [
-  // {
-  //   path: 'home',
-  //   canActivate: [LatestOffendersLoadedGuard, LatestMissingLoadedGuard],
-  //   loadChildren: () => 
-  //     import('./features/home/home.routes').then(r => r.homeRoutes)
-  // },
+  {
+    path: 'home',
+    canActivate: [LatestOffendersLoadedGuard],
+    // canActivate: [LatestOffendersLoadedGuard, LatestMissingLoadedGuard],
+    loadChildren: () => 
+      import('./features/home/home.routes').then(r => r.homeRoutes)
+  },
   {
     path: 'explore',
     loadChildren: () => 
       import('./features/explore/explore.routes').then(c => c.exploreRoutes)
   },
-  // {
-  //   path: 'offenders',
-  //   loadChildren: () => 
-  //     import('./features/offenders/offenders.routes').then(r => r.offenderRoutes)
-  // },
+  {
+    path: 'offenders',
+    loadChildren: () => 
+      import('./features/offenders/offenders.routes').then(r => r.offenderRoutes)
+  },
   // {
   //   path: 'teams',
   //   loadChildren: () => 

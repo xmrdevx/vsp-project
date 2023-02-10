@@ -16,29 +16,29 @@ export const defaultLeftNavigationMenu: NavigationLink[] = [
     routerLink: '/offenders',
     icon: 'user',
   },
-  {
-    label: 'Watch',
-    routerLink: '/videos',
-    icon: 'video-camera',
-  },
-  {
-    label: 'Teams',
-    routerLink: '/teams',
-    icon: 'team',
-  },
+  // {
+  //   label: 'Watch',
+  //   routerLink: '/videos',
+  //   icon: 'video-camera',
+  // },
+  // {
+  //   label: 'Teams',
+  //   routerLink: '/teams',
+  //   icon: 'team',
+  // },
 ];
 
 export const defaultRightNavigationMenu: NavigationLink[] = [
-  {
-    label: 'Missing',
-    routerLink: '/missing',
-    icon: 'search'
-  },
-  {
-    label: 'Report',
-    routerLink: '/report',
-    icon: 'mail',
-  },
+  // {
+  //   label: 'Missing',
+  //   routerLink: '/missing',
+  //   icon: 'search'
+  // },
+  // {
+  //   label: 'Report',
+  //   routerLink: '/report',
+  //   icon: 'mail',
+  // },
   {
     label: 'Help',
     routerLink: '/help',

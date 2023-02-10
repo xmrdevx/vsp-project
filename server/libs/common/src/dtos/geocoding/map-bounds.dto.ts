@@ -6,7 +6,7 @@ export class MapBoundsDto {
 
   constructor(obj: any) {
     Object.assign(this, {
-      northEast: new MapCoordinateDto({ ...obj.nortEast }),
+      northEast: new MapCoordinateDto({ ...obj.northEast }),
       southWest: new MapCoordinateDto({ ...obj.southWest })
     } satisfies MapBoundsDto);
   }

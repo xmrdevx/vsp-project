@@ -55,7 +55,11 @@ export * from './dtos/paging/sort-direction.enum';
 export * from './dtos/paging/sort.dto';
 export * from './dtos/paging/sortable.interface';
 export * from './dtos/requests/base-search-request.dto';
+export * from './dtos/requests/get-offender-by-id-request.dto';
+export * from './dtos/requests/get-offender-case-markers-by-bounds-request.dto';
+export * from './dtos/requests/get-latest-offenders-request.dto';
 export * from './dtos/requests/search-offenders-request.dto';
+export * from './dtos/requests/search-offenders-by-bounds-request.dto';
 export * from './dtos/search-filters/offenders-search-filter.dto';
 export * from './dtos/streams/stream-pre-connect-validation-request.dto';
 

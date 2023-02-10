@@ -28,7 +28,7 @@ export class OffendersService extends AbstractCrudService<Offender, string> {
 
   public searchOffenders(searchFilter: OffendersSearchFilter, pageRequest: PageRequest): Observable<Page<Offender>> {
     const queryParams: { [key: string]: string } = {
-      offenderName: searchFilter.offenderName || '',
+      query: searchFilter.query|| '',
       size: pageRequest.size.toString(),
       index: pageRequest.index.toString(),
       column: pageRequest?.sort?.column?.toString() || '',
