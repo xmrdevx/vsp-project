@@ -1,7 +1,7 @@
-import { DeepPartial, FindManyOptions, FindOneOptions } from 'typeorm';
+import { DeepPartial, FindManyOptions, FindOneOptions, ObjectLiteral, Repository } from 'typeorm';
 import { IPageable } from '../dtos/paging/pageable.interface';
 
-export interface IRepository<T, ID> {
+export interface IRepository<T extends ObjectLiteral, ID> {
   create(data: DeepPartial<T>): T;
   createMany(data: DeepPartial<T>[]): T[];
   save(data: DeepPartial<T>): Promise<T>;
@@ -13,4 +13,5 @@ export interface IRepository<T, ID> {
   remove(data: T): Promise<T>;
   findWithRelations(relations: FindManyOptions<T>): Promise<T[]>;
   preload(entityLike: DeepPartial<T>): Promise<T | null>;
+  getRepository(): Repository<T>;
 }

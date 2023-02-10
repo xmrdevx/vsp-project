@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Account, Address, Case, Claim, DeviceCode, Offender, Profile, RefreshToken, Role, Tenant, User } from '@vsp/common';
+import { Account, Address, Case, Claim, DeviceCode, GeoLocation, Offender, Profile, RefreshToken, Role, Tenant, User } from '@vsp/common';
 import { CoreModule, TypeOrmConfigService } from '@vsp/core';
 import { LoggerModule } from '@vsp/logger';
 
@@ -33,6 +33,7 @@ import { OffendersService } from './services/offenders.service';
       Case,
       Claim,
       DeviceCode,
+      GeoLocation,
       Offender,
       Profile,
       RefreshToken,

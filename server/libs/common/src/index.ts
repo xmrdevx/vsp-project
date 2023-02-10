@@ -81,6 +81,7 @@ export * from './entities/streams/stream.entity';
 export * from './enums/role-types.enum';
 export * from './enums/claim-values.enum';
 export * from './enums/claim-types.enum';
+export * from './enums/distance-unit.enum';
 
 // Interfaces
 export * from './interfaces/repository.interface';
@@ -100,3 +101,4 @@ export * from './types/claims.type';
 // Utils
 export * from './utils/hashing.utils';
 export * from './utils/claims.utils';
+export * from './utils/distance.utils';

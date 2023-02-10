@@ -21,6 +21,6 @@ export class Tenant extends BaseEntity {
   @JoinColumn({ name: 'app_account_id' })
   public account: Account;
 
-  @OneToMany(type => User, user => user.id)
+  @OneToMany(type => User, user => user.tenant)
   public users: User[];
 }

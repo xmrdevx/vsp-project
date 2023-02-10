@@ -71,4 +71,8 @@ export abstract class BaseRepository<T extends HasId, ID> implements IRepository
   public async preload(entityLike: DeepPartial<T>): Promise<T | null> {
     return await this.repository.preload(entityLike) || null;
   }
+
+  public getRepository(): Repository<T> {
+    return this.repository;
+  }
 }

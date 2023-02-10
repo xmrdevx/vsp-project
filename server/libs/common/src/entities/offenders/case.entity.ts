@@ -30,7 +30,7 @@ export class Case extends BaseEntity {
   @Column({ nullable: true })
   public caughtAtId: string;
 
-  @OneToOne(type => Offender, { nullable: true })
+  @OneToOne(type => GeoLocation, { nullable: true })
   @JoinColumn()
   public caughtAt: GeoLocation;
 

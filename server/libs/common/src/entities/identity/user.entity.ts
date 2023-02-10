@@ -78,7 +78,7 @@ export class User extends BaseEntity {
   })
   public deviceCodes: DeviceCode[];
 
-  @OneToMany(type => RefreshToken, token => token.id)
+  @OneToMany(type => RefreshToken, token => token.user)
   public refreshTokens: RefreshToken[];
 
   @Column({ name: 'app_tenant_id' })

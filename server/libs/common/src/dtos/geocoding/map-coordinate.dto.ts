@@ -1,6 +1,6 @@
 export class MapCoordinateDto {
-  public latitude: number;
-  public longitude: number;
+  public latitude: number | null;
+  public longitude: number | null;
 
   constructor(obj: any) {
     Object.assign(this, {

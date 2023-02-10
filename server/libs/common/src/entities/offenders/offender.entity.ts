@@ -16,6 +16,6 @@ export class Offender extends BaseEntity {
   @Column()
   public summary: string;
 
-  @OneToMany(type => Case, c => c.id)
+  @OneToMany(type => Case, c => c.offender)
   public cases: Case[]; 
 }
