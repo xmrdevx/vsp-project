@@ -1,9 +1,18 @@
-import { Controller, Get, Inject, Param, Query, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, Post, Put, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { ApiTags } from '@nestjs/swagger';
+import { catchError, Observable, of, throwError } from 'rxjs';
+
 import { HttpCacheInterceptor } from '@vsp/core';
+import { JwtAuthGuard } from '@vsp/authorization';
+import { LoggerService } from '@vsp/logger';
 
 import { 
+  createOffenderCommand,
+  CreateOffenderDto,
+  CreateResourceRequest,
+  deleteOffenderCommand,
+  DeleteResourceRequest,
   DistanceUnit,
   getLatestOffenderByCountCommand,
   GetLatestOffendersRequestDto,
@@ -20,10 +29,11 @@ import {
   searchOffendersByBoundsCommand, 
   SearchOffendersByBoundsRequest, 
   searchOffendersCommand, 
-  SearchOffendersRequest } from '@vsp/common';
+  SearchOffendersRequest, 
+  updateOffenderCommand, 
+  UpdateOffenderDto,
+  UpdateResourceRequest} from '@vsp/common';
 
-import { LoggerService } from '@vsp/logger';
-import { catchError, Observable, throwError } from 'rxjs';
 import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
 
 @ApiTags('offenders')
@@ -35,6 +45,42 @@ export class OffendersController {
 
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffendersController.name);
+  }
+
+  @Post()
+  @UseGuards(JwtAuthGuard)
+  public createOffender(@Body() createOffenderDto: CreateOffenderDto): Observable<OffenderDto> {
+    return this._offendersServiceClient
+      .send(
+        createOffenderCommand, 
+        new CreateResourceRequest<CreateOffenderDto>({ resource: createOffenderDto })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Put(':offenderId')
+  @UseGuards(JwtAuthGuard)
+  public updateOffender(
+    @Param('offenderId') offenderId: string, 
+    @Body() updateOffenderDto: UpdateOffenderDto
+  ): Observable<OffenderDto> {
+    return this._offendersServiceClient
+      .send(
+        updateOffenderCommand, 
+        new UpdateResourceRequest<UpdateOffenderDto>({ resourceId: offenderId, resource: updateOffenderDto })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Delete(':offenderId')
+  @UseGuards(JwtAuthGuard)
+  public deleteOffender(@Param('offenderId') offenderId: string): Observable<OffenderDto> {
+    return this._offendersServiceClient
+      .send(
+        deleteOffenderCommand, 
+        new DeleteResourceRequest({ resourceId: offenderId })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
   @Get('search')

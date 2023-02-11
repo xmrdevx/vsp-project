@@ -19,3 +19,15 @@ export const getLatestOffenderByCountCommand: MessagePatternCommand<void> = {
 export const getOffenderByIdCommand: MessagePatternCommand<void> = {
   cmd: 'get-offenders-by-id'
 } as MessagePatternCommand<void>;
+
+export const createOffenderCommand: MessagePatternCommand<void> = {
+  cmd: 'create-offender'
+} as MessagePatternCommand<void>;
+
+export const updateOffenderCommand: MessagePatternCommand<void> = {
+  cmd: 'update-offender'
+} as MessagePatternCommand<void>;
+
+export const deleteOffenderCommand: MessagePatternCommand<void> = {
+  cmd: 'delete-offender'
+} as MessagePatternCommand<void>;

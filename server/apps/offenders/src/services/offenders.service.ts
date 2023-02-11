@@ -11,9 +11,12 @@ import {
   milesToMeters,
   kilometersToMeters, 
   PageRequest,
-  MapBoundsDto} from '@vsp/common';
+  MapBoundsDto,
+  CreateOffenderDto,
+  UpdateOffenderDto} from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
+import { off } from 'process';
 
 import { CASES_REPOSITORY_TOKEN, ICasesRepository } from '../interfaces/cases-repository.interface';
 import { IOffendersRepository, OFFENDERS_REPOSITORY_TOKEN } from '../interfaces/offenders-repository.interface';
@@ -31,6 +34,57 @@ export class OffendersService implements IOffendersService {
     this._logger.setContext(OffendersService.name);
   }
 
+
+  public async create(offender: CreateOffenderDto): Promise<OffenderDto> {
+    const newOffender: Offender = await this._offendersRepository.save(
+      this._offendersRepository.create({ ...offender })
+    );
+    return new OffenderDto(newOffender);
+  }
+
+
+  public async update(offenderId: string, offender: UpdateOffenderDto): Promise<OffenderDto> {
+    let existingOffender: Offender | null = await this._offendersRepository.findOneById(offenderId);
+
+    if (!existingOffender) {
+      throw new RpcException(
+        new NotFoundException("Offender was not found!")
+      );
+    }
+
+    const updatedOffender: Offender = await this._offendersRepository
+      .save({
+        ...existingOffender,
+        ...offender
+      });
+
+    return new OffenderDto(updatedOffender);
+  }
+
+
+  public async delete(offenderId: string): Promise<OffenderDto> {
+    const existingOffender: Offender | null = await this._offendersRepository.findByCondition({
+      relations: ['cases'],
+      where: [{ id: offenderId }]
+    });
+
+    if (!existingOffender) {
+      throw new RpcException(
+        new NotFoundException("Offender was not found!")
+      );
+    }
+
+    const deletedOn: Date = new Date();
+
+    const updatedOffender = await this._offendersRepository.save({
+      ...existingOffender, deletedOn,
+      cases: existingOffender?.cases?.map(c => ({ ...c, deletedOn })) || []
+    });
+
+    return new OffenderDto(updatedOffender);
+  }
+
+  
   public async search(filter: OffendersSearchFilter, pageable: IPageable): Promise<Page<OffenderDto>> {
     let sourceQuery = this._offendersRepository
       .getRepository()
@@ -73,6 +127,7 @@ export class OffendersService implements IOffendersService {
     return new Page<OffenderDto>(elements, count, pageable);
   }
 
+  
   public async searchByBounds(mapBounds: MapBoundsDto, pageable: IPageable): Promise<Page<OffenderDto>> {
     // @Notes - ST_MakeEnvelope params
     // ST_MakeEnvelope(min_lng, min_lat, max_lng, max_lat) Or ST_MakeEnvelope(ne_lng, sw_lat, sw_lng, ne_lat)
@@ -98,6 +153,7 @@ export class OffendersService implements IOffendersService {
     return new Page<OffenderDto>(elements, count, pageable);
   }
 
+  
   public async getLatestOffendersByCount(count: number): Promise<OffenderDto[]> {
     return await this._offendersRepository
       .getRepository()
@@ -124,6 +180,7 @@ export class OffendersService implements IOffendersService {
     return offender;
   }
 
+  
   private _isLocationFilterValid(filter: OffendersSearchFilter): boolean {
     return (filter?.distance || 0) > 0
       && filter.location !== null 

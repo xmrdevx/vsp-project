@@ -1,6 +1,6 @@
 import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { getLatestOffenderByCountCommand, GetLatestOffendersRequestDto, getOffenderByIdCommand, GetOffenderByIdRequest, OffenderDto, Page, PageRequest, searchOffendersByBoundsCommand, SearchOffendersByBoundsRequest, searchOffendersCommand, SearchOffendersRequest } from '@vsp/common';
+import { createOffenderCommand, CreateOffenderDto, CreateResourceRequest, deleteOffenderCommand, DeleteResourceRequest, getLatestOffenderByCountCommand, GetLatestOffendersRequestDto, getOffenderByIdCommand, GetOffenderByIdRequest, OffenderDto, Page, PageRequest, searchOffendersByBoundsCommand, SearchOffendersByBoundsRequest, searchOffendersCommand, SearchOffendersRequest, updateOffenderCommand, UpdateOffenderDto, UpdateResourceRequest } from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 import { IOffendersService, OFFENDERS_SERVICE_TOKEN } from '../interfaces/offenders-service.interface';
@@ -51,10 +51,39 @@ export class OffendersController {
   @MessagePattern(getOffenderByIdCommand)
   public async getOffenderById(request: GetOffenderByIdRequest): Promise<OffenderDto> {
     try {
-      console.log("offender ", request);
       return await this._offendersService.getOffenderById(request.offenderId);
     } catch (error) {
       this._logger.error('Error getting latest offenders', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(createOffenderCommand)
+  public async createOffender(request: CreateResourceRequest<CreateOffenderDto>): Promise<OffenderDto> {
+    try {
+      return await this._offendersService.create(request.resource);
+    } catch (error) {
+      this._logger.error('Error creating offender', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(updateOffenderCommand)
+  public async updateOffender(request: UpdateResourceRequest<UpdateOffenderDto>): Promise<OffenderDto> {
+    try {
+      return await this._offendersService.update(request.resourceId, request.resource);
+    } catch (error) {
+      this._logger.error('Error updating offender', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(deleteOffenderCommand)
+  public async deleteOffender(request: DeleteResourceRequest): Promise<OffenderDto> {
+    try {
+      return await this._offendersService.delete(request.resourceId);
+    } catch (error) {
+      this._logger.error('Error deleting offender', error);
       throw error;
     }
   }
