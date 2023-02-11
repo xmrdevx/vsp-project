@@ -13,7 +13,8 @@ import {
   PageRequest,
   MapBoundsDto,
   CreateOffenderDto,
-  UpdateOffenderDto} from '@vsp/common';
+  UpdateOffenderDto,
+  DeleteOffenderDto} from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 import { off } from 'process';
@@ -62,7 +63,7 @@ export class OffendersService implements IOffendersService {
   }
 
 
-  public async delete(offenderId: string): Promise<OffenderDto> {
+  public async delete(offenderId: string, offender: DeleteOffenderDto): Promise<OffenderDto> {
     const existingOffender: Offender | null = await this._offendersRepository.findByCondition({
       relations: ['cases'],
       where: [{ id: offenderId }]
@@ -75,10 +76,11 @@ export class OffendersService implements IOffendersService {
     }
 
     const deletedOn: Date = new Date();
+    const deletedById: string = offender.deletedById;
 
     const updatedOffender = await this._offendersRepository.save({
-      ...existingOffender, deletedOn,
-      cases: existingOffender?.cases?.map(c => ({ ...c, deletedOn })) || []
+      ...existingOffender, deletedOn, deletedById, 
+      cases: existingOffender?.cases?.map(c => ({ ...c, deletedOn, deletedById })) || []
     });
 
     return new OffenderDto(updatedOffender);

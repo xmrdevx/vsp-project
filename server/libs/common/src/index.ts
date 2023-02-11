@@ -48,6 +48,7 @@ export * from './dtos/identity/user.dto';
 export * from './dtos/identity/user-details.dto';
 export * from './dtos/offenders/case.dto';
 export * from './dtos/offenders/create-offender.dto';
+export * from './dtos/offenders/delete-offender.dto';
 export * from './dtos/offenders/offender.dto';
 export * from './dtos/offenders/update-offender.dto';
 export * from './dtos/paging/page-request.dto';
@@ -70,6 +71,7 @@ export * from './dtos/streams/stream-pre-connect-validation-request.dto';
 
 // Entities
 export * from './entities/base.entity';
+export * from './entities/base-tracked.entity';
 export * from './entities/geocoding/geo-location.entity';
 export * from './entities/identity/account.entity';
 export * from './entities/identity/address.entity';

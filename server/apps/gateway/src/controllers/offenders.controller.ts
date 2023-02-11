@@ -12,6 +12,7 @@ import {
   CreateOffenderDto,
   CreateResourceRequest,
   deleteOffenderCommand,
+  DeleteOffenderDto,
   DeleteResourceRequest,
   DistanceUnit,
   getLatestOffenderByCountCommand,
@@ -35,6 +36,9 @@ import {
   UpdateResourceRequest} from '@vsp/common';
 
 import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
+import { EnrichBodyWithCreatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-created-by.interceptor';
+import { EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-updated-by.interceptor';
+import { EnrichBodyWithDeletedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-deleted-by.interceptor';
 
 @ApiTags('offenders')
 @Controller('offenders')
@@ -49,36 +53,15 @@ export class OffendersController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
+  @UseInterceptors(
+    EnrichBodyWithCreatedByInterceptor, 
+    EnrichBodyWithUpdatedByInterceptor
+  )
   public createOffender(@Body() createOffenderDto: CreateOffenderDto): Observable<OffenderDto> {
     return this._offendersServiceClient
       .send(
         createOffenderCommand, 
         new CreateResourceRequest<CreateOffenderDto>({ resource: createOffenderDto })
-      )
-      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
-  }
-
-  @Put(':offenderId')
-  @UseGuards(JwtAuthGuard)
-  public updateOffender(
-    @Param('offenderId') offenderId: string, 
-    @Body() updateOffenderDto: UpdateOffenderDto
-  ): Observable<OffenderDto> {
-    return this._offendersServiceClient
-      .send(
-        updateOffenderCommand, 
-        new UpdateResourceRequest<UpdateOffenderDto>({ resourceId: offenderId, resource: updateOffenderDto })
-      )
-      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
-  }
-
-  @Delete(':offenderId')
-  @UseGuards(JwtAuthGuard)
-  public deleteOffender(@Param('offenderId') offenderId: string): Observable<OffenderDto> {
-    return this._offendersServiceClient
-      .send(
-        deleteOffenderCommand, 
-        new DeleteResourceRequest({ resourceId: offenderId })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
@@ -151,5 +134,39 @@ export class OffendersController {
     return this._offendersServiceClient
       .send(getOffenderByIdCommand, new GetOffenderByIdRequest({ offenderId }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
+  }
+
+  @Put(':offenderId')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
+  public updateOffender(
+    @Param('offenderId') offenderId: string, 
+    @Body() updateOffenderDto: UpdateOffenderDto
+  ): Observable<OffenderDto> {
+    return this._offendersServiceClient
+      .send(
+        updateOffenderCommand, 
+        new UpdateResourceRequest<UpdateOffenderDto>({ resourceId: offenderId, resource: updateOffenderDto })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Delete(':offenderId')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
+  public deleteOffender(
+    @Body('deletedById') deletedById: string, 
+    @Param('offenderId') offenderId: string
+  ): Observable<OffenderDto> {
+    console.log("delted By ", deletedById)
+    return this._offendersServiceClient
+      .send(
+        deleteOffenderCommand, 
+        new DeleteResourceRequest({ 
+          resourceId: offenderId, 
+          resource: new DeleteOffenderDto({ deletedById }) 
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 }

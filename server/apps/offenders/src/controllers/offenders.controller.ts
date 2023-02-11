@@ -1,6 +1,6 @@
 import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { createOffenderCommand, CreateOffenderDto, CreateResourceRequest, deleteOffenderCommand, DeleteResourceRequest, getLatestOffenderByCountCommand, GetLatestOffendersRequestDto, getOffenderByIdCommand, GetOffenderByIdRequest, OffenderDto, Page, PageRequest, searchOffendersByBoundsCommand, SearchOffendersByBoundsRequest, searchOffendersCommand, SearchOffendersRequest, updateOffenderCommand, UpdateOffenderDto, UpdateResourceRequest } from '@vsp/common';
+import { createOffenderCommand, CreateOffenderDto, CreateResourceRequest, deleteOffenderCommand, DeleteOffenderDto, DeleteResourceRequest, getLatestOffenderByCountCommand, GetLatestOffendersRequestDto, getOffenderByIdCommand, GetOffenderByIdRequest, OffenderDto, Page, PageRequest, searchOffendersByBoundsCommand, SearchOffendersByBoundsRequest, searchOffendersCommand, SearchOffendersRequest, updateOffenderCommand, UpdateOffenderDto, UpdateResourceRequest } from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 import { IOffendersService, OFFENDERS_SERVICE_TOKEN } from '../interfaces/offenders-service.interface';
@@ -79,9 +79,9 @@ export class OffendersController {
   }
 
   @MessagePattern(deleteOffenderCommand)
-  public async deleteOffender(request: DeleteResourceRequest): Promise<OffenderDto> {
+  public async deleteOffender(request: DeleteResourceRequest<DeleteOffenderDto>): Promise<OffenderDto> {
     try {
-      return await this._offendersService.delete(request.resourceId);
+      return await this._offendersService.delete(request.resourceId, request.resource);
     } catch (error) {
       this._logger.error('Error deleting offender', error);
       throw error;
