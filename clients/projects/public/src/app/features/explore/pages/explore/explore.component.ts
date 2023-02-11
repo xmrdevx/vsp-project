@@ -181,7 +181,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
               { ...this.defaultFlyToOptions, animate: false }
             );
         } else {
-          // this._updateMapBounds();
+          this._updateMapBounds();
         }
       });
   }
@@ -191,7 +191,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
   }
 
   public onMapMoveEnd(event: any): void {
-    // this._updateMapBounds();
+    this._updateMapBounds();
   }
 
   public onGeocodingLocationSelection(option: NzAutocompleteOptionComponent): void {
@@ -357,7 +357,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._exploreStore.setMapBounds(null);
-    this._exploreStore.setOffendersMapMarkers(null);
+    this._exploreStore.setOffenderCaseMapMappers(null);
     this._destroy$.next(null);
     this._destroy$.complete();
   }

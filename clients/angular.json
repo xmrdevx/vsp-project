@@ -286,12 +286,17 @@
             "tsConfig": "projects/public/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "leaflet/"
+              },
               "projects/public/src/favicon.ico",
               "projects/public/src/assets"
             ],
             "styles": [
               "projects/@assets/ng-zorro/theme.less",
-              "projects/admin/src/styles.scss"
+              "projects/public/src/styles.scss"
             ],
             "scripts": []
           },

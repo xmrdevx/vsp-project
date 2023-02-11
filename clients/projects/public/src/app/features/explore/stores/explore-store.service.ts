@@ -68,7 +68,7 @@ export class ExploreStore extends ComponentStore<ExploreState> {
     currentMapZoom: zoom
   }));
 
-  public readonly setOffendersMapMarkers = this.updater((state: ExploreState, mapMarkers: MapMarker<Case>[] | null) => ({
+  public readonly setOffenderCaseMapMappers = this.updater((state: ExploreState, mapMarkers: MapMarker<Case>[] | null) => ({
     ...state,
     currentOffendersMapMarkers: mapMarkers
   }));
@@ -125,18 +125,18 @@ export class ExploreStore extends ComponentStore<ExploreState> {
     return currentMapBounds$.pipe(
       switchMap((currentMapBounds: MapBounds) => {
         this.setOffendersMapMarkersLoadingState(LoadingState.LOADING);
-        this.setMissingPeopleMapMarkersLoadingState(LoadingState.LOADING);
+        // this.setMissingPeopleMapMarkersLoadingState(LoadingState.LOADING);
         return forkJoin([
-          this._exploreService.searchOffendersMapMarkersByMapBounds(currentMapBounds),
-          this._exploreService.searchMissingPeopleMapMarkersByMapBounds(currentMapBounds)
+          this._exploreService.searchOffendersCaseMapMarkersByMapBounds(currentMapBounds),
+          // this._exploreService.searchMissingPeopleMapMarkersByMapBounds(currentMapBounds)
         ]).pipe(
           take(1),
           tapResponse(
-            ([offendersMapMarkers, missingPeopleMapMarkers]) => {
-              this.setOffendersMapMarkers(offendersMapMarkers);
-              this.setMissingPeopleMapMarkers(missingPeopleMapMarkers);
+            ([offendersMapMarkers/*, missingPeopleMapMarkers*/]) => {
+              this.setOffenderCaseMapMappers(offendersMapMarkers);
+              // this.setMissingPeopleMapMarkers(missingPeopleMapMarkers);
               this.setOffendersMapMarkersLoadingState(LoadingState.LOADED)
-              this.setMissingPeopleMapMarkersLoadingState(LoadingState.LOADED);
+              // this.setMissingPeopleMapMarkersLoadingState(LoadingState.LOADED);
             },
             (e: string) => this.setOffendersMapMarkersLoadingState(LoadingState.ERROR)
           ),

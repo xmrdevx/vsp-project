@@ -31,21 +31,21 @@ export const appRoutes: Routes = [
   //   loadChildren: () => 
   //     import('./features/missing/missing.routes').then(c => c.missingRoutes)
   // },
-  // {
-  //   path: 'report',
-  //   loadChildren: () => 
-  //     import('./features/report/report.routes').then(r => r.reportRoutes)
-  // },
-  // {
-  //   path: 'help',
-  //   loadChildren: () => 
-  //     import('./features/help/help.routes').then(c => c.homeRoutes)
-  // },
-  // {
-  //   path: 'contact',
-  //   loadChildren: () => 
-  //     import('./features/contact/contact.routes').then(r => r.contactRoutes)
-  // },
+  {
+    path: 'report',
+    loadChildren: () => 
+      import('./features/report/report.routes').then(r => r.reportRoutes)
+  },
+  {
+    path: 'help',
+    loadChildren: () => 
+      import('./features/help/help.routes').then(c => c.homeRoutes)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => 
+      import('./features/contact/contact.routes').then(r => r.contactRoutes)
+  },
   // {
   //   path: 'videos',
   //   loadChildren: () => 
@@ -69,8 +69,7 @@ export const appRoutes: Routes = [
   },
   {
     path: '**',
-    // redirectTo: 'home',
-    redirectTo: 'explore',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];

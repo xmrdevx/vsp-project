@@ -6,6 +6,11 @@
 @import './assets/scss/variables';
 @import './assets/scss/main';
 
+// Leaflet
+@import '../../../node_modules/leaflet/dist/leaflet.css';
+@import '../../../node_modules/leaflet.markercluster/dist/MarkerCluster.Default.css';
+@import '../../../node_modules/leaflet.markercluster/dist/MarkerCluster.css';
+
 body {
   background: var(--nz-layout-body-background);
 }

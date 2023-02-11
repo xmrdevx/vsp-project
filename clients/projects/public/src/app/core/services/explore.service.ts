@@ -9,11 +9,11 @@ import { Case, EnvironmentService, MapBounds, MapMarker, MissingPerson } from '@
   providedIn: 'root'
 })
 export class ExploreService {
-  private readonly _endpointSlug: string = 'explore';
+  private readonly _endpointSlug: string = 'offenders';
   private readonly _environmentService: EnvironmentService = inject(EnvironmentService);
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
-  public searchOffendersMapMarkersByMapBounds(mapBounds: MapBounds): Observable<MapMarker<Case>[]> {
+  public searchOffendersCaseMapMarkersByMapBounds(mapBounds: MapBounds): Observable<MapMarker<Case>[]> {
     const queryParam: { [key: string]: string } = { 
       'northEastLatitude': mapBounds?.northEast?.latitude?.toString() || '0',
       'northEastLongitude': mapBounds?.northEast?.longitude?.toString() || '0',
@@ -21,7 +21,7 @@ export class ExploreService {
       'southWestLongitude': mapBounds?.southWest?.longitude?.toString() || '0'
     };
     return this._httpClient.get<MapMarker<Case>[]>(
-      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/offenders/markers/by-bounds`,
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/cases/by-bounds/markers`,
       { params: queryParam }
     );
   }

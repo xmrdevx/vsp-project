@@ -34,11 +34,11 @@ export const defaultRightNavigationMenu: NavigationLink[] = [
   //   routerLink: '/missing',
   //   icon: 'search'
   // },
-  // {
-  //   label: 'Report',
-  //   routerLink: '/report',
-  //   icon: 'mail',
-  // },
+  {
+    label: 'Report',
+    routerLink: '/report',
+    icon: 'mail',
+  },
   {
     label: 'Help',
     routerLink: '/help',
