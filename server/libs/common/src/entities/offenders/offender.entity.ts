@@ -1,9 +1,9 @@
 import { Column, Entity, OneToMany } from 'typeorm';
-import { BaseEntity } from '../base.entity';
+import { BaseTrackedEntity } from '../base-tracked.entity';
 import { Case } from './case.entity';
 
 @Entity()
-export class Offender extends BaseEntity {
+export class Offender extends BaseTrackedEntity {
   @Column()
   public firstName: string;
 

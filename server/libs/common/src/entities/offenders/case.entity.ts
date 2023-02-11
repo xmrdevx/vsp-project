@@ -1,13 +1,12 @@
-import { BaseEntity } from '../base.entity';
+import { BaseTrackedEntity } from '../base-tracked.entity';
 import { CaseStatus } from '../../enums/case-status.enum';
 import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 import { Offender } from './offender.entity';
 import { GeoLocation } from '../geocoding/geo-location.entity';
 import { Tenant } from '../identity/tenant.entity';
-import { User } from '../identity/user.entity';
 
 @Entity()
-export class Case extends BaseEntity {
+export class Case extends BaseTrackedEntity {
   @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
   public openedOn: Date;
 
@@ -40,13 +39,6 @@ export class Case extends BaseEntity {
   @ManyToOne(type => Tenant)
   @JoinColumn()
   public tenant: Tenant;
-
-  @Column()
-  public createdById: string;
-
-  @ManyToOne(type => User)
-  @JoinColumn()
-  public createdBy: User;
 
   // @TODO media
 }
