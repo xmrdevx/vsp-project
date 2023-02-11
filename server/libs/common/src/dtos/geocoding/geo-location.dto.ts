@@ -9,8 +9,8 @@ export class GeoLocationDto extends BaseDto {
     super();
     Object.assign(this, {
       id: args.id,
-      createdAt: args.createdAt,
-      updatedAt: args.updatedAt,
+      createdOn: args.createdOn,
+      updatedOn: args.updatedOn,
       fullAddressString: args?.fullAddressString,
       latitude: args?.latitude,
       longitude: args?.longitude

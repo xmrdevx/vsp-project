@@ -5,24 +5,24 @@ export abstract class BaseEntity {
   public id: string;
 
   @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
-  public createdAt: Date;
+  public createdOn: Date;
 
   @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
-  public updatedAt: Date;
+  public updatedOn: Date;
 
   @Column({ type: 'timestamp with time zone', nullable: true })
-  public deletedAt: Date | null | undefined;
+  public deletedOn: Date | null | undefined;
 
   @BeforeInsert()
   public initializeTimestamps() {
     const now: Date = new Date()
-    this.createdAt = now;
-    this.updatedAt = now;
+    this.createdOn = now;
+    this.updatedOn = now;
   }
 
   @BeforeUpdate()
   public updateTimestamps() {
     const now: Date = new Date();
-    this.updatedAt = now;
+    this.updatedOn = now;
   }
 }

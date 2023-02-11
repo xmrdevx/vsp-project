@@ -12,8 +12,8 @@ export class ProfileDto extends BaseDto {
     super();
     Object.assign(this, {
       id: args?.id,
-      createdAt: args?.createdAt,
-      updatedAt: args?.updatedAt,
+      createdOn: args?.createdOn,
+      updatedOn: args?.updatedOn,
       firstName: args?.firstName,
       lastName: args?.lastName,
       summary: args?.summary,

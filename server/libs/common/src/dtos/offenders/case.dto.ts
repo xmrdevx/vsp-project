@@ -15,8 +15,8 @@ export class CaseDto extends BaseDto {
     super();
     Object.assign(this, {
       id: obj.id,
-      createdAt: obj.createdAt,
-      updatedAt: obj.updatedAt,
+      createdOn: obj.createdOn,
+      updatedOn: obj.updatedOn,
       openedOn: obj.openedOn,
       closedOn: obj.closedOn,
       status: obj.status,

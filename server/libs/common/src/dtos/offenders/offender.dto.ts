@@ -12,8 +12,8 @@ export class OffenderDto extends BaseDto {
     super();
     Object.assign(this, {
       id: obj.id,
-      createdAt: obj.createdAt,
-      updatedAt: obj.updatedAt,
+      createdOn: obj.createdOn,
+      updatedOn: obj.updatedOn,
       firstName: obj.firstName,
       lastName: obj.lastName,
       avatarUrl: obj.avatarUrl,

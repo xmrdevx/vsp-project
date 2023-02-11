@@ -1,5 +1,5 @@
 export abstract class BaseDto {
   public id: string;
-  public createdAt: Date;
-  public updatedAt: Date;
+  public createdOn: Date;
+  public updatedOn: Date;
 }

@@ -7,8 +7,8 @@ export class RoleDto extends BaseDto {
     super();
     Object.assign(this, {
       id: args?.id,
-      createdAt: args?.createdAt,
-      updatedAt: args?.updatedAt,
+      createdOn: args?.createdOn,
+      updatedOn: args?.updatedOn,
       name: args?.name,
     } satisfies RoleDto);
   }
