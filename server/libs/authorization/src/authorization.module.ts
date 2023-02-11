@@ -5,9 +5,15 @@ import { CoreModule, EnvironmentService } from '@vsp/core';
 
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { LocalAuthGuard } from './guards/local-auth.guard';
+
 import { HasAccessGuard } from './guards/has-access.guard';
 import { HasPermissionsGuard } from './guards/has-permissions.guard';
 import { HasRolesGuard } from './guards/has-roles.guard';
+
+import { EnrichBodyWithTenantInterceptor } from './interceptors/enrich-body-with-tenant.interceptor';
+import { EnrichBodyWithCreatedByInterceptor } from './interceptors/enrich-body-with-created-by.interceptor';
+import { EnrichBodyWithUpdatedByInterceptor } from './interceptors/enrich-body-with-updated-by.interceptor';
+import { EnrichBodyWithDeletedByInterceptor } from './interceptors/enrich-body-with-deleted-by.interceptor';
 
 @Module({
   imports: [
@@ -36,6 +42,10 @@ import { HasRolesGuard } from './guards/has-roles.guard';
     HasPermissionsGuard,
     HasRolesGuard,
     LocalAuthGuard,
+    EnrichBodyWithTenantInterceptor,
+    EnrichBodyWithCreatedByInterceptor,
+    EnrichBodyWithUpdatedByInterceptor,
+    EnrichBodyWithDeletedByInterceptor,
   ],
   exports: [
     JwtAuthGuard,
@@ -44,6 +54,10 @@ import { HasRolesGuard } from './guards/has-roles.guard';
     HasRolesGuard,
     LocalAuthGuard,
     JwtModule,
+    EnrichBodyWithTenantInterceptor,
+    EnrichBodyWithCreatedByInterceptor,
+    EnrichBodyWithUpdatedByInterceptor,
+    EnrichBodyWithDeletedByInterceptor,
   ],
 })
 export class AuthorizationModule {}
