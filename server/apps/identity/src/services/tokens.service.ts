@@ -62,7 +62,6 @@ export class TokensService implements ITokensService {
         });
 
       if (!validRefreshToken) {
-        console.log("no valid refresh token")
         throw new RpcException(
           new UnauthorizedException("Invalid refresh/access token!")
         );

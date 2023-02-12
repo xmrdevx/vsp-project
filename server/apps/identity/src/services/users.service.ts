@@ -68,7 +68,6 @@ export class UsersService implements IUsersService {
         } as FindOneOptions);
       
       if (!canUserAccessClient(user, client)) {
-        console.log("client not found");
         return null;
       }
       
@@ -89,7 +88,6 @@ export class UsersService implements IUsersService {
         claims: user?.claims?.map(claim => new ClaimDto(claim)) || []
       } satisfies UserDetails);
     } catch (error) {
-      console.log("erro inf validate user", error)
       this._logger.error('Error validating user', error);
       throw error;
     }

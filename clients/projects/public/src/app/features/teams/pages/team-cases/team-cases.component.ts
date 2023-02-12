@@ -79,7 +79,6 @@ export class TeamCasesComponent {
   }
 
   public onScrollDownCases(team: Team | null, pageRequest: PageRequest | null): void {
-    console.log('fetching apge');
     if (!pageRequest || !team) return;
     this._teamsProfileStore.searchCases({ 
       teamId: team.id, 

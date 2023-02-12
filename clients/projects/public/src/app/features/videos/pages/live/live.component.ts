@@ -77,7 +77,6 @@ export class LiveComponent implements OnDestroy {
   }
   
   ngOnDestroy(): void {
-    console.log('ending live chat')
     // this._liveChatStore.endLiveChat()
   }
 }

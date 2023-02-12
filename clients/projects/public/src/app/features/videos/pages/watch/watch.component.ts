@@ -65,7 +65,7 @@ export class WatchComponent implements OnDestroy {
 
   public params$: Observable<Params> = this._route.queryParams.pipe(
     tap(queryParams => {
-      console.log('loading from query params', queryParams)
+      
     })
   );
 

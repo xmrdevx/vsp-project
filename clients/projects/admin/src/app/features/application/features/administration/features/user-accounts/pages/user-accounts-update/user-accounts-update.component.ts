@@ -152,7 +152,6 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
         const blankFormGroup = buildUserAccountUpdateForm(this._formBuilder, userModulerPermissions);
         const userModulePermissionsFormGroup = blankFormGroup.get('userModulePermissions');
 
-        console.log('reset permissions ', userModulePermissionsFormGroup);
         if ( userModulePermissionsFormGroup) {
           this.updateUserAccountForm
             ?.get('userModulePermissions')

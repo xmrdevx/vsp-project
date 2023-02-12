@@ -64,7 +64,7 @@ export class TeamsService extends AbstractCrudService<Team, string> {
       column: pageRequest?.sort?.column?.toString() || '',
       direction: pageRequest?.sort?.direction?.toString() || ''
     };
-    console.log('searching team videos');
+    
     return this.httpClient.get<Page<Media>>(
       `${this.environmentService.getBaseApiUrl()}/${TeamsService._endpointSlug}/${teamId}/videos/search`,
       { params: queryParams }

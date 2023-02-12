@@ -38,8 +38,6 @@ export class AccountsService implements IAccountsService {
     const accountOwnClaims: Claim[] = await this._claimsRepository
       .findAll({ where: [{ isSetByTenant: true }]});
 
-    console.log("cleaims", accountOwnClaims);
-
     // Create new User from registration
     const user: User = this._createUserEntityFromRegistration(registration, accountOwnerRoles, accountOwnClaims)
 

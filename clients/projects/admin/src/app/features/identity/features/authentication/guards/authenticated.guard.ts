@@ -16,11 +16,9 @@ export class AuthenticatedGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    console.log("checking authenticationd");
     return this._isUserLoggedInFromStore().pipe(
       switchMap(() => of(true)),
       catchError(() => {
-        console.log("user is not authenticated, retdirecting");
         this._router.navigateByUrl('/auth/sign-in');
         return of(false)
       })

@@ -103,7 +103,6 @@ export class OffendersComponent implements OnInit, OnDestroy {
   }
 
   public onSearchOffenders(searchFilter: OffendersSearchFilter): void {
-    console.log('filter', searchFilter)
     this._offendersStore.setCurrentOffendersSearchFilter(searchFilter);
     this._searchOffenders(searchFilter, this._defaultPageRequest);
   }

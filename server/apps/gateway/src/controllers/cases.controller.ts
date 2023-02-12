@@ -31,7 +31,6 @@ export class CasesController {
   public createCaseWithOffender(
     @Body() createCaseWithOffenderDto: CreateCaseWithOffenderDto
   ): Observable<CaseDto> {
-    console.log("create case with offend gateway", createCaseWithOffenderDto)
     return this._offendersServiceClient
       .send(
         createCaseWithOffenderCommand, 

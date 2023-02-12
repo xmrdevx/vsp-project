@@ -167,7 +167,6 @@ export class ExploreComponent implements OnInit, OnDestroy {
       ])
       .pipe(first())
       .subscribe(([currentBounds, currentZoom, location]) => {
-        // console.log("map ready", currentBounds, currentZoom, location);
         if (currentBounds && currentZoom) {
           this.mapInstance?.flyTo(
             [currentBounds.center.latitude, currentBounds.center.longitude],
@@ -333,8 +332,9 @@ export class ExploreComponent implements OnInit, OnDestroy {
   private _handleMissingMarkerClickEventListener(marker: MapMarker<MissingPerson>): void {
     this._zone.run(() => {
       const missingPerson: MissingPerson | null = marker?.payload || null;
+      
       if (!missingPerson) return;
-      console.log('showing missing person in drawer');
+      
       this._drawerService.create({
         nzWrapClassName: 'explore-drawer-lg',
         nzContent: ExploreMissingDialogContentComponent,

@@ -16,7 +16,6 @@ export class NavigationMenuService {
   }
 
   public toggleMenu(): void {
-    // console.log(" collapsed");
     this._isCollapsed = !this._isCollapsed;
     this._isCollapsedSource.next(this._isCollapsed);
   }

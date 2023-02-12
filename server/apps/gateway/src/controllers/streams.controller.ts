@@ -22,7 +22,6 @@ export class StreamsController {
   @UseGuards(HasAccessGuard)
   @Post()
   public createStream(): Observable<any> {
-    console.log("in streams sending command")
     return this._streamsServiceClient
       .send(createStreamCommand, {})
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))

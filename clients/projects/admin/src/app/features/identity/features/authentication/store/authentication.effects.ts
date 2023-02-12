@@ -54,7 +54,6 @@ export class AuthenticationEffects {
             return of(AuthenticationActions.refreshAccessTokenRequestSuccess({ authenticatedUser: authenticatedUser }))
           }),
           catchError(error => {
-            console.log('effect, error refreshign access token')
             return of(AuthenticationActions.refreshAccessTokenRequestFailure({ message: {
               status: ResponseStatus.ERROR,
               message: error?.error?.message || 'Invalid username/password!'

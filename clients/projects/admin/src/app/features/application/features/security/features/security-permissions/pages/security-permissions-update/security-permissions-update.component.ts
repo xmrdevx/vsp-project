@@ -63,10 +63,7 @@ export class SecurityPermissionsUpdateComponent implements OnInit, OnDestroy {
   public onUpdateTempalteModulePermissionName(template: any): void {
     if (this.updateTemplateModulePermissionNameForm.invalid) return;
 
-    console.log('before stripping undefined/nulls', template);
     removeEmptyKeys(template);
-
-    console.log('template is ', template);
 
     this._store.dispatch(SecurityPermissionsActions.updateTemplateModulePermissionNameRequest({
       templateModulePermissionNameId: template.templateModulePermissionName.id,
