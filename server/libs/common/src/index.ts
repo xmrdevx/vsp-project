@@ -47,9 +47,14 @@ export * from './dtos/identity/token-pair.dto';
 export * from './dtos/identity/user.dto';
 export * from './dtos/identity/user-details.dto';
 export * from './dtos/offenders/case.dto';
+export * from './dtos/offenders/create-case-with-offender.dto';
+export * from './dtos/offenders/create-case.dto';
 export * from './dtos/offenders/create-offender.dto';
+export * from './dtos/offenders/create-case.dto';
 export * from './dtos/offenders/delete-offender.dto';
+export * from './dtos/offenders/delete-case.dto';
 export * from './dtos/offenders/offender.dto';
+export * from './dtos/offenders/update-case.dto';
 export * from './dtos/offenders/update-offender.dto';
 export * from './dtos/paging/page-request.dto';
 export * from './dtos/paging/page.dto';
@@ -93,6 +98,7 @@ export * from './enums/role-types.enum';
 export * from './enums/claim-values.enum';
 export * from './enums/claim-types.enum';
 export * from './enums/distance-unit.enum';
+export * from './enums/visibility.enum';
 
 // Interfaces
 export * from './interfaces/repository.interface';

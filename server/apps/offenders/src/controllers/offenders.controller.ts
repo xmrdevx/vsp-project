@@ -1,8 +1,29 @@
 import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
-import { createOffenderCommand, CreateOffenderDto, CreateResourceRequest, deleteOffenderCommand, DeleteOffenderDto, DeleteResourceRequest, getLatestOffenderByCountCommand, GetLatestOffendersRequestDto, getOffenderByIdCommand, GetOffenderByIdRequest, OffenderDto, Page, PageRequest, searchOffendersByBoundsCommand, SearchOffendersByBoundsRequest, searchOffendersCommand, SearchOffendersRequest, updateOffenderCommand, UpdateOffenderDto, UpdateResourceRequest } from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
+
+import { 
+  createOffenderCommand, 
+  CreateOffenderDto, 
+  CreateResourceRequest, 
+  deleteOffenderCommand, 
+  DeleteOffenderDto, 
+  DeleteResourceRequest, 
+  getLatestOffenderByCountCommand, 
+  GetLatestOffendersRequestDto, 
+  getOffenderByIdCommand, 
+  GetOffenderByIdRequest, 
+  OffenderDto, 
+  Page, 
+  searchOffendersByBoundsCommand, 
+  SearchOffendersByBoundsRequest, 
+  searchOffendersCommand, 
+  SearchOffendersRequest, 
+  updateOffenderCommand, 
+  UpdateOffenderDto, 
+  UpdateResourceRequest } from '@vsp/common';
+
 import { IOffendersService, OFFENDERS_SERVICE_TOKEN } from '../interfaces/offenders-service.interface';
 
 @Controller()

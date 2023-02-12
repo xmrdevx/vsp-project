@@ -1,6 +1,6 @@
 export enum CaseStatus {
   NEW = 'new',
-  Investigating = 'investigating',
-  Open = 'open',
-  Closed = 'closed'
+  INVESTIGATING = 'investigating',
+  OPEN = 'open',
+  CLOSED = 'closed'
 }

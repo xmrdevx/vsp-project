@@ -1,6 +1,8 @@
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
+
 import { BaseTrackedEntity } from '../base-tracked.entity';
 import { CaseStatus } from '../../enums/case-status.enum';
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
+import { Visibility } from '../../enums/visibility.enum';
 import { Offender } from './offender.entity';
 import { GeoLocation } from '../geocoding/geo-location.entity';
 import { Tenant } from '../identity/tenant.entity';
@@ -13,8 +15,11 @@ export class Case extends BaseTrackedEntity {
   @Column({ type: 'timestamp with time zone', nullable: true })
   public closedOn: Date | null | undefined;
 
-  @Column({ type: 'enum', enum: CaseStatus, default: CaseStatus.NEW })
+  @Column({ type: 'enum', enum: CaseStatus, default: CaseStatus.OPEN })
   public status: CaseStatus;
+
+  @Column({ type: 'enum', enum: Visibility, default: Visibility.PRIVATE })
+  public visibility: Visibility;
 
   @Column({ nullable: true })
   public summary: string;

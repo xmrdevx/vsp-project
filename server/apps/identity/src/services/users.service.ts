@@ -83,7 +83,7 @@ export class UsersService implements IUsersService {
         email: user?.email || 'unknown',
         firstName: user?.profile?.firstName || 'unknown',
         lastName: user?.profile?.lastName || 'unknown',
-        tenantId: user?.tenant?.identifier || 'unknown',
+        tenantId: user?.tenant?.id || 'unknown',
         accountId: user?.tenant?.account?.identifier || 'unknown',
         roles: user.roles?.map(role => role.name) || [],
         claims: user?.claims?.map(claim => new ClaimDto(claim)) || []

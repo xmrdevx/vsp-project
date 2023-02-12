@@ -1,16 +1,20 @@
 import { Body, Controller, Delete, Get, Inject, Param, Post, Put, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { ApiTags } from '@nestjs/swagger';
-import { catchError, Observable, of, throwError } from 'rxjs';
+import { catchError, EMPTY, Observable, of, throwError } from 'rxjs';
 
 import { HttpCacheInterceptor } from '@vsp/core';
 import { JwtAuthGuard } from '@vsp/authorization';
 import { LoggerService } from '@vsp/logger';
 
 import { 
+  CaseDto,
+  createCaseCommand,
+  CreateCaseDto,
   createOffenderCommand,
   CreateOffenderDto,
   CreateResourceRequest,
+  deleteCaseCommand,
   deleteOffenderCommand,
   DeleteOffenderDto,
   DeleteResourceRequest,
@@ -31,6 +35,8 @@ import {
   SearchOffendersByBoundsRequest, 
   searchOffendersCommand, 
   SearchOffendersRequest, 
+  updateCaseCommand, 
+  UpdateCaseDto, 
   updateOffenderCommand, 
   UpdateOffenderDto,
   UpdateResourceRequest} from '@vsp/common';
@@ -39,6 +45,8 @@ import { defaultSortColumn, defaultSortDirection } from '../constants/query-para
 import { EnrichBodyWithCreatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-created-by.interceptor';
 import { EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-updated-by.interceptor';
 import { EnrichBodyWithDeletedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-deleted-by.interceptor';
+import { EnrichBodyWithTenantInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-tenant.interceptor';
+import { DeleteCaseDto } from '@vsp/common/dtos/offenders/delete-case.dto';
 
 @ApiTags('offenders')
 @Controller('offenders')
@@ -158,13 +166,70 @@ export class OffendersController {
     @Body('deletedById') deletedById: string, 
     @Param('offenderId') offenderId: string
   ): Observable<OffenderDto> {
-    console.log("delted By ", deletedById)
     return this._offendersServiceClient
       .send(
         deleteOffenderCommand, 
         new DeleteResourceRequest({ 
           resourceId: offenderId, 
           resource: new DeleteOffenderDto({ deletedById }) 
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Post(':offenderId/cases')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(
+    EnrichBodyWithCreatedByInterceptor,
+    EnrichBodyWithUpdatedByInterceptor,
+    EnrichBodyWithTenantInterceptor
+  )
+  public createOffenderCase(
+    @Body() createCaseDto: CreateCaseDto, @Param('offenderId') offenderId: string
+  ): Observable<CaseDto> {
+    return this._offendersServiceClient
+      .send(
+        createCaseCommand, 
+        new CreateResourceRequest<CreateCaseDto>({ 
+          resource: { ...createCaseDto, offenderId }
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Put(':offenderId/cases/:caseId')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
+  public updatedOffenderCase(
+    @Body() updateCaseDto: UpdateCaseDto, 
+    @Param('offenderId') offenderId: string,
+    @Param('caseId') caseId: string
+  ): Observable<CaseDto> {
+    return this._offendersServiceClient
+      .send(
+        updateCaseCommand, 
+        new UpdateResourceRequest<UpdateCaseDto>({ 
+          resourceId: caseId,
+          resource: { ...updateCaseDto, offenderId }
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Delete(':offenderId/cases/:caseId')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
+  public deleteOffenderCase(
+    @Body('deletedById') deletedById: string, 
+    @Param('offenderId') offenderId: string,
+    @Param('caseId') caseId: string
+  ): Observable<CaseDto> {
+    return this._offendersServiceClient
+      .send(
+        deleteCaseCommand, 
+        new UpdateResourceRequest<DeleteCaseDto>({ 
+          resourceId: caseId,
+          resource: new DeleteCaseDto({ deletedById, offenderId, caseId })
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));

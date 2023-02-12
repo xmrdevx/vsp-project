@@ -1,8 +1,12 @@
-import { Controller, Get, Inject, Query } from '@nestjs/common';
+import { Body, Controller, Get, Inject, Post, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from '@vsp/authorization';
+import { EnrichBodyWithCreatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-created-by.interceptor';
+import { EnrichBodyWithTenantInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-tenant.interceptor';
+import { EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-updated-by.interceptor';
 
-import { Case, GetOffenderCaseMarkersByBoundsRequest, getOffenderCaseMarkersByBoundsCommand, MapBoundsDto, MapCoordinateDto, MapMarkerDto, OFFENDERS_SERVICE_TOKEN } from '@vsp/common';
+import { Case, GetOffenderCaseMarkersByBoundsRequest, getOffenderCaseMarkersByBoundsCommand, MapBoundsDto, MapCoordinateDto, MapMarkerDto, OFFENDERS_SERVICE_TOKEN, CreateCaseWithOffenderDto, CaseDto, CreateResourceRequest, createCaseWithOffenderCommand } from '@vsp/common';
 import { LoggerService } from '@vsp/logger';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -15,6 +19,27 @@ export class CasesController {
 
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(CasesController.name);
+  }
+
+  @Post()
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(
+    EnrichBodyWithCreatedByInterceptor,
+    EnrichBodyWithUpdatedByInterceptor,
+    EnrichBodyWithTenantInterceptor
+  )
+  public createCaseWithOffender(
+    @Body() createCaseWithOffenderDto: CreateCaseWithOffenderDto
+  ): Observable<CaseDto> {
+    console.log("create case with offend gateway", createCaseWithOffenderDto)
+    return this._offendersServiceClient
+      .send(
+        createCaseWithOffenderCommand, 
+        new CreateResourceRequest<CreateCaseWithOffenderDto>({ 
+          resource: createCaseWithOffenderDto
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
   @Get('by-bounds/markers')
