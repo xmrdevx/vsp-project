@@ -2151,4 +2151,11 @@ VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661
 INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec749','d4580117-654d-445b-bf86-eedc0b214649','a38dfe60-265c-4ff2-8957-7d3b0bc4d749','open', NOW(), NOW());
 
+
+
+
+-- UPDATES ALL OFFENDERS WITH RANDOM AVATAR_URL
+UPDATE offender 
+SET avatar_url = 'https://randomuser.me/api/portraits/med/men/' || CAST(FLOOR(RANDOM() * 100 + 1) as VARCHAR) || '.jpg';
+
 COMMIT;
