@@ -1,7 +1,6 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { ClaimAuthorizationOperations, ClaimPermissions } from '@vsp/common';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class HasPermissionsGuard implements CanActivate {

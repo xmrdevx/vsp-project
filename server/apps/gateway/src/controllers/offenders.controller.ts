@@ -4,17 +4,21 @@ import { ApiTags } from '@nestjs/swagger';
 import { catchError, EMPTY, Observable, of, throwError } from 'rxjs';
 
 import { HttpCacheInterceptor } from '@vsp/core';
-import { JwtAuthGuard } from '@vsp/authorization';
+import { HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorization';
 import { LoggerService } from '@vsp/logger';
 
 import { 
   CaseDto,
+  ClaimAuthorizationOperations,
+  ClaimAuthorizationTypes,
+  ClaimValues,
   createCaseCommand,
   CreateCaseDto,
   createOffenderCommand,
   CreateOffenderDto,
   CreateResourceRequest,
   deleteCaseCommand,
+  DeleteCaseDto,
   deleteOffenderCommand,
   DeleteOffenderDto,
   DeleteResourceRequest,
@@ -42,11 +46,12 @@ import {
   UpdateResourceRequest} from '@vsp/common';
 
 import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
-import { EnrichBodyWithCreatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-created-by.interceptor';
-import { EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-updated-by.interceptor';
-import { EnrichBodyWithDeletedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-deleted-by.interceptor';
-import { EnrichBodyWithTenantInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-tenant.interceptor';
-import { DeleteCaseDto } from '@vsp/common/dtos/offenders/delete-case.dto';
+
+import { 
+  EnrichBodyWithCreatedByInterceptor, 
+  EnrichBodyWithUpdatedByInterceptor, 
+  EnrichBodyWithDeletedByInterceptor, 
+  EnrichBodyWithTenantInterceptor } from '@vsp/authorization';
 
 @ApiTags('offenders')
 @Controller('offenders')
@@ -60,7 +65,13 @@ export class OffendersController {
   }
 
   @Post()
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDERS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithCreatedByInterceptor, 
     EnrichBodyWithUpdatedByInterceptor
@@ -145,7 +156,13 @@ export class OffendersController {
   }
 
   @Put(':offenderId')
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDERS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
   public updateOffender(
     @Param('offenderId') offenderId: string, 
@@ -160,7 +177,13 @@ export class OffendersController {
   }
 
   @Delete(':offenderId')
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDERS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
   public deleteOffender(
     @Body('deletedById') deletedById: string, 
@@ -178,7 +201,13 @@ export class OffendersController {
   }
 
   @Post(':offenderId/cases')
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithCreatedByInterceptor,
     EnrichBodyWithUpdatedByInterceptor,
@@ -198,7 +227,13 @@ export class OffendersController {
   }
 
   @Put(':offenderId/cases/:caseId')
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDER_CASES }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
   public updatedOffenderCase(
     @Body() updateCaseDto: UpdateCaseDto, 
@@ -217,7 +252,13 @@ export class OffendersController {
   }
 
   @Delete(':offenderId/cases/:caseId')
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDER_CASES }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
   public deleteOffenderCase(
     @Body('deletedById') deletedById: string, 

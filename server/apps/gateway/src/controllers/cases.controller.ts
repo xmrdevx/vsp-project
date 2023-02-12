@@ -1,12 +1,29 @@
 import { Body, Controller, Get, Inject, Post, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { ApiTags } from '@nestjs/swagger';
-import { JwtAuthGuard } from '@vsp/authorization';
-import { EnrichBodyWithCreatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-created-by.interceptor';
-import { EnrichBodyWithTenantInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-tenant.interceptor';
-import { EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-updated-by.interceptor';
+import { HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorization';
 
-import { Case, GetOffenderCaseMarkersByBoundsRequest, getOffenderCaseMarkersByBoundsCommand, MapBoundsDto, MapCoordinateDto, MapMarkerDto, OFFENDERS_SERVICE_TOKEN, CreateCaseWithOffenderDto, CaseDto, CreateResourceRequest, createCaseWithOffenderCommand } from '@vsp/common';
+import { 
+  EnrichBodyWithCreatedByInterceptor, 
+  EnrichBodyWithTenantInterceptor, 
+  EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization';
+
+import { 
+  Case, 
+  GetOffenderCaseMarkersByBoundsRequest, 
+  getOffenderCaseMarkersByBoundsCommand, 
+  MapBoundsDto, 
+  MapCoordinateDto, 
+  MapMarkerDto, 
+  OFFENDERS_SERVICE_TOKEN, 
+  CreateCaseWithOffenderDto, 
+  CaseDto, 
+  CreateResourceRequest, 
+  createCaseWithOffenderCommand,
+  ClaimAuthorizationOperations,
+  ClaimAuthorizationTypes,
+  ClaimValues} from '@vsp/common';
+
 import { LoggerService } from '@vsp/logger';
 import { catchError, Observable, throwError } from 'rxjs';
 
@@ -22,7 +39,13 @@ export class CasesController {
   }
 
   @Post()
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithCreatedByInterceptor,
     EnrichBodyWithUpdatedByInterceptor,
