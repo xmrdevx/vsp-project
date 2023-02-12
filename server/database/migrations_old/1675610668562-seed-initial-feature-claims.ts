@@ -5,12 +5,29 @@ export class seedInitialFeatureClaims1675610668562 implements MigrationInterface
     name = 'seedInitialFeatureClaims1675610668562';
 
     private _defaultFeatureClaims: Claim[] = [
+        // Access Claims
         { type: ClaimAuthorizationTypes.CAN_ACCESS, value: ClaimValues.LIVESTREAM, isSetByTenant: false } as Claim,
         { type: ClaimAuthorizationTypes.CAN_ACCESS, value: ClaimValues.DASHBOARD, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_ACCESS, value: ClaimValues.OFFENDERS, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_ACCESS, value: ClaimValues.OFFENDER_CASES, isSetByTenant: true } as Claim,
+
+        // Dashboard Claims
         { type: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.DASHBOARD, isSetByTenant: true } as Claim,
         { type: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.DASHBOARD, isSetByTenant: true } as Claim,
         { type: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.DASHBOARD, isSetByTenant: true } as Claim,
         { type: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.DASHBOARD, isSetByTenant: true } as Claim,
+
+        // Offenders Claims
+        { type: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDERS, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDERS, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDERS, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDERS, isSetByTenant: true } as Claim,
+
+        // Offender Cases Claims
+        { type: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_CASES, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDER_CASES, isSetByTenant: true } as Claim,
+        { type: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDER_CASES, isSetByTenant: true } as Claim,
     ];
 
     public async up(queryRunner: QueryRunner): Promise<void> {
