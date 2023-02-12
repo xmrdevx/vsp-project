@@ -1,5 +1,4 @@
 #!/bin/sh
 
 # Run Migrations
-# TODO
-
+cd ../server && npm run db:migration:run:dev
