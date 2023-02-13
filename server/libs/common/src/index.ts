@@ -51,6 +51,7 @@ export * from './dtos/offenders/create-case-with-offender.dto';
 export * from './dtos/offenders/create-case.dto';
 export * from './dtos/offenders/create-offender.dto';
 export * from './dtos/offenders/create-case.dto';
+export * from './dtos/offenders/create-geo-location.dto';
 export * from './dtos/offenders/delete-offender.dto';
 export * from './dtos/offenders/delete-case.dto';
 export * from './dtos/offenders/offender.dto';

@@ -34,9 +34,9 @@ export class Case extends BaseTrackedEntity {
   @Column({ nullable: true })
   public caughtAtId: string;
 
-  @OneToOne(type => GeoLocation, { nullable: true })
+  @OneToOne(type => GeoLocation, { nullable: true, cascade: ['insert'] })
   @JoinColumn()
-  public caughtAt: GeoLocation;
+  public caughtAt: GeoLocation | null;
 
   @Column()
   public tenantId: string;

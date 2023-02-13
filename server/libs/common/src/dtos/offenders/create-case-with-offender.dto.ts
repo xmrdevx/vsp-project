@@ -1,9 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsDefined, IsNotEmpty, ValidateNested } from 'class-validator';
+import { IsDefined, IsNotEmpty, IsOptional, ValidateNested } from 'class-validator';
 
 import { CaseStatus } from '../../enums/case-status.enum';
 import { Visibility } from '../../enums/visibility.enum';
+import { GeoLocationDto } from '../geocoding/geo-location.dto';
+import { CreateGeoLocationDto } from './create-geo-location.dto';
 import { CreateOffenderDto } from './create-offender.dto';
 
 export class CreateCaseOffenderDto {
@@ -59,6 +61,11 @@ export class CreateCaseWithOffenderDto {
   @IsDefined()
   @IsNotEmpty()
   public tenantId: string;
+
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => CreateGeoLocationDto)
+  public caughtAt: CreateGeoLocationDto;
 
   @IsDefined()
   @ValidateNested()

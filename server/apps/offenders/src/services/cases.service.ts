@@ -1,7 +1,8 @@
 import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
+import { Point } from 'geojson';
 
-import { Case, CaseDto, CreateCaseDto, CreateCaseWithOffenderDto, MapBoundsDto, MapCoordinateDto, MapMarkerDto, Offender, UpdateCaseDto } from '@vsp/common';
+import { Case, CaseDto, CreateCaseDto, CreateCaseWithOffenderDto, GeoLocation, MapBoundsDto, MapCoordinateDto, MapMarkerDto, Offender, UpdateCaseDto } from '@vsp/common';
 import { DeleteCaseDto } from '@vsp/common/dtos/offenders/delete-case.dto';
 import { CaseStatus } from '@vsp/common/enums/case-status.enum';
 import { LoggerService } from '@vsp/logger';
@@ -34,9 +35,25 @@ export class CasesService {
     }
     
     const newCase: Case = await this._casesRepository.save(
-      this._casesRepository.create({ ...createCaseDto })
+      this._casesRepository.create({ 
+        ...createCaseDto,
+        caughtAt: !createCaseDto?.caughtAt ? null : {
+          latitude: createCaseDto.caughtAt.latitude,
+          longitude: createCaseDto.caughtAt.longitude,
+          fullAddressString: createCaseDto.caughtAt.fullAddressString,
+          location: {
+            type: "Point",
+            coordinates: [
+              createCaseDto.caughtAt.longitude, 
+              createCaseDto.caughtAt.latitude
+            ]
+          } as Point
+        }
+      })
     );
     newCase.offender = offender;
+
+    console.log("new case", newCase);
     return new CaseDto(newCase);
   }
 
@@ -46,6 +63,18 @@ export class CasesService {
     const updatedCase: Case = await this._casesRepository.save({ 
       ...existingCase, 
       ...updateCaseDto,
+      caughtAt: !updateCaseDto?.caughtAt ? null : {
+        latitude: updateCaseDto.caughtAt.latitude,
+        longitude: updateCaseDto.caughtAt.longitude,
+        fullAddressString: updateCaseDto.caughtAt.fullAddressString,
+        location: {
+          type: "Point",
+          coordinates: [
+            updateCaseDto.caughtAt.longitude, 
+            updateCaseDto.caughtAt.latitude
+          ]
+        } as Point
+      },
       closedOn: updateCaseDto.status === CaseStatus.CLOSED ? new Date() : null
     });
     
@@ -84,7 +113,20 @@ export class CasesService {
 
     const newCase: Case = await this._casesRepository.save(
       this._casesRepository.create({
-        ...createCaseWithOffenderDto, offender: newOffender
+        ...createCaseWithOffenderDto, 
+        offender: newOffender,
+        caughtAt: !createCaseWithOffenderDto?.caughtAt ? null : {
+          latitude: createCaseWithOffenderDto.caughtAt.latitude,
+          longitude: createCaseWithOffenderDto.caughtAt.longitude,
+          fullAddressString: createCaseWithOffenderDto.caughtAt.fullAddressString,
+          location: {
+            type: "Point",
+            coordinates: [
+              createCaseWithOffenderDto.caughtAt.longitude, 
+              createCaseWithOffenderDto.caughtAt.latitude
+            ]
+          } as Point
+        }
       })
     );
     
@@ -110,8 +152,8 @@ export class CasesService {
       .getMany())
       .map(c => new MapMarkerDto<CaseDto>({
         coordinate: new MapCoordinateDto({
-          latitude: c.caughtAt.latitude,
-          longitude: c.caughtAt.longitude
+          latitude: c.caughtAt?.latitude || 0,
+          longitude: c.caughtAt?.longitude || 0
         } satisfies MapCoordinateDto),
         payload: new CaseDto(c)
       } satisfies MapMarkerDto<CaseDto>));
