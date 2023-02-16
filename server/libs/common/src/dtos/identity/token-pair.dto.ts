@@ -2,7 +2,7 @@ export class TokenPair {
   public accessToken: string;
   public refreshToken: string;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<TokenPair>) {
+    Object.assign(this, obj);
   }
 }

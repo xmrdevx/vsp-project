@@ -20,7 +20,7 @@ export class CreateProfileDto {
   @Type(() => CreateAddressDto)
   public address: CreateAddressDto;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<CreateProfileDto>) {
+    Object.assign(this, obj);
   }
 }

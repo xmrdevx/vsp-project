@@ -7,7 +7,7 @@ export class CreateAccountDto {
   @Transform(({ value }: TransformFnParams) => value?.trim())
   public name: string;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<CreateAccountDto>) {
+    Object.assign(this, obj);
   }
 }

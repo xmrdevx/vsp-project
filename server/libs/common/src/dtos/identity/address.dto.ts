@@ -9,18 +9,18 @@ export class AddressDto extends BaseDto {
   public zip: string;
   public country: string;
 
-  constructor(args: any) {
+  constructor(obj: Partial<AddressDto>) {
     super();
     Object.assign(this, {
-      id: args?.id,
-      createdOn: args?.createdOn,
-      updatedOn: args?.updatedOn,
-      street: args?.street,
-      street2: args?.street2,
-      city: args?.city,
-      state: args?.state,
-      zip: args?.zip,
-      country: args?.country
-    } satisfies AddressDto);
+      id: obj?.id,
+      createdOn: obj?.createdOn,
+      updatedOn: obj?.updatedOn,
+      street: obj?.street,
+      street2: obj?.street2,
+      city: obj?.city,
+      state: obj?.state,
+      zip: obj?.zip,
+      country: obj?.country
+    });
   }
 }

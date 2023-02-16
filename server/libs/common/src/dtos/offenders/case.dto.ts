@@ -18,15 +18,15 @@ export class CaseDto extends BaseDto {
     super();
     Object.assign(this, {
       id: obj.id || '',
-      createdOn: obj.createdOn || new Date(),
-      updatedOn: obj.updatedOn || new Date(),
-      openedOn: obj.openedOn || new Date(),
-      closedOn: obj?.closedOn ? new Date() : null,
+      createdOn: obj.createdOn,
+      updatedOn: obj.updatedOn,
+      openedOn: obj.openedOn,
+      closedOn: obj?.closedOn,
       status: obj.status || CaseStatus.OPEN,
-      summary: obj.summary || '',
+      summary: obj.summary,
       visibility: obj.visibility || Visibility.PRIVATE,
       offender: obj?.offender ? new OffenderDto(obj.offender) : null,
       caughtAt: obj?.caughtAt ? new GeoLocationDto(obj.caughtAt) : null,
-    } satisfies CaseDto);
+    });
   }
 }

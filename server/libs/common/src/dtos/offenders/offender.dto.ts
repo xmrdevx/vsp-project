@@ -1,3 +1,4 @@
+import { Offender } from '@vsp/common/entities/offenders/offender.entity';
 import { BaseDto } from '../base.dto';
 import { CaseDto } from './case.dto';
 
@@ -8,7 +9,7 @@ export class OffenderDto extends BaseDto {
   public summary: string;
   public cases?: CaseDto[];
 
-  constructor(obj: any) {
+  constructor(obj: Partial<OffenderDto | Offender>) {
     super();
     Object.assign(this, {
       id: obj.id,
@@ -21,6 +22,6 @@ export class OffenderDto extends BaseDto {
       cases: !obj?.cases?.length 
         ? null 
         : obj.cases.map((c: any) => new CaseDto(c))
-    } satisfies OffenderDto)
+    })
   }
 }

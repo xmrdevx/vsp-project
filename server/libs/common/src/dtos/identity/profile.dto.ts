@@ -8,17 +8,17 @@ export class ProfileDto extends BaseDto {
   public avatarUrl: string;
   public address: AddressDto;
 
-  constructor(args: any) {
+  constructor(obj: Partial<ProfileDto>) {
     super();
     Object.assign(this, {
-      id: args?.id,
-      createdOn: args?.createdOn,
-      updatedOn: args?.updatedOn,
-      firstName: args?.firstName,
-      lastName: args?.lastName,
-      summary: args?.summary,
-      avatarUrl: args?.avatarUrl,
-      address: new AddressDto(args?.address || {})
-    } satisfies ProfileDto);
+      id: obj?.id,
+      createdOn: obj?.createdOn,
+      updatedOn: obj?.updatedOn,
+      firstName: obj?.firstName,
+      lastName: obj?.lastName,
+      summary: obj?.summary,
+      avatarUrl: obj?.avatarUrl,
+      address: new AddressDto(obj?.address || {})
+    });
   }
 }

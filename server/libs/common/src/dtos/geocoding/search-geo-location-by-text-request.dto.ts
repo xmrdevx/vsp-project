@@ -1,7 +1,7 @@
 export class SearchGeoLocationsByTextRequestDto {
   public text: string;
 
-  constructor(args: any) {
+  constructor(args: Partial<SearchGeoLocationsByTextRequestDto>) {
     Object.assign(this, {
       text: args?.text || ''
     });

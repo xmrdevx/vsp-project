@@ -32,11 +32,13 @@ export class JwtTokenInterceptor implements HttpInterceptor, OnDestroy {
     return next.handle(request)
       .pipe(
         catchError(error => {
-          if (error instanceof HttpErrorResponse && !request.url.includes('auth/login') && error.status === 401) {
-            return this._handleAccessTokenRefreshing(request, next);
-          } else {
-            return throwError(() => error);
-          }
+          // @TODO fix refresh token
+          // if (error instanceof HttpErrorResponse && !request.url.includes('auth/login') && error.status === 401) {
+          //   return this._handleAccessTokenRefreshing(request, next);
+          // } else {
+          //   return throwError(() => error);
+          // }
+          return throwError(() => error);
         }));;
   }
 

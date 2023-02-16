@@ -68,6 +68,11 @@ export const appRoutes: Routes = [
       import('./features/errors/errors.routes').then(r => r.errorRoutes)
   },
   {
+    path: '',
+    loadChildren: () => 
+      import('./features/identity/identity.routes').then(r => r.identityRoutes)    
+  },
+  {
     path: '**',
     redirectTo: 'home',
     pathMatch: 'full'

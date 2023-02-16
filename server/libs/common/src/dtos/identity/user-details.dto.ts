@@ -14,7 +14,7 @@ export class UserDetails {
 
   public payload?: Claims;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<UserDetails>) {
+    Object.assign(this, obj);
   }
 }

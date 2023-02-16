@@ -9,16 +9,16 @@ export class UserDto extends BaseDto {
   public profile: ProfileDto;
   public tenant: TenantDto;
 
-  constructor(args: any) {
+  constructor(obj: Partial<UserDto>) {
     super();
     Object.assign(this, {
-      id: args?.id,
-      createdOn: args?.createdOn,
-      updatedOn: args?.updatedOn,
-      username: args?.username,
-      email: args?.email,
-      tenant: new TenantDto(args?.tenant || {}),
-      profile: new ProfileDto(args?.profile || {})
-    } satisfies UserDto);
+      id: obj?.id,
+      createdOn: obj?.createdOn,
+      updatedOn: obj?.updatedOn,
+      username: obj?.username,
+      email: obj?.email,
+      tenant: new TenantDto(obj?.tenant || {}),
+      profile: new ProfileDto(obj?.profile || {})
+    });
   }
 }

@@ -26,14 +26,14 @@ export class AuthenticationService {
          
   public loginUser(credentials: Credentials): Observable<AuthenticatedUser> {
     return this._http.post<AuthenticatedUser>(
-      `${this._environmentService.getBaseAuthUrl()}/login`, 
+      `${this._environmentService.getBaseAuthUrl()}/sign-in`, 
       credentials
     );
   }
 
   public requestPasswordReset(request: ForgotPassword): Observable<ResponseMessage> {
     return this._http.post<ResponseMessage>(
-      `${this._environmentService.getBaseAuthUrl()}/forgot-password`,
+      `${this._environmentService.getBaseApiUrl()}/accounts/forgot-password`,
       request,
       { context: new HttpContext().set(REQUIRES_AUTHENTICATION, false) }
     );
@@ -41,7 +41,7 @@ export class AuthenticationService {
 
   public resetPassword(request: ResetPassword): Observable<ResponseMessage> {
     return this._http.post<ResponseMessage>(
-      `${this._environmentService.getBaseAuthUrl()}/reset-password`,
+      `${this._environmentService.getBaseApiUrl()}/accounts/reset-password`,
       request,
       { context: new HttpContext().set(REQUIRES_AUTHENTICATION, false) }
     );
@@ -49,7 +49,7 @@ export class AuthenticationService {
 
   public refreshToken(refreshTokenRequest: RefreshTokenRequest): Observable<AuthenticatedUser> {
     return this._http.post<AuthenticatedUser>(
-      `${this._environmentService.getBaseAuthUrl()}/token/refresh`,
+      `${this._environmentService.getBaseAuthUrl()}/refresh-token`,
       refreshTokenRequest,
       { context: new HttpContext().set(REQUIRES_AUTHENTICATION, false) }
     );

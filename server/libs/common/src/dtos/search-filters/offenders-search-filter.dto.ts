@@ -7,7 +7,7 @@ export class OffendersSearchFilter {
   public distance: number | null;
   public distanceUnit: DistanceUnit | null;
 
-  constructor(obj: any) {
+  constructor(obj: Partial<OffendersSearchFilter>) {
     Object.assign(this, { 
       query: obj?.query || null,
       location: obj?.location ? new MapCoordinateDto(obj.location) : null,

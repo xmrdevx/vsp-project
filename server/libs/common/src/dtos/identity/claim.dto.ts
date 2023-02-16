@@ -4,14 +4,14 @@ export class ClaimDto extends BaseDto {
   public type: string;
   public value: string;
 
-  constructor(args: any) {
+  constructor(obj: Partial<ClaimDto>) {
     super();
     Object.assign(this, {
-      id: args?.id,
-      createdOn: args?.createdOn,
-      updatedOn: args?.updatedOn,
-      type: args?.type,
-      value: args?.value,
-    } satisfies ClaimDto);
+      id: obj?.id,
+      createdOn: obj?.createdOn,
+      updatedOn: obj?.updatedOn,
+      type: obj?.type,
+      value: obj?.value,
+    });
   }
 }

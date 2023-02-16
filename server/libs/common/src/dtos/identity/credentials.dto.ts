@@ -14,7 +14,7 @@ export class Credentials {
   @IsUUID()
   public clientId: string;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<Credentials>) {
+    Object.assign(this, obj);
   }
 }

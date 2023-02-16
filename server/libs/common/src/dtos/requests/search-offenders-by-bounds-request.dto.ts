@@ -6,7 +6,7 @@ export class SearchOffendersByBoundsRequest {
   public mapBounds: MapBoundsDto;
   public pageable: IPageable
 
-  constructor(obj: any) {
+  constructor(obj: Partial<any>) {
     Object.assign(this, { 
       mapBounds: obj.mapBounds, 
       pageable: PageRequest.from(

@@ -6,7 +6,7 @@ import { BaseSearchRequest } from './base-search-request.dto';
 export class SearchOffendersRequest extends BaseSearchRequest {
   public filter: OffendersSearchFilter;
 
-  constructor(obj: any) {
+  constructor(obj: Partial<any>) {
     super();
     Object.assign(this, {
       pageable: PageRequest.from(

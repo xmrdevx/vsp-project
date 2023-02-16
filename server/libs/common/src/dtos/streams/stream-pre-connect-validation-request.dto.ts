@@ -11,10 +11,10 @@ export class StreamPreConnectValidationRequestDto {
   @IsUUID()
   public streamKey: string;
 
-  constructor(args: any) {
+  constructor(obj: Partial<StreamPreConnectValidationRequestDto>) {
     Object.assign(this, {
-      streamId: args?.streamId,
-      streamKey: args?.streamKey
+      streamId: obj?.streamId,
+      streamKey: obj?.streamKey
     });
   }
 }

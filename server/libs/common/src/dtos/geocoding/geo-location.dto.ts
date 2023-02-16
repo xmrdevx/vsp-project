@@ -5,7 +5,7 @@ export class GeoLocationDto extends BaseDto {
   public latitude: number;
   public longitude: number;
 
-  constructor(args: any) {
+  constructor(args: Partial<GeoLocationDto>) {
     super();
     Object.assign(this, {
       id: args.id,
@@ -14,6 +14,6 @@ export class GeoLocationDto extends BaseDto {
       fullAddressString: args?.fullAddressString,
       latitude: args?.latitude,
       longitude: args?.longitude
-    } satisfies GeoLocationDto);
+    });
   }
 }

@@ -5,7 +5,7 @@ export class AuthenticatedUser {
   public status: AuthenticatedStatus;
   public tokens: TokenPair
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<AuthenticatedUser>) {
+    Object.assign(this, obj);
   }
 }

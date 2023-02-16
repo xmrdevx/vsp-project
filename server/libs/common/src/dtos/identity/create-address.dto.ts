@@ -6,7 +6,7 @@ export class CreateAddressDto {
   public zip?: string;
   public country?: string;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<CreateAddressDto>) {
+    Object.assign(this, obj);
   }
 }

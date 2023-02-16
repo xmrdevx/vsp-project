@@ -14,7 +14,7 @@ export class RegistrationDto {
   @Type(() => CreateUserDto)
   public user: CreateUserDto;
 
-  constructor(args: any) {
-    Object.assign(this, args);
+  constructor(obj: Partial<RegistrationDto>) {
+    Object.assign(this, obj);
   }
 }

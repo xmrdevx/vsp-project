@@ -1,0 +1,26 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+
+import { fadeAnimation } from '@vsp/core';
+
+@Component({
+  selector: 'vsp-identity',
+  templateUrl: './identity.component.html',
+  styleUrls: ['./identity.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeAnimation],
+  standalone: true,
+  imports: [
+    NzDividerModule,
+    NzCardModule,
+    NzGridModule,
+    RouterOutlet,
+  ]
+})
+export class IdentityComponent {
+
+}
