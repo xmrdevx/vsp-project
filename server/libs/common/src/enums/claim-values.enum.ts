@@ -3,4 +3,5 @@ export enum ClaimValues {
   OFFENDERS = 'offenders',
   OFFENDER_CASES = 'offender cases',
   LIVESTREAM = 'livestream',
+  USER_ACCOUNTS = 'user accounts'
 };
