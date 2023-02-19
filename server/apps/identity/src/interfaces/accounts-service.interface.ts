@@ -9,8 +9,8 @@ export const ACCOUNTSS_SERVICE_TOKEN: string = 'ACCOUNTS_SERVICE_TOKEN';
 export interface IAccountsService {
   /**
    * Creates a new account with a root user for Admin application
-   * @param registration The account details along with the user and profile details for th new Account
-   * @returns The details of the new root user for this account.
+   * @param {RegistrationDto} registration The account details along with the user and profile details for th new Account
+   * @returns {Promise<UserDto | null>} The details of the new root user for this account.
    * @async
    * @abstract
    */
@@ -18,9 +18,9 @@ export interface IAccountsService {
 
   /**
    * Searches the users associated with the account of the currently signed in user.
-   * @param filter A filter that contains the query string and the tenant ID.
-   * @param pageable The page details (index, count, sort column, sort direction) of the slice being requested.
-   * @returns A page slice of users from the search results
+   * @param {AccountUsersSearchFilter} filter A filter that contains the query string and the tenant ID.
+   * @param {IPageable} pageable The page details (index, count, sort column, sort direction) of the slice being requested.
+   * @returns {Promise<Page<UserDto>>} A page slice of users from the search results
    * @async
    * @abstract
    */
@@ -28,8 +28,8 @@ export interface IAccountsService {
 
   /**
    * Creates a new user for the tenant
-   * @param createUserDto The user details for the user to be created.
-   * @returns The user details of the newly created user.
+   * @param {CreateUserDto} createUserDto The user details for the user to be created.
+   * @returns {UserDto} The user details of the newly created user.
    * @async
    * @abstract
    */
@@ -37,9 +37,9 @@ export interface IAccountsService {
 
   /**
    * Updates user details for a specific users (userId).
-   * @param userId The id of the user to be updated
-   * @param updateUserDto The details to update for the user.
-   * @returns The updated users details of the user.
+   * @param {string} userId The id of the user to be updated
+   * @param {UpdateUserDto} updateUserDto The details to update for the user.
+   * @returns {Promise<UserDto>} The updated users details of the user.
    * @async
    * @abstract
    */

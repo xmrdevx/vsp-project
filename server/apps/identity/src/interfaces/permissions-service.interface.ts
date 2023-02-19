@@ -9,7 +9,7 @@ export const PERMISSIONS_SERVICE_TOKEN: string = 'PERMISSIONS_SERVICE_TOKEN';
 export interface IPermissionsService {
   /**
    * Gets all available claim permissions assigable to a users
-   * @returns The permission claims assignable to a users.
+   * @returns {Promise<ClaimDto[]>} The permission claims assignable to a users.
    */
   getAvailablePermissions(): Promise<ClaimDto[]>,
 }

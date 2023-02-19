@@ -9,8 +9,8 @@ export const TOKENS_SERVICE_TOKEN: string = 'TOKENS_SERVICE_TOKEN';
 export interface ITokensService {
   /**
    * Signs an access token with the supplied claims as the token payload.
-   * @param user The claims to be used as a payload when signing a token.
-   * @returns A pair of tokens (signed access token and refresh token).
+   * @param {Claims} user The claims to be used as a payload when signing a token.
+   * @returns {Promise<TokenPair>} A pair of tokens (signed access token and refresh token).
    * @async
    * @abstract
    */
@@ -18,8 +18,8 @@ export interface ITokensService {
 
   /**
    * Refreshes an access token based on a refresh token.
-   * @param tokens The pair of tokens to be refresh (access, refresh)
-   * @returns A valid pair of tokens (access, refresh).
+   * @param {TokenPair} tokens The pair of tokens to be refresh (access, refresh)
+   * @returns {Promise<TokenPair>} A valid pair of tokens (access, refresh).
    * @throws Unauthorized exception when an expired access token is invalid or refresh
    *    token is invalid/blacklisted.
    * @async

@@ -9,8 +9,10 @@ export const USERS_SERVICE_TOKEN: string = 'USERS_SERVICE_TOKEN';
 export interface IUsersService {
   /**
    * Validates a user to be signed in with user credentials (username, password).
-   * @param credentials The credentials of the user being validated for sign in.
-   * @returns The user details of validation passes else returns null (validation doesn't pass).
+   * @param {Credentials} credentials The credentials of the user being validated 
+   *    for sign in.
+   * @returns {Promise<UserDetails | null>} The user details of validation passes 
+   *    else returns null (validation doesn't pass).
    * @async
    * @abstract
    */
@@ -18,8 +20,10 @@ export interface IUsersService {
   
   /**
    * Resets a users password.
-   * @param resetPassword The user details and the password to be set for that user.
-   * @returns A response message with status of the operations.
+   * @param {ResetPasswordDto} resetPassword The user details and the password to 
+   *    be set for that user.
+   * @returns { Promise<ResponseMessage<void>>} A response message with status of 
+   *    the operations.
    * @throws Unauthorized exception when the users doesn't exist or reset token
    *    is invalid or expired.
    * @async
@@ -29,8 +33,9 @@ export interface IUsersService {
   
   /**
    * Checks to see if a users with the supplied email (query) already exists
-   * @param query 
-   * @returns An response message stating whether the email already exist (boolean flag).
+   * @param {SimpleQueryRequestDto} query 
+   * @returns {Promise<SimpleExistsQueryResponseDto>} An response message stating whether 
+   *    the email already exist (boolean flag).
    * @async
    * @abstract
    */
@@ -38,8 +43,9 @@ export interface IUsersService {
   
   /**
    * Checks to see if a users with the supplied username (query) already exists
-   * @param query 
-   * @returns A response message stating whether the username already exist (boolean flag).
+   * @param {SimpleQueryRequestDto} query 
+   * @returns {Promise<SimpleExistsQueryResponseDto>} A response message stating whether 
+   *    the username already exist (boolean flag).
    * @async
    * @abstract
    */
@@ -47,8 +53,10 @@ export interface IUsersService {
   
   /**
    * Confirms the new user accounts email address.
-   * @param confirmation The email and confirmation token for the user account to confirm.
-   * @returns A response message with status on whether the confirmation was successful.
+   * @param {ConfirmEmailDto} confirmation The email and confirmation token for the user 
+   *    account to confirm.
+   * @returns {ResponseMessage<void>} A response message with status on whether the 
+   *    confirmation was successful.
    * @async
    * @abstract
    */
@@ -56,8 +64,10 @@ export interface IUsersService {
   
   /**
    * Handles processing a request to reset a password for a users.
-   * @param forgotPassword Contains the email for the user account for the password reset request
-   * @returns A response message with whether a request was successfull or not.
+   * @param {ForgotPasswordDto} forgotPassword Contains the email for the user account 
+   *    for the password reset request
+   * @returns {Promise<ResponseMessage<void>} A response message with whether a 
+   *    request was successfull or not.
    * @async
    * @abstract
    */
