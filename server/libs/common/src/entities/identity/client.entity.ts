@@ -19,4 +19,9 @@ export class Client extends BaseEntity {
     inverseJoinColumn: { name: 'app_role_id', referencedColumnName: "id" }
   })
   public requiredRoles: Role[];
+
+  constructor(obj: Partial<Client>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

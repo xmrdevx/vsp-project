@@ -10,4 +10,9 @@ export class DeviceCode extends BaseEntity {
 
   @ManyToMany(type => User, { eager: false, cascade: true })
   public users: User[];
+
+  constructor(obj: Partial<DeviceCode>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

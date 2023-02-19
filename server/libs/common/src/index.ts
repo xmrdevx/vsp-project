@@ -31,6 +31,9 @@ export * from './enums';
 // Interfaces
 export * from './interfaces';
 
+// Mappers
+export * from './mappers';
+
 // Models
 export * from './models';
 

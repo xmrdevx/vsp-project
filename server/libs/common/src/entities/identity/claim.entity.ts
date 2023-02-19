@@ -11,4 +11,9 @@ export class Claim extends BaseEntity {
 
   @Column({ default: false })
   public isSetByTenant: boolean = false;
+
+  constructor(obj: Partial<Claim>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

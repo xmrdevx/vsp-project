@@ -14,4 +14,10 @@ export class Account extends BaseEntity {
 
   @OneToOne(type => Tenant, tenant => tenant.account)
   public tenant: Tenant;
+
+
+  constructor(obj: Partial<Account>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

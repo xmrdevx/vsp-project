@@ -1,7 +1,22 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { RpcException } from '@nestjs/microservices';
 import { FindManyOptions, ILike, In } from 'typeorm';
 
-import { AccountUsersSearchFilter, Claim, CreateUserDto, IPageable, Page, RegistrationDto, Role, RoleTypes, Tenant, UpdateUserDto, User, UserDto } from '@vsp/common';
+import { 
+  AccountUsersSearchFilter, 
+  Claim, 
+  CreateUserDto, 
+  IPageable, 
+  Page, 
+  RegistrationDto, 
+  Role, 
+  RoleTypes, 
+  Tenant, 
+  UpdateUserDto, 
+  User, 
+  UserDto, 
+  UserMapper} from '@vsp/common';
+
 import { LoggerService } from '@vsp/logger';
 
 import { IAccountsService } from '../interfaces/accounts-service.interface';
@@ -9,7 +24,6 @@ import { IClaimsRepository, CLAIMS_REPOSITORY_TOKEN } from '../interfaces/claims
 import { IRolesRepository, ROLES_REPOSITORY_TOKEN } from '../interfaces/roles-repository.interface';
 import { ITenantsRepository, TENANTS_REPOSITORY_TOKEN } from '../interfaces/tenants-repository.interface';
 import { IUsersRepository, USERS_REPOSITORY_TOKEN } from '../interfaces/users-repository.interface';
-import { RpcException } from '@nestjs/microservices';
 
 @Injectable()
 export class AccountsService implements IAccountsService {
@@ -40,9 +54,11 @@ export class AccountsService implements IAccountsService {
       .findAll({ where: [{ isSetByTenant: true }]});
 
     // Create new User from registration
-    const user: User = this._createUserEntityFromRegistration(registration, accountOwnerRoles, accountOwnClaims)
+    const user: User = await this._usersRepository.save(
+      this._createUserEntityFromRegistration(registration, accountOwnerRoles, accountOwnClaims)
+    );
 
-    return new UserDto(await this._usersRepository.save(user));
+    return UserMapper.toDto(user);
   }
 
 
@@ -64,7 +80,7 @@ export class AccountsService implements IAccountsService {
       console.log("options are ", options)
     
     const [users, count] = await this._usersRepository.findByPageable(pageable, options);
-    return new Page<UserDto>(users.map(user => new UserDto({...user})), count, pageable);
+    return new Page<UserDto>(UserMapper.toDtoList(users), count, pageable);
   }
 
 
@@ -82,19 +98,20 @@ export class AccountsService implements IAccountsService {
       )
     }
 
-    const savedUsers: User = await this._usersRepository.save(
+    const savedUser: User = await this._usersRepository.save(
       this._usersRepository.create({
         ...createUserDto
       })
     );
 
-    return new UserDto({ ...savedUsers });
+    return UserMapper.toDto(savedUser);
   }
 
 
   public async updateUser(userId: string, updateUserDto: UpdateUserDto): Promise<UserDto> {
     const existingUser: User | null = await this._usersRepository.findByCondition({
-      where: [{ id: userId }]
+      relations: ['profile', 'profile.address'],
+      where: { id: userId }
     });
 
     if (!existingUser) {
@@ -103,12 +120,36 @@ export class AccountsService implements IAccountsService {
       )
     }
 
-    const updatedUser: User = await this._usersRepository.save({
-      ...existingUser,
-      ...updateUserDto,
-    })
+    await this._usersRepository.save(
+      this._patchValuesToExistingUser(existingUser, updateUserDto)
+    );
 
-    return new UserDto({ ...updatedUser });
+    return UserMapper.toDto(existingUser);
+  }
+
+  // @TODO There should be a clean way of doing this.
+  // @Note Using spread operator cause inserts rather than updates and BeforeUpdate never fires.
+  private _patchValuesToExistingUser(existingUser: User, updateUserDto: UpdateUserDto): User {
+    // User
+    // None as of now
+    // Claims
+    existingUser.claims = updateUserDto.claims.map(c => ({...c} as Claim));
+    
+    // Profile
+    // existingUser.profile.avatarUrl = updateUserDto.profile.avatarUrl;
+    // existingUser.profile.firstName = updateUserDto.profile.firstName;
+    // existingUser.profile.lastName = updateUserDto.profile.lastName;
+    // existingUser.profile.summary = updateUserDto.profile.summary;
+
+    // Address
+    // existingUser.profile.address.city = updateUserDto.profile.address.city || null;
+    // existingUser.profile.address.country = updateUserDto.profile.address.country || null;
+    // existingUser.profile.address.state = updateUserDto.profile.address.state || null;
+    // existingUser.profile.address.street = updateUserDto.profile.address.street || null;
+    // existingUser.profile.address.street2 = updateUserDto.profile.address.street2 || null;
+    // existingUser.profile.address.zip = updateUserDto.profile.address.zip || null;
+
+    return existingUser;
   }
 
 

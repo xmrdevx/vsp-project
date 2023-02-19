@@ -126,7 +126,7 @@ export class AccountsController {
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   @Put('users/:userId')
-  public updateAccountUser(@Param() userId: string, @Body() updateUser: UpdateUserDto): Observable<UserDto> {
+  public updateAccountUser(@Param('userId') userId: string, @Body() updateUser: UpdateUserDto): Observable<UserDto> {
     return this._identityServiceClient
       .send(
         updateAccountUserCommand,

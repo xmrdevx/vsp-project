@@ -18,4 +18,9 @@ export class StreamKey extends BaseEntity {
 
   @ManyToMany(type => User, { eager: false, cascade: true })
   public users: User[];
+
+  constructor(obj: Partial<StreamKey>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

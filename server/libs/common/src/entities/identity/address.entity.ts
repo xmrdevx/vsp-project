@@ -4,24 +4,29 @@ import { Profile } from "./profile.entity";
 
 @Entity({ name: 'app_address' })
 export class Address extends BaseEntity {
-  @Column({ nullable: true })
-  public street: string;
+  @Column({ type: String, nullable: true })
+  public street: string | undefined;
 
-  @Column({ nullable: true })
-  public street2: string;
+  @Column({ type: String, nullable: true })
+  public street2: string | undefined;
 
-  @Column({ nullable: true })
-  public city: string;
+  @Column({ type: String, nullable: true })
+  public city: string | undefined;
 
-  @Column({ nullable: true })
-  public state: string;
+  @Column({ type: String, nullable: true })
+  public state: string | undefined;
 
-  @Column({ nullable: true })
-  public zip: string;
+  @Column({  type: String,nullable: true })
+  public zip: string | undefined;
 
-  @Column({ nullable: true })
-  public country: string;
+  @Column({ type: String, nullable: true })
+  public country: string | undefined;
 
   @OneToOne(type => Profile, profile => profile.address)
   public profile: Profile;
+
+  constructor(obj: Partial<Address>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

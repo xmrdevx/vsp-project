@@ -14,7 +14,8 @@ import {
   MapBoundsDto,
   CreateOffenderDto,
   UpdateOffenderDto,
-  DeleteOffenderDto} from '@vsp/common';
+  DeleteOffenderDto,
+  OffenderMapper} from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 import { off } from 'process';
@@ -40,7 +41,7 @@ export class OffendersService implements IOffendersService {
     const newOffender: Offender = await this._offendersRepository.save(
       this._offendersRepository.create({ ...offender })
     );
-    return new OffenderDto(newOffender);
+    return OffenderMapper.toDto(newOffender);
   }
 
 
@@ -59,7 +60,7 @@ export class OffendersService implements IOffendersService {
         ...offender
       });
 
-    return new OffenderDto(updatedOffender);
+    return OffenderMapper.toDto(updatedOffender);
   }
 
 
@@ -83,7 +84,7 @@ export class OffendersService implements IOffendersService {
       cases: existingOffender?.cases?.map(c => ({ ...c, deletedOn, deletedById })) || []
     });
 
-    return new OffenderDto(updatedOffender);
+    return OffenderMapper.toDto(updatedOffender);
   }
 
   
@@ -126,7 +127,7 @@ export class OffendersService implements IOffendersService {
       .offset(+pageable.getPageNumber() * +pageable.getPageSize())
       .getManyAndCount();
     
-    return new Page<OffenderDto>(elements, count, pageable);
+    return new Page<OffenderDto>(OffenderMapper.toDtoList(elements), count, pageable);
   }
 
   
@@ -152,12 +153,12 @@ export class OffendersService implements IOffendersService {
       .offset(+pageable.getPageNumber() * +pageable.getPageSize())
       .getManyAndCount();
 
-    return new Page<OffenderDto>(elements, count, pageable);
+    return new Page<OffenderDto>(OffenderMapper.toDtoList(elements), count, pageable);
   }
 
   
   public async getLatestOffendersByCount(count: number): Promise<OffenderDto[]> {
-    return await this._offendersRepository
+    const offenders: Offender[] = await this._offendersRepository
       .getRepository()
       .createQueryBuilder('o')
       .select(['o', 'c'])
@@ -165,6 +166,8 @@ export class OffendersService implements IOffendersService {
       .orderBy('c.openedOn', 'DESC')
       .take(count)
       .getMany();
+
+    return OffenderMapper.toDtoList(offenders);
   }
 
   public async getOffenderById(offenderId: string): Promise<OffenderDto> {
@@ -179,7 +182,7 @@ export class OffendersService implements IOffendersService {
       );
     }
 
-    return offender;
+    return OffenderMapper.toDto(offender);
   }
 
   

@@ -11,11 +11,11 @@ export class Profile extends BaseEntity {
   @Column()
   public lastName: string;
 
-  @Column({ nullable: true })
-  public summary: string;
+  @Column({ type: String, nullable: true })
+  public summary: string | undefined;
 
-  @Column({ nullable: true })
-  public avatarUrl: string;
+  @Column({ type: String, nullable: true })
+  public avatarUrl: string | undefined;
 
   @Column({ name: 'app_address_id' })
   public addressId: string;
@@ -26,4 +26,9 @@ export class Profile extends BaseEntity {
 
   @OneToOne(type => User, user => user.profile)
   public user: User;
+
+  constructor(obj: Partial<Profile>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

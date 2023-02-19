@@ -13,7 +13,7 @@ export class Case extends BaseTrackedEntity {
   public openedOn: Date;
 
   @Column({ type: 'timestamp with time zone', nullable: true })
-  public closedOn: Date | null | undefined;
+  public closedOn: Date | undefined;
 
   @Column({ type: 'enum', enum: CaseStatus, default: CaseStatus.OPEN })
   public status: CaseStatus;
@@ -46,4 +46,9 @@ export class Case extends BaseTrackedEntity {
   public tenant: Tenant;
 
   // @TODO media
+
+  constructor(obj: Partial<Case>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

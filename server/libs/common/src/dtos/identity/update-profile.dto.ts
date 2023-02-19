@@ -11,8 +11,8 @@ export class UpdateProfileDto {
   @IsNotEmpty()
   public lastName: string;
 
-  public summary?: string;
-  public avatarUrl?: string;
+  public summary?: string | null;
+  public avatarUrl?: string | null;
 
   @IsDefined()
   @IsNotEmpty()

@@ -15,4 +15,9 @@ export class GeoLocation extends BaseEntity {
 
   @Column({ type: 'geography', spatialFeatureType: 'Point', srid: 4326 })
   public location: Point;
+
+  constructor(obj: Partial<GeoLocation>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

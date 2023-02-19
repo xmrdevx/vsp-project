@@ -17,5 +17,10 @@ export class Offender extends BaseTrackedEntity {
   public summary: string;
 
   @OneToMany(type => Case, c => c.offender)
-  public cases: Case[]; 
+  public cases: Case[];
+
+  constructor(obj: Partial<Offender>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

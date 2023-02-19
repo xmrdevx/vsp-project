@@ -23,4 +23,9 @@ export class Tenant extends BaseEntity {
 
   @OneToMany(type => User, user => user.tenant)
   public users: User[];
+
+  constructor(obj: Partial<Tenant>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

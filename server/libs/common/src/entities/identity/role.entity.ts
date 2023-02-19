@@ -14,4 +14,9 @@ export class Role extends BaseEntity {
     inverseJoinColumn: { name: 'app_claim_id', referencedColumnName: "id" }
   })
   public claims: Claim[] | null | undefined;
+
+  constructor(obj: Partial<Role>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

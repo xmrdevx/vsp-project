@@ -25,4 +25,9 @@ export class Stream extends BaseEntity {
   @ManyToOne(type => User, { nullable: false })
   @JoinColumn({ name: 'app_user_id' })
   public user: User;
+
+  constructor(obj: Partial<Stream>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

@@ -18,4 +18,9 @@ export class RefreshToken extends BaseEntity {
   @ManyToOne(type => User, { nullable: false })
   @JoinColumn({ name: 'app_user_id' })
   public user: User;
+
+  constructor(obj: Partial<RefreshToken>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

@@ -50,7 +50,7 @@ export class User extends BaseEntity {
   @Column({ name: 'app_profile_id' })
   public profileId: string;
 
-  @OneToOne(type => Profile, profile => profile.user, { nullable: false, cascade: ['insert'] })
+  @OneToOne(type => Profile, profile => profile.user, { nullable: false, cascade: ['insert', 'update'] })
   @JoinColumn({ name: 'app_profile_id' })
   public profile: Profile;
 
@@ -99,5 +99,10 @@ export class User extends BaseEntity {
   @BeforeInsert()
   public hashPassword() {
     this.password = HashingUtils.hash(this.password);
+  }
+
+  constructor(obj: Partial<User>) {
+    super();
+    Object.assign(this, obj);
   }
 }

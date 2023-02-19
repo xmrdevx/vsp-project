@@ -2,7 +2,7 @@ import { BadRequestException, Inject, Injectable, NotFoundException } from '@nes
 import { RpcException } from '@nestjs/microservices';
 import { Point } from 'geojson';
 
-import { Case, CaseDto, CreateCaseDto, CreateCaseWithOffenderDto, GeoLocation, MapBoundsDto, MapCoordinateDto, MapMarkerDto, Offender, UpdateCaseDto } from '@vsp/common';
+import { Case, CaseDto, CaseMapper, CreateCaseDto, CreateCaseWithOffenderDto, GeoLocation, MapBoundsDto, MapCoordinateDto, MapMarkerDto, Offender, UpdateCaseDto } from '@vsp/common';
 import { DeleteCaseDto } from '@vsp/common/dtos/offenders/delete-case.dto';
 import { CaseStatus } from '@vsp/common/enums/case-status.enum';
 import { LoggerService } from '@vsp/logger';
@@ -53,8 +53,7 @@ export class CasesService {
     );
     newCase.offender = offender;
 
-    console.log("new case", newCase);
-    return new CaseDto(newCase);
+    return CaseMapper.toDto(newCase);
   }
 
 
@@ -75,12 +74,12 @@ export class CasesService {
           ]
         } as Point
       },
-      closedOn: updateCaseDto.status === CaseStatus.CLOSED ? new Date() : null
+      closedOn: updateCaseDto.status === CaseStatus.CLOSED ? new Date() : undefined
     });
     
     updatedCase.offender = existingCase.offender;
 
-    return new CaseDto(updatedCase);
+    return CaseMapper.toDto(updatedCase);
   }
   
 
@@ -90,7 +89,7 @@ export class CasesService {
 
     updatedCaseDto.offender = existingCase.offender;
 
-    return new CaseDto(updatedCaseDto);
+    return CaseMapper.toDto(updatedCaseDto);
   }
 
 
@@ -130,7 +129,7 @@ export class CasesService {
       })
     );
     
-    return new CaseDto(newCase);
+    return CaseMapper.toDto(newCase);
   }
 
 
@@ -155,7 +154,7 @@ export class CasesService {
           latitude: c.caughtAt?.latitude || 0,
           longitude: c.caughtAt?.longitude || 0
         } satisfies MapCoordinateDto),
-        payload: new CaseDto(c)
+        payload: CaseMapper.toDto(c)
       } satisfies MapMarkerDto<CaseDto>));
   }
 
