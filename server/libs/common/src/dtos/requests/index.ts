@@ -4,6 +4,7 @@ export * from './delete-resource-request.dto';
 export * from './get-offender-by-id-request.dto';
 export * from './get-offender-case-markers-by-bounds-request.dto';
 export * from './get-latest-offenders-request.dto';
+export * from './search-account-users-request.dto';
 export * from './search-offenders-request.dto';
 export * from './search-offenders-by-bounds-request.dto';
 export * from './update-resource-request.dto';

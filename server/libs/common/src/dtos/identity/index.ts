@@ -17,5 +17,6 @@ export * from './reset-password.dto';
 export * from './role.dto';
 export * from './tenant.dto';
 export * from './token-pair.dto';
+export * from './update-user.dto';
 export * from './user.dto';
 export * from './user-details.dto';

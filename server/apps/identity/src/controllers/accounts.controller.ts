@@ -5,17 +5,26 @@ import { LoggerService } from '@vsp/logger';
 import { 
   confirmEmailCommand, 
   ConfirmEmailDto, 
-  doesEmailExist, 
-  doesUsernameExist, 
+  createAccountUserCommand, 
+  CreateResourceRequest, 
+  CreateUserDto, 
+  doesEmailExistCommand, 
+  doesUsernameExistCommand, 
   forgotPasswordCommand, 
   ForgotPasswordDto, 
+  Page, 
   registerAccountCommand, 
   RegistrationDto, 
   resetPasswordCommand, 
   ResetPasswordDto, 
   ResponseMessage, 
+  searchAccountUsersCommand, 
+  SearchAccountUsersRequest, 
   SimpleExistsQueryResponseDto, 
   SimpleQueryRequestDto, 
+  updateAccountUserCommand, 
+  UpdateResourceRequest, 
+  UpdateUserDto, 
   UserDto} from '@vsp/common';
 
 import { ACCOUNTSS_SERVICE_TOKEN, IAccountsService } from '../interfaces/accounts-service.interface';
@@ -82,7 +91,7 @@ export class AccountsController {
     }
   }
 
-  @MessagePattern(doesEmailExist)
+  @MessagePattern(doesEmailExistCommand)
   public async doesEmailExist(query: SimpleQueryRequestDto): Promise<SimpleExistsQueryResponseDto> {
     try {
       return await this._usersService.doesEmailExist(query);
@@ -92,12 +101,43 @@ export class AccountsController {
     }
   }
 
-  @MessagePattern(doesUsernameExist)
+  @MessagePattern(doesUsernameExistCommand)
   public async doesUsernameExist(query: SimpleQueryRequestDto): Promise<SimpleExistsQueryResponseDto> {
     try {
       return await this._usersService.doesUsernameExist(query);
     } catch (error) {
       this._logger.error('Error confirming email', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(searchAccountUsersCommand)
+  public async searchAccountUsers(request: SearchAccountUsersRequest): Promise<Page<UserDto>> {
+    try {
+      request = new SearchAccountUsersRequest(request);
+      return await this._accountsService.searchUsers(request.filter, request.pageable);
+    } catch (error) {
+      this._logger.error('Error searching account users', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(createAccountUserCommand)
+  public async createAccountUsers(request: CreateResourceRequest<CreateUserDto>): Promise<UserDto> {
+    try {
+      return await this._accountsService.createUser(request.resource);
+    } catch (error) {
+      this._logger.error('Error searching account users', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(updateAccountUserCommand)
+  public async updateAccountUsers(request: UpdateResourceRequest<UpdateUserDto>): Promise<UserDto> {
+    try {
+      return await this._accountsService.updateUser(request.resourceId, request.resource);
+    } catch (error) {
+      this._logger.error('Error searching account users', error);
       throw error;
     }
   }

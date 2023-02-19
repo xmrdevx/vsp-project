@@ -1,9 +1,9 @@
 import { Transform, TransformFnParams, Type } from 'class-transformer';
 import { IsDefined, IsEmail, IsNotEmpty, IsOptional, ValidateNested,  } from 'class-validator';
 import { ClaimDto } from './claim.dto';
-import { CreateProfileDto } from './create-profile.dto';
+import { UpdateProfileDto } from './update-profile.dto';
 
-export class CreateUserDto {
+export class UpdateUserDto {
   @IsDefined()
   @IsNotEmpty()
   @Transform(({ value }: TransformFnParams) => value?.trim().toLowerCase())
@@ -26,8 +26,8 @@ export class CreateUserDto {
   @IsDefined()
   @IsNotEmpty()
   @ValidateNested()
-  @Type(() => CreateProfileDto)
-  public profile: CreateProfileDto;
+  @Type(() => UpdateProfileDto)
+  public profile: UpdateProfileDto;
 
   @IsOptional()
   public claims: ClaimDto[]
@@ -35,7 +35,7 @@ export class CreateUserDto {
   @IsOptional()
   public tenantId: string;
 
-  constructor(obj: Partial<CreateUserDto>) {
+  constructor(obj: Partial<UpdateUserDto>) {
     Object.assign(this, obj);
   }
 }
