@@ -133,6 +133,7 @@ export class AccountsService implements IAccountsService {
   public async lockoutUser(userId: string, lockoutUserRequest: LockoutUserRequest): Promise<ResponseMessage<void>> {
     const existingUser: User | null = await this._usersRepository
       .findByCondition({
+        relations: ['refreshTokens'],
         where: [{ id: userId, tenantId: lockoutUserRequest.tenantId }]
       });
 
@@ -143,6 +144,12 @@ export class AccountsService implements IAccountsService {
     }
 
     existingUser.isLockedOut = lockoutUserRequest.isLockedOut;
+
+    // If user is being locked out, blacklist their refresh tokens as well.
+    if (lockoutUserRequest.isLockedOut) {
+      existingUser.refreshTokens?.forEach(token => token.isBlacklisted = true);
+    }
+
     await this._usersRepository.save(existingUser);
 
     return new ResponseMessage<void>({
