@@ -129,25 +129,24 @@ export class AccountsService implements IAccountsService {
 
   // @TODO There should be a clean way of doing this.
   // @Note Using spread operator cause inserts rather than updates and BeforeUpdate never fires.
+  //       Might consider moving this to UserMapper. patchToEntity(entity:  Entity, dto: Updatedto): Entity
   private _patchValuesToExistingUser(existingUser: User, updateUserDto: UpdateUserDto): User {
-    // User
-    // None as of now
     // Claims
     existingUser.claims = updateUserDto.claims.map(c => ({...c} as Claim));
     
     // Profile
-    // existingUser.profile.avatarUrl = updateUserDto.profile.avatarUrl;
-    // existingUser.profile.firstName = updateUserDto.profile.firstName;
-    // existingUser.profile.lastName = updateUserDto.profile.lastName;
-    // existingUser.profile.summary = updateUserDto.profile.summary;
+    existingUser.profile.avatarUrl = updateUserDto.profile.avatarUrl;
+    existingUser.profile.firstName = updateUserDto.profile.firstName;
+    existingUser.profile.lastName = updateUserDto.profile.lastName;
+    existingUser.profile.summary = updateUserDto.profile.summary;
 
     // Address
-    // existingUser.profile.address.city = updateUserDto.profile.address.city || null;
-    // existingUser.profile.address.country = updateUserDto.profile.address.country || null;
-    // existingUser.profile.address.state = updateUserDto.profile.address.state || null;
-    // existingUser.profile.address.street = updateUserDto.profile.address.street || null;
-    // existingUser.profile.address.street2 = updateUserDto.profile.address.street2 || null;
-    // existingUser.profile.address.zip = updateUserDto.profile.address.zip || null;
+    existingUser.profile.address.city = updateUserDto.profile.address.city;
+    existingUser.profile.address.country = updateUserDto.profile.address.country;
+    existingUser.profile.address.state = updateUserDto.profile.address.state;
+    existingUser.profile.address.street = updateUserDto.profile.address.street;
+    existingUser.profile.address.street2 = updateUserDto.profile.address.street2;
+    existingUser.profile.address.zip = updateUserDto.profile.address.zip;
 
     return existingUser;
   }

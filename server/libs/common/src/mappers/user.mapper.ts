@@ -1,4 +1,4 @@
-import { UserDto } from '../dtos/identity';
+import { UpdateUserDto, UserDto } from '../dtos/identity';
 import { User } from '../entities/identity';
 import { ProfileMapper } from './profile.mapper';
 import { TenantMapper } from './tenant.mapper';
