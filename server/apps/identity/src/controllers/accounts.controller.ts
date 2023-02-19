@@ -12,6 +12,8 @@ import {
   doesUsernameExistCommand, 
   forgotPasswordCommand, 
   ForgotPasswordDto, 
+  lockoutAccountUserCommand, 
+  LockoutUserRequest, 
   Page, 
   registerAccountCommand, 
   RegistrationDto, 
@@ -136,6 +138,16 @@ export class AccountsController {
   public async updateAccountUsers(request: UpdateResourceRequest<UpdateUserDto>): Promise<UserDto> {
     try {
       return await this._accountsService.updateUser(request.resourceId, request.resource);
+    } catch (error) {
+      this._logger.error('Error searching account users', error);
+      throw error;
+    }
+  }
+
+  @MessagePattern(lockoutAccountUserCommand)
+  public async lockoutAccountUser(request: UpdateResourceRequest<LockoutUserRequest>): Promise<ResponseMessage<void>> {
+    try {
+      return await this._accountsService.lockoutUser(request.resourceId, request.resource);
     } catch (error) {
       this._logger.error('Error searching account users', error);
       throw error;

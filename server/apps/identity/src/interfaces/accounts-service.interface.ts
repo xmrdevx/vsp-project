@@ -1,4 +1,4 @@
-import { AccountUsersSearchFilter, CreateUserDto, IPageable, Page, RegistrationDto, UpdateUserDto, UserDto } from '@vsp/common';
+import { AccountUsersSearchFilter, CreateUserDto, IPageable, LockoutUserRequest, Page, RegistrationDto, ResponseMessage, UpdateUserDto, UserDto } from '@vsp/common';
 
 export const ACCOUNTSS_SERVICE_TOKEN: string = 'ACCOUNTS_SERVICE_TOKEN';
 
@@ -44,4 +44,14 @@ export interface IAccountsService {
    * @abstract
    */
   updateUser(userId: string, updateUserDto: UpdateUserDto): Promise<UserDto>;
+
+  /**
+   * Sets the isLockedOut flag for a user.  This can enable/disable the user's ability to sign in.
+   * @param {string} userId The id of the user to lockout.
+   * @param {LockoutUserRequest} lockoutUserRequest The new lockout status of the user.
+   * @returns A response message and status of whether the lockout was successful or not.
+   * @async
+   * @abstract
+   */
+  lockoutUser(userId: string, lockoutUserRequest: LockoutUserRequest): Promise<ResponseMessage<void>>;
 }

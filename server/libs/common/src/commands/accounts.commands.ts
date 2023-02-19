@@ -39,3 +39,7 @@ export const updateAccountUserCommand: MessagePatternCommand<void> = {
   cmd: 'update-account-user'
 } as MessagePatternCommand<void>;
 
+export const lockoutAccountUserCommand: MessagePatternCommand<void> = {
+  cmd: 'lockout-account-user'
+} as MessagePatternCommand<void>;
+

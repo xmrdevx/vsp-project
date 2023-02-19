@@ -1,4 +1,4 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { FindManyOptions, ILike, In } from 'typeorm';
 
@@ -7,8 +7,11 @@ import {
   Claim, 
   CreateUserDto, 
   IPageable, 
+  LockoutUserRequest, 
   Page, 
   RegistrationDto, 
+  ResponseMessage, 
+  ResponseStatus, 
   Role, 
   RoleTypes, 
   Tenant, 
@@ -125,6 +128,28 @@ export class AccountsService implements IAccountsService {
     );
 
     return UserMapper.toDto(existingUser);
+  }
+
+  public async lockoutUser(userId: string, lockoutUserRequest: LockoutUserRequest): Promise<ResponseMessage<void>> {
+    const existingUser: User | null = await this._usersRepository
+      .findByCondition({
+        where: [{ id: userId, tenantId: lockoutUserRequest.tenantId }]
+      });
+
+    if (!existingUser) {
+      throw new RpcException(
+        new NotFoundException('User was not found!')
+      );
+    }
+
+    existingUser.isLockedOut = lockoutUserRequest.isLockedOut;
+    await this._usersRepository.save(existingUser);
+
+    return new ResponseMessage<void>({
+      status: ResponseStatus.SUCCESS,
+      message: `Successfully updated the users lockout status`,
+      payload: null
+    });
   }
 
   // @TODO There should be a clean way of doing this.

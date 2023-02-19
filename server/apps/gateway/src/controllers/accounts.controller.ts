@@ -19,12 +19,15 @@ import {
   ForgotPasswordDto, 
   IDENTITY_SERVICE_TOKEN, 
   IPageable, 
+  lockoutAccountUserCommand, 
+  LockoutUserRequest, 
   Page, 
   PageRequest, 
   registerAccountCommand, 
   RegistrationDto, 
   resetPasswordCommand, 
   ResetPasswordDto, 
+  ResponseMessage, 
   searchAccountUsersCommand, 
   SearchAccountUsersRequest, 
   SimpleQueryRequestDto, 
@@ -133,6 +136,24 @@ export class AccountsController {
         new UpdateResourceRequest<UpdateUserDto>({
           resourceId: userId,
           resource: updateUser
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+  @Put('users/:userId/lockout')
+  public lockoutAccountUser(
+    @Param('userId') userId: string, 
+    @Body() lockoutUserRequest: LockoutUserRequest
+  ): Observable<ResponseMessage<void>> {
+    return this._identityServiceClient
+      .send(
+        lockoutAccountUserCommand,
+        new UpdateResourceRequest<LockoutUserRequest>({
+          resourceId: userId,
+          resource: lockoutUserRequest
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
