@@ -1,4 +1,4 @@
-import { DistanceUnit } from '../distance-unit.enum';
+import { DistanceUnit } from '../../enums/distance-unit.enum';
 import { GeocodingLocation } from '../maps/map.model';
 
 export interface VideosSearchFilter {

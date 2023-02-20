@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 
 import { MissingPerson } from '../entities/missing-person.entity';
 import { Comment } from '../entities/comment.entity';
-import { MissingSearchFilter, PageRequest, Page, DistanceUnit } from '../models';
+import { MissingSearchFilter, PageRequest, Page } from '../models';
+import { DistanceUnit } from '../enums';
 import { AbstractCrudService } from './abstract-crud.service';
 import { EnvironmentService } from './environment.service';
 

@@ -1,4 +1,4 @@
-import { MeasurementUnit, PersonSex } from '../models';
+import { MeasurementUnit, PersonSex } from '../enums';
 import { BaseEntity } from './base.entity';
 
 export interface Person extends BaseEntity {

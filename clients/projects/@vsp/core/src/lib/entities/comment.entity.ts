@@ -1,4 +1,4 @@
-import { User } from './user.entity';
+import { User } from './identity/user.entity';
 import { BaseEntity } from './base.entity';
 
 export interface Comment extends BaseEntity {

@@ -1,23 +1,26 @@
-export * from './user.entity';
-export * from './profile.entity';
-export * from './base-template-module-permission.entity';
-export * from './base-template-permission.entity';
 export * from './base.entity';
-export * from './module-permission.entity';
-export * from './permission.entity';
-export * from './template-module-permission-name.entity';
-export * from './template-module-permission.entity';
-export * from './template-permission.entity';
-export * from './user-module-permission.entity';
-export * from './user-permission.entity';
-export * from './tenant.entity';
+export * from './base-tracked.entity';
 
-export * from './case.entity';
+// Old Entities
 export * from './media.entity';
 export * from './missing-person.entity';
-export * from './offender.entity';
 export * from './person.entity';
 export * from './team-announcement.entity';
 export * from './comment.entity';
-export * from './geo-location.entity';
 export * from './team.entity';
+
+// Geocoding
+export * from './geocoding/geo-location.entity';
+
+// Identity
+export * from './identity/role.entity';
+export * from './identity/claim.entity';
+export * from './identity/account.entity';
+export * from './identity/address.entity';
+export * from './identity/user.entity';
+export * from './identity/profile.entity';
+export * from './identity/tenant.entity';
+
+// Offenders
+export * from './offenders/case.entity';
+export * from './offenders/offender.entity';

@@ -1,6 +1,7 @@
 import { ResponseStatus } from './response-status.enum';
 
-export interface ResponseMessage {
+export interface ResponseMessage<T> {
   status: ResponseStatus,
-  message: string
+  message: string,
+  payload?: T
 }

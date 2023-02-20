@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Media, Comment } from '../entities';
-import { DistanceUnit, Page, PageRequest } from '../models';
+import { Page, PageRequest } from '../models';
+import { DistanceUnit } from '../enums';
 
 import { AbstractCrudService } from './abstract-crud.service';
 import { EnvironmentService } from './environment.service';
