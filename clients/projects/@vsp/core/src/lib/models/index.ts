@@ -10,6 +10,7 @@ export * from './authentication/authenticated-user.model';
 export * from './authentication/authentication-response.model';
 export * from './authentication/credentials.model';
 export * from './authentication/forgot-password.model';
+export * from './authentication/lockout-user-request.model';
 export * from './authentication/refresh-token-request.model';
 export * from './authentication/registration-profile.model';
 export * from './authentication/registration-user.model';
