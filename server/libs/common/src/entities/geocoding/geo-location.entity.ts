@@ -4,8 +4,8 @@ import { BaseEntity } from '../base.entity';
 
 @Entity()
 export class GeoLocation extends BaseEntity {
-  @Column({ nullable: true })
-  public fullAddressString: string;
+  @Column({ type: String, nullable: true })
+  public fullAddressString: string | null | undefined;
 
   @Column({ type: 'float8' })
   public latitude: number;

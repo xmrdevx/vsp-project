@@ -4,9 +4,9 @@ import { AddressDto } from './address.dto';
 export class ProfileDto extends BaseDto {
   public firstName: string;
   public lastName: string;
-  public summary: string;
-  public avatarUrl: string;
-  public address: AddressDto;
+  public summary: string | null | undefined;
+  public avatarUrl: string | null | undefined;
+  public address: AddressDto | null | undefined;
 
   constructor(obj: Partial<ProfileDto>) {
     super();

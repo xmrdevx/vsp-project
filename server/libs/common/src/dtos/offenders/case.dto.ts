@@ -7,12 +7,12 @@ import { OffenderDto } from './offender.dto';
 
 export class CaseDto extends BaseDto {
   public openedOn: Date;
-  public closedOn: Date | undefined;
+  public closedOn: Date | null | undefined;
   public status: CaseStatus;
   public visibility: Visibility;
-  public summary: string;
-  public offender: OffenderDto | undefined;
-  public caughtAt: GeoLocationDto | undefined;  
+  public summary: string | null | undefined;
+  public offender: OffenderDto | null | undefined;
+  public caughtAt: GeoLocationDto | null | undefined;  
 
   constructor(obj: Partial<CaseDto>) {
     super();

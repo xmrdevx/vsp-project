@@ -2,7 +2,7 @@ import { MapCoordinateDto } from './map-coordinate.dto';
 
 export class GeocodingLocationDto {
   public location: MapCoordinateDto;
-  public fullAddressString: string;
+  public fullAddressString: string  | null | undefined;
 
   constructor(obj: Partial<GeocodingLocationDto>) {
     Object.assign(this, {

@@ -10,8 +10,6 @@ import { Tenant } from './tenant.entity';
 
 import { HashingUtils } from '../../utils/hashing.utils';
 import { StreamKey } from '../streams/stream-key.entity';
-import { Stream } from '../streams/stream.entity';
-import { Case } from '../offenders/case.entity';
 
 @Entity({ name: 'app_user' })
 export class User extends BaseEntity {

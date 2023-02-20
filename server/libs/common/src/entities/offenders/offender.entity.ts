@@ -10,14 +10,14 @@ export class Offender extends BaseTrackedEntity {
   @Column()
   public lastName: string;
   
-  @Column()
-  public avatarUrl: string;
+  @Column({ type: String, nullable: true })
+  public avatarUrl: string | null | undefined;
   
-  @Column()
-  public summary: string;
+  @Column({ type: String, nullable: true })
+  public summary: string | null | undefined;
 
   @OneToMany(type => Case, c => c.offender)
-  public cases: Case[];
+  public cases: Case[] | null | undefined;
 
   constructor(obj: Partial<Offender>) {
     super();

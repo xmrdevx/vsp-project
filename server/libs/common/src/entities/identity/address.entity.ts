@@ -5,22 +5,22 @@ import { Profile } from "./profile.entity";
 @Entity({ name: 'app_address' })
 export class Address extends BaseEntity {
   @Column({ type: String, nullable: true })
-  public street: string | undefined;
+  public street: string | null | undefined;
 
   @Column({ type: String, nullable: true })
-  public street2: string | undefined;
+  public street2: string | null | undefined;
 
   @Column({ type: String, nullable: true })
-  public city: string | undefined;
+  public city: string | null | undefined;
 
   @Column({ type: String, nullable: true })
-  public state: string | undefined;
+  public state: string | null | undefined;
 
   @Column({  type: String,nullable: true })
-  public zip: string | undefined;
+  public zip: string | null | undefined;
 
   @Column({ type: String, nullable: true })
-  public country: string | undefined;
+  public country: string | null | undefined;
 
   @OneToOne(type => Profile, profile => profile.address)
   public profile: Profile;

@@ -83,6 +83,7 @@ export class AccountsService implements IAccountsService {
       console.log("options are ", options)
     
     const [users, count] = await this._usersRepository.findByPageable(pageable, options);
+    console.log('users', users)
     return new Page<UserDto>(UserMapper.toDtoList(users), count, pageable);
   }
 
@@ -173,13 +174,15 @@ export class AccountsService implements IAccountsService {
     existingUser.profile.summary = updateUserDto.profile.summary;
 
     // Address
-    existingUser.profile.address.city = updateUserDto.profile.address.city;
-    existingUser.profile.address.country = updateUserDto.profile.address.country;
-    existingUser.profile.address.state = updateUserDto.profile.address.state;
-    existingUser.profile.address.street = updateUserDto.profile.address.street;
-    existingUser.profile.address.street2 = updateUserDto.profile.address.street2;
-    existingUser.profile.address.zip = updateUserDto.profile.address.zip;
-
+    if (existingUser?.profile?.address) {
+      existingUser.profile.address.city = updateUserDto.profile.address.city;
+      existingUser.profile.address.country = updateUserDto.profile.address.country;
+      existingUser.profile.address.state = updateUserDto.profile.address.state;
+      existingUser.profile.address.street = updateUserDto.profile.address.street;
+      existingUser.profile.address.street2 = updateUserDto.profile.address.street2;
+      existingUser.profile.address.zip = updateUserDto.profile.address.zip;
+    }
+    
     return existingUser;
   }
 

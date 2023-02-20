@@ -12,17 +12,17 @@ export class Profile extends BaseEntity {
   public lastName: string;
 
   @Column({ type: String, nullable: true })
-  public summary: string | undefined;
+  public summary: string | null | undefined;
 
   @Column({ type: String, nullable: true })
-  public avatarUrl: string | undefined;
+  public avatarUrl: string | null | undefined;
 
   @Column({ name: 'app_address_id' })
   public addressId: string;
 
   @OneToOne(type => Address, address => address.profile, { nullable: false, cascade: ['insert', 'update'] })
   @JoinColumn({ name: 'app_address_id' })
-  public address: Address;
+  public address: Address | null | undefined;
 
   @OneToOne(type => User, user => user.profile)
   public user: User;

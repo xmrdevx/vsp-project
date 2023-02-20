@@ -1,7 +1,7 @@
 import { BaseDto } from '../base.dto'
 
 export class GeoLocationDto extends BaseDto {
-  public fullAddressString: string;
+  public fullAddressString: string | null | undefined;
   public latitude: number;
   public longitude: number;
 

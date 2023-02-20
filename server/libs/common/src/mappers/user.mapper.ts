@@ -1,4 +1,4 @@
-import { UpdateUserDto, UserDto } from '../dtos/identity';
+import { UserDto } from '../dtos/identity';
 import { User } from '../entities/identity';
 import { ProfileMapper } from './profile.mapper';
 import { TenantMapper } from './tenant.mapper';
@@ -11,6 +11,7 @@ export class UserMapper {
       updatedOn: entity.updatedOn,
       email: entity.email,
       username: entity.username,
+      isLockedOut: entity.isLockedOut,
       profile: entity?.profile ? ProfileMapper.toDto(entity.profile) : undefined,
       tenant: entity?.tenant ? TenantMapper.toDto(entity.tenant) : undefined
     });

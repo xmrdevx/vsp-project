@@ -13,7 +13,7 @@ export class Case extends BaseTrackedEntity {
   public openedOn: Date;
 
   @Column({ type: 'timestamp with time zone', nullable: true })
-  public closedOn: Date | undefined;
+  public closedOn: Date | null | undefined;
 
   @Column({ type: 'enum', enum: CaseStatus, default: CaseStatus.OPEN })
   public status: CaseStatus;
@@ -21,8 +21,8 @@ export class Case extends BaseTrackedEntity {
   @Column({ type: 'enum', enum: Visibility, default: Visibility.PRIVATE })
   public visibility: Visibility;
 
-  @Column({ nullable: true })
-  public summary: string;
+  @Column({ type: String, nullable: true })
+  public summary: string | null | undefined;
 
   @Column()
   public offenderId: string;
@@ -31,12 +31,12 @@ export class Case extends BaseTrackedEntity {
   @JoinColumn()
   public offender: Offender;
 
-  @Column({ nullable: true })
-  public caughtAtId: string;
+  @Column({ type: String, nullable: true })
+  public caughtAtId: string | null | undefined;
 
   @OneToOne(type => GeoLocation, { nullable: true, cascade: ['insert'] })
   @JoinColumn()
-  public caughtAt: GeoLocation | null;
+  public caughtAt: GeoLocation | null | undefined;
 
   @Column()
   public tenantId: string;
