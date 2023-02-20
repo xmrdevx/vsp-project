@@ -6,12 +6,12 @@ export const selectPermissionsState = createFeatureSelector<PermissionsState>(
   permissionsFeature.name
 );
 
-// export const selectAssignableModulePermissions = createSelector(
-//   selectPermissionsState,
-//   (state: PermissionsState) => state.assignableModulePermissions
-// );
+export const selectAssignablePermissions = createSelector(
+  selectPermissionsState,
+  (state: PermissionsState) => state.assignablePermissions
+);
 
 export const PermissionsSelectors = {
   selectPermissionsState,
-  // selectAssignableModulePermissions
+  selectAssignablePermissions
 };
