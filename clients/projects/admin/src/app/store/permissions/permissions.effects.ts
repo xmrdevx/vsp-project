@@ -4,7 +4,7 @@ import { catchError, mergeMap, of, switchMap } from 'rxjs';
 
 import { PermissionsService } from '@vsp/admin/core/services';
 
-import { ModulePermission, ResponseMessage, ResponseStatus } from '@vsp/core';
+import { ResponseMessage, ResponseStatus } from '@vsp/core';
 
 import { PermissionsActions } from './permissions.actions';
 
@@ -15,21 +15,21 @@ export class PermissionsEffects {
     private _permissionsService: PermissionsService
   ) { }
 
-  public getAssignablePermissionRequest = createEffect(() => this._actions
-    .pipe(
-      ofType(PermissionsActions.getAssignableModulePermissionsRequest),
-      switchMap(() => 
-        this._permissionsService.getAssignableModulePermission()
-          .pipe(
-            mergeMap((permissions: ModulePermission[]) => of(PermissionsActions.getAssignableModulePermissionsRequestSuccess({ permissions: permissions }))),
-            catchError((error: any)=> of(PermissionsActions.getAssignableModulePermissionsRequestFailure({
-              message: {
-                status: ResponseStatus.ERROR,
-                message: error.error || 'Error searching users!'
-              } as ResponseMessage
-            })))
-          )
-      )
-    )
-  );
+  // public getAssignablePermissionRequest = createEffect(() => this._actions
+  //   .pipe(
+  //     ofType(PermissionsActions.getAssignableModulePermissionsRequest),
+  //     switchMap(() => 
+  //       this._permissionsService.getAssignableModulePermission()
+  //         .pipe(
+  //           mergeMap((permissions: ModulePermission[]) => of(PermissionsActions.getAssignableModulePermissionsRequestSuccess({ permissions: permissions }))),
+  //           catchError((error: any)=> of(PermissionsActions.getAssignableModulePermissionsRequestFailure({
+  //             message: {
+  //               status: ResponseStatus.ERROR,
+  //               message: error.error || 'Error searching users!'
+  //             } as ResponseMessage
+  //           })))
+  //         )
+  //     )
+  //   )
+  // );
 }

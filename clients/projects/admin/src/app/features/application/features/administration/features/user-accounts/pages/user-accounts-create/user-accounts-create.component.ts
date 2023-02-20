@@ -10,19 +10,15 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { ResponseStatus, fadeAnimation, TemplateModulePermissionName, UserModulePermission } from '@vsp/core';
+import { ResponseStatus, fadeAnimation } from '@vsp/core';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { UserValidators } from '@vsp/admin/core/validators';
 import { removeEmptyKeys } from '@vsp/admin/shared/utils';
 
 import { buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
-import { UserAccountsSelectors, UserAccountsActions, UserAccountsState } from '../../store';
-
-import { 
-  mapAssignableModulePermissionsToUserModulePermissions, 
-  templateModulerPermissionsToUserModulerPermissions, 
-  userAccountFormToUserAccount } from '../../utils';
+import { UserAccountsSelectors, UserAccountsActions } from '../../store';
 
 import { UserAccountCreateFormComponent } from '../../components/user-account-create-form/user-account-create-form.component';
 
@@ -40,6 +36,7 @@ import { UserAccountCreateFormComponent } from '../../components/user-account-cr
     NzCardModule,
     NzPageHeaderModule,
     NzMessageModule,
+    NzTypographyModule,
     UserAccountCreateFormComponent,
     ReactiveFormsModule,
   ]
@@ -57,79 +54,76 @@ export class UserAccountsCreateComponent implements OnDestroy {
 
   public createUserAccountForm!: UntypedFormGroup;
 
-  public templateModulePermissionNames$: Observable<TemplateModulePermissionName[] | null>  = 
-    this._store.select(UserAccountsSelectors.selectTemplateModulePermissionNames);
-
   constructor() {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-      .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
-        this.createUserAccountForm = buildUserAccountCreateForm(this._formBuilder, this._userValidators, userModulerPermissions);
-      });
+    // this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+    //   .pipe(take(1))
+    //   .subscribe(assignableModulePermissions => {
+    //     // const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
+    //     // this.createUserAccountForm = buildUserAccountCreateForm(this._formBuilder, this._userValidators, userModulerPermissions);
+    //   });
   }
 
   public onCreateUserAccount(formValue: any, shouldReturn: boolean): void {
     if (this.createUserAccountForm.invalid) return;
 
-    const userAccount = userAccountFormToUserAccount(formValue);
-    removeEmptyKeys(userAccount);
+    // const userAccount = userAccountFormToUserAccount(formValue);
+    // removeEmptyKeys(userAccount);
 
-    this._store.dispatch(UserAccountsActions.createUserAccountRequest({ userAccount: userAccount }));
+    // this._store.dispatch(UserAccountsActions.createUserAccountRequest({ userAccount: userAccount }));
 
-    this._store.select(UserAccountsSelectors.selectCreateUserAccountResponseMessage)
-      .pipe(
-        filter(message => !!message),
-        take(1)
-      )
-      .subscribe(message => {
-        if (message?.status === ResponseStatus.SUCCESS) {
-          this._resetCreateUserAccountForm();
-          this._messageService.success(message?.message || 'Success!')
-          if (shouldReturn) {
-            this._location.back();
-          }
-        } else if (message?.status === ResponseStatus.ERROR) {
-          this._messageService.error(message?.message || 'Error!')
-        }
-        this._store.dispatch(UserAccountsActions.setCreateUserAccountRequestResponseMessage({ message: null } ))
-      });
+    // this._store.select(UserAccountsSelectors.selectCreateUserAccountResponseMessage)
+    //   .pipe(
+    //     filter(message => !!message),
+    //     take(1)
+    //   )
+    //   .subscribe(message => {
+    //     if (message?.status === ResponseStatus.SUCCESS) {
+    //       this._resetCreateUserAccountForm();
+    //       this._messageService.success(message?.message || 'Success!')
+    //       if (shouldReturn) {
+    //         this._location.back();
+    //       }
+    //     } else if (message?.status === ResponseStatus.ERROR) {
+    //       this._messageService.error(message?.message || 'Error!')
+    //     }
+    //     this._store.dispatch(UserAccountsActions.setCreateUserAccountRequestResponseMessage({ message: null } ))
+    //   });
   }
 
 
-  public onTemplateModulePermissionNameSelected(templateModulePermissionName: TemplateModulePermissionName | null): void {
+  public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
     if (!templateModulePermissionName) {
       this._resetUserModulerPerrmisionsFormArray();
       return;
     }
 
-    this._store.dispatch(
-      UserAccountsActions.getTemplateModulePermissionNameByIdRequest({
-        templateModulePermissionNameId: templateModulePermissionName.id
-      })
-    );
+    // this._store.dispatch(
+    //   UserAccountsActions.getTemplateModulePermissionNameByIdRequest({
+    //     templateModulePermissionNameId: templateModulePermissionName.id
+    //   })
+    // );
 
-    this._store.select(UserAccountsSelectors.selectSelectedTemplateModulePermissionName)
-      .pipe(skip(1), take(1))
-      .subscribe(templateModulePermissionName => {
-        const userModulePermissions = templateModulerPermissionsToUserModulerPermissions(
-            templateModulePermissionName?.templateModulePermissions || []);
+    // this._store.select(UserAccountsSelectors.selectSelectedTemplateModulePermissionName)
+    //   .pipe(skip(1), take(1))
+    //   .subscribe(templateModulePermissionName => {
+    //     const userModulePermissions = templateModulerPermissionsToUserModulerPermissions(
+    //         templateModulePermissionName?.templateModulePermissions || []);
 
-        this._patchUserModulePermissionsToForm(userModulePermissions);
-      });
+    //     this._patchUserModulePermissionsToForm(userModulePermissions);
+    //   });
   }
 
 
-  private _patchUserModulePermissionsToForm(userModulePermissions: UserModulePermission[]): void {
-    (this.createUserAccountForm.get('userModulePermissions') as UntypedFormArray)
-      .controls.forEach((group) => {
-        const userModulePermission = userModulePermissions
-          .find(ump => ump.modulePermission?.id === group.value.modulePermission.id);
+  private _patchUserModulePermissionsToForm(userModulePermissions: any[]): void {
+    // (this.createUserAccountForm.get('userModulePermissions') as UntypedFormArray)
+    //   .controls.forEach((group) => {
+    //     const userModulePermission = userModulePermissions
+    //       .find(ump => ump.modulePermission?.id === group.value.modulePermission.id);
 
-        group.patchValue({
-          ...userModulePermission
-        });
-      });
+    //     group.patchValue({
+    //       ...userModulePermission
+    //     });
+    //   });
   }
 
 
@@ -140,27 +134,27 @@ export class UserAccountsCreateComponent implements OnDestroy {
 
 
   private _resetUserModulerPerrmisionsFormArray(): void {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-      .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
-        const blankFormGroup = buildUserAccountCreateForm(this._formBuilder, this._userValidators, userModulerPermissions);
-        const userModulePermissionsFormGroup = blankFormGroup.get('userModulePermissions');
+    // this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+    //   .pipe(take(1))
+    //   .subscribe(assignableModulePermissions => {
+    //     const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
+    //     const blankFormGroup = buildUserAccountCreateForm(this._formBuilder, this._userValidators, userModulerPermissions);
+    //     const userModulePermissionsFormGroup = blankFormGroup.get('userModulePermissions');
 
-        if ( userModulePermissionsFormGroup) {
-          this.createUserAccountForm
-            ?.get('userModulePermissions')
-            ?.patchValue([ ...(userModulePermissionsFormGroup.value || []) ]);
-        }
+    //     if ( userModulePermissionsFormGroup) {
+    //       this.createUserAccountForm
+    //         ?.get('userModulePermissions')
+    //         ?.patchValue([ ...(userModulePermissionsFormGroup.value || []) ]);
+    //     }
         
-        this.formComponent?.autoFocusControl?.setFocusToControl();
-      });
+    //     this.formComponent?.autoFocusControl?.setFocusToControl();
+    //   });
   }
 
 
   ngOnDestroy(): void {
     this._destroy$.next(null);
     this._destroy$.complete();
-    this._store.dispatch(UserAccountsActions.resetSelectedUserAccountStateSlice());
+    // this._store.dispatch(UserAccountsActions.resetSelectedUserAccountStateSlice());
   }
 }

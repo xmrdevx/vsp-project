@@ -3,8 +3,8 @@ import { ResponseMessage, AuthenticatedUser } from '@vsp/core';
 import { AuthenticationActions } from './authentication.actions';
 
 export interface AuthenticationState {
-  signInResponseMessage: ResponseMessage | null,
-  refreshAccessTokenResponseMessage: ResponseMessage | null,
+  signInResponseMessage: ResponseMessage<void>| null,
+  refreshAccessTokenResponseMessage: ResponseMessage<void>| null,
   authenticatedUser: AuthenticatedUser | null,
 }
 

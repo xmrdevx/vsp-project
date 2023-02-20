@@ -50,7 +50,7 @@ export class LoginFormComponent extends AbstractAuthenticationTabContentComponen
     clientId: [publicClientIdentifier, [Validators.required]]
   });
 
-  public signInResponseMessage$: Observable<ResponseMessage | null> = this._authenticationStore.signInResponseMessage$;
+  public signInResponseMessage$: Observable<ResponseMessage<void> | null> = this._authenticationStore.signInResponseMessage$;
   
   public login(credentials: Credentials):void {
     if (this.loginForm.invalid) return;

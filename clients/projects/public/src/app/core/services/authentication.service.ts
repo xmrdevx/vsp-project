@@ -31,16 +31,16 @@ export class AuthenticationService {
     );
   }
 
-  public requestPasswordReset(request: ForgotPassword): Observable<ResponseMessage> {
-    return this._http.post<ResponseMessage>(
+  public requestPasswordReset(request: ForgotPassword): Observable<ResponseMessage<void>> {
+    return this._http.post<ResponseMessage<void>>(
       `${this._environmentService.getBaseApiUrl()}/accounts/forgot-password`,
       request,
       { context: new HttpContext().set(REQUIRES_AUTHENTICATION, false) }
     );
   }
 
-  public resetPassword(request: ResetPassword): Observable<ResponseMessage> {
-    return this._http.post<ResponseMessage>(
+  public resetPassword(request: ResetPassword): Observable<ResponseMessage<void>> {
+    return this._http.post<ResponseMessage<void>>(
       `${this._environmentService.getBaseApiUrl()}/accounts/reset-password`,
       request,
       { context: new HttpContext().set(REQUIRES_AUTHENTICATION, false) }

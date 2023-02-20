@@ -11,10 +11,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
 import { 
-  UserAccountDto, 
-  TemplateModulePermissionName, 
-  UserModulePermission, 
-  UserAccount, 
+  User,
   fadeAnimation, 
   ResponseStatus } from '@vsp/core';
 
@@ -22,13 +19,8 @@ import { removeEmptyKeys } from '@vsp/admin/shared/utils';
 
 import { buildUserAccountUpdateForm } from '../../components/user-account-update-form/user-account-update-form.builder';
 
-import { UserAccountsActions, UserAccountsSelectors, UserAccountsState } from '../../store';
+import { UserAccountsActions, UserAccountsSelectors } from '../../store';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
-
-import { 
-  mapAssignableModulePermissionsToUserModulePermissions, 
-  templateModulerPermissionsToUserModulerPermissions, 
-  userAccountFormToUserAccount } from '../../utils';
 
 import { UserAccountUpdateFormComponent } from '../../components/user-account-update-form/user-account-update-form.component';
 
@@ -59,11 +51,11 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
 
   public updateUserAccountForm!: UntypedFormGroup;
 
-  public selectedUserAccount$: Observable<UserAccountDto | null> = 
+  public selectedUserAccount$: Observable<User | null> = 
     this._store.select(UserAccountsSelectors.selectSelectedUserAccount);
 
-  public templateModulePermissionNames$: Observable<TemplateModulePermissionName[] | null> = 
-    this._store.select(UserAccountsSelectors.selectTemplateModulePermissionNames);
+  // public templateModulePermissionNames$: Observable<amu[] | null> = 
+  //   this._store.select(UserAccountsSelectors.selectTemplateModulePermissionNames);
 
   constructor() {
     this._initializeForm();
@@ -74,30 +66,30 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
   }
 
   public onUpdateUserAccount(formValue: any): void {
-    if (this.updateUserAccountForm.invalid) return;
+    // if (this.updateUserAccountForm.invalid) return;
 
-    const userAccount = userAccountFormToUserAccount(formValue);
-    removeEmptyKeys(userAccount);
+    // const userAccount = userAccountFormToUserAccount(formValue);
+    // removeEmptyKeys(userAccount);
 
-    this._store.dispatch(UserAccountsActions.updateUserAccountRequest({ 
-      userId: userAccount?.user?.id, 
-      userAccount: userAccount 
-    }));
+    // this._store.dispatch(UserAccountsActions.updateUserAccountRequest({ 
+    //   userId: userAccount?.user?.id, 
+    //   userAccount: userAccount 
+    // }));
 
-    this._store.select(UserAccountsSelectors.selectUpdateUserAccountResponseMessage)
-      .pipe(
-        filter(message => !!message),
-        take(1)
-      )
-      .subscribe(message => {
-        if (message?.status === ResponseStatus.SUCCESS) {
-          this._messageService.success(message?.message || 'Success!')
-        } else {
-          this._messageService.error(message?.message || 'Error!')
-        }
-        this._store.dispatch(UserAccountsActions.setUpdateUserAccountRequestResponseMessage({ message: null } ));
-        this._location.back();
-      });
+    // this._store.select(UserAccountsSelectors.selectUpdateUserAccountResponseMessage)
+    //   .pipe(
+    //     filter(message => !!message),
+    //     take(1)
+    //   )
+    //   .subscribe(message => {
+    //     if (message?.status === ResponseStatus.SUCCESS) {
+    //       this._messageService.success(message?.message || 'Success!')
+    //     } else {
+    //       this._messageService.error(message?.message || 'Error!')
+    //     }
+    //     this._store.dispatch(UserAccountsActions.setUpdateUserAccountRequestResponseMessage({ message: null } ));
+    //     this._location.back();
+    //   });
   }
 
   public onIssuePasswordResetRequest(shouldIssue: boolean): void {
@@ -106,98 +98,98 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
     }
   }
 
-  public onTemplateModulePermissionNameSelected(templateModulePermissionName: TemplateModulePermissionName | null): void {
-    if (!templateModulePermissionName) {
-      this._resetUserModulerPerrmisionsFormArray();
-      return;
-    }
+  public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
+    // if (!templateModulePermissionName) {
+    //   this._resetUserModulerPerrmisionsFormArray();
+    //   return;
+    // }
 
-    this._store.dispatch(
-      UserAccountsActions.getTemplateModulePermissionNameByIdRequest({
-        templateModulePermissionNameId: templateModulePermissionName.id
-      })
-    );
+    // this._store.dispatch(
+    //   UserAccountsActions.getTemplateModulePermissionNameByIdRequest({
+    //     templateModulePermissionNameId: templateModulePermissionName.id
+    //   })
+    // );
 
-    this._store.select(UserAccountsSelectors.selectSelectedTemplateModulePermissionName)
-      .pipe(skip(1), take(1))
-      .subscribe(templateModulePermissionName => {
-        const userModulePermissions = templateModulerPermissionsToUserModulerPermissions(
-            templateModulePermissionName?.templateModulePermissions || []);
+    // this._store.select(UserAccountsSelectors.selectSelectedTemplateModulePermissionName)
+    //   .pipe(skip(1), take(1))
+    //   .subscribe(templateModulePermissionName => {
+    //     const userModulePermissions = templateModulerPermissionsToUserModulerPermissions(
+    //         templateModulePermissionName?.templateModulePermissions || []);
             
-        this._patchUserModulePermissionsToForm(userModulePermissions);
-      });
+    //     this._patchUserModulePermissionsToForm(userModulePermissions);
+    //   });
   }
 
-  private _patchUserModulePermissionsToForm(userModulePermissions: UserModulePermission[]): void {
-    (this.updateUserAccountForm.get('userModulePermissions') as UntypedFormArray)
-      .controls.forEach((group) => {
-        const userModulePermission = userModulePermissions
-          .find(ump => ump.modulePermission?.id === group.value.modulePermission.id);
+  private _patchUserModulePermissionsToForm(userModulePermissions: any[]): void {
+    // (this.updateUserAccountForm.get('userModulePermissions') as UntypedFormArray)
+    //   .controls.forEach((group) => {
+    //     const userModulePermission = userModulePermissions
+    //       .find(ump => ump.modulePermission?.id === group.value.modulePermission.id);
 
-        group.patchValue({
-          ...userModulePermission,
-          canCreateAll: userModulePermission?.userPermissions?.some(up => up.canCreate) || false,
-          canReadAll: userModulePermission?.userPermissions?.some(up => up.canRead) || false,
-          canUpdateAll: userModulePermission?.userPermissions?.some(up => up.canUpdate) || false,
-          canDeleteAll: userModulePermission?.userPermissions?.some(up => up.canDelete) || false
-        }, { emitEvent: false });
-      });
+    //     group.patchValue({
+    //       ...userModulePermission,
+    //       canCreateAll: userModulePermission?.userPermissions?.some(up => up.canCreate) || false,
+    //       canReadAll: userModulePermission?.userPermissions?.some(up => up.canRead) || false,
+    //       canUpdateAll: userModulePermission?.userPermissions?.some(up => up.canUpdate) || false,
+    //       canDeleteAll: userModulePermission?.userPermissions?.some(up => up.canDelete) || false
+    //     }, { emitEvent: false });
+    //   });
   }
 
   private _resetUserModulerPerrmisionsFormArray(): void {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-      .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
-        const blankFormGroup = buildUserAccountUpdateForm(this._formBuilder, userModulerPermissions);
-        const userModulePermissionsFormGroup = blankFormGroup.get('userModulePermissions');
+    // this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+    //   .pipe(take(1))
+    //   .subscribe(assignableModulePermissions => {
+    //     const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
+    //     const blankFormGroup = buildUserAccountUpdateForm(this._formBuilder, userModulerPermissions);
+    //     const userModulePermissionsFormGroup = blankFormGroup.get('userModulePermissions');
 
-        if ( userModulePermissionsFormGroup) {
-          this.updateUserAccountForm
-            ?.get('userModulePermissions')
-            ?.patchValue([ ...(userModulePermissionsFormGroup.value || []) ]);
-        }
-      });
+    //     if ( userModulePermissionsFormGroup) {
+    //       this.updateUserAccountForm
+    //         ?.get('userModulePermissions')
+    //         ?.patchValue([ ...(userModulePermissionsFormGroup.value || []) ]);
+    //     }
+    //   });
   }
   
   private _initializeForm(): void {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-      .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
-        this.updateUserAccountForm = buildUserAccountUpdateForm(this._formBuilder, userModulerPermissions);
-      });
+    // this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+    //   .pipe(take(1))
+    //   .subscribe(assignableModulePermissions => {
+    //     const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
+    //     this.updateUserAccountForm = buildUserAccountUpdateForm(this._formBuilder, userModulerPermissions);
+    //   });
   }
 
   private _listenForSelectedUserAccountChanges(): void {
-    this._store.select(UserAccountsSelectors.selectSelectedUserAccount)
-      .pipe(takeUntil(this._destroy$))
-      .subscribe(selectedUserAccount => {
-        this.updateUserAccountForm.patchValue({
-          // Patch avatarUrl??
-        });
+    // this._store.select(UserAccountsSelectors.selectSelectedUserAccount)
+    //   .pipe(takeUntil(this._destroy$))
+    //   .subscribe(selectedUserAccount => {
+    //     this.updateUserAccountForm.patchValue({
+    //       // Patch avatarUrl??
+    //     });
         
-        // Patch User Details
-        this.updateUserAccountForm?.get('user')?.patchValue({
-          id: selectedUserAccount?.id || null,
-          userName: selectedUserAccount?.userName || null
-        });
+    //     // Patch User Details
+    //     this.updateUserAccountForm?.get('user')?.patchValue({
+    //       id: selectedUserAccount?.id || null,
+    //       userName: selectedUserAccount?.userName || null
+    //     });
         
-        // Patch Profile Details
-        this.updateUserAccountForm?.get('profile')?.patchValue({
-          id: selectedUserAccount?.profile?.id || null,
-          firstName: selectedUserAccount?.profile?.firstName || null,
-          lastName: selectedUserAccount?.profile?.lastName || null
-        });
+    //     // Patch Profile Details
+    //     this.updateUserAccountForm?.get('profile')?.patchValue({
+    //       id: selectedUserAccount?.profile?.id || null,
+    //       firstName: selectedUserAccount?.profile?.firstName || null,
+    //       lastName: selectedUserAccount?.profile?.lastName || null
+    //     });
 
-        // Patch User Permissions
-        this._patchUserModulePermissionsToForm(selectedUserAccount?.userModulePermissions || []);
-      });
+    //     // Patch User Permissions
+    //     this._patchUserModulePermissionsToForm(selectedUserAccount?.userModulePermissions || []);
+    //   });
   }
 
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
-    this._store.dispatch(UserAccountsActions.resetSelectedUserAccountStateSlice());
+    // this._store.dispatch(UserAccountsActions.resetSelectedUserAccountStateSlice());s
   }
 }

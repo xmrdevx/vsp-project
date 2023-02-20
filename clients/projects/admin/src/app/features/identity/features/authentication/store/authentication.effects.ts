@@ -29,7 +29,7 @@ export class AuthenticationEffects {
             return of(AuthenticationActions.signInUserFailure({ message: {
               status: ResponseStatus.ERROR,
               message: error?.error?.message || 'Invalid username/password!'
-            } as ResponseMessage }))
+            } as ResponseMessage<void>}))
           })
         )
       )
@@ -57,7 +57,7 @@ export class AuthenticationEffects {
             return of(AuthenticationActions.refreshAccessTokenRequestFailure({ message: {
               status: ResponseStatus.ERROR,
               message: error?.error?.message || 'Invalid username/password!'
-            } as ResponseMessage }))
+            } as ResponseMessage<void>}))
           })
         )
       )

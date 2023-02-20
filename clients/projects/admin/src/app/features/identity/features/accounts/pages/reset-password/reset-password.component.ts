@@ -43,7 +43,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   public resetPasswordForm: UntypedFormGroup;
 
-  public resetPasswordResponseMessage$!: Observable<ResponseMessage | null>;
+  public resetPasswordResponseMessage$!: Observable<ResponseMessage<void> | null>;
 
   constructor(
     private _store: Store,

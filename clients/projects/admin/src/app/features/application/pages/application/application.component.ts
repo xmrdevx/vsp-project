@@ -14,7 +14,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 
 import { VspHasModulePermissionPipe, VspHasPermissionPipe } from '@vsp/admin/shared/permissions';
 import { AdminNavigationLink } from '@vsp/admin/core/models';
-import { fadeAnimation, UserSettings, UserModulesAndPermissionsMap } from '@vsp/core';
+import { fadeAnimation } from '@vsp/core';
 
 import { defaultNavigationMenu } from '../../constants/navigation-menu.defaults';
 import { NavigationMenuService } from '../../services/navigation-menu.service';
@@ -53,10 +53,8 @@ export class ApplicationComponent {
   public isCollapsed$: Observable<boolean> = this._navigationMenuService.isCollapsed();
   public defaultNavigationMenu: AdminNavigationLink[] = defaultNavigationMenu;
 
-  public userSettings$: Observable<UserSettings | null> = this._store.select(UserSelectors.selectUserSettings);
-
-  public userModulePermissionsMap$: Observable<UserModulesAndPermissionsMap | null> = 
-    this._store.select(UserSelectors.selectUserModulePermissionsMap);
+  // @TODO type this
+  public userSettings$: Observable<any | null> = this._store.select(UserSelectors.selectUserSettings);
 
   public onToggleNavigationMenu(): void {
     this._navigationMenuService.toggleMenu();

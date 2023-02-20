@@ -16,7 +16,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { TemplateModulePermissionName, EnvironmentService } from '@vsp/core';
+import {  EnvironmentService } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
 
 @Component({
@@ -51,11 +51,11 @@ export class UserAccountUpdateFormComponent implements OnInit {
   private readonly _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   @Input()
-  public templateModulePermissionNames: TemplateModulePermissionName[] | null = [];
+  public templateModulePermissionNames: any[] | null = [];
 
   @Output()
-  public selectTemplateModulePermissionName: EventEmitter<TemplateModulePermissionName | null> = 
-    new EventEmitter<TemplateModulePermissionName | null>();
+  public selectTemplateModulePermissionName: EventEmitter<any | null> = 
+    new EventEmitter<any | null>();
 
   @Output()
   public issuePasswordResetRequest: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -87,7 +87,7 @@ export class UserAccountUpdateFormComponent implements OnInit {
     this.issuePasswordResetRequest.emit(shouldIssue);
   }
 
-  public onApplyTemplateModulerPermissionName(templateModulePermissionName: TemplateModulePermissionName | null): void {
+  public onApplyTemplateModulerPermissionName(templateModulePermissionName: any | null): void {
     // @TODO load template module permissions and patch to form
     this.isLoadingTemplate = true;
     this.selectTemplateModulePermissionName.emit(templateModulePermissionName);

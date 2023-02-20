@@ -11,10 +11,10 @@ import { SecurityPermissionsActions } from './security-permissions.actions';
 export const securityPermissionsFeatureKey = 'securityPermissions';
 
 export interface SecurityPermissionsState {
-  createTemplateModulePermissionNameResponseMessage: ResponseMessage | null,
-  updateTemplateModulePermissionNameResponseMessage: ResponseMessage | null,
-  deleteTemplateModulePermissionNameResponseMessage: ResponseMessage | null,
-  restoreTemplateModulePermissionNameResponseMessage: ResponseMessage | null,
+  createTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
+  updateTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
+  deleteTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
+  restoreTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
   templateModulePermissionNamesPage: Page<any> | null,
   templateModulePermissionsSearchFilter: BasicQuerySearchFilter | null,
   securityPermissionsTableDefinition: TableDefinition | null,

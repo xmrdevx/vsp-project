@@ -7,4 +7,6 @@ export enum ColumnType {
   DATE_TIME,
   CURRENCY,
   TITLE,
+  BOOLEAN_YES_NO_BADGE,
+  BOOLEAN_YES_NO_BADGE_INVERSE,
 }

@@ -16,7 +16,7 @@ import { NzListModule } from 'ng-zorro-antd/list';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { TemplateModulePermissionName, EnvironmentService } from '@vsp/core';
+import { EnvironmentService } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
 
 @Component({
@@ -54,11 +54,11 @@ export class UserAccountCreateFormComponent implements OnInit {
   public autoFocusControl!: VspAutoFocusControlDirective;
   
   @Input()
-  public templateModulePermissionNames: TemplateModulePermissionName[] | null = [];
+  public templateModulePermissionNames: any[] | null = [];
 
   @Output()
-  public selectTemplateModulePermissionName: EventEmitter<TemplateModulePermissionName | null> = 
-    new EventEmitter<TemplateModulePermissionName | null>();
+  public selectTemplateModulePermissionName: EventEmitter<any | null> = 
+    new EventEmitter<any | null>();
 
   public userAccountForm!: UntypedFormGroup;
 
@@ -81,7 +81,7 @@ export class UserAccountCreateFormComponent implements OnInit {
     return formGroup.get('userPermissions') as UntypedFormArray;
   }
 
-  public onApplyTemplateModulerPermissionName(templateModulePermissionName: TemplateModulePermissionName | null): void {
+  public onApplyTemplateModulerPermissionName(templateModulePermissionName: any | null): void {
     this.isLoadingTemplate = true;
     this.selectTemplateModulePermissionName.emit(templateModulePermissionName);
     setTimeout(() => {

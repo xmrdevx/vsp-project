@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Store } from '@ngrx/store';
 import { catchError, combineLatest, filter, mergeMap, Observable, of, switchMap, take, tap } from 'rxjs';
 
-import { Page, UserAccountDto } from '@vsp/core'
+import { Page, User } from '@vsp/core'
 import { defaultBasicQuerySearchFilter, defaultPageRequest } from '@vsp/admin/core/constants';
 
 import { defaultUserAccountsSort } from '../constants/sort.defaults';
@@ -23,7 +23,7 @@ export class InitialUserAccountsSearchLoadedGuard implements CanActivate {
       );
   }
   
-  private _getUserAccountsPageFromStoreOrApi(): Observable<Page<UserAccountDto> | null> {
+  private _getUserAccountsPageFromStoreOrApi(): Observable<Page<User> | null> {
     return combineLatest([
         this._store.select(UserAccountsSelectors.selectUserAccountSearchFilter),
         this._store.select(UserAccountsSelectors.selectUserAccountsPage)

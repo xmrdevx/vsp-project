@@ -39,7 +39,7 @@ import { AccountsActions, AccountsSelectors } from '../../store';
 export class ForgotPasswordComponent implements OnInit, OnDestroy {
   public forgotPasswordForm: UntypedFormGroup;
 
-  public forgotPasswordRequestResponseMessage$!: Observable<ResponseMessage | null>;
+  public forgotPasswordRequestResponseMessage$!: Observable<ResponseMessage<void> | null>;
 
   constructor(
     private _store: Store,

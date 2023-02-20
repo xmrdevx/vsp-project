@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { ModulePermissionNames } from '@vsp/core';
-import { HasModulePermissionGuard } from '@vsp/admin/core/guards';
-
 export const applicationRoutes: Routes = [
   {
     path: '',
@@ -19,11 +16,11 @@ export const applicationRoutes: Routes = [
         loadChildren: () => 
           import('./features/dashboard/dashboard.routes').then(r => r.dashboardRoutes)
       },
-      {
-        path: 'security',
-        loadChildren: () => 
-          import('./features/security/security.routes').then(r => r.securityRoutes)
-      },
+      // {
+      //   path: 'security',
+      //   loadChildren: () => 
+      //     import('./features/security/security.routes').then(r => r.securityRoutes)
+      // },
       {
         path: 'account',
         loadChildren: () => 

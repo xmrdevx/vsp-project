@@ -48,7 +48,7 @@ export class ResetPasswordComponent implements OnDestroy {
 
   public resetPasswordForm: UntypedFormGroup = this._buildResetPasswordForm();
 
-  public resetPasswordResponseMessage$: Observable<ResponseMessage | null> = this._store.resetPasswordResponseMessage$
+  public resetPasswordResponseMessage$: Observable<ResponseMessage<void> | null> = this._store.resetPasswordResponseMessage$
     .pipe(tap(message => {
       if (message?.status === ResponseStatus.SUCCESS) {
         this.resetPasswordForm.reset();

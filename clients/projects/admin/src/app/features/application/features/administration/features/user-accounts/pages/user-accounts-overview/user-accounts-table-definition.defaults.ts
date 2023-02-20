@@ -5,15 +5,15 @@ export const defaultUserAccountsTableDefinition: TableDefinition = {
   columns: [
     {
       label: 'Profile',
-      property: 'avatarUrl',
+      property: 'profile.avatarUrl',
       type: ColumnType.IMAGE,
       isVisible: true,
       canModify: false,
       width: '75px'
     },
     {
-      label: 'User Name',
-      property: 'userName',
+      label: 'Username',
+      property: 'username',
       type: ColumnType.TEXT,
       isVisible: true,
       canModify: false,
@@ -46,6 +46,42 @@ export const defaultUserAccountsTableDefinition: TableDefinition = {
       isVisible: true,
       canModify: true,
       width: '200px',
+      sortable: true
+    } as ColumnDefinition,
+    {
+      label: 'Enabled',
+      property: 'isLockedOut',
+      type: ColumnType.BOOLEAN_YES_NO_BADGE_INVERSE,
+      isVisible: true,
+      canModify: true,
+      width: '100px',
+      sortable: true
+    } as ColumnDefinition,
+    {
+      label: 'Created On',
+      property: 'createdOn',
+      type: ColumnType.DATE,
+      isVisible: false,
+      canModify: true,
+      width: '150px',
+      sortable: true
+    } as ColumnDefinition,
+    {
+      label: 'Updated On',
+      property: 'updatedOn',
+      type: ColumnType.DATE,
+      isVisible: false,
+      canModify: true,
+      width: '150px',
+      sortable: true
+    } as ColumnDefinition,
+    {
+      label: 'Deleted On',
+      property: 'deletedOn',
+      type: ColumnType.DATE,
+      isVisible: false,
+      canModify: true,
+      width: '150px',
       sortable: true
     } as ColumnDefinition,
   ]

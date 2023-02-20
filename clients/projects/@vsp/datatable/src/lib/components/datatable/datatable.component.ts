@@ -8,6 +8,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 import { Page, PageRequest, Sort, SortDirection } from '@vsp/core';
 
@@ -39,6 +40,7 @@ import { VspTruncatePipe } from '../../pipes/truncate.pipe';
     NzDropDownModule,
     NzButtonModule,
     NzCheckboxModule,
+    NzTagModule,
     VspDeepPropertyAccessPipe,
     VspTruncatePipe,
     TitleCasePipe,

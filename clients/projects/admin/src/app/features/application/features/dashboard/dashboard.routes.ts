@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { HasPermissionGuard } from '@vsp/admin/core/guards';
-import { PermissionNames } from '@vsp/core';
-
 export const dashboardRoutes: Routes = [
   {
     path: 'overview',

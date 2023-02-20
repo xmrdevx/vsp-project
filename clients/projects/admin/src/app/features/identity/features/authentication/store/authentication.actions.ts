@@ -11,13 +11,13 @@ export const AuthenticationActions = createActionGroup({
   events: {
     'Sign In User Request': props<{ credentials: Credentials }>(),
     'Sign In User Success': props<{ authenticatedUser: AuthenticatedUser }>(),
-    'Sign In User Failure': props<{ message: ResponseMessage }>(),
+    'Sign In User Failure': props<{ message: ResponseMessage<void>}>(),
     'Sign Out User Request': emptyProps(),
     'Sign Out User Success': emptyProps(),
     'Set Authenticated User': props<{ authenticatedUser: AuthenticatedUser | null }>(),
     'Refresh Access Token Request': props<{ refreshTokenRequest: RefreshTokenRequest }>(),
     'Refresh Access Token Request Success': props<{ authenticatedUser: AuthenticatedUser }>(),
-    'Refresh Access Token Request Failure': props<{ message: ResponseMessage }>(),
-    'Set Refresh Access Token Response Message': props<{ message: ResponseMessage | null }>()
+    'Refresh Access Token Request Failure': props<{ message: ResponseMessage<void>}>(),
+    'Set Refresh Access Token Response Message': props<{ message: ResponseMessage<void>| null }>()
   }
 });

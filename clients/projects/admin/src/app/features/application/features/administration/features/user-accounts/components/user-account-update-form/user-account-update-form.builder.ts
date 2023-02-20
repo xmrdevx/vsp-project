@@ -1,9 +1,9 @@
 import { UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
-import { UserModulePermission } from '@vsp/core';
+// import { UserModulePermission } from '@vsp/core';
 
 export const buildUserAccountUpdateForm = (
     formBuilder: UntypedFormBuilder,
-    userModulePermissions: UserModulePermission[]
+    userModulePermissions: any[]
   ) => formBuilder.group({
     user: formBuilder.group({
       id: [null, [Validators.required]],
@@ -17,7 +17,7 @@ export const buildUserAccountUpdateForm = (
   });
 
 export const builderUserModulePermissionsFormArray = 
-  (formBuilder: UntypedFormBuilder, userModulePermissions: UserModulePermission[]) : UntypedFormArray => formBuilder.array([
+  (formBuilder: UntypedFormBuilder, userModulePermissions: any[]) : UntypedFormArray => formBuilder.array([
     ...userModulePermissions?.map(m => formBuilder.group({
       id: [m.id],
       hasAccess: [m.hasAccess],
@@ -31,7 +31,7 @@ export const builderUserModulePermissionsFormArray =
         name: [m?.modulePermission?.name]
       }),
       userPermissions: formBuilder.array([
-        ...m?.userPermissions?.map(permission => {
+        ...m?.userPermissions?.map((permission: any) => {
           return formBuilder.group({
             canCreate: [permission.canCreate],
             canRead: [permission.canRead],

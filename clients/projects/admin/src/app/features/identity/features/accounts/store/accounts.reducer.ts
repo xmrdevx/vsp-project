@@ -3,8 +3,8 @@ import { ResponseMessage } from '@vsp/core';
 import { AccountsActions } from './accounts.actions';
 
 export interface AccountsState {
-  forgotPasswordResponseMessage: ResponseMessage | null,
-  resetPasswordRequestResponseMessage: ResponseMessage | null,
+  forgotPasswordResponseMessage: ResponseMessage<void>| null,
+  resetPasswordRequestResponseMessage: ResponseMessage<void>| null,
 }
 
 export const initialAccountsState: AccountsState = {

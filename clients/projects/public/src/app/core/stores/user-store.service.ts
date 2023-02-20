@@ -7,9 +7,9 @@ import { catchError, EMPTY, Observable, of, switchMap, take, tap } from 'rxjs';
 import { UserService } from '../services';
 
 export interface UserState {
-  registerUserResponseMessage: ResponseMessage | null,
+  registerUserResponseMessage: ResponseMessage<void>| null,
   registrationLoadingState: LoadingState,
-  updateUserResponseMessage: ResponseMessage | null,
+  updateUserResponseMessage: ResponseMessage<void>| null,
   userSettings: UserSettings | null
 }
 
@@ -33,7 +33,7 @@ export class UserStore extends ComponentStore<UserState> {
     super({ ... initialUserState });
   }
 
-  public readonly setRegisterUserResponseMessage = this.updater((state: UserState, message: ResponseMessage | null) => ({
+  public readonly setRegisterUserResponseMessage = this.updater((state: UserState, message: ResponseMessage<void>| null) => ({
     ...state,
     registerUserResponseMessage: message
   }));

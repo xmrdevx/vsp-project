@@ -7,11 +7,11 @@ import { AuthenticatedUser, Credentials, ForgotPassword, RefreshTokenRequest, Re
 import { AuthenticationService } from '../services';
 
 export interface AuthenticationState {
-  signInResponseMessage: ResponseMessage | null,
-  refreshAccessTokenResponseMessage: ResponseMessage | null,
+  signInResponseMessage: ResponseMessage<void>| null,
+  refreshAccessTokenResponseMessage: ResponseMessage<void>| null,
   authenticatedUser: AuthenticatedUser | null,
-  passwordResetRequestResponseMessage: ResponseMessage | null,
-  resetPasswordResponseMessage: ResponseMessage | null,
+  passwordResetRequestResponseMessage: ResponseMessage<void>| null,
+  resetPasswordResponseMessage: ResponseMessage<void>| null,
 }
 
 export const initialAuthenticationState: AuthenticationState = {
@@ -38,7 +38,7 @@ export class AuthenticationStore extends ComponentStore<AuthenticationState> {
     super({...initialAuthenticationState});
   }
 
-  public readonly setSignInResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage | null) => ({
+  public readonly setSignInResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage<void>| null) => ({
     ...state,
     signInResponseMessage: message
   }));
@@ -53,12 +53,12 @@ export class AuthenticationStore extends ComponentStore<AuthenticationState> {
     authenticatedUser: authenticatedUser
   }));
 
-  public readonly setPasswordResetRequestResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage | null) => ({
+  public readonly setPasswordResetRequestResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage<void>| null) => ({
     ...state,
     passwordResetRequestResponseMessage: message
   }));
 
-  public readonly setResetPasswordResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage | null) => ({
+  public readonly setResetPasswordResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage<void>| null) => ({
     ...state,
     resetPasswordResponseMessage: message
   }));

@@ -1,15 +1,13 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
-import { ModulePermission } from '@vsp/core';
-
 import { PermissionsActions } from './permissions.actions';
 
 export interface PermissionsState {
-  assignableModulePermissions: ModulePermission[] | null
+  // assignableModulePermissions: ModulePermission[] | null
 }
 
 export const initialPermissionsState: PermissionsState = {
-  assignableModulePermissions: null
+  // assignableModulePermissions: null
 }
 
 const handleGetAssignableModulePermissionsRequestSuccess = (state: PermissionsState, { permissions }: any) => ({
@@ -21,9 +19,9 @@ export const permissionsFeature = createFeature({
   name: 'permissions',
   reducer: createReducer(
     initialPermissionsState,
-    on(
-      PermissionsActions.getAssignableModulePermissionsRequestSuccess,
-      handleGetAssignableModulePermissionsRequestSuccess
-    )
+    // on(
+    //   PermissionsActions.getAssignableModulePermissionsRequestSuccess,
+    //   handleGetAssignableModulePermissionsRequestSuccess
+    // )
   )
 });

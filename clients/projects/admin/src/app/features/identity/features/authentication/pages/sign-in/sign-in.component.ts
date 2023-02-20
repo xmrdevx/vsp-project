@@ -46,7 +46,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 export class SignInComponent {
   public signInForm: UntypedFormGroup;
 
-  public signInResponseMessage$!: Observable<ResponseMessage | null>;
+  public signInResponseMessage$!: Observable<ResponseMessage<void> | null>;
 
   constructor(
     private _environmentService: EnvironmentService,

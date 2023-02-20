@@ -100,6 +100,16 @@
       [ngTemplateOutlet]="titleColumnTypeTemplate"
       [ngTemplateOutletContext]="{ row, column }">
     </ng-container>
+    <ng-container 
+      *ngSwitchCase="ColumnType.BOOLEAN_YES_NO_BADGE"
+      [ngTemplateOutlet]="booleanYesNoBadgeColumnTypeTemplate"
+      [ngTemplateOutletContext]="{ row, column }">
+    </ng-container>
+    <ng-container 
+      *ngSwitchCase="ColumnType.BOOLEAN_YES_NO_BADGE_INVERSE"
+      [ngTemplateOutlet]="booleanYesNoBadgeInverseColumnTypeTemplate"
+      [ngTemplateOutletContext]="{ row, column }">
+    </ng-container>
   </ng-container>
 </ng-template>
 
@@ -171,4 +181,26 @@
     let-row="row" 
     let-column="column">
   {{ (row | deepPropertyAccess: column?.property) | titlecase }}
+</ng-template>
+
+<ng-template
+    #booleanYesNoBadgeColumnTypeTemplate
+    let-row="row"
+    let-column="column">
+  <nz-tag 
+      class="block w-100 text-center" 
+      [nzColor]="(row | deepPropertyAccess: column?.property) ? 'success' : 'error'">
+    {{ (row | deepPropertyAccess: column?.property) ? 'Yes' : 'No' }}
+  </nz-tag>
+</ng-template>
+
+<ng-template
+    #booleanYesNoBadgeInverseColumnTypeTemplate
+    let-row="row"
+    let-column="column">
+  <nz-tag 
+      class="block w-100 text-center" 
+      [nzColor]="(row | deepPropertyAccess: column?.property) ? 'error' : 'success'">
+    {{ (row | deepPropertyAccess: column?.property) ? 'No' : 'Yes' }}
+  </nz-tag>
 </ng-template>

@@ -38,7 +38,7 @@ export class ForgotPasswordFormComponent extends AbstractAuthenticationTabConten
   private readonly _formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
   private readonly _store: AuthenticationStore = inject(AuthenticationStore);
 
-  public forgotPasswordResponseMessage$: Observable<ResponseMessage | null> = this._store.passwordResetRequestResponseMessage$
+  public forgotPasswordResponseMessage$: Observable<ResponseMessage<void> | null> = this._store.passwordResetRequestResponseMessage$
     .pipe(tap(message => {
       if (message?.status === ResponseStatus.SUCCESS) {
         this.forgotPasswordForm.reset();

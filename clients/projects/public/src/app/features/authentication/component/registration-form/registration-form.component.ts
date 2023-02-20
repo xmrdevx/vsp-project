@@ -89,7 +89,7 @@ export class RegistrationFormComponent extends AbstractAuthenticationTabContentC
     })
   });
 
-  public registerUserResponseMessage$: Observable<ResponseMessage | null> = this._userStore.registerUserResponseMessage$;
+  public registerUserResponseMessage$: Observable<ResponseMessage<void> | null> = this._userStore.registerUserResponseMessage$;
   
   ngOnInit(): void {
     this._listenForRegisterUserResponseMessage();

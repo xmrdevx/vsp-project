@@ -10,13 +10,7 @@ export const selectUserSettings = createSelector(
   (state: UserState) => state.userSettings
 );
 
-export const selectUserModulePermissionsMap = createSelector(
-  selectUserState,
-  (state: UserState) => state.userModulePermissionsMap
-);
-
 export const UserSelectors = {
   selectUserState,
-  selectUserSettings,
-  selectUserModulePermissionsMap
+  selectUserSettings
 };

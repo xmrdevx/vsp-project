@@ -28,7 +28,7 @@ export class AccountsEffects {
             of(AccountsActions.forgotPasswordRequestFailure({ message: {
               status: ResponseStatus.ERROR,
               message: error?.error?.message || 'Error sending password reset request!'
-            } as ResponseMessage })))
+            } as ResponseMessage<void>})))
         )
       )
     )
@@ -45,7 +45,7 @@ export class AccountsEffects {
             of(AccountsActions.resetPasswordRequestFailure({ message: {
               status: ResponseStatus.ERROR,
               message: error?.error?.message || 'Error sending password reset request!'
-            } as ResponseMessage })))
+            } as ResponseMessage<void>})))
         )
       )
     )

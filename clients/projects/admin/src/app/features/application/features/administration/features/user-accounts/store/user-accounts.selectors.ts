@@ -16,15 +16,20 @@ export const selectCreateUserAccountResponseMessage = createSelector(
   (state: UserAccountsState) => state?.createUserAccountResponseMessage || null
 );
 
+export const selectLockoutUserAccountResponseMessage = createSelector(
+  selectUserAccountsState,
+  (state: UserAccountsState) => state?.lockoutUserAccountResponseMessage || null
+);
+
 export const selectUpdateUserAccountResponseMessage = createSelector(
   selectUserAccountsState,
   (state: UserAccountsState) => state?.updateUserAccountResponseMessage || null
 );
 
-export const selectSelectedUsersPermissions = createSelector(
-  selectUserAccountsState,
-  (state: UserAccountsState) => state?.selectedUsersPermissions || null
-);
+// export const selectSelectedUsersPermissions = createSelector(
+//   selectUserAccountsState,
+//   (state: UserAccountsState) => state?.selectedUsersPermissions || null
+// );
 
 export const selectSelectedUserAccount = createSelector(
   selectUserAccountsState,
@@ -36,15 +41,15 @@ export const selectUserAccountSearchFilter = createSelector(
   (state: UserAccountsState) => state.userAccountsSearchFilter
 );
 
-export const selectTemplateModulePermissionNames = createSelector(
-  selectUserAccountsState,
-  (state: UserAccountsState) => state.templateModulePermissionNames
-);
+// export const selectTemplateModulePermissionNames = createSelector(
+//   selectUserAccountsState,
+//   (state: UserAccountsState) => state.templateModulePermissionNames
+// );
 
-export const selectSelectedTemplateModulePermissionName = createSelector(
-  selectUserAccountsState,
-  (state: UserAccountsState) => state.selectedTemplateModulePermissionName
-);
+// export const selectSelectedTemplateModulePermissionName = createSelector(
+//   selectUserAccountsState,
+//   (state: UserAccountsState) => state.selectedTemplateModulePermissionName
+// );
 
 export const selectUserAccountsTableDefinition = createSelector(
   selectUserAccountsState,
@@ -56,10 +61,11 @@ export const UserAccountsSelectors = {
   selectUserAccountsPage,
   selectCreateUserAccountResponseMessage,
   selectUpdateUserAccountResponseMessage,
-  selectSelectedUsersPermissions,
+  selectLockoutUserAccountResponseMessage,
+  // selectSelectedUsersPermissions,
   selectSelectedUserAccount,
   selectUserAccountSearchFilter,
-  selectTemplateModulePermissionNames,
-  selectSelectedTemplateModulePermissionName,
+  // selectTemplateModulePermissionNames,
+  // selectSelectedTemplateModulePermissionName,
   selectUserAccountsTableDefinition,
 };

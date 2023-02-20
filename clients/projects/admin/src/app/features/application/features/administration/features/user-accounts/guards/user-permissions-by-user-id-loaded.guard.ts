@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { catchError, filter, Observable, of, switchMap, take, tap } from 'rxjs';
 
 import { UserAccountsActions, UserAccountsSelectors, UserAccountsState } from '../store';
-import { UserPermission } from '@vsp/core';
 
 @Injectable({
   providedIn: 'root'
@@ -21,18 +20,19 @@ export class UserPermissionsByUserIdLoadedGuard implements CanActivate {
       );
   }
   
-  private _getUserPermissionsByUserIdFromStoreOrApi(userId: string): Observable<UserPermission[] | null> {
-    return this._store.select(UserAccountsSelectors.selectSelectedUsersPermissions)
-      .pipe(
-        tap(permissions => {
-          if (!permissions) {
-            this._store.dispatch(
-              UserAccountsActions.getUserPermissionsByUserIdRequest({ userId: userId })
-            );
-          }
-        }),
-        filter(permissions => !!permissions),
-        take(1)
-      );
+  private _getUserPermissionsByUserIdFromStoreOrApi(userId: string): Observable<any[] | null> {
+    return of([]);
+    // return this._store.select(UserAccountsSelectors.selectSelectedUsersPermissions)
+    //   .pipe(
+    //     tap(permissions => {
+    //       if (!permissions) {
+    //         this._store.dispatch(
+    //           UserAccountsActions.getUserPermissionsByUserIdRequest({ userId: userId })
+    //         );
+    //       }
+    //     }),
+    //     filter(permissions => !!permissions),
+    //     take(1)
+    //   );
   }
 }

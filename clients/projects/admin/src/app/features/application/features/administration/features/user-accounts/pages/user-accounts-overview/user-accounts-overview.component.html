@@ -1,13 +1,7 @@
-<nz-page-header style="background: white;" class="bordered-bottom" nzTitle="User Accounts" nzBackIcon>
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a>Administration</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>
-      <a>User Accounts</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Overview</nz-breadcrumb-item>
-  </nz-breadcrumb>
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1  nz-typography>User Accounts</h1>
+  </div>
   <nz-page-header-extra>
     <a  routerLink="./create" 
         nz-button 
@@ -17,7 +11,7 @@
   </nz-page-header-extra>
 </nz-page-header>
 
-<div class="p-4" [@fadeAnimation]>
+<div [@fadeAnimation] class="px-4 py-0">
   <nz-card class="w-100 p-0">
     <div>
       <div class="mb-3 flex flex-row">
@@ -61,13 +55,27 @@
             nzPopoverTrigger="click"
             [nzPopoverContent]="confirmationDisableTemplate"
             nzPopoverPlacement="left"
-            title="Disable user">
-          <i nz-icon nzType="disconnect"></i>
+            [title]="(row?.isLockedOut ? 'Enable' : 'Disable')  + ' user'">
+          <i nz-icon [nzType]="row?.isLockedOut ? 'check-circle' : 'close-circle'"></i>
           <ng-template #confirmationDisableTemplate>
-            <p class="mb-0">Disabling user account...</p>
+            <p class="mb-0">{{ row?.isLockedOut ? 'Enabling' : 'Disabling' }} user account...</p>
             <p>Are you sure?</p>
-            <button role="button" nz-button nzType="primary" nzSize="small" class="mr-1">Confirm</button>
-            <button role="button" nz-button nzType="default" nzSize="small">Cancel</button>
+            <button 
+                role="button" 
+                nz-button 
+                nzType="primary" 
+                nzSize="small" 
+                class="mr-1"
+                (click)="onToggleLockoutUser(row, !row.isLockedOut)">
+              Confirm
+            </button>
+            <button 
+                role="button" 
+                nz-button 
+                nzType="default" 
+                nzSize="small">
+              Cancel
+            </button>
           </ng-template>
         </button>
         <button
@@ -83,8 +91,21 @@
           <ng-template #confirmationDeleteTemplate>
             <p class="mb-0">Deleting user account...</p>
             <p>Are you sure?</p>
-            <button role="button" nz-button nzType="primary" nzSize="small" class="mr-1">Confirm</button>
-            <button role="button" nz-button nzType="default" nzSize="small">Cancel</button>
+            <button 
+                role="button" 
+                nz-button 
+                nzType="primary" 
+                nzSize="small" 
+                class="mr-1">
+              Confirm
+            </button>
+            <button 
+                role="button" 
+                nz-button 
+                nzType="default" 
+                nzSize="small">
+              Cancel
+            </button>
           </ng-template>
         </button>
       </nz-button-group>

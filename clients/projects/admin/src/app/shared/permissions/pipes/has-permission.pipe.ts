@@ -1,6 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { PermissionNames, UserModulesAndPermissionsMap, UserPermission } from '@vsp/core';
+type UserModulesAndPermissionsMap = any;
+type PermissionNames = any;
+type UserPermission = any;
 
 @Pipe({
   name: 'vspHasPermission',

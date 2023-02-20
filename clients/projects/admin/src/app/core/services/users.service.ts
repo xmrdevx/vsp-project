@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { EnvironmentService, Page, PageRequest, ValidationResult } from '@vsp/core';
 
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
-import { UserPermission, UserAccountDto, UserAccount, UserModulePermissions, UserSettings } from '@vsp/core';
+import { User } from '@vsp/core';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class UsersService {
     );
   }
 
-  public searchUsers(filter: BasicQuerySearchFilter, pageRequest: PageRequest): Observable<Page<UserAccountDto>> {
+  public searchUsers(filter: BasicQuerySearchFilter, pageRequest: PageRequest): Observable<Page<User>> {
     const queryParams: {[key: string]: string } = { 
       query: filter?.query || '',
       size: pageRequest.size.toString(),
@@ -36,47 +36,29 @@ export class UsersService {
       column: pageRequest?.sort?.column?.toString() || '',
       direction: pageRequest?.sort?.direction?.toString() || ''
     };
-    return this.http.get<Page<UserAccountDto>>(
+    return this.http.get<Page<User>>(
       `${this.environmentService.getBaseApiUrl()}/users/search`,
       { params: queryParams }
     );
   }
 
-  public createUserAccount(userAccount: UserAccount): Observable<UserAccountDto> {
-    return this.http.post<UserAccountDto>(
+  public createUserAccount(userAccount: User): Observable<User> {
+    return this.http.post<User>(
       `${this.environmentService.getBaseApiUrl()}/users`,
       userAccount
     );
   }
 
-  public updateUserAccount(userId: string, userAccount: UserAccount): Observable<UserAccountDto> {
-    return this.http.put<UserAccountDto>(
+  public updateUserAccount(userId: string, userAccount: User): Observable<User> {
+    return this.http.put<User>(
       `${this.environmentService.getBaseApiUrl()}/users/${userId}`,
       userAccount
     );
   }
 
-  public getUserByUserId(userId: string): Observable<UserAccountDto> {
-    return this.http.get<UserAccountDto>(
+  public getUserByUserId(userId: string): Observable<User> {
+    return this.http.get<User>(
       `${this.environmentService.getBaseApiUrl()}/users/${userId}`
-    );
-  }
-
-  public getUserPermissionsByUserId(userId: string): Observable<UserPermission[]> {
-    return this.http.get<UserPermission[]>(
-      `${this.environmentService.getBaseApiUrl()}/users/${userId}/permissions`
-    );
-  }
-
-  public getUserSettings(): Observable<UserSettings> {
-    return this.http.get<UserSettings>(
-      `${this.environmentService.getBaseApiUrl()}/users/settings`
-    );
-  }
-
-  public getUserPermissions(): Observable<UserModulePermissions> {
-    return this.http.get<UserModulePermissions>(
-      `${this.environmentService.getBaseApiUrl()}/users/permissions`
     );
   }
 }

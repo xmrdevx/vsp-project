@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Store } from '@ngrx/store';
 import { catchError, filter, Observable, of, switchMap, take, tap } from 'rxjs';
 
-import { UserAccountDto } from '@vsp/core';
+import { User } from '@vsp/core';
 import { UserAccountsActions, UserAccountsSelectors, UserAccountsState } from '../store';
 
 @Injectable({
@@ -21,14 +21,14 @@ export class SelectedUsersAccountLoadedGuard implements CanActivate {
       );
   }
   
-  private _getUserAccountByUserIdFromStoreOrApi(userId: string): Observable<UserAccountDto | null> {
+  private _getUserAccountByUserIdFromStoreOrApi(userId: string): Observable<User | null> {
     return this._store.select(UserAccountsSelectors.selectSelectedUserAccount)
       .pipe(
         tap(account => {
           if (!account) {
-            this._store.dispatch(
-              UserAccountsActions.getUserAccountByUserIdRequest({ userId: userId })
-            );
+            // this._store.dispatch(
+            //   UserAccountsActions.getUserAccountByUserIdRequest({ userId: userId })
+            // );
           }
         }),
         filter(account => !!account),

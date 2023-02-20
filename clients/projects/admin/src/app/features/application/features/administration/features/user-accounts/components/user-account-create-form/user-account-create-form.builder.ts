@@ -1,12 +1,12 @@
 import { UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
-import { MatchValidators, ValidationPatterns, UserModulePermission } from '@vsp/core';
+import { MatchValidators, ValidationPatterns} from '@vsp/core';
 
 import { UserValidators } from '@vsp/admin/core/validators';
 
 export const buildUserAccountCreateForm = (
     formBuilder: UntypedFormBuilder, 
     userValidators: UserValidators, 
-    userModulePermissions: UserModulePermission[]
+    userModulePermissions: any[]
   ) => formBuilder.group({
     user: formBuilder.group({
       userName: ['', [
@@ -32,7 +32,7 @@ export const buildUserAccountCreateForm = (
   });
 
 export const builderUserModulePermissionsFormArray = 
-  (formBuilder: UntypedFormBuilder, userModulePermissions: UserModulePermission[]) : UntypedFormArray => formBuilder.array([
+  (formBuilder: UntypedFormBuilder, userModulePermissions: any[]) : UntypedFormArray => formBuilder.array([
     ...userModulePermissions?.map(m => formBuilder.group({
       id: [m.id],
       hasAccess: [m.hasAccess],
@@ -46,7 +46,7 @@ export const builderUserModulePermissionsFormArray =
         name: [m?.modulePermission?.name]
       }),
       userPermissions: formBuilder.array([
-        ...m?.userPermissions?.map(permission => {
+        ...m?.userPermissions?.map((permission: any) => {
           return formBuilder.group({
             canCreate: [permission.canCreate],
             canRead: [permission.canRead],

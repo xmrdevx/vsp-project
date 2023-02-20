@@ -1,13 +1,7 @@
-<nz-page-header style="background: white;" class="bordered-bottom" nzTitle="Create User Account" nzBackIcon>
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a>Administration</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>
-      <a>User Accounts</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Create</nz-breadcrumb-item>
-  </nz-breadcrumb>
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1  nz-typography>Create Account</h1>
+  </div>
   <nz-page-header-extra>
     <button
         class="mr-1"
@@ -19,19 +13,22 @@
     <button
         (click)="onCreateUserAccount(createUserAccountForm.value, false)"
         nz-button 
-        nzType="default">
+        nzType="primary"
+        nzGhost>
       Save & Create Another
     </button>
   </nz-page-header-extra>
 </nz-page-header>
 
-<div [@fadeAnimation] class="p-4">
+<!-- <div [@fadeAnimation] class="px-4 py-0">
+  <nz-card class="w-100 p-0"> -->
+<div [@fadeAnimation] class="px-4 py-0">
   <nz-card class="w-100 p-0">
     <form class="block" [formGroup]="createUserAccountForm">
-      <vsp-user-account-create-form
+      <!-- <vsp-user-account-create-form
           [templateModulePermissionNames]="templateModulePermissionNames$ | async"
           (selectTemplateModulePermissionName)="onTemplateModulePermissionNameSelected($event)">
-      </vsp-user-account-create-form>
+      </vsp-user-account-create-form> -->
     </form>
   </nz-card>
 </div>

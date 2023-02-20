@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { defaultBasicQuerySearchFilter } from '@vsp/admin/core/constants';
 
-import { UserAccountDto, TemplateModulePermissionName, UserPermission, Page, ResponseMessage } from '@vsp/core';
+import { Page, ResponseMessage, User } from '@vsp/core';
 import { TableDefinition } from '@vsp/datatable';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 
@@ -10,15 +10,16 @@ import { getDefaultUserAccountsTableDefinition } from '../pages/user-accounts-ov
 import { UserAccountsActions } from './user-accounts.actions';
 
 export interface UserAccountsState {
-  userAccountsPage: Page<UserAccountDto> | null,
+  userAccountsPage: Page<User> | null,
   userAccountsSearchFilter: BasicQuerySearchFilter | null,
   userAccountsTableDefinition: TableDefinition | null,
-  createUserAccountResponseMessage: ResponseMessage | null,
-  updateUserAccountResponseMessage: ResponseMessage | null,
-  selectedUserAccount: UserAccountDto | null,
-  selectedUsersPermissions: UserPermission[] | null,
-  templateModulePermissionNames: TemplateModulePermissionName[] | null,
-  selectedTemplateModulePermissionName: TemplateModulePermissionName | null,
+  createUserAccountResponseMessage: ResponseMessage<void> | null,
+  updateUserAccountResponseMessage: ResponseMessage<void> | null,
+  lockoutUserAccountResponseMessage: ResponseMessage<void> | null
+  selectedUserAccount: User | null,
+  // selectedUsersPermissions: UserPermission[] | null,
+  // templateModulePermissionNames: TemplateModulePermissionName[] | null,
+  // selectedTemplateModulePermissionName: TemplateModulePermissionName | null,
 }
 
 export const initialUserAccountsState: UserAccountsState = {
@@ -27,10 +28,11 @@ export const initialUserAccountsState: UserAccountsState = {
   userAccountsTableDefinition: getDefaultUserAccountsTableDefinition(),
   createUserAccountResponseMessage: null,
   updateUserAccountResponseMessage: null,
+  lockoutUserAccountResponseMessage: null,
   selectedUserAccount: null,
-  selectedUsersPermissions: null,
-  templateModulePermissionNames: null,
-  selectedTemplateModulePermissionName: null,
+  // selectedUsersPermissions: null,
+  // templateModulePermissionNames: null,
+  // selectedTemplateModulePermissionName: null,
 }
 
 const handleSearchUserAccountsRequestSuccess = (state: UserAccountsState, { page }: any) => ({
@@ -90,7 +92,25 @@ const handleResetSelectedUserAccountStateSlice = (state: UserAccountsState) => (
   selectedUserAccount: null,
   selectedTemplateModulePermissionName: null,
   templateModulePermissionNames: null
-} as UserAccountsState)
+} as UserAccountsState);
+
+const handleLockoutUserAccountRequestSuccess = (state: UserAccountsState, { user, message }: any) => ({
+  ...state,
+  userAccountsPage: !state.userAccountsPage ? null : {
+    ...state.userAccountsPage,
+    elements: state.userAccountsPage
+      .elements.map(element => element.id === user.id 
+        ? {...user, isLockedOut: !user.isLockedOut } 
+        : element
+      )
+  },
+  lockoutUserAccountResponseMessage: message
+} as UserAccountsState);
+
+const handleSetLockoutUserAccountResponseMessage = (state: UserAccountsState, { message }: any) => ({
+  ...state,
+  lockoutUserAccountResponseMessage: message
+} as UserAccountsState);
 
 export const userAccountsFeature = createFeature({
   name: 'userAccounts',
@@ -100,39 +120,29 @@ export const userAccountsFeature = createFeature({
       UserAccountsActions.searchUserAccountsRequestSuccess,
       handleSearchUserAccountsRequestSuccess
     ),
-    on(
-      UserAccountsActions.createUserAccountRequestSuccess,
-      UserAccountsActions.setCreateUserAccountRequestResponseMessage,
-      UserAccountsActions.createUserAccountRequestFailure,
-      handleCreateUserAccountRequestSuccess
-    ),
-    on(
-      UserAccountsActions.updateUserAccountRequestSuccess,
-      UserAccountsActions.setUpdateUserAccountRequestResponseMessage,
-      handleUpdateUserAccountRequestSuccess
-    ),
-    on(
-      UserAccountsActions.getUserPermissionsByUserIdRequestSuccess,
-      handleGetUserPermissionsByUserIdRequestSuccess
-    ),
-    on(
-      UserAccountsActions.getUserAccountByUserIdRequestSuccess,
-      UserAccountsActions.setSelectedUserAccount,
-      handleGetUserAccountByUserIdRequestSuccess
-    ),
+    // on(
+    //   UserAccountsActions.createUserAccountRequestSuccess,
+    //   UserAccountsActions.setCreateUserAccountRequestResponseMessage,
+    //   UserAccountsActions.createUserAccountRequestFailure,
+    //   handleCreateUserAccountRequestSuccess
+    // ),
+    // on(
+    //   UserAccountsActions.updateUserAccountRequestSuccess,
+    //   UserAccountsActions.setUpdateUserAccountRequestResponseMessage,
+    //   handleUpdateUserAccountRequestSuccess
+    // ),
+    // on(
+    //   UserAccountsActions.getUserPermissionsByUserIdRequestSuccess,
+    //   handleGetUserPermissionsByUserIdRequestSuccess
+    // ),
+    // on(
+    //   UserAccountsActions.getUserAccountByUserIdRequestSuccess,
+    //   UserAccountsActions.setSelectedUserAccount,
+    //   handleGetUserAccountByUserIdRequestSuccess
+    // ),
     on(
       UserAccountsActions.setUserAccountsSearchFilter,
       handleSetUserAccountsSearchFilter
-    ),
-    on(
-      UserAccountsActions.getAllTemplateModulePermissionNamesRequestSuccess,
-      UserAccountsActions.setTemplateModulePermissionNames,
-      handleGetTemplateModulePermissionNamesRequestSuccess
-    ),
-    on(
-      UserAccountsActions.getTemplateModulePermissionNameByIdRequestSuccess,
-      UserAccountsActions.setSelectedTemplateModulePermissionName,
-      handleGetTemplateModulePermissionNameByIdRequestSuccess
     ),
     on(
       UserAccountsActions.resetSelectedUserAccountStateSlice,
@@ -145,6 +155,14 @@ export const userAccountsFeature = createFeature({
     on(
       UserAccountsActions.resetUserAccountsTableDefinition,
       handleResetUserAccountsTableDefinition
+    ),
+    on(
+      UserAccountsActions.lockoutUserAccountRequestSuccess,
+      handleLockoutUserAccountRequestSuccess 
+    ),
+    on(
+      UserAccountsActions.setLockoutUserAccountResponseMessage,
+      handleSetLockoutUserAccountResponseMessage
     )
   )
 });
