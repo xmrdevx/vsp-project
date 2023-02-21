@@ -89,6 +89,10 @@ export class AccountsService implements IAccountsService {
 
 
   public async createUser(createUserDto: CreateUserDto): Promise<UserDto> {
+    // Get roles for admin site
+    const adminSiteRoles: Role[] = await this._rolesRepository
+      .findWithRelations({ where: [{ name: In([RoleTypes.ADMIN, RoleTypes.USER]) }]});
+
     const existingUser: User | null = await this._usersRepository.findByCondition({
       where: [
         { email: createUserDto.email }, 
@@ -104,7 +108,8 @@ export class AccountsService implements IAccountsService {
 
     const savedUser: User = await this._usersRepository.save(
       this._usersRepository.create({
-        ...createUserDto
+        ...createUserDto,
+        roles: adminSiteRoles
       })
     );
 
