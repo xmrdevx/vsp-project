@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, mergeMap, of, switchMap } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { ResponseMessage, ResponseStatus, Page, User } from '@vsp/core';
+import { ResponseMessage, ResponseStatus, Page, User, ForgotPassword } from '@vsp/core';
 import { AccountsService, PermissionsService } from '@vsp/admin/core/services';
 
 import { UserAccountsActions } from './user-accounts.actions';
@@ -121,6 +121,25 @@ export class UserAccountsEffects {
               message: {
                 status: ResponseStatus.ERROR,
                 message: error.error || 'Error getting user!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
+
+  public issueForgotPasswordRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(UserAccountsActions.issueForgotPasswordRequest),
+      switchMap(({ request }) => 
+        this._accountsService.forgotPassword(request)
+          .pipe(
+            mergeMap((message: ResponseMessage<void>) => 
+              of(UserAccountsActions.issueForgotPasswordRequestSuccess({ message }))),
+            catchError((error: any)=> of(UserAccountsActions.issueForgotPasswordRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error.error || 'Error issuing forgot password request!'
               } as ResponseMessage<void>
             })))
           )

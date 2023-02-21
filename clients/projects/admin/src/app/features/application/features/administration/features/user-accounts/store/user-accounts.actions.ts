@@ -1,6 +1,7 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 
 import { 
+  ForgotPassword,
   LockoutUserRequest,
   Page, 
   PageRequest, 
@@ -51,5 +52,11 @@ export const UserAccountsActions = createActionGroup({
     'Lockout User Account Request Success': props<{ user: User, message: ResponseMessage<void> }>(),
     'Lockout User Account Request Error': props<{ message: ResponseMessage<void> }>(),
     'Set Lockout User Account Response Message': props<{ message: ResponseMessage<void> | null }>(),
+
+    // Issue Forgot Password Request
+    'Issue Forgot Password Request': props<{ request: ForgotPassword }>(),
+    'Issue Forgot Password Request Success': props<{ message: ResponseMessage<void> }>(),
+    'Issue Forgot Password Request Failure': props<{ message: ResponseMessage<void> }>(),
+    'Set Issue Forgot Password Request Response Message': props<{ message: ResponseMessage<void> | null }>(),
   }
 });

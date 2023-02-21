@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { EnvironmentService, LockoutUserRequest, Page, PageRequest, ResponseMessage, User } from '@vsp/core';
+import { EnvironmentService, ForgotPassword, LockoutUserRequest, Page, PageRequest, ResponseMessage, User } from '@vsp/core';
 import { Observable } from 'rxjs';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 
@@ -68,6 +68,13 @@ export class AccountsService {
   public getUserById(userId: string): Observable<User> {
     return this._http.get<User>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/users/${userId}`
+    );
+  }
+
+  public forgotPassword(request: ForgotPassword): Observable<ResponseMessage<void>> {
+    return this._http.post<ResponseMessage<void>>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/forgot-password`,
+      request
     );
   }
 }

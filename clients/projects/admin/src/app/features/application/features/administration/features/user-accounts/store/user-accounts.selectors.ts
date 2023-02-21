@@ -26,6 +26,11 @@ export const selectUpdateUserAccountResponseMessage = createSelector(
   (state: UserAccountsState) => state?.updateUserAccountResponseMessage || null
 );
 
+export const selectIssueForgotPasswordRequestResponseMessage = createSelector(
+  selectUserAccountsState,
+  (state: UserAccountsState) => state?.issueForgotPasswordRequestResponseMessage || null
+);
+
 // export const selectSelectedUsersPermissions = createSelector(
 //   selectUserAccountsState,
 //   (state: UserAccountsState) => state?.selectedUsersPermissions || null
@@ -62,6 +67,7 @@ export const UserAccountsSelectors = {
   selectCreateUserAccountResponseMessage,
   selectUpdateUserAccountResponseMessage,
   selectLockoutUserAccountResponseMessage,
+  selectIssueForgotPasswordRequestResponseMessage,
   // selectSelectedUsersPermissions,
   selectSelectedUserAccount,
   selectUserAccountSearchFilter,

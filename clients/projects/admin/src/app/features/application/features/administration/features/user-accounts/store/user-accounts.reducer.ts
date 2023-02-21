@@ -15,7 +15,8 @@ export interface UserAccountsState {
   userAccountsTableDefinition: TableDefinition | null,
   createUserAccountResponseMessage: ResponseMessage<void> | null,
   updateUserAccountResponseMessage: ResponseMessage<void> | null,
-  lockoutUserAccountResponseMessage: ResponseMessage<void> | null
+  lockoutUserAccountResponseMessage: ResponseMessage<void> | null,
+  issueForgotPasswordRequestResponseMessage: ResponseMessage<void> | null,
   selectedUserAccount: User | null,
   // selectedUsersPermissions: UserPermission[] | null,
   // templateModulePermissionNames: TemplateModulePermissionName[] | null,
@@ -29,6 +30,7 @@ export const initialUserAccountsState: UserAccountsState = {
   createUserAccountResponseMessage: null,
   updateUserAccountResponseMessage: null,
   lockoutUserAccountResponseMessage: null,
+  issueForgotPasswordRequestResponseMessage: null,
   selectedUserAccount: null,
   // selectedUsersPermissions: null,
   // templateModulePermissionNames: null,
@@ -112,6 +114,13 @@ const handleSetLockoutUserAccountResponseMessage = (state: UserAccountsState, { 
   lockoutUserAccountResponseMessage: message
 } as UserAccountsState);
 
+
+const handleIssueForgotPasswordRequestSuccess = (state: UserAccountsState, { message }: any) => ({
+  ...state,
+  issueForgotPasswordRequestResponseMessage: message
+} as UserAccountsState);
+
+
 export const userAccountsFeature = createFeature({
   name: 'userAccounts',
   reducer: createReducer(
@@ -163,6 +172,12 @@ export const userAccountsFeature = createFeature({
     on(
       UserAccountsActions.setLockoutUserAccountResponseMessage,
       handleSetLockoutUserAccountResponseMessage
-    )
+    ),
+    on(
+      UserAccountsActions.issueForgotPasswordRequestSuccess,
+      UserAccountsActions.issueForgotPasswordRequestFailure,
+      UserAccountsActions.setIssueForgotPasswordRequestResponseMessage,
+      handleIssueForgotPasswordRequestSuccess
+    ),
   )
 });

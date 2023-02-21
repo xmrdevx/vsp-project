@@ -14,7 +14,8 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { 
   User,
   fadeAnimation, 
-  ResponseStatus } from '@vsp/core';
+  ResponseStatus, 
+  ForgotPassword} from '@vsp/core';
 
 import { buildUserAccountUpdateForm } from '../../components/user-account-update-form/user-account-update-form.builder';
 
@@ -75,11 +76,22 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
   public onUpdateUserAccount(formValue: any): void {
     if (this.updateUserAccountForm.invalid) return;
     const user: User = createUserFromFormValue(formValue);
-    console.log("updating user with values ", user);
     this._handleUpdateUserResponseMessage();
     this._store.dispatch(
       UserAccountsActions.updateUserAccountRequest({ userId: user?.id, user })
     );
+  }
+
+  public onIssueForgotPasswordRequest(request: ForgotPassword): void {
+    this._handleIssueForgotPasswordRequestResponseMessage();
+    this._store.dispatch(UserAccountsActions.issueForgotPasswordRequest({ request }));
+  }
+
+  public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
+    if (!templateModulePermissionName) {
+      this._resetClaimPermissionGroups();
+      return;
+    }
   }
 
   private _handleUpdateUserResponseMessage(): void {
@@ -97,18 +109,18 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
       });
   }
 
-  public onIssuePasswordResetRequest(shouldIssue: boolean): void {
-    if (shouldIssue) {
-      alert('Issue reset');
-      // @TODO create actions for this....
-    }
-  }
-
-  public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
-    if (!templateModulePermissionName) {
-      this._resetClaimPermissionGroups();
-      return;
-    }
+  private _handleIssueForgotPasswordRequestResponseMessage(): void {
+    this._store.select(UserAccountsSelectors.selectIssueForgotPasswordRequestResponseMessage)
+      .pipe(filter(message => !!message), take(1))
+      .subscribe(message => {
+        if (message?.status === ResponseStatus.SUCCESS) {
+          this._messageService.success(message?.message || 'Success!')
+        } else {
+          this._messageService.error(message?.message || 'Error!')
+        }
+        this._store.dispatch(UserAccountsActions
+          .setIssueForgotPasswordRequestResponseMessage({ message: null } ))
+      });
   }
 
   private _resetClaimPermissionGroups(): void {

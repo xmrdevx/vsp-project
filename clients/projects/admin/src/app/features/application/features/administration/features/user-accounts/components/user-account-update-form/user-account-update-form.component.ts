@@ -16,7 +16,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { EnvironmentService } from '@vsp/core';
+import { EnvironmentService, ForgotPassword } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
 
@@ -62,11 +62,11 @@ export class UserAccountUpdateFormComponent implements OnInit {
     new EventEmitter<any | null>();
 
   @Output()
-  public issuePasswordResetRequest: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public issueForgotPasswordRequest: EventEmitter<ForgotPassword> = new EventEmitter<ForgotPassword>();
 
   public userAccountForm!: UntypedFormGroup;
 
-  public hasIssuedPasswordResetRequest: boolean = false;
+  public hasIssuedForgotPasswordRequest: boolean = false;
   public isLoadingTemplate: boolean = false;
 
   ngOnInit(): void {
@@ -95,9 +95,9 @@ export class UserAccountUpdateFormComponent implements OnInit {
     }, 500);
   }
 
-  public onIssuePasswordResetRequest(shouldIssue: boolean): void {
-    this.hasIssuedPasswordResetRequest = true;
-    this.issuePasswordResetRequest.emit(shouldIssue);
+  public onIssueForgotPasswordRequest(request: ForgotPassword): void {
+    this.hasIssuedForgotPasswordRequest = true;
+    this.issueForgotPasswordRequest.emit(request);
   }
 
   public onClaimPermissionAccessChange(event: any, control: AbstractControl): void {

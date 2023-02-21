@@ -82,9 +82,9 @@
             nz-button
             nzType="primary"
             class="block w-100"
-            [disabled]="hasIssuedPasswordResetRequest"
-            (click)="onIssuePasswordResetRequest(true)">
-          Issue Password Reset Request  
+            [disabled]="hasIssuedForgotPasswordRequest"
+            (click)="onIssueForgotPasswordRequest({ email: userAccountForm.get('email').value })">
+          Issue Forgot Password Request
         </button>
       </nz-form-control>
     </nz-form-item>
