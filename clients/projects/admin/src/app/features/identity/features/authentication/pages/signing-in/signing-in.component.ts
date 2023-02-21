@@ -42,7 +42,7 @@ export class SigningInComponent implements OnInit {
 
   private _listenForUserSettingsAndPermissionsResolution(): void {
     // @TEMP - Disable getting permissins until backend is done
-    setTimeout(() => this._router.navigateByUrl('/app/dashboard'), 2000);
+    setTimeout(() => this._router.navigateByUrl('/app/dashboard'), 500);
 
     // combineLatest([
     //   this._store.select(UserSelectors.selectUserSettings),

@@ -3,13 +3,13 @@ import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
 import { catchError, debounceTime, filter, map, Observable, of, switchMap, take } from 'rxjs';
 import { ValidationResult } from '@vsp/core';
 
-import { UsersService } from '@vsp/admin/core/services';
+import { AccountsService } from '@vsp/admin/core/services';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserValidators  {
-  private readonly _usersService: UsersService = inject(UsersService);
+  private readonly _accountsService: AccountsService = inject(AccountsService);
 
   public validateEmail(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<{[key: string]: any} | null> => {
@@ -17,9 +17,9 @@ export class UserValidators  {
         debounceTime(500),
         filter(value => value.trim().length > 0),
         take(1),
-        switchMap(() => this._usersService.verifyEmail(control.value)
+        switchMap(() => this._accountsService.doesEmailExist(control.value)
           .pipe(
-            map((result: ValidationResult) => result.isValid ? null : { emailExists: true }),
+            map(() => ({ emailExists: true })),
             catchError(error => of(null))
           )
         )
@@ -33,9 +33,9 @@ export class UserValidators  {
         debounceTime(500),
         filter(value => value.trim().length > 0),
         take(1),
-        switchMap(() => this._usersService.verifyUserName(control.value)
+        switchMap(() => this._accountsService.doesUsernameExist(control.value)
           .pipe(
-            map((result: ValidationResult) => result.isValid ? null : { userNameExists: true }),
+            map(() => ({ usernameExists: true })),
             catchError(error => of(null))
           )
         )

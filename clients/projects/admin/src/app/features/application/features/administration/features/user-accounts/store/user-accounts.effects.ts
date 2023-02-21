@@ -57,34 +57,34 @@ export class UserAccountsEffects {
     )
   );
 
-  // public createUserAccountRequest = createEffect(() => this._actions
-  //   .pipe(
-  //     ofType(UserAccountsActions.createUserAccountRequest),
-  //     switchMap(({ userAccount }) => 
-  //       this._usersService.createUserAccount(userAccount)
-  //         .pipe(
-  //           mergeMap((userDto: UserAccountDto) => of(UserAccountsActions.createUserAccountRequestSuccess({ 
-  //             message: {
-  //               status: ResponseStatus.SUCCESS,
-  //               message: 'Successfully create new user account!'
-  //             } as ResponseMessage
-  //           }))),
-  //           catchError((error: any) => {
-  //             const message: string = error?.status === 403 
-  //               ? 'Forbidden, you have reached your max allowed user!' 
-  //               : error?.error ? error?.error : 'Error creating new user account!';
+  public createUserAccountRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(UserAccountsActions.createUserAccountRequest),
+      switchMap(({ user }) => 
+        this._accountsService.createUser(user)
+          .pipe(
+            mergeMap((user: User) => of(UserAccountsActions.createUserAccountRequestSuccess({ 
+              message: {
+                status: ResponseStatus.SUCCESS,
+                message: 'Successfully create new user account!'
+              } as ResponseMessage<void>
+            }))),
+            catchError((error: any) => {
+              const message: string = error?.status === 403 
+                ? 'Forbidden, you have reached your max allowed user!' 
+                : error?.error ? error?.error : 'Error creating new user account!';
               
-  //               return of(UserAccountsActions.createUserAccountRequestFailure({
-  //               message: {
-  //                 status: ResponseStatus.ERROR,
-  //                 message: message
-  //               } as ResponseMessage
-  //             }))
-  //           })
-  //         )
-  //     )
-  //   )
-  // );
+                return of(UserAccountsActions.createUserAccountRequestFailure({
+                message: {
+                  status: ResponseStatus.ERROR,
+                  message: message
+                } as ResponseMessage<void>
+              }))
+            })
+          )
+      )
+    )
+  ); 
 
   // public updateUserAccountRequest = createEffect(() => this._actions
   //   .pipe(

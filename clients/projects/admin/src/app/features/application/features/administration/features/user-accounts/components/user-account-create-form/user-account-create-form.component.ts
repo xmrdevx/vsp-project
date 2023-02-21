@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, EventEmitter, Output, ViewChild, inject } from '@angular/core';
-import { AbstractControl, ControlContainer, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AbstractControl, ControlContainer, FormArray, FormGroup, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -18,6 +18,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { EnvironmentService } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
 
 @Component({
   selector: 'vsp-user-account-create-form',
@@ -29,6 +30,7 @@ import { VspAutoFocusControlDirective } from '@vsp/forms';
     AsyncPipe,
     NgFor,
     NgIf,
+    NgTemplateOutlet,
     NzButtonModule,
     NzCheckboxModule,
     NzCollapseModule,
@@ -43,6 +45,7 @@ import { VspAutoFocusControlDirective } from '@vsp/forms';
     NzUploadModule,
     VspAutoFocusControlDirective,
     ReactiveFormsModule,
+    TitleCasePipe,
   ]
 })
 export class UserAccountCreateFormComponent implements OnInit {
@@ -54,7 +57,7 @@ export class UserAccountCreateFormComponent implements OnInit {
   public autoFocusControl!: VspAutoFocusControlDirective;
   
   @Input()
-  public templateModulePermissionNames: any[] | null = [];
+  public claimPermissionGroups: ClaimPermissionNode[] | null = [];
 
   @Output()
   public selectTemplateModulePermissionName: EventEmitter<any | null> = 
@@ -72,13 +75,13 @@ export class UserAccountCreateFormComponent implements OnInit {
     return `${this._environmentService.getBaseApiUrl()}/files/avatar`;
   }
 
-  public get userModulePermissions(): UntypedFormArray {
-    return this.userAccountForm.get('userModulePermissions') as UntypedFormArray;
+  public get claimPermissionGroupsArray(): UntypedFormArray {
+    return this.userAccountForm.get('claimPermissionGroups') as UntypedFormArray;
   }
 
-  public getUserPermissionsFormArray(control: AbstractControl): UntypedFormArray {
+  public claimPermissionGroupChildrenArray(control: AbstractControl): UntypedFormArray {
     const formGroup: UntypedFormGroup = control as UntypedFormGroup;
-    return formGroup.get('userPermissions') as UntypedFormArray;
+    return formGroup.get('children') as UntypedFormArray;
   }
 
   public onApplyTemplateModulerPermissionName(templateModulePermissionName: any | null): void {
@@ -90,69 +93,11 @@ export class UserAccountCreateFormComponent implements OnInit {
     }, 500);
   }
 
-  public onUserModulePermissionAccessChange(event: any, control: AbstractControl): void {
-    control?.patchValue({
-      canCreateAll: event,
-      canReadAll: event,
-      canUpdateAll: event,
-      canDeleteAll: event
+  public onClaimPermissionAccessChange(event: any, control: AbstractControl): void {
+    const children: FormArray = (control as FormGroup).get('children') as FormArray;
+    children.controls.forEach(control => {
+      control.patchValue({ hasPermission: event });
     });
-  }
-
-  public onUserModulePermissionCanCreateAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const childUserPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        childUserPermissionFormGroup?.patchValue({
-          canCreate: event
-        })
-      });
-    }
-  }
-
-  public onUserModulePermissionCanReadAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const userPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        userPermissionFormGroup?.patchValue({
-          canRead: event
-        })
-      });
-    }
-  }
-
-  public onUserModulePermissionCanUpdateAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const userPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        userPermissionFormGroup?.patchValue({
-          canUpdate: event
-        })
-      });
-    }
-  }
-
-  public onUserModulePermissionCanDeleteAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const userPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        userPermissionFormGroup?.patchValue({
-          canDelete: event
-        })
-      });
-    }
   }
 
   // @TODO clean up

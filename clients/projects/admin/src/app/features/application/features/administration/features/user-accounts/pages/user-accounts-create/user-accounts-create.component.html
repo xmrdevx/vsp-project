@@ -1,6 +1,6 @@
 <nz-page-header class="py-0">
   <div nz-page-header-title>
-    <h1  nz-typography>Create Account</h1>
+    <h1 nz-typography>Create User Account</h1>
   </div>
   <nz-page-header-extra>
     <button
@@ -25,10 +25,9 @@
 <div [@fadeAnimation] class="px-4 py-0">
   <nz-card class="w-100 p-0">
     <form class="block" [formGroup]="createUserAccountForm">
-      <!-- <vsp-user-account-create-form
-          [templateModulePermissionNames]="templateModulePermissionNames$ | async"
+      <vsp-user-account-create-form
           (selectTemplateModulePermissionName)="onTemplateModulePermissionNameSelected($event)">
-      </vsp-user-account-create-form> -->
+      </vsp-user-account-create-form>
     </form>
   </nz-card>
 </div>

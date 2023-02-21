@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { catchError, map, Observable, of, switchMap, throwError } from 'rxjs';
-import { AuthenticatedStatus } from '@vsp/admin/core/models';
+import { AuthenticatedStatus } from '@vsp/core';
 
 import * as fromAuthentication from '../store';
 

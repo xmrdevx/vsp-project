@@ -12,15 +12,17 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { ResponseStatus, fadeAnimation } from '@vsp/core';
+import { ResponseStatus, fadeAnimation, User } from '@vsp/core';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { UserValidators } from '@vsp/admin/core/validators';
 import { removeEmptyKeys } from '@vsp/admin/shared/utils';
 
-import { buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
+import { buildClaimPermissionGroupFormArray, buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
 import { UserAccountsSelectors, UserAccountsActions } from '../../store';
 
 import { UserAccountCreateFormComponent } from '../../components/user-account-create-form/user-account-create-form.component';
+import { createUserFromFormValue } from '../../utils';
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
 
 @Component({
   selector: 'vsp-user-accounts-create',
@@ -55,45 +57,45 @@ export class UserAccountsCreateComponent implements OnDestroy {
   public createUserAccountForm!: UntypedFormGroup;
 
   constructor() {
-    // this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-    //   .pipe(take(1))
-    //   .subscribe(assignableModulePermissions => {
-    //     // const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
-    //     // this.createUserAccountForm = buildUserAccountCreateForm(this._formBuilder, this._userValidators, userModulerPermissions);
-    //   });
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
+      .pipe(take(1))
+      .subscribe(claimPermissionGroups => {
+        this.createUserAccountForm = buildUserAccountCreateForm(
+          this._formBuilder, 
+          this._userValidators,
+          claimPermissionGroups ?? []
+        );
+      });
   }
 
   public onCreateUserAccount(formValue: any, shouldReturn: boolean): void {
     if (this.createUserAccountForm.invalid) return;
+    const user: User = createUserFromFormValue(formValue);
+    this._handleCreateUserResponseMessage(shouldReturn);
+    this._store.dispatch(UserAccountsActions.createUserAccountRequest({ user: user }));
+  }
 
-    // const userAccount = userAccountFormToUserAccount(formValue);
-    // removeEmptyKeys(userAccount);
-
-    // this._store.dispatch(UserAccountsActions.createUserAccountRequest({ userAccount: userAccount }));
-
-    // this._store.select(UserAccountsSelectors.selectCreateUserAccountResponseMessage)
-    //   .pipe(
-    //     filter(message => !!message),
-    //     take(1)
-    //   )
-    //   .subscribe(message => {
-    //     if (message?.status === ResponseStatus.SUCCESS) {
-    //       this._resetCreateUserAccountForm();
-    //       this._messageService.success(message?.message || 'Success!')
-    //       if (shouldReturn) {
-    //         this._location.back();
-    //       }
-    //     } else if (message?.status === ResponseStatus.ERROR) {
-    //       this._messageService.error(message?.message || 'Error!')
-    //     }
-    //     this._store.dispatch(UserAccountsActions.setCreateUserAccountRequestResponseMessage({ message: null } ))
-    //   });
+  private _handleCreateUserResponseMessage(shouldReturn: boolean): void {
+    this._store.select(UserAccountsSelectors.selectCreateUserAccountResponseMessage)
+      .pipe(filter(message => !!message), take(1))
+      .subscribe(message => {
+        if (message?.status === ResponseStatus.SUCCESS) {
+          this._resetCreateUserAccountForm();
+          this._messageService.success(message?.message || 'Success!')
+          if (shouldReturn) {
+            this._location.back();
+          }
+        } else {
+          this._messageService.error(message?.message || 'Error!')
+        }
+        this._store.dispatch(UserAccountsActions.setCreateUserAccountRequestResponseMessage({ message: null } ))
+      });
   }
 
 
   public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
     if (!templateModulePermissionName) {
-      this._resetUserModulerPerrmisionsFormArray();
+      this._resetClaimPermissionGroups();
       return;
     }
 
@@ -129,26 +131,25 @@ export class UserAccountsCreateComponent implements OnDestroy {
 
   private _resetCreateUserAccountForm(): void {
     this.createUserAccountForm.reset();
-    this._resetUserModulerPerrmisionsFormArray();
+    this._resetClaimPermissionGroups();
   }
 
 
-  private _resetUserModulerPerrmisionsFormArray(): void {
-    // this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-    //   .pipe(take(1))
-    //   .subscribe(assignableModulePermissions => {
-    //     const userModulerPermissions: UserModulePermission[] = mapAssignableModulePermissionsToUserModulePermissions(assignableModulePermissions || []) || [];
-    //     const blankFormGroup = buildUserAccountCreateForm(this._formBuilder, this._userValidators, userModulerPermissions);
-    //     const userModulePermissionsFormGroup = blankFormGroup.get('userModulePermissions');
+  private _resetClaimPermissionGroups(): void {
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
+      .pipe(take(1))
+      .subscribe(claimPermissionGroups => {
+        const claimPermissionGroupsFromArray = 
+          buildClaimPermissionGroupFormArray(this._formBuilder, claimPermissionGroups || []);
 
-    //     if ( userModulePermissionsFormGroup) {
-    //       this.createUserAccountForm
-    //         ?.get('userModulePermissions')
-    //         ?.patchValue([ ...(userModulePermissionsFormGroup.value || []) ]);
-    //     }
+        if (claimPermissionGroupsFromArray) {
+          this.createUserAccountForm
+            ?.get('claimPermissionGroups')
+            ?.patchValue([ ...(claimPermissionGroupsFromArray.value || []) ]);
+        }
         
-    //     this.formComponent?.autoFocusControl?.setFocusToControl();
-    //   });
+        this.formComponent?.autoFocusControl?.setFocusToControl();
+      });
   }
 
 

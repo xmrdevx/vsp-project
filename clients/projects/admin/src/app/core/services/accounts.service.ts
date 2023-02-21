@@ -44,14 +44,14 @@ export class AccountsService {
     );
   }
 
-  public createUser(): Observable<User> {
+  public createUser(user: User): Observable<User> {
     return this._http.post<User>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/users`,
-      {}
+      user
     );
   }
   
-  public updateUser(userId: string): Observable<User> {
+  public updateUser(userId: string, user: User): Observable<User> {
     return this._http.put<User>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/users/${userId}`,
       {}

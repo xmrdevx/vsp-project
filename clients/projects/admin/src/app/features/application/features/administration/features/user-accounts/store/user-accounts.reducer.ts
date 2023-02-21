@@ -120,12 +120,12 @@ export const userAccountsFeature = createFeature({
       UserAccountsActions.searchUserAccountsRequestSuccess,
       handleSearchUserAccountsRequestSuccess
     ),
-    // on(
-    //   UserAccountsActions.createUserAccountRequestSuccess,
-    //   UserAccountsActions.setCreateUserAccountRequestResponseMessage,
-    //   UserAccountsActions.createUserAccountRequestFailure,
-    //   handleCreateUserAccountRequestSuccess
-    // ),
+    on(
+      UserAccountsActions.createUserAccountRequestSuccess,
+      UserAccountsActions.setCreateUserAccountRequestResponseMessage,
+      UserAccountsActions.createUserAccountRequestFailure,
+      handleCreateUserAccountRequestSuccess
+    ),
     // on(
     //   UserAccountsActions.updateUserAccountRequestSuccess,
     //   UserAccountsActions.setUpdateUserAccountRequestResponseMessage,

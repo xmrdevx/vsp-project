@@ -1,4 +1,4 @@
-import { ListOption } from '../../models/list-options/list-option.model';
+import { ListOption } from '../../models';
 
 export const defaultUsStatesListOptions: ListOption[] = [
   {

@@ -1,63 +1,62 @@
-import { UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
-import { MatchValidators, ValidationPatterns} from '@vsp/core';
+import { FormArray, FormBuilder, FormGroup, UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Claim, MatchValidators, ValidationPatterns} from '@vsp/core';
 
 import { UserValidators } from '@vsp/admin/core/validators';
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
 
 export const buildUserAccountCreateForm = (
     formBuilder: UntypedFormBuilder, 
     userValidators: UserValidators, 
-    userModulePermissions: any[]
+    claimPermissionGroups: ClaimPermissionNode[]
   ) => formBuilder.group({
-    user: formBuilder.group({
-      userName: ['', [
-        Validators.required, 
-        Validators.email
-      ], [userValidators.validateEmail()]],
-      password: ['', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern(ValidationPatterns.password)
-      ]],
-      confirmPassword: ['', [
-        Validators.required,
-        Validators.minLength(6),
-        Validators.pattern(ValidationPatterns.password)
-      ]]
-    }, { validators: [MatchValidators.mustMatch('password', 'confirmPassword')]}),
+    username: ['', [
+      Validators.required
+    ], [userValidators.validateUsername()]],
+    email: ['', [
+      Validators.required,
+      Validators.email
+    ], [userValidators.validateEmail()]],
+    password: ['', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.pattern(ValidationPatterns.password)
+    ]],
+    confirmPassword: ['', [
+      Validators.required,
+      Validators.minLength(6),
+      Validators.pattern(ValidationPatterns.password)
+    ]],
     profile: formBuilder.group({
       firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]]
+      lastName: ['', [Validators.required]],
+      avatarUrl: [''],
+      summary: [''],
+      address: formBuilder.group({
+        street: [null],
+        street2: [null],
+        city: [null],
+        state: [null],
+        zip: [null],
+        country: [null],
+      })
     }),
-    userModulePermissions: builderUserModulePermissionsFormArray(formBuilder, userModulePermissions)
-  });
+    claimPermissionGroups: buildClaimPermissionGroupFormArray(formBuilder, claimPermissionGroups)
+  }, { validators: [MatchValidators.mustMatch('password', 'confirmPassword')]});
 
-export const builderUserModulePermissionsFormArray = 
-  (formBuilder: UntypedFormBuilder, userModulePermissions: any[]) : UntypedFormArray => formBuilder.array([
-    ...userModulePermissions?.map(m => formBuilder.group({
-      id: [m.id],
-      hasAccess: [m.hasAccess],
-      canCreateAll: [false],
-      canReadAll: [false],
-      canUpdateAll: [false],
-      canDeleteAll: [false],
-      modulePermissionId: [m.modulePermissionId],
-      modulePermission: formBuilder.group({
-        id: [m?.modulePermission?.id],
-        name: [m?.modulePermission?.name]
-      }),
-      userPermissions: formBuilder.array([
-        ...m?.userPermissions?.map((permission: any) => {
-          return formBuilder.group({
-            canCreate: [permission.canCreate],
-            canRead: [permission.canRead],
-            canUpdate: [permission.canUpdate],
-            canDelete: [permission.canDelete],
-            permission: formBuilder.group({
-              id: [permission?.permission?.id],
-              name: [permission?.permission?.name]
-            })
-          })
-        }) || []
-      ])
-    })) || []
-  ]);
+
+export const buildClaimPermissionGroupFormArray = 
+  (formBuilder: FormBuilder, claimPermissinoGroups: ClaimPermissionNode[]): FormArray => {
+    return formBuilder.array(
+      claimPermissinoGroups.map(group => buildClaimPermissionGroupFormGroup(formBuilder, group) ?? [])
+    );
+  }
+
+const buildClaimPermissionGroupFormGroup =
+  (formBuilder: FormBuilder, claimPermissionGroup: ClaimPermissionNode): FormGroup => {
+    return formBuilder.group({
+      label: [claimPermissionGroup.label],
+      hasPermission: [claimPermissionGroup.hasPermission],
+      claim: [claimPermissionGroup.claim],
+      children: buildClaimPermissionGroupFormArray(formBuilder, claimPermissionGroup?.children ?? [])
+    })
+  };
