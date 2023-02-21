@@ -17,6 +17,9 @@ import {
   doesUsernameExistCommand, 
   forgotPasswordCommand, 
   ForgotPasswordDto, 
+  getAccountUserByIdCommand, 
+  GetResourceRequest, 
+  GetUserRequest, 
   IDENTITY_SERVICE_TOKEN, 
   IPageable, 
   lockoutAccountUserCommand, 
@@ -136,6 +139,24 @@ export class AccountsController {
         new UpdateResourceRequest<UpdateUserDto>({
           resourceId: userId,
           resource: updateUser
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+  @Get('users/:userId')
+  public getAccountUserById(
+    @Param('userId') userId: string,
+    @Body() getUserRequest: GetUserRequest
+  ): Observable<UserDto> {
+    return this._identityServiceClient
+      .send(
+        getAccountUserByIdCommand,
+        new GetResourceRequest<GetUserRequest>({ 
+          resourceId: userId,
+          resource: getUserRequest
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));

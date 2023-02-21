@@ -43,3 +43,7 @@ export const lockoutAccountUserCommand: MessagePatternCommand<void> = {
   cmd: 'lockout-account-user'
 } as MessagePatternCommand<void>;
 
+export const getAccountUserByIdCommand: MessagePatternCommand<void> = {
+  cmd: 'get-account-user-by-id'
+} as MessagePatternCommand<void>;
+

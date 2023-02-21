@@ -1,4 +1,4 @@
-import { AccountUsersSearchFilter, CreateUserDto, IPageable, LockoutUserRequest, Page, RegistrationDto, ResponseMessage, UpdateUserDto, UserDto } from '@vsp/common';
+import { AccountUsersSearchFilter, CreateUserDto, GetUserRequest, IPageable, LockoutUserRequest, Page, RegistrationDto, ResponseMessage, UpdateUserDto, UserDto } from '@vsp/common';
 
 export const ACCOUNTSS_SERVICE_TOKEN: string = 'ACCOUNTS_SERVICE_TOKEN';
 
@@ -54,4 +54,14 @@ export interface IAccountsService {
    * @abstract
    */
   lockoutUser(userId: string, lockoutUserRequest: LockoutUserRequest): Promise<ResponseMessage<void>>;
+
+  /**
+   * Gets the details of a user by id and request details
+   * @param {string} userId The id of the user to lockout.
+   * @param {GetUserRequest} getUserRequest The new lockout status of the user.
+   * @returns The request user details with claims.
+   * @async
+   * @abstract
+   */
+  getUserById(userId: string, getUserRequest: GetUserRequest): Promise<UserDto>;
 }

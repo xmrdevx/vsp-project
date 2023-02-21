@@ -10,6 +10,7 @@ export * from './create-profile.dto';
 export * from './create-user.dto';
 export * from './credentials.dto';
 export * from './forgot-password.dto';
+export * from './get-user-request.dto';
 export * from './lockout-user-request.dto';
 export * from './profile.dto';
 export * from './refresh-token-request.dto';

@@ -6,6 +6,7 @@ import {
   AccountUsersSearchFilter, 
   Claim, 
   CreateUserDto, 
+  GetUserRequest, 
   IPageable, 
   LockoutUserRequest, 
   Page, 
@@ -163,6 +164,21 @@ export class AccountsService implements IAccountsService {
       message: `Successfully updated the users lockout status`,
       payload: null
     });
+  }
+
+  public async getUserById(userId: string, getUserRequest: GetUserRequest): Promise<UserDto> {
+    const user: User | null = await this._usersRepository.findByCondition({
+      relations: ['profile', 'profile.address', 'claims', 'roles'],
+      where: [{ id: userId, tenantId: getUserRequest.tenantId }]
+    });
+
+    if (!user) {
+      throw new RpcException(
+        new NotFoundException('User was not found!')
+      );
+    }
+
+    return UserMapper.toDto(user);
   }
 
   // @TODO There should be a clean way of doing this.
