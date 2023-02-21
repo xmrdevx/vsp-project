@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, EventEmitter, Output, ViewChild, inject } from '@angular/core';
-import { AbstractControl, ControlContainer, FormArray, FormGroup, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { AbstractControl, ControlContainer, FormGroup, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
 import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 
@@ -84,7 +84,7 @@ export class UserAccountCreateFormComponent implements OnInit {
     return formGroup.get('children') as UntypedFormArray;
   }
 
-  public onApplyTemplateModulerPermissionName(templateModulePermissionName: any | null): void {
+  public onApplyPermissionTemplate(templateModulePermissionName: any | null): void {
     this.isLoadingTemplate = true;
     this.selectTemplateModulePermissionName.emit(templateModulePermissionName);
     setTimeout(() => {
@@ -94,7 +94,7 @@ export class UserAccountCreateFormComponent implements OnInit {
   }
 
   public onClaimPermissionAccessChange(event: any, control: AbstractControl): void {
-    const children: FormArray = (control as FormGroup).get('children') as FormArray;
+    const children: UntypedFormArray = (control as FormGroup).get('children') as UntypedFormArray;
     children.controls.forEach(control => {
       control.patchValue({ hasPermission: event });
     });

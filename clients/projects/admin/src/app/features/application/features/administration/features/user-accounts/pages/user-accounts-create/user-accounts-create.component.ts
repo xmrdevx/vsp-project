@@ -1,7 +1,7 @@
 import { AsyncPipe, Location } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnDestroy, ViewChild, inject } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { filter, Observable, skip, Subject, take } from 'rxjs';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { filter, Subject, take } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 
@@ -15,14 +15,13 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { ResponseStatus, fadeAnimation, User } from '@vsp/core';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { UserValidators } from '@vsp/admin/core/validators';
-import { removeEmptyKeys } from '@vsp/admin/shared/utils';
 
-import { buildClaimPermissionGroupFormArray, buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
+import { buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
+import { buildClaimPermissionGroupFormArray } from '../../components/shared/shared-forms.builder';
 import { UserAccountsSelectors, UserAccountsActions } from '../../store';
 
 import { UserAccountCreateFormComponent } from '../../components/user-account-create-form/user-account-create-form.component';
 import { createUserFromFormValue } from '../../utils';
-import { ClaimPermissionNode } from '@vsp/admin/core/models';
 
 @Component({
   selector: 'vsp-user-accounts-create',
@@ -98,36 +97,7 @@ export class UserAccountsCreateComponent implements OnDestroy {
       this._resetClaimPermissionGroups();
       return;
     }
-
-    // this._store.dispatch(
-    //   UserAccountsActions.getTemplateModulePermissionNameByIdRequest({
-    //     templateModulePermissionNameId: templateModulePermissionName.id
-    //   })
-    // );
-
-    // this._store.select(UserAccountsSelectors.selectSelectedTemplateModulePermissionName)
-    //   .pipe(skip(1), take(1))
-    //   .subscribe(templateModulePermissionName => {
-    //     const userModulePermissions = templateModulerPermissionsToUserModulerPermissions(
-    //         templateModulePermissionName?.templateModulePermissions || []);
-
-    //     this._patchUserModulePermissionsToForm(userModulePermissions);
-    //   });
   }
-
-
-  private _patchUserModulePermissionsToForm(userModulePermissions: any[]): void {
-    // (this.createUserAccountForm.get('userModulePermissions') as UntypedFormArray)
-    //   .controls.forEach((group) => {
-    //     const userModulePermission = userModulePermissions
-    //       .find(ump => ump.modulePermission?.id === group.value.modulePermission.id);
-
-    //     group.patchValue({
-    //       ...userModulePermission
-    //     });
-    //   });
-  }
-
 
   private _resetCreateUserAccountForm(): void {
     this.createUserAccountForm.reset();

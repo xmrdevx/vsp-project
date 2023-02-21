@@ -126,20 +126,20 @@ export const userAccountsFeature = createFeature({
       UserAccountsActions.createUserAccountRequestFailure,
       handleCreateUserAccountRequestSuccess
     ),
-    // on(
-    //   UserAccountsActions.updateUserAccountRequestSuccess,
-    //   UserAccountsActions.setUpdateUserAccountRequestResponseMessage,
-    //   handleUpdateUserAccountRequestSuccess
-    // ),
+    on(
+      UserAccountsActions.updateUserAccountRequestSuccess,
+      UserAccountsActions.setUpdateUserAccountRequestResponseMessage,
+      handleUpdateUserAccountRequestSuccess
+    ),
     // on(
     //   UserAccountsActions.getUserPermissionsByUserIdRequestSuccess,
     //   handleGetUserPermissionsByUserIdRequestSuccess
     // ),
-    // on(
-    //   UserAccountsActions.getUserAccountByUserIdRequestSuccess,
-    //   UserAccountsActions.setSelectedUserAccount,
-    //   handleGetUserAccountByUserIdRequestSuccess
-    // ),
+    on(
+      UserAccountsActions.getUserAccountByUserIdRequestSuccess,
+      UserAccountsActions.setSelectedUserAccount,
+      handleGetUserAccountByUserIdRequestSuccess
+    ),
     on(
       UserAccountsActions.setUserAccountsSearchFilter,
       handleSetUserAccountsSearchFilter

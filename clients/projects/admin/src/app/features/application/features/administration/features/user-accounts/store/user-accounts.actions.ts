@@ -25,10 +25,10 @@ export const UserAccountsActions = createActionGroup({
     'Set Create User Account Request Response Message': props<{ message: ResponseMessage<void>| null }>(),
     
     // Get User Account By Id Actions
-    // 'Get User Account By User Id Request': props<{ userId: string }>(),
-    // 'Get User Account By User Id Request Success': props<{ user: UserAccountDto | null }>(),
-    // 'Get User Account By User Id Request Failure': props<{ message: ResponseMessage<void>}>(),
-    // 'Set Selected User Account': props<{ user: UserAccountDto | null }>(),
+    'Get User Account By User Id Request': props<{ userId: string }>(),
+    'Get User Account By User Id Request Success': props<{ user: User | null }>(),
+    'Get User Account By User Id Request Failure': props<{ message: ResponseMessage<void>}>(),
+    'Set Selected User Account': props<{ user: User | null }>(),
     
     // Get Users Permissions By Id Actions
     // 'Get User Permissions By User Id Request': props<{ userId: string }>(),
@@ -36,10 +36,10 @@ export const UserAccountsActions = createActionGroup({
     // 'Get User Permissions By User Id Request Failure': props<{ message: ResponseMessage<void>}>(),
     
     // Update User Account Actions
-    // 'Update User Account Request': props<{ userId: string, userAccount: UserAccount }>(),
-    // 'Update User Account Request Success': props<{ message: ResponseMessage<void>}>(),
-    // 'Update User Account Request Failure': props<{ message: ResponseMessage<void>}>(),
-    // 'Set Update User Account Request Response Message': props<{ message: ResponseMessage<void>| null }>(),
+    'Update User Account Request': props<{ userId: string, user: User }>(),
+    'Update User Account Request Success': props<{ message: ResponseMessage<void>}>(),
+    'Update User Account Request Failure': props<{ message: ResponseMessage<void>}>(),
+    'Set Update User Account Request Response Message': props<{ message: ResponseMessage<void>| null }>(),
     
     'Reset Selected User Account State Slice': emptyProps(),
     'Set User Accounts Search Filter': props<{ filter: BasicQuerySearchFilter }>(),

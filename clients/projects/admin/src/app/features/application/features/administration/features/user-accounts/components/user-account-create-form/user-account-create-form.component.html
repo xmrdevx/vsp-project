@@ -63,7 +63,7 @@
     <nz-form-item>
       <nz-form-label class="text-left"  [nzXs]="24" nzRequired nzFor="email">Email</nz-form-label>
       <nz-form-control [nzXs]="24" [nzErrorTip]="emailErrorTemplate">
-        <nz-input-group nzPrefixIcon="user">
+        <nz-input-group nzPrefixIcon="mail">
           <input vspAutoFocusControl type="text" nz-input formControlName="email" />
         </nz-input-group>
         <ng-template #emailErrorTemplate let-control>
@@ -167,7 +167,7 @@
 </ng-template>
 
 
-<!-- Profile Details Section -->
+<!-- User Permissions Section -->
 <ng-template 
     let-userAccountForm="userAccountForm" 
     #userPermissionsSectionTemplate>
@@ -191,14 +191,14 @@
       <ul nz-menu>
         <li 
             nz-menu-item 
-            (click)="onApplyTemplateModulerPermissionName(null)">
+            (click)="onApplyPermissionTemplate(null)">
           Default (Blank)
         </li>
         <ng-container *ngIf="claimPermissionGroups">
           <li 
               *ngFor="let group of claimPermissionGroups"
               nz-menu-item 
-              (click)="onApplyTemplateModulerPermissionName(group)">
+              (click)="onApplyPermissionTemplate(group)">
             {{ group?.label }}
           </li>
         </ng-container>

@@ -14,6 +14,7 @@ export class SelectedUsersAccountLoadedGuard implements CanActivate {
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     const userId: string = route.params['userId'] || '';
+    console.log("user id ", userId)
     return this._getUserAccountByUserIdFromStoreOrApi(userId)
       .pipe(
         switchMap(() => of(true)),
@@ -26,9 +27,9 @@ export class SelectedUsersAccountLoadedGuard implements CanActivate {
       .pipe(
         tap(account => {
           if (!account) {
-            // this._store.dispatch(
-            //   UserAccountsActions.getUserAccountByUserIdRequest({ userId: userId })
-            // );
+            this._store.dispatch(
+              UserAccountsActions.getUserAccountByUserIdRequest({ userId: userId })
+            );
           }
         }),
         filter(account => !!account),

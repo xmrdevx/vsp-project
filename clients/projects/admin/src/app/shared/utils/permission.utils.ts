@@ -1,7 +1,7 @@
 import { Claim } from '@vsp/core';
 import { ClaimPermissionNode } from '../../core/models';
 
-export function createClaimPermissionGroups(claims: Claim[]): ClaimPermissionNode[] {
+export function createClaimPermissionGroups(claims: Claim[], defaultHasPermission: boolean = false): ClaimPermissionNode[] {
   const nonAccessClaims: Claim[] = 
     claims.filter(claim => claim.type !== 'access');
     
@@ -12,28 +12,28 @@ export function createClaimPermissionGroups(claims: Claim[]): ClaimPermissionNod
       const children: ClaimPermissionNode[] = nonAccessClaims
         .filter(child => child.value === claim.value)
         .sort((a, b) => sortClaimsByType(a, b))
-        .map(child => createClaimPermissionChild(child));
+        .map(child => createClaimPermissionChild(child, defaultHasPermission));
 
       return {
-        ...createClaimPermissionGroup(claim),
+        ...createClaimPermissionGroup(claim, defaultHasPermission),
         children: children
       } as ClaimPermissionNode
     });
 }
 
-function createClaimPermissionGroup(claim: Claim): ClaimPermissionNode {
+function createClaimPermissionGroup(claim: Claim, defaultHasPermission: boolean): ClaimPermissionNode {
   return {
     label: claim.value,
-    hasPermission: false,
+    hasPermission: defaultHasPermission,
     claim: claim,
     children: []
   } as ClaimPermissionNode;
 }
 
-function createClaimPermissionChild(claim: Claim): ClaimPermissionNode {
+function createClaimPermissionChild(claim: Claim, defaultHasPermission: boolean): ClaimPermissionNode {
   return {
     label: claim.type,
-    hasPermission: false,
+    hasPermission: defaultHasPermission,
     claim: claim,
     children: []
   } as ClaimPermissionNode;

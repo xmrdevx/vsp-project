@@ -86,47 +86,47 @@ export class UserAccountsEffects {
     )
   ); 
 
-  // public updateUserAccountRequest = createEffect(() => this._actions
-  //   .pipe(
-  //     ofType(UserAccountsActions.updateUserAccountRequest),
-  //     switchMap(({ userId, userAccount }) => 
-  //       this._usersService.updateUserAccount(userId, userAccount)
-  //         .pipe(
-  //           mergeMap((userDto: UserAccountDto) => of(UserAccountsActions.updateUserAccountRequestSuccess({ 
-  //             message: {
-  //               status: ResponseStatus.SUCCESS,
-  //               message: 'Successfully updated user account!'
-  //             } as ResponseMessage
-  //           }))),
-  //           catchError((error: any)=> of(UserAccountsActions.updateUserAccountRequestFailure({
-  //             message: {
-  //               status: ResponseStatus.ERROR,
-  //               message: error.error || 'Error updating user account!'
-  //             } as ResponseMessage
-  //           })))
-  //         )
-  //     )
-  //   )
-  // );
+  public updateUserAccountRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(UserAccountsActions.updateUserAccountRequest),
+      switchMap(({ userId, user }) => 
+        this._accountsService.updateUser(userId, user)
+          .pipe(
+            mergeMap((user: User) => of(UserAccountsActions.updateUserAccountRequestSuccess({ 
+              message: {
+                status: ResponseStatus.SUCCESS,
+                message: 'Successfully updated user account!'
+              } as ResponseMessage<void>
+            }))),
+            catchError((error: any)=> of(UserAccountsActions.updateUserAccountRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error.error || 'Error updating user account!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
 
-  // public getUserByUserIdRequest = createEffect(() => this._actions
-  //   .pipe(
-  //     ofType(UserAccountsActions.getUserAccountByUserIdRequest),
-  //     switchMap(({ userId }) => 
-  //       this._usersService.getUserByUserId(userId)
-  //         .pipe(
-  //           mergeMap((user: UserAccountDto) => 
-  //             of(UserAccountsActions.getUserAccountByUserIdRequestSuccess({ user: user }))),
-  //           catchError((error: any)=> of(UserAccountsActions.getUserAccountByUserIdRequestFailure({
-  //             message: {
-  //               status: ResponseStatus.ERROR,
-  //               message: error.error || 'Error getting user!'
-  //             } as ResponseMessage
-  //           })))
-  //         )
-  //     )
-  //   )
-  // );
+  public getUserByUserIdRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(UserAccountsActions.getUserAccountByUserIdRequest),
+      switchMap(({ userId }) => 
+        this._accountsService.getUserById(userId)
+          .pipe(
+            mergeMap((user: User) => 
+              of(UserAccountsActions.getUserAccountByUserIdRequestSuccess({ user: user }))),
+            catchError((error: any)=> of(UserAccountsActions.getUserAccountByUserIdRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error.error || 'Error getting user!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
 
   // public getUserPermissionsByUserIdRequest = createEffect(() => this._actions
   //   .pipe(

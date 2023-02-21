@@ -1,8 +1,10 @@
-import { FormArray, FormBuilder, FormGroup, UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
-import { Claim, MatchValidators, ValidationPatterns} from '@vsp/core';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 
+import { MatchValidators, ValidationPatterns} from '@vsp/core';
 import { UserValidators } from '@vsp/admin/core/validators';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
+
+import { buildClaimPermissionGroupFormArray } from '../shared/shared-forms.builder';
 
 export const buildUserAccountCreateForm = (
     formBuilder: UntypedFormBuilder, 
@@ -42,21 +44,3 @@ export const buildUserAccountCreateForm = (
     }),
     claimPermissionGroups: buildClaimPermissionGroupFormArray(formBuilder, claimPermissionGroups)
   }, { validators: [MatchValidators.mustMatch('password', 'confirmPassword')]});
-
-
-export const buildClaimPermissionGroupFormArray = 
-  (formBuilder: FormBuilder, claimPermissinoGroups: ClaimPermissionNode[]): FormArray => {
-    return formBuilder.array(
-      claimPermissinoGroups.map(group => buildClaimPermissionGroupFormGroup(formBuilder, group) ?? [])
-    );
-  }
-
-const buildClaimPermissionGroupFormGroup =
-  (formBuilder: FormBuilder, claimPermissionGroup: ClaimPermissionNode): FormGroup => {
-    return formBuilder.group({
-      label: [claimPermissionGroup.label],
-      hasPermission: [claimPermissionGroup.hasPermission],
-      claim: [claimPermissionGroup.claim],
-      children: buildClaimPermissionGroupFormArray(formBuilder, claimPermissionGroup?.children ?? [])
-    })
-  };

@@ -54,7 +54,7 @@ export class AccountsService {
   public updateUser(userId: string, user: User): Observable<User> {
     return this._http.put<User>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/users/${userId}`,
-      {}
+      user
     );
   }
 
@@ -62,6 +62,12 @@ export class AccountsService {
     return this._http.put<ResponseMessage<void>>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/users/${userId}/lockout`,
       request
+    );
+  }
+
+  public getUserById(userId: string): Observable<User> {
+    return this._http.get<User>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/users/${userId}`
     );
   }
 }

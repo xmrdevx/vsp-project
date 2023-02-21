@@ -24,3 +24,26 @@ function collectClaimsFromClaimPermissionGroups(claimPermissionGroups: ClaimPerm
     ...childPermissions
   ];
 }
+
+export function patchUserClaimPermissionsToAssignableClaimPermissions(
+    users: ClaimPermissionNode[], 
+    assignable: ClaimPermissionNode[]
+): ClaimPermissionNode[] {
+
+  return assignable
+    .map(claim => {
+      const userClaim: ClaimPermissionNode | undefined = users.find(userClaim => userClaim.label === claim.label)
+
+      if (userClaim) {
+        return {
+          ...claim,
+          hasPermission: userClaim.hasPermission,
+          children: patchUserClaimPermissionsToAssignableClaimPermissions(userClaim.children, claim.children)
+        }
+      }
+
+      return claim;
+    });
+
+
+}

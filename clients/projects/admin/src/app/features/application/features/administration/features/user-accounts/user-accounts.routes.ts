@@ -30,7 +30,7 @@ export const userAccountsRoutes: Routes = [
         canActivate: [
           AvailablePermissionsLoadedGuard,
           // TemplateModulePermissionNamesLoadedGuard,
-          // SelectedUsersAccountLoadedGuard
+          SelectedUsersAccountLoadedGuard
         ],
         loadComponent: () => 
           import('./pages/user-accounts-update/user-accounts-update.component')

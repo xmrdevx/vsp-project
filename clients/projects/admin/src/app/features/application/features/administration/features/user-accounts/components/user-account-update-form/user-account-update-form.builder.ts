@@ -1,18 +1,32 @@
-import { UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
-import { Claim } from '@vsp/core';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
+import { MatchValidators } from '@vsp/core';
+
+import { buildClaimPermissionGroupFormArray } from '../shared/shared-forms.builder';
 
 export const buildUserAccountUpdateForm = (
     formBuilder: UntypedFormBuilder,
-    claims: Claim[]
+    claimPermissionGroups: ClaimPermissionNode[]
   ) => formBuilder.group({
-    user: formBuilder.group({
-      id: [null, [Validators.required]],
-      username: [{ value: null, disabled: true }],
-      email: [{ value: null, disabled: true }]
-    }),
+    id: [null, [Validators.required]],
+    username: [{ value: null, disabled: true }],
+    email: [{ value: null, disabled: true }],
     profile: formBuilder.group({
+      id: ['', [Validators.required]],
       firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]]
+      lastName: ['', [Validators.required]],
+      avatarUrl: [''],
+      summary: [''],
+      address: formBuilder.group({
+        id: ['', [Validators.required]],
+        street: [null],
+        street2: [null],
+        city: [null],
+        state: [null],
+        zip: [null],
+        country: [null],
+      })
     }),
-    claims: formBuilder.array([])
+    claimPermissionGroups: buildClaimPermissionGroupFormArray(formBuilder, claimPermissionGroups)
   });

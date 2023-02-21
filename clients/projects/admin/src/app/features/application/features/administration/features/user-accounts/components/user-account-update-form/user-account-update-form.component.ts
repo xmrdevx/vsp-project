@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input, ChangeDetectorRef, inject } from '@angular/core';
 import { AbstractControl, ControlContainer, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -16,8 +16,10 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import {  EnvironmentService } from '@vsp/core';
+import { EnvironmentService } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
+
 
 @Component({
   selector: 'vsp-user-account-update-form',
@@ -29,6 +31,7 @@ import { VspAutoFocusControlDirective } from '@vsp/forms';
     AsyncPipe,
     NgFor,
     NgIf,
+    NgTemplateOutlet,
     NzButtonModule,
     NzCheckboxModule,
     NzCollapseModule,
@@ -42,7 +45,8 @@ import { VspAutoFocusControlDirective } from '@vsp/forms';
     NzSwitchModule,
     NzUploadModule,
     VspAutoFocusControlDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TitleCasePipe,
   ]
 })
 export class UserAccountUpdateFormComponent implements OnInit {
@@ -51,7 +55,7 @@ export class UserAccountUpdateFormComponent implements OnInit {
   private readonly _changeDetectorRef: ChangeDetectorRef = inject(ChangeDetectorRef);
 
   @Input()
-  public templateModulePermissionNames: any[] | null = [];
+  public claimPermissionGroups: ClaimPermissionNode[] | null = [];
 
   @Output()
   public selectTemplateModulePermissionName: EventEmitter<any | null> = 
@@ -73,22 +77,16 @@ export class UserAccountUpdateFormComponent implements OnInit {
     return `${this._environmentService.getBaseApiUrl()}/files/avatar`;
   }
 
-  public get userModulePermissions(): UntypedFormArray {
-    return this.userAccountForm.get('userModulePermissions') as UntypedFormArray;
+  public get claimPermissionGroupsArray(): UntypedFormArray {
+    return this.userAccountForm.get('claimPermissionGroups') as UntypedFormArray;
   }
 
-  public getUserPermissionsFormArray(control: AbstractControl): UntypedFormArray {
+  public claimPermissionGroupChildrenArray(control: AbstractControl): UntypedFormArray {
     const formGroup: UntypedFormGroup = control as UntypedFormGroup;
-    return formGroup.get('userPermissions') as UntypedFormArray;
+    return formGroup.get('children') as UntypedFormArray;
   }
 
-  public onIssuePasswordResetRequest(shouldIssue: boolean): void {
-    this.hasIssuedPasswordResetRequest = true;
-    this.issuePasswordResetRequest.emit(shouldIssue);
-  }
-
-  public onApplyTemplateModulerPermissionName(templateModulePermissionName: any | null): void {
-    // @TODO load template module permissions and patch to form
+  public onApplyPermissionTemplate(templateModulePermissionName: any | null): void {
     this.isLoadingTemplate = true;
     this.selectTemplateModulePermissionName.emit(templateModulePermissionName);
     setTimeout(() => {
@@ -97,69 +95,16 @@ export class UserAccountUpdateFormComponent implements OnInit {
     }, 500);
   }
 
-  public onUserModulePermissionAccessChange(event: any, control: AbstractControl): void {
-    control?.patchValue({
-      canCreateAll: event,
-      canReadAll: event,
-      canUpdateAll: event,
-      canDeleteAll: event
+  public onIssuePasswordResetRequest(shouldIssue: boolean): void {
+    this.hasIssuedPasswordResetRequest = true;
+    this.issuePasswordResetRequest.emit(shouldIssue);
+  }
+
+  public onClaimPermissionAccessChange(event: any, control: AbstractControl): void {
+    const children: UntypedFormArray = (control as UntypedFormGroup).get('children') as UntypedFormArray;
+    children.controls.forEach(control => {
+      control.patchValue({ hasPermission: event });
     });
-  }
-
-  public onUserModulePermissionCanCreateAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const childUserPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        childUserPermissionFormGroup?.patchValue({
-          canCreate: event
-        })
-      });
-    }
-  }
-
-  public onUserModulePermissionCanReadAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const userPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        userPermissionFormGroup?.patchValue({
-          canRead: event
-        })
-      });
-    }
-  }
-
-  public onUserModulePermissionCanUpdateAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const userPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        userPermissionFormGroup?.patchValue({
-          canUpdate: event
-        })
-      });
-    }
-  }
-
-  public onUserModulePermissionCanDeleteAllChange(event: any, control: AbstractControl): void {
-    const formGroup = control as UntypedFormGroup;
-    const userPermissionFormArray: UntypedFormArray = formGroup?.get('userPermissions') as UntypedFormArray;
-
-    if (userPermissionFormArray) {
-      userPermissionFormArray?.controls?.forEach(control => {
-        const userPermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
-        userPermissionFormGroup?.patchValue({
-          canDelete: event
-        })
-      });
-    }
   }
 
   // @TODO clean up
