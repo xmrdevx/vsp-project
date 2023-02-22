@@ -70,7 +70,6 @@ export class UserAccountsOverviewComponent implements OnDestroy {
       .select(UserAccountsSelectors.selectLockoutUserAccountResponseMessage)
       .pipe(takeUntil(this._destroy$))
       .subscribe(message => {
-        console.log("message ", message)
         if (message?.status === ResponseStatus.SUCCESS) {
           this._messageService.success(message?.message);
           this._store.dispatch(

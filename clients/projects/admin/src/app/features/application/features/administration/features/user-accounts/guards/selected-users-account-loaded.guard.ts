@@ -14,7 +14,6 @@ export class SelectedUsersAccountLoadedGuard implements CanActivate {
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     const userId: string = route.params['userId'] || '';
-    console.log("user id ", userId)
     return this._getUserAccountByUserIdFromStoreOrApi(userId)
       .pipe(
         switchMap(() => of(true)),

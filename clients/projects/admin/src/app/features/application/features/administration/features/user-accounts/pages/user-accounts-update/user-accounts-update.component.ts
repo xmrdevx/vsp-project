@@ -157,9 +157,6 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
         // Patch through users claim permissions groups to assignable
         const patchedClaimPermissionGroups:  ClaimPermissionNode[] = 
           patchUserClaimPermissionsToAssignableClaimPermissions(userClaimPermissions, claimPermissionGroups ?? []);
-
-        console.log("patched CLaims are ", patchedClaimPermissionGroups);
-
         
         // Build new claims form array with patched assignable permissions
         const claimPermissionGroupsFromArray = 
