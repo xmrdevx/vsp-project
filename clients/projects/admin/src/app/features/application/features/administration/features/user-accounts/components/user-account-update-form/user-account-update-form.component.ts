@@ -1,25 +1,21 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input, ChangeDetectorRef, inject } from '@angular/core';
-import { AbstractControl, ControlContainer, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
-import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
+import { ControlContainer, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzListModule } from 'ng-zorro-antd/list';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { EnvironmentService, ForgotPassword } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
-
+import { VspClaimPermissionsControlComponent } from '@vsp/admin/shared/form-controls';
 
 @Component({
   selector: 'vsp-user-account-update-form',
@@ -33,20 +29,16 @@ import { ClaimPermissionNode } from '@vsp/admin/core/models';
     NgIf,
     NgTemplateOutlet,
     NzButtonModule,
-    NzCheckboxModule,
-    NzCollapseModule,
     NzDropDownModule,
     NzDividerModule,
     NzFormModule,
     NzGridModule,
     NzIconModule,
     NzInputModule,
-    NzListModule,
-    NzSwitchModule,
     NzUploadModule,
     VspAutoFocusControlDirective,
     ReactiveFormsModule,
-    TitleCasePipe,
+    VspClaimPermissionsControlComponent
   ]
 })
 export class UserAccountUpdateFormComponent implements OnInit {
@@ -81,11 +73,6 @@ export class UserAccountUpdateFormComponent implements OnInit {
     return this.userAccountForm.get('claimPermissionGroups') as UntypedFormArray;
   }
 
-  public claimPermissionGroupChildrenArray(control: AbstractControl): UntypedFormArray {
-    const formGroup: UntypedFormGroup = control as UntypedFormGroup;
-    return formGroup.get('children') as UntypedFormArray;
-  }
-
   public onApplyPermissionTemplate(templateModulePermissionName: any | null): void {
     this.isLoadingTemplate = true;
     this.selectTemplateModulePermissionName.emit(templateModulePermissionName);
@@ -98,13 +85,6 @@ export class UserAccountUpdateFormComponent implements OnInit {
   public onIssueForgotPasswordRequest(request: ForgotPassword): void {
     this.hasIssuedForgotPasswordRequest = true;
     this.issueForgotPasswordRequest.emit(request);
-  }
-
-  public onClaimPermissionAccessChange(event: any, control: AbstractControl): void {
-    const children: UntypedFormArray = (control as UntypedFormGroup).get('children') as UntypedFormArray;
-    children.controls.forEach(control => {
-      control.patchValue({ hasPermission: event });
-    });
   }
 
   // @TODO clean up

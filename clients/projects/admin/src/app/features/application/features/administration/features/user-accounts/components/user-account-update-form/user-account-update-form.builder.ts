@@ -1,9 +1,7 @@
 import { UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
-import { MatchValidators } from '@vsp/core';
-
-import { buildClaimPermissionGroupFormArray } from '../shared/shared-forms.builder';
+import { buildClaimPermissionGroupFormArray } from '@vsp/admin/shared/form-controls';
 
 export const buildUserAccountUpdateForm = (
     formBuilder: UntypedFormBuilder,

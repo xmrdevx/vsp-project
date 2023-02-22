@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, EventEmitter, Output, ViewChild, inject } from '@angular/core';
-import { AbstractControl, ControlContainer, FormGroup, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
-import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
+import { ControlContainer, ReactiveFormsModule, UntypedFormArray, UntypedFormGroup } from '@angular/forms';
+import { AsyncPipe, NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Observable, Observer } from 'rxjs';
 
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -9,9 +9,6 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzCollapseModule } from 'ng-zorro-antd/collapse';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { NzUploadFile, NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -19,6 +16,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { EnvironmentService } from '@vsp/core';
 import { VspAutoFocusControlDirective } from '@vsp/forms';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
+import { VspClaimPermissionsControlComponent } from '@vsp/admin/shared/form-controls';
 
 @Component({
   selector: 'vsp-user-account-create-form',
@@ -32,8 +30,6 @@ import { ClaimPermissionNode } from '@vsp/admin/core/models';
     NgIf,
     NgTemplateOutlet,
     NzButtonModule,
-    NzCheckboxModule,
-    NzCollapseModule,
     NzDropDownModule,
     NzDividerModule,
     NzFormModule,
@@ -41,11 +37,10 @@ import { ClaimPermissionNode } from '@vsp/admin/core/models';
     NzIconModule,
     NzInputModule,
     NzListModule,
-    NzSwitchModule,
     NzUploadModule,
-    VspAutoFocusControlDirective,
     ReactiveFormsModule,
-    TitleCasePipe,
+    VspAutoFocusControlDirective,
+    VspClaimPermissionsControlComponent,
   ]
 })
 export class UserAccountCreateFormComponent implements OnInit {
@@ -79,11 +74,6 @@ export class UserAccountCreateFormComponent implements OnInit {
     return this.userAccountForm.get('claimPermissionGroups') as UntypedFormArray;
   }
 
-  public claimPermissionGroupChildrenArray(control: AbstractControl): UntypedFormArray {
-    const formGroup: UntypedFormGroup = control as UntypedFormGroup;
-    return formGroup.get('children') as UntypedFormArray;
-  }
-
   public onApplyPermissionTemplate(templateModulePermissionName: any | null): void {
     this.isLoadingTemplate = true;
     this.selectTemplateModulePermissionName.emit(templateModulePermissionName);
@@ -91,13 +81,6 @@ export class UserAccountCreateFormComponent implements OnInit {
       this.isLoadingTemplate = false;
       this._changeDetectorRef.markForCheck();
     }, 500);
-  }
-
-  public onClaimPermissionAccessChange(event: any, control: AbstractControl): void {
-    const children: UntypedFormArray = (control as FormGroup).get('children') as UntypedFormArray;
-    children.controls.forEach(control => {
-      control.patchValue({ hasPermission: event });
-    });
   }
 
   // @TODO clean up

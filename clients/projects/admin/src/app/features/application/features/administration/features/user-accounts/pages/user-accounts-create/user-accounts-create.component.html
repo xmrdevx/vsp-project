@@ -24,6 +24,7 @@
   <nz-card class="w-100 p-0">
     <form class="block" [formGroup]="createUserAccountForm">
       <vsp-user-account-create-form
+          [claimPermissionGroups]="claimPermissionGroups$ | async"
           (selectTemplateModulePermissionName)="onTemplateModulePermissionNameSelected($event)">
       </vsp-user-account-create-form>
     </form>

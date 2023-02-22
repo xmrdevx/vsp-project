@@ -1,7 +1,7 @@
 import { AsyncPipe, Location } from '@angular/common';
 import { Component, ChangeDetectionStrategy, OnDestroy, ViewChild, inject } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { filter, Subject, take } from 'rxjs';
+import { filter, Observable, Subject, take } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 
@@ -15,11 +15,11 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { ResponseStatus, fadeAnimation, User } from '@vsp/core';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { UserValidators } from '@vsp/admin/core/validators';
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
+import { buildClaimPermissionGroupFormArray } from '@vsp/admin/shared/form-controls';
 
 import { buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
-import { buildClaimPermissionGroupFormArray } from '../../components/shared/shared-forms.builder';
 import { UserAccountsSelectors, UserAccountsActions } from '../../store';
-
 import { UserAccountCreateFormComponent } from '../../components/user-account-create-form/user-account-create-form.component';
 import { createUserFromFormValue } from '../../utils';
 
@@ -55,7 +55,10 @@ export class UserAccountsCreateComponent implements OnDestroy {
 
   public createUserAccountForm!: UntypedFormGroup;
 
+  public claimPermissionGroups$: Observable<ClaimPermissionNode[] | null>;
+
   constructor() {
+    this.claimPermissionGroups$ = this._store.select(PermissionsSelectors.selectClaimPermissionGroups);
     this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
       .pipe(take(1))
       .subscribe(claimPermissionGroups => {

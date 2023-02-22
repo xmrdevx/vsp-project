@@ -17,3 +17,4 @@ const buildClaimPermissionGroupFormGroup =
       children: buildClaimPermissionGroupFormArray(formBuilder, claimPermissionGroup?.children ?? [])
     })
   };
+  

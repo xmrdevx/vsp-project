@@ -171,6 +171,7 @@
 <ng-template 
     let-userAccountForm="userAccountForm" 
     #userPermissionsSectionTemplate>
+
   <!-- Apply Permissions Template Control -->
   <div class="text-right mb-3">
     <button
@@ -206,53 +207,8 @@
     </nz-dropdown-menu>
   </div>
 
-  <!-- User Permissions Selector -->
-  <ng-container [formGroup]="userAccountForm">
-    <ng-container formArrayName="claimPermissionGroups">
-      <ng-container [formGroupName]="i" *ngFor="let access of claimPermissionGroupsArray?.controls; let i = index">
-        <nz-collapse class="mb-2">
-            <nz-collapse-panel
-              class="p-0"
-              [nzHeader]="modulePanelHeader"
-              [nzActive]="true"
-              [nzDisabled]="true"
-              [nzShowArrow]="false">
-            <ng-template #modulePanelHeader>
-              <div nz-row  [nzGutter]="16">
-
-                <!-- Access Permission Group Label -->
-                <div nz-col nzXs="24" nzSm="26" nzMd="12" nzLg="12" nzXl="15" class="permissions-header-text">
-                  <label 
-                      nz-checkbox
-                      formControlName="hasPermission"
-                      (ngModelChange)="onClaimPermissionAccessChange($event, access)">
-                    {{ (access?.value?.label || 'N/A') | titlecase  }}
-                  </label>
-                  <small class="block ml-5 text-primary fs-italic">
-                    Lorem ipsum...
-                  </small>
-                </div>
-
-                <!-- Crud Switches -->
-                <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="12" nzXl="9" class="permissions-header-actions">
-                  <ng-container formArrayName="children">
-                    <ng-container [formGroupName]="x" *ngFor="let permission of claimPermissionGroupChildrenArray(access).controls; let x = index">
-                      <div class="permissions-header-action">
-                        <div class="permissions-header-action-label">{{ (permission?.value?.label) || 'N/A' | titlecase }}</div>
-                        <nz-switch 
-                            nzSize="small" 
-                            [nzDisabled]="!access.value.hasPermission"
-                            formControlName="hasPermission">
-                        </nz-switch>
-                      </div>
-                    </ng-container>
-                  </ng-container>
-                </div>
-              </div>
-            </ng-template>
-          </nz-collapse-panel>
-        </nz-collapse>
-      </ng-container>
-    </ng-container>
-  </ng-container>
+  <!-- Claim Permission Switches Control -->
+  <vsp-claim-permissions-control
+      [claimPermissionsFormArray]="claimPermissionGroupsArray">
+  </vsp-claim-permissions-control>
 </ng-template>
