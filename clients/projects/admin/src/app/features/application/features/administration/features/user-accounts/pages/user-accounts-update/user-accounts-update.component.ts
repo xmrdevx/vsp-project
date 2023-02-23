@@ -15,7 +15,8 @@ import {
   User,
   fadeAnimation, 
   ResponseStatus, 
-  ForgotPassword} from '@vsp/core';
+  ForgotPassword,
+  PermissionTemplate} from '@vsp/core';
 
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
@@ -61,6 +62,9 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
   public selectedUserAccount$: Observable<User | null> = 
     this._store.select(UserAccountsSelectors.selectSelectedUserAccount);
 
+  public permissionTemplates$: Observable<PermissionTemplate[] | null> = 
+    this._store.select(PermissionsSelectors.selectPermissionTemplates);
+
   constructor() {
     this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
       .pipe(take(1))
@@ -88,11 +92,34 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
     this._store.dispatch(UserAccountsActions.issueForgotPasswordRequest({ request }));
   }
 
-  public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
-    if (!templateModulePermissionName) {
+  public onPermissionTemplateSelected(permissionTemplate: PermissionTemplate | null): void {
+    if (!permissionTemplate) {
       this._resetClaimPermissionGroups();
       return;
+    } else {
+      this._handleApplyPermissionTemplateToForm(permissionTemplate)
     }
+  }
+
+  public _handleApplyPermissionTemplateToForm(permissionTemplate: PermissionTemplate): void {
+    const templateClaimPermisssionGroups: ClaimPermissionNode[] = 
+      createClaimPermissionGroups(permissionTemplate.claims || [], true);
+
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
+      .pipe(take(1))
+      .subscribe(claimPermissionGroups => {
+        const patchedClaimPermissionGroups = 
+          patchAssignedClaimPermissionsToAvailableClaimPermissions(templateClaimPermisssionGroups, claimPermissionGroups || [])
+
+        const claimPermissionGroupsFromArray = 
+          buildClaimPermissionGroupFormArray(this._formBuilder, patchedClaimPermissionGroups);
+
+        if (claimPermissionGroupsFromArray) {
+          this.updateUserAccountForm
+            ?.get('claimPermissionGroups')
+            ?.patchValue([ ...(claimPermissionGroupsFromArray.value || []) ]);
+        }
+      });
   }
 
   private _handleUpdateUserResponseMessage(): void {

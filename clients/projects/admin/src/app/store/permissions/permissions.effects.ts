@@ -4,7 +4,7 @@ import { catchError, mergeMap, of, switchMap } from 'rxjs';
 
 import { PermissionsService } from '@vsp/admin/core/services';
 
-import { Claim, ResponseMessage, ResponseStatus } from '@vsp/core';
+import { Claim, PermissionTemplate, ResponseMessage, ResponseStatus } from '@vsp/core';
 
 import { PermissionsActions } from './permissions.actions';
 
@@ -25,7 +25,27 @@ export class PermissionsEffects {
             catchError((error: any)=> of(PermissionsActions.getAssignablePermissionsRequestFailure({
               message: {
                 status: ResponseStatus.ERROR,
-                message: error.error || 'Error searching users!'
+                message: error.error || 'Error getting assignable permissions!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
+
+  public getPermissionTemplatesRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(PermissionsActions.getPermissionTemplatesRequest),
+      switchMap(() => 
+        this._permissionsService.getTemplates()
+          .pipe(
+            mergeMap((permissionTemplates: PermissionTemplate[]) => 
+              of(PermissionsActions.getPermissionTemplatesRequestSuccess({ permissionTemplates }))
+            ),
+            catchError((error: any)=> of(PermissionsActions.getAssignablePermissionsRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error.error || 'Error getting permission templates!'
               } as ResponseMessage<void>
             })))
           )

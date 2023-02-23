@@ -16,7 +16,8 @@
   <nz-card class="w-100 p-0">
     <form class="block" [formGroup]="updateUserAccountForm">
       <vsp-user-account-update-form
-          (selectTemplateModulePermissionName)="onTemplateModulePermissionNameSelected($event)"
+          [permissionTemplates]="permissionTemplates$ | async"
+          (selectPermissionTemplate)="onPermissionTemplateSelected($event)"
           (issueForgotPasswordRequest)="onIssueForgotPasswordRequest($event)">
       </vsp-user-account-update-form>
     </form>

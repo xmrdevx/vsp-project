@@ -182,31 +182,31 @@
         [nzLoading]="isLoadingTemplate"
         [disabled]="isLoadingTemplate"
         nz-dropdown
-        [nzDropdownMenu]="templateModulerPermissionNameDropdown"
+        [nzDropdownMenu]="permissionTemplatesDropdown"
         nzTrigger="click">
       <i nz-icon nzType="security-scan" nzTheme="outline"></i>
       Apply Permissions Template
       <i nz-icon nzType="down"></i>
     </button>
-    <nz-dropdown-menu #templateModulerPermissionNameDropdown="nzDropdownMenu">
+    <nz-dropdown-menu #permissionTemplatesDropdown="nzDropdownMenu">
       <ul nz-menu>
         <li 
             nz-menu-item 
             (click)="onApplyPermissionTemplate(null)">
           Default (Blank)
         </li>
-        <ng-container *ngIf="claimPermissionGroups">
+        <ng-container *ngIf="permissionTemplates">
           <li 
-              *ngFor="let group of claimPermissionGroups"
+              *ngFor="let template of permissionTemplates"
               nz-menu-item 
-              (click)="onApplyPermissionTemplate(group)">
-            {{ group?.label }}
+              (click)="onApplyPermissionTemplate(template)">
+            {{ template?.name }}
           </li>
         </ng-container>
       </ul>
     </nz-dropdown-menu>
   </div>
-
+  
   <!-- Claim Permission Switches Control -->
   <vsp-claim-permissions-control
       [claimPermissionsFormArray]="claimPermissionGroupsArray">

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AvailablePermissionsLoadedGuard } from '@vsp/admin/core/guards';
+import { AvailablePermissionsLoadedGuard, PermissionTemplatesLoadedGuard } from '@vsp/admin/core/guards';
 
 import { InitialUserAccountsSearchLoadedGuard } from './guards/initial-user-accounts-search-loaded.guard';
 import { SelectedUsersAccountLoadedGuard } from './guards/selected-users-account-loaded.guard';
@@ -16,7 +16,7 @@ export const userAccountsRoutes: Routes = [
     path: 'create',
     canActivate: [
       AvailablePermissionsLoadedGuard,
-      // TemplateModulePermissionNamesLoadedGuard
+      PermissionTemplatesLoadedGuard,
     ],
     loadComponent: () => 
       import('./pages/user-accounts-create/user-accounts-create.component')
@@ -29,7 +29,7 @@ export const userAccountsRoutes: Routes = [
         path: 'edit',
         canActivate: [
           AvailablePermissionsLoadedGuard,
-          // TemplateModulePermissionNamesLoadedGuard,
+          PermissionTemplatesLoadedGuard,
           SelectedUsersAccountLoadedGuard
         ],
         loadComponent: () => 

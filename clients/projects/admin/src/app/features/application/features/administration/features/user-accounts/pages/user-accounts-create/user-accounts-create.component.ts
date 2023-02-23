@@ -12,16 +12,17 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { ResponseStatus, fadeAnimation, User } from '@vsp/core';
+import { ResponseStatus, fadeAnimation, User, PermissionTemplate } from '@vsp/core';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { UserValidators } from '@vsp/admin/core/validators';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
-import { buildClaimPermissionGroupFormArray } from '@vsp/admin/shared/form-controls';
+import { buildClaimPermissionGroupFormArray, patchAssignedClaimPermissionsToAvailableClaimPermissions } from '@vsp/admin/shared/form-controls';
 
 import { buildUserAccountCreateForm } from '../../components/user-account-create-form/user-account-create-form.builder';
 import { UserAccountsSelectors, UserAccountsActions } from '../../store';
 import { UserAccountCreateFormComponent } from '../../components/user-account-create-form/user-account-create-form.component';
 import { createUserFromFormValue } from '../../utils';
+import { createClaimPermissionGroups } from '@vsp/admin/shared/utils';
 
 @Component({
   selector: 'vsp-user-accounts-create',
@@ -55,10 +56,10 @@ export class UserAccountsCreateComponent implements OnDestroy {
 
   public createUserAccountForm!: UntypedFormGroup;
 
-  public claimPermissionGroups$: Observable<ClaimPermissionNode[] | null>;
+  public permissionTemplates$: Observable<PermissionTemplate[] | null>;
 
   constructor() {
-    this.claimPermissionGroups$ = this._store.select(PermissionsSelectors.selectClaimPermissionGroups);
+    this.permissionTemplates$ = this._store.select(PermissionsSelectors.selectPermissionTemplates);
     this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
       .pipe(take(1))
       .subscribe(claimPermissionGroups => {
@@ -95,11 +96,34 @@ export class UserAccountsCreateComponent implements OnDestroy {
   }
 
 
-  public onTemplateModulePermissionNameSelected(templateModulePermissionName: any | null): void {
-    if (!templateModulePermissionName) {
+  public onPermissionTemplateSelected(permissionTemplate: PermissionTemplate | null): void {
+    if (!permissionTemplate) {
       this._resetClaimPermissionGroups();
       return;
+    } else {
+      this._handleApplyPermissionTemplateToForm(permissionTemplate);
     }
+  }
+
+  public _handleApplyPermissionTemplateToForm(permissionTemplate: PermissionTemplate): void {
+    const templateClaimPermisssionGroups: ClaimPermissionNode[] = 
+      createClaimPermissionGroups(permissionTemplate.claims || [], true);
+
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
+      .pipe(take(1))
+      .subscribe(claimPermissionGroups => {
+        const patchedClaimPermissionGroups = 
+          patchAssignedClaimPermissionsToAvailableClaimPermissions(templateClaimPermisssionGroups, claimPermissionGroups || [])
+
+        const claimPermissionGroupsFromArray = 
+          buildClaimPermissionGroupFormArray(this._formBuilder, patchedClaimPermissionGroups);
+
+        if (claimPermissionGroupsFromArray) {
+          this.createUserAccountForm
+            ?.get('claimPermissionGroups')
+            ?.patchValue([ ...(claimPermissionGroupsFromArray.value || []) ]);
+        }
+      });
   }
 
   private _resetCreateUserAccountForm(): void {

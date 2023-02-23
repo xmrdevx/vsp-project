@@ -16,8 +16,14 @@ export const selectClaimPermissionGroups = createSelector(
   (state: PermissionsState) => state.claimPermissionGroups
 );
 
+export const selectPermissionTemplates = createSelector(
+  selectPermissionsState,
+  (state: PermissionsState) => state.permissionTemplates
+);
+
 export const PermissionsSelectors = {
   selectPermissionsState,
   selectAssignablePermissions,
-  selectClaimPermissionGroups
+  selectClaimPermissionGroups,
+  selectPermissionTemplates
 };

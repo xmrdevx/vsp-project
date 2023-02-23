@@ -83,7 +83,8 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
         where: [{ 
           tenantId: getPermissionTemplatesDto.tenantId,
           deletedOn: IsNull()
-        }]
+        }],
+        order: { name: 'ASC' }
       });
 
     return PermissionTemplateMapper.toDtoList(templates);
