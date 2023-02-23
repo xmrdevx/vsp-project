@@ -1,10 +1,7 @@
-<nz-page-header style="background: white;" class="bordered-bottom" nzTitle="Security Permission Templates" nzBackIcon>
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a>Security</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Permissions</nz-breadcrumb-item>
-  </nz-breadcrumb>
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1  nz-typography>Permission Templates</h1>
+  </div>
   <nz-page-header-extra>
     <a  routerLink="./create" 
         nz-button 
@@ -14,31 +11,31 @@
   </nz-page-header-extra>
 </nz-page-header>
 
-<div [@fadeAnimation] class="p-4">
+<div [@fadeAnimation] class="px-4 py-0">
   <nz-card class="w-100 p-0">
     <div>
       <div class="mb-3 flex flex-row">
         <vsp-basic-query-search-with-deleted-filter
             class="flex-grow-1"
-            [filter]="templateModulePermissionsSearchFilter$ | async"
+            [filter]="permissionTemplatesSearchFilter$ | async"
             (searchChange)="onSearchFilterChanges($event)">
         </vsp-basic-query-search-with-deleted-filter>
         <vsp-datatable-widget-column-editor
             class="ml-3"
-            [tableDefinition]="securityPermissionsTemplateTableDefinition$ | async"
+            [tableDefinition]="permissionTemplatesTableDefinition$ | async"
             (applyColumnChanges)="onApplyColumnChanges($event)"
             (resetColumnChanges)="onResetColumnChanges($event)">
         </vsp-datatable-widget-column-editor>
       </div>
       <vsp-datatable      
-          [page]="securityPermissionsTemplatePage$ | async"
-          [definition]="securityPermissionsTemplateTableDefinition$ | async"
-          [actionsContent]="securityPermissionsTemplateActions"
+          [page]="permissionTemplatesPage$ | async"
+          [definition]="permissionTemplatesTableDefinition$ | async"
+          [actionsContent]="permissionTemplatesActions"
           [defaultSort]="defaultSort"
-          (pageChange)="onSecurityPermissionsPageChange($event)">
+          (pageChange)="onPermissionTemplatesPageChange($event)">
       </vsp-datatable>
     </div>
-    <ng-template #securityPermissionsTemplateActions let-row="row">
+    <ng-template #permissionTemplatesActions let-row="row">
       <nz-button-group>
         <a 
             class=""
@@ -59,7 +56,8 @@
             nzPopconfirmTitle="Deleting template, are you sure?"
             nzPopconfirmPlacement="left"
             nzOkText="Delete"
-            (nzOnConfirm)="onDeleteTemplateModulePermissionName(row)">
+            [disabled]="row?.deletedOn"
+            (nzOnConfirm)="onDeletePermissionTemplate(row)">
           <i nz-icon nzType="delete"></i>
         </button>
         <button
@@ -73,7 +71,7 @@
             nzPopconfirmTitle="Restoring template, are you sure?"
             nzPopconfirmPlacement="left"
             nzOkText="Restore"
-            (nzOnConfirm)="onRestoreTemplateModulePermissionName(row)">
+            (nzOnConfirm)="onRestorePermissionTemplate(row)">
           <i nz-icon nzType="undo"></i>
         </button>
       </nz-button-group>

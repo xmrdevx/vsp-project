@@ -10,14 +10,15 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RouterLink } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { Page, PageRequest, Sort, fadeAnimation, TemplateModulePermissionName } from '@vsp/core';
+import { Page, PageRequest, Sort, fadeAnimation, PermissionTemplate } from '@vsp/core';
 import { VspDatatableComponent, VspDatatableWidgetColumnEditorComponent, TableDefinition } from '@vsp/datatable';
 import { BasicQuerySearchFilter, BasicQuerySearchWithDeletedFilterComponent } from '@vsp/query-search-filters';
 
 import { defaultBasicQuerySearchFilter, defaultPageRequest } from '@vsp/admin/core/constants';
 
-import { SecurityPermissionsActions, SecurityPermissionsSelectors, SecurityPermissionsState } from '../../store';
+import { SecurityPermissionsActions, SecurityPermissionsSelectors } from '../../store';
 import { defaultSecurityPermissionsSort } from '../../constants/sort.defaults';
 
 @Component({
@@ -37,6 +38,7 @@ import { defaultSecurityPermissionsSort } from '../../constants/sort.defaults';
     NzIconModule,
     NzPageHeaderModule,
     NzPopconfirmModule,
+    NzTypographyModule,
     VspDatatableWidgetColumnEditorComponent,
     VspDatatableComponent,
     RouterLink,
@@ -45,52 +47,53 @@ import { defaultSecurityPermissionsSort } from '../../constants/sort.defaults';
 export class SecurityPermissionsComponent {
   private readonly _store: Store = inject(Store);
 
-  public securityPermissionsTemplateTableDefinition$: Observable<TableDefinition | null> = this._store
-      .select(SecurityPermissionsSelectors.selectSecurityPermissionsTableDefinition);
+  public permissionTemplatesTableDefinition$: Observable<TableDefinition | null> = this._store
+      .select(SecurityPermissionsSelectors.selectPermissionTemplatesTableDefinition);
 
-  public securityPermissionsTemplatePage$: Observable<Page<TemplateModulePermissionName> | null> = this._store
-      .select(SecurityPermissionsSelectors.selectTemplateModulePermissionNamesPage);
+  public permissionTemplatesPage$: Observable<Page<PermissionTemplate> | null> = this._store
+      .select(SecurityPermissionsSelectors.selectPermissionTemplatesPage);
 
   private _defaultPageRequest: PageRequest = defaultPageRequest;
   public defaultSort: Sort = defaultSecurityPermissionsSort;
 
-  public templateModulePermissionsSearchFilter!: BasicQuerySearchFilter | null;
-  public templateModulePermissionsSearchFilter$: Observable<BasicQuerySearchFilter | null> = this._store
-    .select(SecurityPermissionsSelectors.selectTemplateModulePermissionSearchFilter)
-    .pipe(tap(filter => this.templateModulePermissionsSearchFilter = filter));
+  public permissionTemplatesSearchFilter!: BasicQuerySearchFilter | null;
+  
+  public permissionTemplatesSearchFilter$: Observable<BasicQuerySearchFilter | null> = this._store
+    .select(SecurityPermissionsSelectors.selectPermissionTemplatesSearchFilter)
+    .pipe(tap(filter => this.permissionTemplatesSearchFilter = filter));
 
   public onSearchFilterChanges(filter: BasicQuerySearchFilter): void {
     this._store.dispatch(
-      SecurityPermissionsActions.setTemplateModulePermissionsSearchFilter({ 
+      SecurityPermissionsActions.setPermissionTemplatesSearchFilter({ 
         filter : filter
       })
     );
-    this._searchTemplateModulePermissions(filter, this._defaultPageRequest);
+    this._searchPermissionTemplates(filter, this._defaultPageRequest);
   }
 
-  public onDeleteTemplateModulePermissionName(templateModulePermissionName: TemplateModulePermissionName): void {
+  public onDeletePermissionTemplate(permissionTemplate: PermissionTemplate): void {
     this._store.dispatch(
-      SecurityPermissionsActions.deleteTemplateModulePermissionNameRequest({
-        templateModulePermissionNameId: templateModulePermissionName.id
+      SecurityPermissionsActions.deletePermissionTemplateRequest({
+        templateId: permissionTemplate.id
       })
     )
   }
 
-  public onRestoreTemplateModulePermissionName(templateModulePermissionName: TemplateModulePermissionName): void {
+  public onRestorePermissionTemplate(permissionTemplate: PermissionTemplate): void {
     this._store.dispatch(
-      SecurityPermissionsActions.restoreTemplateModulePermissionNameRequest({
-        templateModulePermissionNameId: templateModulePermissionName.id
+      SecurityPermissionsActions.restorePermissionTemplateRequest({
+        templateId: permissionTemplate.id
       })
     )
   }
 
-  public onSecurityPermissionsPageChange(pageRequest: PageRequest): void {
-    this._searchTemplateModulePermissions(this.templateModulePermissionsSearchFilter, pageRequest);
+  public onPermissionTemplatesPageChange(pageRequest: PageRequest): void {
+    this._searchPermissionTemplates(this.permissionTemplatesSearchFilter, pageRequest);
   }
 
   public onApplyColumnChanges(tableDefinition: TableDefinition | null): void {
     this._store.dispatch(
-      SecurityPermissionsActions.setSecurityPermissionsTableDefinition({
+      SecurityPermissionsActions.setPermissionTemplatesTableDefinition({
         tableDefinition: tableDefinition
       })
     );
@@ -98,13 +101,13 @@ export class SecurityPermissionsComponent {
 
   public onResetColumnChanges(shouldReset: boolean): void {
     if (shouldReset) {
-      this._store.dispatch(SecurityPermissionsActions.resetSecurityPermissionsTableDefinition());
+      this._store.dispatch(SecurityPermissionsActions.resetPermissionsTemplatesTableDefinition());
     }
   }
 
-  private _searchTemplateModulePermissions(filter: BasicQuerySearchFilter | null, pageRequest: PageRequest): void {
+  private _searchPermissionTemplates(filter: BasicQuerySearchFilter | null, pageRequest: PageRequest): void {
     this._store.dispatch(
-      SecurityPermissionsActions.searchTemplateModulePermissionsNamesRequest({
+      SecurityPermissionsActions.searchPermissionTemplatesRequest({
         filter: filter || defaultBasicQuerySearchFilter,
         pageRequest: pageRequest
       })

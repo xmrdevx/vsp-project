@@ -16,11 +16,11 @@ export const applicationRoutes: Routes = [
         loadChildren: () => 
           import('./features/dashboard/dashboard.routes').then(r => r.dashboardRoutes)
       },
-      // {
-      //   path: 'security',
-      //   loadChildren: () => 
-      //     import('./features/security/security.routes').then(r => r.securityRoutes)
-      // },
+      {
+        path: 'security',
+        loadChildren: () => 
+          import('./features/security/security.routes').then(r => r.securityRoutes)
+      },
       {
         path: 'account',
         loadChildren: () => 

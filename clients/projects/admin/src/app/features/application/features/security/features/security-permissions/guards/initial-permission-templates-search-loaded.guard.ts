@@ -3,35 +3,34 @@ import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } fro
 import { Store } from '@ngrx/store';
 import { catchError, combineLatest, filter, mergeMap, Observable, of, switchMap, take, tap } from 'rxjs';
 
-import { Page, TemplateModulePermissionName } from '@vsp/core';
 import { defaultBasicQuerySearchFilter, defaultPageRequest } from '@vsp/admin/core/constants';
+import { Page, PermissionTemplate } from '@vsp/core';
 
-import { SecurityPermissionsActions, SecurityPermissionsSelectors, SecurityPermissionsState } from '../store';
 import { defaultSecurityPermissionsSort } from '../constants/sort.defaults';
+import { SecurityPermissionsActions, SecurityPermissionsSelectors } from '../store';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InitialTemplateModulePermissionNamesSearchLoadedGuard implements CanActivate {
+export class InitialPermissionTemplatesSearchLoadedGuard implements CanActivate {
   private _store: Store = inject(Store);
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this._getTemplateModulePermissionNamesPageFromStoreOrApi()
+    return this._getPermissionTemplatesPageFromStoreOrApi()
       .pipe(
         switchMap(() => of(true)),
         catchError(() => of(false))
       );
   }
   
-  private _getTemplateModulePermissionNamesPageFromStoreOrApi(): Observable<Page<TemplateModulePermissionName> | null> {
-
+  private _getPermissionTemplatesPageFromStoreOrApi(): Observable<Page<PermissionTemplate> | null> {
     return combineLatest([
-        this._store.select(SecurityPermissionsSelectors.selectTemplateModulePermissionSearchFilter),
-        this._store.select(SecurityPermissionsSelectors.selectTemplateModulePermissionNamesPage)
+        this._store.select(SecurityPermissionsSelectors.selectPermissionTemplatesSearchFilter),
+        this._store.select(SecurityPermissionsSelectors.selectPermissionTemplatesPage)
       ])
       .pipe(tap(([filter, page]) => {
         if (!page) {
-          this._store.dispatch(SecurityPermissionsActions.searchTemplateModulePermissionsNamesRequest({
+          this._store.dispatch(SecurityPermissionsActions.searchPermissionTemplatesRequest({
             filter: filter || defaultBasicQuerySearchFilter,
             pageRequest: {
               ...defaultPageRequest,

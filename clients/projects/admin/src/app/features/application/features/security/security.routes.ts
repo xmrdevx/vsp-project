@@ -2,9 +2,6 @@ import { Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
-import { HasPermissionGuard } from '@vsp/admin/core/guards';
-import { PermissionNames } from '@vsp/core';
-
 import { securityPermissionsFeature, SecurityPermissionsEffects } from './features/security-permissions/store';
 
 export const securityRoutes: Routes = [

@@ -6,54 +6,54 @@ export const selectSecurityPermissionsState = createFeatureSelector<SecurityPerm
   securityPermissionsFeature.name
 );
 
-export const selectTemplateModulePermissionNamesPage = createSelector(
+export const selectPermissionTemplatesPage = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.templateModulePermissionNamesPage
+  (state: SecurityPermissionsState) => state.permissionTemplatesPage
 );
 
-export const selectTemplateModulePermissionSearchFilter = createSelector(
+export const selectPermissionTemplatesSearchFilter = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.templateModulePermissionsSearchFilter
+  (state: SecurityPermissionsState) => state.permissionTemplatesSearchFilter
 );
 
-export const selectCreateTemplateModulePermissionNameResponseMessage = createSelector(
+export const selectCreatePermissionTemplateResponseMessage = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.createTemplateModulePermissionNameResponseMessage
+  (state: SecurityPermissionsState) => state.createPermissionTemplateResponseMessage
 );
 
-export const selectUpdateTemplateModulePermissionNameResponseMessage = createSelector(
+export const selectUpdatePermissionTemplateResponseMessage = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.updateTemplateModulePermissionNameResponseMessage
+  (state: SecurityPermissionsState) => state.updatePermissionTemplateResponseMessage
 );
 
-export const selectSelectedTemplateModulerPermissionName = createSelector(
+export const selectSelectedPermissionTemplate = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.selectedTemplateModulePermissionName
+  (state: SecurityPermissionsState) => state.selectedPermissionTemplate
 );
 
 export const selectDeleteTemplateModulePermissionNameResponseMessage = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.deleteTemplateModulePermissionNameResponseMessage
+  (state: SecurityPermissionsState) => state.deletePermissionTemplateResponseMessage
 );
 
-export const selectSecurityPermissionsTableDefinition = createSelector(
+export const selectPermissionTemplatesTableDefinition = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.securityPermissionsTableDefinition
+  (state: SecurityPermissionsState) => state.permissionTemplatesTableDefinition
 );
 
-export const selectRestoreTemplateModulePermissionNameResponseMessage = createSelector(
+export const selectRestorePermissionTemplateResponseMessage = createSelector(
   selectSecurityPermissionsState,
-  (state: SecurityPermissionsState) => state.deleteTemplateModulePermissionNameResponseMessage
+  (state: SecurityPermissionsState) => state.restorePermissionTemplateResponseMessage
 );
 
 export const SecurityPermissionsSelectors = {
   selectSecurityPermissionsState,
-  selectTemplateModulePermissionNamesPage,
-  selectTemplateModulePermissionSearchFilter,
-  selectCreateTemplateModulePermissionNameResponseMessage,
-  selectUpdateTemplateModulePermissionNameResponseMessage,
-  selectSelectedTemplateModulerPermissionName,
+  selectPermissionTemplatesPage,
+  selectPermissionTemplatesSearchFilter,
+  selectCreatePermissionTemplateResponseMessage,
+  selectUpdatePermissionTemplateResponseMessage,
+  selectSelectedPermissionTemplate,
   selectDeleteTemplateModulePermissionNameResponseMessage,
-  selectSecurityPermissionsTableDefinition,
-  selectRestoreTemplateModulePermissionNameResponseMessage,
+  selectPermissionTemplatesTableDefinition,
+  selectRestorePermissionTemplateResponseMessage,
 };

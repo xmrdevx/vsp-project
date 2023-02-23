@@ -1,7 +1,7 @@
 import { ColumnDefinition, ColumnType, TableDefinition } from '@vsp/datatable';
 
-export const defaultSecurityPermissionsTableDefinition: TableDefinition = {
-  title: 'Named Template Permisssions',
+export const defaultPermissionTemplatesTableDefinition: TableDefinition = {
+  title: 'Permisssion Templates',
   columns: [
     {
       label: 'Name',
@@ -65,5 +65,5 @@ export const defaultSecurityPermissionsTableDefinition: TableDefinition = {
 } as TableDefinition;
 
 export const getDefaultSecurityPermissionsTableDefinition = (): TableDefinition => {
-  return JSON.parse(JSON.stringify(defaultSecurityPermissionsTableDefinition)) as TableDefinition
+  return JSON.parse(JSON.stringify(defaultPermissionTemplatesTableDefinition)) as TableDefinition
 };

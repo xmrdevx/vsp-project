@@ -1,33 +1,29 @@
-import { 
-  ModulePermission, 
-  Permission, 
-  TemplateModulePermission, 
-  TemplatePermission } from '@vsp/core';
+import {  } from '@vsp/core';
 
 
-export const mapAssignableModulePermissionsToTemplateModulePermissions = (modulePermissions: ModulePermission[]): TemplateModulePermission[] => {
-  return modulePermissions
-    .map(modulePermission => modulePermissionToTemplateModulePermission(modulePermission));
-}
+// export const mapAssignableModulePermissionsToTemplateModulePermissions = (modulePermissions: ModulePermission[]): TemplateModulePermission[] => {
+//   return modulePermissions
+//     .map(modulePermission => modulePermissionToTemplateModulePermission(modulePermission));
+// }
 
-export const modulePermissionToTemplateModulePermission = (modulePermission: ModulePermission): TemplateModulePermission => {
-  return {
-    hasAccess: false,
-    modulePermission: {
-      ...modulePermission
-    },
-    templatePermissions: [
-      ...modulePermission?.permissions?.map(permission => permissionToTemplatePermission(permission)) || []
-    ] as TemplatePermission[]
-  } as TemplateModulePermission;
-}
+// export const modulePermissionToTemplateModulePermission = (modulePermission: ModulePermission): TemplateModulePermission => {
+//   return {
+//     hasAccess: false,
+//     modulePermission: {
+//       ...modulePermission
+//     },
+//     templatePermissions: [
+//       ...modulePermission?.permissions?.map(permission => permissionToTemplatePermission(permission)) || []
+//     ] as TemplatePermission[]
+//   } as TemplateModulePermission;
+// }
 
-export const permissionToTemplatePermission = (permission: Permission): TemplatePermission => {
-  return {
-    permission: permission,
-    canCreate: false,
-    canRead: false,
-    canUpdate: false,
-    canDelete: false
-  } as TemplatePermission
-}
+// export const permissionToTemplatePermission = (permission: Permission): TemplatePermission => {
+//   return {
+//     permission: permission,
+//     canCreate: false,
+//     canRead: false,
+//     canUpdate: false,
+//     canDelete: false
+//   } as TemplatePermission
+// }

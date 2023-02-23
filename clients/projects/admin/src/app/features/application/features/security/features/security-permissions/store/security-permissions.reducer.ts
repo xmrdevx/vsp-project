@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { defaultBasicQuerySearchWithDeletedFilter } from '@vsp/admin/core/constants';
 
-import { Page, ResponseMessage, TemplateModulePermissionName } from '@vsp/core';
+import { Page, PermissionTemplate, ResponseMessage } from '@vsp/core';
 import { TableDefinition } from '@vsp/datatable';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 import { getDefaultSecurityPermissionsTableDefinition } from '../pages/security-permissions/security-permissions-table-definition.defaults';
@@ -11,104 +11,104 @@ import { SecurityPermissionsActions } from './security-permissions.actions';
 export const securityPermissionsFeatureKey = 'securityPermissions';
 
 export interface SecurityPermissionsState {
-  createTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
-  updateTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
-  deleteTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
-  restoreTemplateModulePermissionNameResponseMessage: ResponseMessage<void>| null,
-  templateModulePermissionNamesPage: Page<any> | null,
-  templateModulePermissionsSearchFilter: BasicQuerySearchFilter | null,
-  securityPermissionsTableDefinition: TableDefinition | null,
-  selectedTemplateModulePermissionName: TemplateModulePermissionName | null,
+  createPermissionTemplateResponseMessage: ResponseMessage<void>| null,
+  updatePermissionTemplateResponseMessage: ResponseMessage<void>| null,
+  deletePermissionTemplateResponseMessage: ResponseMessage<void>| null,
+  restorePermissionTemplateResponseMessage: ResponseMessage<void>| null,
+  permissionTemplatesPage: Page<PermissionTemplate> | null,
+  permissionTemplatesSearchFilter: BasicQuerySearchFilter | null,
+  permissionTemplatesTableDefinition: TableDefinition | null,
+  selectedPermissionTemplate: PermissionTemplate | null,
 }
 
 export const initialSecurityPermissionsState: SecurityPermissionsState = {
-  createTemplateModulePermissionNameResponseMessage: null,
-  updateTemplateModulePermissionNameResponseMessage: null,
-  deleteTemplateModulePermissionNameResponseMessage: null,
-  restoreTemplateModulePermissionNameResponseMessage: null,
-  templateModulePermissionNamesPage: null,
-  templateModulePermissionsSearchFilter: defaultBasicQuerySearchWithDeletedFilter,
-  securityPermissionsTableDefinition: getDefaultSecurityPermissionsTableDefinition(),
-  selectedTemplateModulePermissionName: null,
+  createPermissionTemplateResponseMessage: null,
+  updatePermissionTemplateResponseMessage: null,
+  deletePermissionTemplateResponseMessage: null,
+  restorePermissionTemplateResponseMessage: null,
+  permissionTemplatesPage: null,
+  permissionTemplatesSearchFilter: defaultBasicQuerySearchWithDeletedFilter,
+  permissionTemplatesTableDefinition: getDefaultSecurityPermissionsTableDefinition(),
+  selectedPermissionTemplate: null,
 }
 
-const handleSeachTemplateModulePermissionNamesRequestSuccess = (state: SecurityPermissionsState, { page }: any) => ({
+const handleSeachPermissionTemplatesRequestSuccess = (state: SecurityPermissionsState, { page }: any) => ({
   ...state,
-  templateModulePermissionNamesPage: page
+  permissionTemplatesPage: page
 } as SecurityPermissionsState);
 
-const handleSetTemplateModulePermissionsSearchFilter = (state: SecurityPermissionsState, { filter }: any) => ({
+const handleSetPermissionTemplatesSearchFilter = (state: SecurityPermissionsState, { filter }: any) => ({
   ...state,
-  templateModulePermissionsSearchFilter: filter
+  permissionTemplatesSearchFilter: filter
 } as SecurityPermissionsState);
 
-const handleCreateTemplateModulePermissionNameResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
+const handleCreatePermissionTemplateResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
   ...state,
-  templateModulePermissionNamesPage: null,
-  createTemplateModulePermissionNameResponseMessage: message
+  permissionTemplatesPage: null,
+  createPermissionTemplateResponseMessage: message
 } as SecurityPermissionsState);
 
-const handleUpdateTemplateModulePermissionNameResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
+const handleUpdatePermissionTemplateResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
   ...state,
-  templateModulePermissionNamesPage: null,
-  updateTemplateModulePermissionNameResponseMessage: message
+  permissionTemplatesPage: null,
+  updatePermissionTemplateResponseMessage: message
 } as SecurityPermissionsState);
 
-const handleGetTemplateModulePermissionNameByIdRequestSuccess = (state: SecurityPermissionsState, { templateModulePermissionName }: any) => ({
+const handleGetPermissionTemplateByIdRequestSuccess = (state: SecurityPermissionsState, { permissionTemplate }: any) => ({
   ...state,
-  selectedTemplateModulePermissionName: templateModulePermissionName
+  selectedPermissionTemplate: permissionTemplate
 } as SecurityPermissionsState);
 
-const handleDeleteTemplatePermissionModuleNameRequestSuccess = (state: SecurityPermissionsState, { templateModulePermissionName }: any) => {
-  const templateModulePermissionNamesPage: Page<TemplateModulePermissionName> | null = !state?.templateModulePermissionNamesPage ? null : {
-    ...state.templateModulePermissionNamesPage,
-    elements: state.templateModulePermissionNamesPage
-      ?.elements?.map((template: TemplateModulePermissionName) => {
-        return template.id === templateModulePermissionName.id ? templateModulePermissionName : template
+const handleDeletePermissionTemplateRequestSuccess = (state: SecurityPermissionsState, { permissionTemplate }: any) => {
+  const permissionTemplatesPage: Page<PermissionTemplate> | null = !state?.permissionTemplatesPage ? null : {
+    ...state.permissionTemplatesPage,
+    elements: state.permissionTemplatesPage
+      ?.elements?.map((template: PermissionTemplate) => {
+        return template.id === permissionTemplate.id ? permissionTemplate : template
       }) 
       || []
-  } as Page<TemplateModulePermissionName>;
+  } as Page<PermissionTemplate>;
   
   return {
     ...state,
-    templateModulePermissionNamesPage: templateModulePermissionNamesPage
+    permissionTemplatesPage: permissionTemplatesPage
   } as SecurityPermissionsState
 };
 
-const handleRestoreTemplatePermissionModuleNameRequestSuccess = (state: SecurityPermissionsState, { templateModulePermissionName }: any) => {
-  const templateModulePermissionNamesPage: Page<TemplateModulePermissionName> | null = !state?.templateModulePermissionNamesPage ? null : {
-    ...state.templateModulePermissionNamesPage,
-    elements: state.templateModulePermissionNamesPage
-      ?.elements?.map((template: TemplateModulePermissionName) => {
-        return template.id === templateModulePermissionName.id ? templateModulePermissionName : template
+const handleRestorePermissionTemplateRequestSuccess = (state: SecurityPermissionsState, { permissionTemplate }: any) => {
+  const permissionTemplatesPage: Page<PermissionTemplate> | null = !state?.permissionTemplatesPage ? null : {
+    ...state.permissionTemplatesPage,
+    elements: state.permissionTemplatesPage
+      ?.elements?.map((template: PermissionTemplate) => {
+        return template.id === permissionTemplate.id ? permissionTemplate : template
       }) 
       || []
-  } as Page<TemplateModulePermissionName>;
+  } as Page<PermissionTemplate>;
   
   return {
     ...state,
-    templateModulePermissionNamesPage: templateModulePermissionNamesPage
+    permissionTemplatesPage: permissionTemplatesPage
   } as SecurityPermissionsState
 };
 
-const handleSetDeleteTemplatePermissionModuleNameResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
+const handleSetDeletePermissionPermissionResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
   ...state,
-  deleteTemplateModulePermissionNameResponseMessage: message
+  deletePermissionTemplateResponseMessage: message
 } as SecurityPermissionsState);
 
-const handleSetRestoreTemplatePermissionModuleNameResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
+const handleSetRestorePermissionTemplateResponseMessage = (state: SecurityPermissionsState, { message }: any) => ({
   ...state,
-  restoreTemplateModulePermissionNameResponseMessage: message
+  restorePermissionTemplateResponseMessage: message
 } as SecurityPermissionsState);
 
-const handleSetSecurityPermissionsTableDefinition = (state: SecurityPermissionsState, { tableDefinition }: any) => ({
+const handleSetPermissionTemplateTableDefinition = (state: SecurityPermissionsState, { tableDefinition }: any) => ({
   ...state,
-  securityPermissionsTableDefinition: tableDefinition
+  permissionTemplatesTableDefinition: tableDefinition
 } as SecurityPermissionsState);
 
-const handleResetSecurityPermissionsTableDefinition = (state: SecurityPermissionsState) => ({
+const handleResetPermissionTemplateTableDefinition = (state: SecurityPermissionsState) => ({
   ...state,
-  securityPermissionsTableDefinition: getDefaultSecurityPermissionsTableDefinition()
+  permissionTemplatesTableDefinition: getDefaultSecurityPermissionsTableDefinition()
 } as SecurityPermissionsState);
 
 export const securityPermissionsFeature = createFeature({
@@ -116,51 +116,54 @@ export const securityPermissionsFeature = createFeature({
   reducer: createReducer(
     initialSecurityPermissionsState,
     on(
-      SecurityPermissionsActions.searchTemplateModulePermissionsNamesRequestSuccess,
-      handleSeachTemplateModulePermissionNamesRequestSuccess
+      SecurityPermissionsActions.searchPermissionTemplatesRequestSuccess,
+      handleSeachPermissionTemplatesRequestSuccess 
     ),
     on(
-      SecurityPermissionsActions.setTemplateModulePermissionsSearchFilter,
-      handleSetTemplateModulePermissionsSearchFilter
+      SecurityPermissionsActions.setPermissionTemplatesSearchFilter,
+      handleSetPermissionTemplatesSearchFilter 
     ),
     on(
-      SecurityPermissionsActions.createTemplateModulePermissionNameRequestSuccess,
-      SecurityPermissionsActions.setCreateTemplateModulePermissionNameResponseMessage,
-      handleCreateTemplateModulePermissionNameResponseMessage
+      SecurityPermissionsActions.createPermissionTemplateRequestSuccess,
+      SecurityPermissionsActions.createPermissionTemplateRequestFailure,
+      SecurityPermissionsActions.setCreatePermissionTemplateResponseMessage,
+      handleCreatePermissionTemplateResponseMessage 
     ),
     on(
-      SecurityPermissionsActions.updateTemplateModulePermissionNameRequestSuccess,
-      SecurityPermissionsActions.setUpdateTemplateModulePermissionNameResponseMessage,
-      handleUpdateTemplateModulePermissionNameResponseMessage
+      SecurityPermissionsActions.updatePermissionTemplateRequestSuccess,
+      SecurityPermissionsActions.updatePermissionTemplateRequestFailure,
+      SecurityPermissionsActions.setUpdatePermissionTemplateResponseMessage,
+      handleUpdatePermissionTemplateResponseMessage 
     ),
     on(
-      SecurityPermissionsActions.getTemplateModulePermissionNameByIdRequestSuccess,
-      SecurityPermissionsActions.setSelectedTemplateModulePermissionName,
-      handleGetTemplateModulePermissionNameByIdRequestSuccess
+      SecurityPermissionsActions.getPermissionTemplateByIdRequestSuccess,
+      SecurityPermissionsActions.setSelectedPermissionTemplate,
+      handleGetPermissionTemplateByIdRequestSuccess 
     ),
     on(
-      SecurityPermissionsActions.deleteTemplateModulePermissionNameRequestSuccess,
-      handleDeleteTemplatePermissionModuleNameRequestSuccess
+      SecurityPermissionsActions.deletePermissionTemplateRequestSuccess,
+      handleDeletePermissionTemplateRequestSuccess
     ),
     on(
-      SecurityPermissionsActions.setDeleteTemplateModulePermissionNameResponseMessage,
-      handleSetDeleteTemplatePermissionModuleNameResponseMessage
+      SecurityPermissionsActions.setDeletePermissionTemplateResponseMessage,
+      SecurityPermissionsActions.deletePermissionTemplateRequestFailure,
+      handleSetDeletePermissionPermissionResponseMessage 
     ),
     on(
-      SecurityPermissionsActions.setSecurityPermissionsTableDefinition,
-      handleSetSecurityPermissionsTableDefinition
+      SecurityPermissionsActions.setPermissionTemplatesTableDefinition,
+      handleSetPermissionTemplateTableDefinition
     ),
     on(
-      SecurityPermissionsActions.resetSecurityPermissionsTableDefinition,
-      handleResetSecurityPermissionsTableDefinition
+      SecurityPermissionsActions.resetPermissionsTemplatesTableDefinition,
+      handleResetPermissionTemplateTableDefinition 
     ),
     on(
-      SecurityPermissionsActions.restoreTemplateModulePermissionNameRequestSuccess,
-      handleRestoreTemplatePermissionModuleNameRequestSuccess
+      SecurityPermissionsActions.restorePermissionTemplateRequestSuccess,
+      handleRestorePermissionTemplateRequestSuccess 
     ),
     on(
-      SecurityPermissionsActions.setRestoreTemplateModulePermissionNameResponseMessage,
-      handleSetRestoreTemplatePermissionModuleNameResponseMessage
+      SecurityPermissionsActions.setRestorePermissionTemplateResponseMessage,
+      handleSetRestorePermissionTemplateResponseMessage
     )
   )
 });

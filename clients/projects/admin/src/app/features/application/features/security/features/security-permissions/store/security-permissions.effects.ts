@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { Page, ResponseMessage, ResponseStatus, TemplateModulePermissionName } from '@vsp/core';
+import { Page, PermissionTemplate, ResponseMessage, ResponseStatus } from '@vsp/core';
 import { PermissionsService } from '@vsp/admin/core/services';
 import { catchError, exhaustMap, mergeMap, of, switchMap } from 'rxjs';
 
@@ -12,175 +12,178 @@ export class SecurityPermissionsEffects {
   private readonly _actions: Actions = inject(Actions);
   private readonly _permissionsService: PermissionsService = inject(PermissionsService);
 
-  public createTemplateModulePermissionNameRequest = createEffect(() => this._actions
+  public createPermissionTemplateRequest = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.createTemplateModulePermissionNameRequest),
-      exhaustMap(({ templateModulePermissionName }) => 
-        this._permissionsService.createTemplateModulePermissionName(templateModulePermissionName)
+      ofType(SecurityPermissionsActions.createPermissionTemplateRequest),
+      exhaustMap(({ permissionTemplate }) => 
+        this._permissionsService.createTemplate(permissionTemplate)
           .pipe(
-            mergeMap((templateModulePermission) => of(SecurityPermissionsActions.createTemplateModulePermissionNameRequestSuccess({
+            mergeMap((templateModulePermission) => of(SecurityPermissionsActions.createPermissionTemplateRequestSuccess({
               message: {
                 status: ResponseStatus.SUCCESS,
                 message: 'Successfully created permission template!'
-              } as ResponseMessage
+              } as ResponseMessage<void>
             }))),
-            catchError((error: any) => of(SecurityPermissionsActions.createTemplateModulePermissionNameRequestFailure({
+            catchError((error: any) => of(SecurityPermissionsActions.createPermissionTemplateRequestFailure({
               message: {
                 status: ResponseStatus.ERROR,
                 message: error?.error || 'Error creating permission template!'
-              } as ResponseMessage
+              } as ResponseMessage<void>
             })))
           )
       )
     )
   );
 
-  public updateTemplateModulePermissionNameRequest = createEffect(() => this._actions
+  public updatePermissionTemplateRequest = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.updateTemplateModulePermissionNameRequest),
-      exhaustMap(({ templateModulePermissionNameId, templateModulePermissionName }) => 
-        this._permissionsService.updateTemplateModulePermissionName(templateModulePermissionNameId, templateModulePermissionName)
+      ofType(SecurityPermissionsActions.updatePermissionTemplateRequest),
+      exhaustMap(({ templateId, permissionTemplate }) => 
+        this._permissionsService.updateTemplate(templateId, permissionTemplate)
           .pipe(
-            mergeMap((templateModulePermission) => of(SecurityPermissionsActions.updateTemplateModulePermissionNameRequestSuccess({
+            mergeMap((templateModulePermission) => of(SecurityPermissionsActions.updatePermissionTemplateRequestSuccess({
               message: {
                 status: ResponseStatus.SUCCESS,
                 message: 'Successfully created permission template!'
-              } as ResponseMessage
+              } as ResponseMessage<void>
             }))),
-            catchError((error: any) => of(SecurityPermissionsActions.updateTemplateModulePermissionNameRequestFailure({
+            catchError((error: any) => of(SecurityPermissionsActions.updatePermissionTemplateRequestFailure({
               message: {
                 status: ResponseStatus.ERROR,
                 message: error?.error || 'Error creating permission template!'
-              } as ResponseMessage
+              } as ResponseMessage<void>
             })))
           )
       )
     )
   );
 
-  public searchTemplateModulePermissionNamesRequest = createEffect(() => this._actions
+  public searchPermissionTemplateRequest = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.searchTemplateModulePermissionsNamesRequest),
+      ofType(SecurityPermissionsActions.searchPermissionTemplatesRequest),
       switchMap(({ filter, pageRequest }) => 
-        this._permissionsService.searchTemplateModulePermissionNames(filter, pageRequest)
+        this._permissionsService.searchTemplates(filter, pageRequest)
           .pipe(
-            mergeMap((page: Page<TemplateModulePermissionName>) => of(SecurityPermissionsActions.searchTemplateModulePermissionsNamesRequestSuccess({ page: page }))),
-            catchError((error: any) => of(SecurityPermissionsActions.searchTemplateModulePermissionsNamesRequestFailure({
-              message: {
-                status: ResponseStatus.ERROR,
-                message: error.error || 'Error searching permissions templates!'
-              } as ResponseMessage
-            })))
+            mergeMap((page: Page<PermissionTemplate>) => 
+              of(SecurityPermissionsActions.searchPermissionTemplatesRequestSuccess({ page: page }))),
+            catchError((error: any) => 
+              of(SecurityPermissionsActions.searchPermissionTemplatesRequestFailure({
+                message: {
+                  status: ResponseStatus.ERROR,
+                  message: error.error || 'Error searching permission templates!'
+                } as ResponseMessage<void>
+              }))
+            )
           )
       )
     )
   );
 
-  public getTemplateModulePermissionNameByIdRequest = createEffect(() => this._actions
+  public getPermissionTemplateByIdRequest = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.getTemplateModulePermissionNameByIdRequest),
-      switchMap(({ templateModulePermissionNameId }) =>
-        this._permissionsService.getTemplateModulePermissionNameById(templateModulePermissionNameId)
+      ofType(SecurityPermissionsActions.getPermissionTemplateByIdRequest),
+      switchMap(({ templateId }) =>
+        this._permissionsService.getTemplateById(templateId)
           .pipe(
-            mergeMap((template: TemplateModulePermissionName) => of(
-              SecurityPermissionsActions.getTemplateModulePermissionNameByIdRequestSuccess({ 
-                templateModulePermissionName: template 
+            mergeMap((permissionTemplate: PermissionTemplate) => of(
+              SecurityPermissionsActions.getPermissionTemplateByIdRequestSuccess({ 
+                permissionTemplate: permissionTemplate 
               })
             )),
-            catchError((error: any) => of(SecurityPermissionsActions.getTemplateModulePermissionNameByIdRequestFailure({
+            catchError((error: any) => of(SecurityPermissionsActions.getPermissionTemplateByIdRequestFailure({
               message: {
                 status: ResponseStatus.ERROR,
-                message: error?.error || 'Error getting permissions template'
-              } as ResponseMessage
+                message: error?.error || 'Error getting permission template'
+              } as ResponseMessage<void>
             })))
           )
       )
     )
   )
 
-  public deleteTemplateModulePermissionNameRequest = createEffect(() => this._actions
+  public deletePermissionTemplateRequest = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.deleteTemplateModulePermissionNameRequest),
-      switchMap(({ templateModulePermissionNameId }) =>
-        this._permissionsService.deleteTemplateModulePermissionNameById(templateModulePermissionNameId)
+      ofType(SecurityPermissionsActions.deletePermissionTemplateRequest),
+      switchMap(({ templateId }) =>
+        this._permissionsService.deleteTemplate(templateId)
           .pipe(
-            mergeMap((template: TemplateModulePermissionName) => of(
-              SecurityPermissionsActions.deleteTemplateModulePermissionNameRequestSuccess({ 
-                templateModulePermissionName: template 
+            mergeMap((permissionTemplate: PermissionTemplate) => of(
+              SecurityPermissionsActions.deletePermissionTemplateRequestSuccess({ 
+                permissionTemplate: permissionTemplate
               })
             )),
-            catchError((error: any) => of(SecurityPermissionsActions.deleteTemplateModulePermissionNameRequestFailure({
+            catchError((error: any) => of(SecurityPermissionsActions.deletePermissionTemplateRequestFailure({
               message: {
                 status: ResponseStatus.ERROR,
-                message: error?.error || 'Error deleting permissions template'
-              } as ResponseMessage
+                message: error?.error || 'Error deleting permission template'
+              } as ResponseMessage<void>
             })))
           )
       )
     )
   )
 
-  public deleteTemplateModulePermissionNameRequestSuccess = createEffect(() => this._actions
+  public deletePermissionTemplateRequestSuccess = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.deleteTemplateModulePermissionNameRequestSuccess),
-      mergeMap(({ templateModulePermissionName }) => of(
-        SecurityPermissionsActions.setDeleteTemplateModulePermissionNameResponseMessage({ 
+      ofType(SecurityPermissionsActions.deletePermissionTemplateRequestSuccess),
+      mergeMap(({ permissionTemplate }) => of(
+        SecurityPermissionsActions.setDeletePermissionTemplateResponseMessage({ 
           message: {
             status: ResponseStatus.SUCCESS,
-            message: 'Successfully deleted permissions template!'
-          } as ResponseMessage
+            message: 'Successfully deleted permission template!'
+          } as ResponseMessage<void>
         })
       )),
       catchError((error: any) => of(
-        SecurityPermissionsActions.setDeleteTemplateModulePermissionNameResponseMessage({
+        SecurityPermissionsActions.setDeletePermissionTemplateResponseMessage({
           message: {
             status: ResponseStatus.ERROR,
-            message: error?.error || 'Error deleting permissions template!'
-          } as ResponseMessage
+            message: error?.error || 'Error deleting permission template!'
+          } as ResponseMessage<void>
         })
       ))
     )
   )
 
-  public restoreTemplateModulePermissionNameRequest = createEffect(() => this._actions
+  public restorePermissionPermissionRequest = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.restoreTemplateModulePermissionNameRequest),
-      switchMap(({ templateModulePermissionNameId }) =>
-        this._permissionsService.restoreTemplateModulePermissionNameById(templateModulePermissionNameId)
+      ofType(SecurityPermissionsActions.restorePermissionTemplateRequest),
+      switchMap(({ templateId }) =>
+        this._permissionsService.restoreTemplate(templateId)
           .pipe(
-            mergeMap((template: TemplateModulePermissionName) => of(
-              SecurityPermissionsActions.restoreTemplateModulePermissionNameRequestSuccess({ 
-                templateModulePermissionName: template 
+            mergeMap((permissionTemplate: PermissionTemplate) => of(
+              SecurityPermissionsActions.restorePermissionTemplateRequestSuccess({ 
+                permissionTemplate: permissionTemplate 
               })
             )),
-            catchError((error: any) => of(SecurityPermissionsActions.setRestoreTemplateModulePermissionNameResponseMessage({
+            catchError((error: any) => of(SecurityPermissionsActions.setRestorePermissionTemplateResponseMessage({
               message: {
                 status: ResponseStatus.ERROR,
-                message: error?.error || 'Error restoring permissions template'
-              } as ResponseMessage
+                message: error?.error || 'Error restoring permission template'
+              } as ResponseMessage<void>
             })))
           )
       )
     )
   )
 
-  public restoreTemplateModulePermissionNameRequestSuccess = createEffect(() => this._actions
+  public restorePermissionTemplateRequestSuccess = createEffect(() => this._actions
     .pipe(
-      ofType(SecurityPermissionsActions.restoreTemplateModulePermissionNameRequestSuccess),
-      mergeMap(({ templateModulePermissionName }) => of(
-        SecurityPermissionsActions.setRestoreTemplateModulePermissionNameResponseMessage({ 
+      ofType(SecurityPermissionsActions.restorePermissionTemplateRequestSuccess),
+      mergeMap(({ permissionTemplate }) => of(
+        SecurityPermissionsActions.setRestorePermissionTemplateResponseMessage({ 
           message: {
             status: ResponseStatus.SUCCESS,
-            message: 'Successfully restored permissions template!'
-          } as ResponseMessage
+            message: 'Successfully restored permission template!'
+          } as ResponseMessage<void>
         })
       )),
       catchError((error: any) => of(
-        SecurityPermissionsActions.setRestoreTemplateModulePermissionNameResponseMessage({
+        SecurityPermissionsActions.setRestorePermissionTemplateResponseMessage({
           message: {
             status: ResponseStatus.ERROR,
-            message: error?.error || 'Error restoring permissions template!'
-          } as ResponseMessage
+            message: error?.error || 'Error restoring permission template!'
+          } as ResponseMessage<void>
         })
       ))
     )

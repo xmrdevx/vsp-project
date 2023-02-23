@@ -20,6 +20,7 @@ export * from './identity/address.entity';
 export * from './identity/user.entity';
 export * from './identity/profile.entity';
 export * from './identity/tenant.entity';
+export * from './identity/permission-template.entity';
 
 // Offenders
 export * from './offenders/case.entity';

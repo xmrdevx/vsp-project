@@ -24,6 +24,7 @@ import {
   SecurityScanOutline,
   SettingOutline,
   TeamOutline,
+  UndoOutline,
   UnlockOutline, 
   UserOutline } from '@ant-design/icons-angular/icons';
 
@@ -80,6 +81,7 @@ export const nzGlobalIcons: IconDefinition[] = [
   SecurityScanOutline,
   SettingOutline,
   TeamOutline, 
+  UndoOutline,
   UnlockOutline,
   UserOutline
 ]; 
