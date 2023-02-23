@@ -1,4 +1,4 @@
-<nz-page-header style="background: white;" class="bordered-bottom" nzTitle="Update Permissions Template" nzBackIcon>
+<!-- <nz-page-header style="background: white;" class="bordered-bottom" nzTitle="Update Permissions Template" nzBackIcon>
   <nz-breadcrumb nz-page-header-breadcrumb>
     <nz-breadcrumb-item>
       <a>Security</a>
@@ -19,12 +19,27 @@
       Update Permissions Template
     </button>
   </nz-page-header-extra>
+</nz-page-header> -->
+
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1 nz-typography>Update Permission Template</h1>
+  </div>
+  <nz-page-header-extra>
+    <button
+        class="mr-1"
+        nz-button 
+        nzType="primary"
+        (click)="onUpdatePermissionTemplate(updatePermissionTemplateForm.value)">
+      Save
+    </button>
+  </nz-page-header-extra>
 </nz-page-header>
 
 <div [@fadeAnimation] class="p-4">
   <nz-card class="w-100 p-0">
-    <form class="block" [formGroup]="updateTemplateModulePermissionNameForm">
-      <vsp-template-module-permission-name-form></vsp-template-module-permission-name-form>
+    <form class="block" [formGroup]="updatePermissionTemplateForm">
+      <vsp-permission-template-form></vsp-permission-template-form>
     </form>
   </nz-card>
 </div>

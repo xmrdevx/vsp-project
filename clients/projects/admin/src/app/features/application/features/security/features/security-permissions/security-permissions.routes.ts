@@ -20,19 +20,19 @@ export const securityPermissionsRoutes: Routes = [
       import('./pages/security-permissions-create/security-permissions-create.component')
         .then(c => c.SecurityPermissionsCreateComponent)
   },
-  // {
-  //   path: ':templateId',
-  //   canActivate: [SelectedPermissionTemplateLoadedGuard],
-  //   children: [
-  //     {
-  //       path: 'edit',
-  //       canActivate: [AvailablePermissionsLoadedGuard],
-  //       loadComponent: () => 
-  //         import('./pages/security-permissions-update/security-permissions-update.component')
-  //           .then(c => c.SecurityPermissionsUpdateComponent)
-  //     }
-  //   ]
-  // },
+  {
+    path: ':templateId',
+    canActivate: [SelectedPermissionTemplateLoadedGuard],
+    children: [
+      {
+        path: 'edit',
+        canActivate: [AvailablePermissionsLoadedGuard],
+        loadComponent: () => 
+          import('./pages/security-permissions-update/security-permissions-update.component')
+            .then(c => c.SecurityPermissionsUpdateComponent)
+      }
+    ]
+  },
   {
     path: '**',
     redirectTo: '',

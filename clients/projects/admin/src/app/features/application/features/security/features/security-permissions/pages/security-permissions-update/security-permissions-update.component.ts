@@ -1,25 +1,29 @@
 import { AsyncPipe, Location, NgIf } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, inject } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { filter, Observable, Subject, take, takeUntil } from 'rxjs';
+import { filter, Subject, take, takeUntil, withLatestFrom } from 'rxjs';
 
-import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { fadeAnimation, ResponseStatus, TemplateModulePermission, TemplateModulePermissionName } from '@vsp/core';
-import { removeEmptyKeys } from '@vsp/admin/shared/utils';
-
-import { buildTemplateModulePermissionNameForm } from '../../components/template-module-permission-name-form/template-module-permission-name-form.builder';
-import { mapAssignableModulePermissionsToTemplateModulePermissions } from '../../utils';
-
+import { fadeAnimation, PermissionTemplate, ResponseStatus } from '@vsp/core';
+import { ClaimPermissionNode } from '@vsp/admin/core/models';
+import { createClaimPermissionGroups } from '@vsp/admin/shared/utils';
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
-import { SecurityPermissionsActions, SecurityPermissionsSelectors, SecurityPermissionsState } from '../../store';
-import { TemplateModulePermissionNameFormComponent } from '../../components/template-module-permission-name-form/template-module-permission-name-form.component';
 
+import { 
+  buildClaimPermissionGroupFormArray, 
+  patchAssignedClaimPermissionsToAvailableClaimPermissions } from '@vsp/admin/shared/form-controls';
+
+import { SecurityPermissionsActions, SecurityPermissionsSelectors } from '../../store';
+import { PermissionTemplateFormComponent } from '../../components/permission-template-form/permission-template-form.component';
+import { buildPermissionTemplateForm } from '../../components/permission-template-form/permission-template-form.builder';
+import { createPermissionTemplateFromFormValue } from '../../utils';
 
 @Component({
   selector: 'vsp-security-permissions-update',
@@ -35,8 +39,10 @@ import { TemplateModulePermissionNameFormComponent } from '../../components/temp
     NzButtonModule,
     NzCardModule,
     NzPageHeaderModule,
+    NzMessageModule,
+    NzTypographyModule,
     ReactiveFormsModule,
-    TemplateModulePermissionNameFormComponent,
+    PermissionTemplateFormComponent,
   ]
 })
 export class SecurityPermissionsUpdateComponent implements OnInit, OnDestroy {
@@ -46,104 +52,87 @@ export class SecurityPermissionsUpdateComponent implements OnInit, OnDestroy {
   private readonly _messageService: NzMessageService = inject(NzMessageService);
   private readonly _destroy$: Subject<any> = new Subject<any>();
 
-  public updateTemplateModulePermissionNameForm!: UntypedFormGroup;
-
-  public selectedTemplateModulePermissionName$: Observable<TemplateModulePermissionName | null> = this._store
-      .select(SecurityPermissionsSelectors.selectSelectedTemplateModulerPermissionName);
+  public updatePermissionTemplateForm!: UntypedFormGroup;
 
   constructor() {
     this._initializeForm();
   }
 
   ngOnInit(): void {
-    this._listenForSelectedUserAccountChanges();
+    this._listenForSelectedPermissionTemplateChange();
   }
 
-  // @TODO(jason) create type for this form
-  public onUpdateTempalteModulePermissionName(template: any): void {
-    if (this.updateTemplateModulePermissionNameForm.invalid) return;
+  public onUpdatePermissionTemplate(formValue: any): void {
+    if (this.updatePermissionTemplateForm.invalid) return;
+    const permissionTemplate: PermissionTemplate = createPermissionTemplateFromFormValue(formValue);
+    this._handleUpdatePermissionTemplateResponseMessage();
+    this._store.dispatch(
+      SecurityPermissionsActions.updatePermissionTemplateRequest({ 
+        templateId: permissionTemplate?.id, permissionTemplate 
+      })
+    );
+  }
 
-    removeEmptyKeys(template);
-
-    this._store.dispatch(SecurityPermissionsActions.updateTemplateModulePermissionNameRequest({
-      templateModulePermissionNameId: template.templateModulePermissionName.id,
-      templateModulePermissionName: template 
-    }));
-
-    this._store.select(SecurityPermissionsSelectors.selectUpdateTemplateModulePermissionNameResponseMessage)
-      .pipe(
-        filter(message => !!message),
-        take(1)
-      )
+  private _handleUpdatePermissionTemplateResponseMessage(): void {
+    this._store.select(SecurityPermissionsSelectors.selectUpdatePermissionTemplateResponseMessage)
+      .pipe(filter(message => !!message), take(1))
       .subscribe(message => {
         if (message?.status === ResponseStatus.SUCCESS) {
-          this._resetUpdateUserAccountForm();
           this._messageService.success(message?.message || 'Success!')
           this._location.back();
         } else {
           this._messageService.error(message?.message || 'Error!')
         }
-        this._store.dispatch(SecurityPermissionsActions.setUpdateTemplateModulePermissionNameResponseMessage({ message: null } ))
+        this._store.dispatch(SecurityPermissionsActions
+          .setUpdatePermissionTemplateResponseMessage({ message: null } ))
       });
-  }
-
-  private _resetUpdateUserAccountForm(): void {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
-      .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const userModulerPermissions: TemplateModulePermission[] = mapAssignableModulePermissionsToTemplateModulePermissions(assignableModulePermissions || []) || [];
-        const blankFormGroup = buildTemplateModulePermissionNameForm(this._formBuilder, userModulerPermissions);
-        this.updateTemplateModulePermissionNameForm.reset();
-        this.updateTemplateModulePermissionNameForm.patchValue({ ...blankFormGroup?.value });
-      });
-  }
+  }  
 
   private _initializeForm(): void {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
       .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const templateModulerPermissions: TemplateModulePermission[] = 
-          mapAssignableModulePermissionsToTemplateModulePermissions(assignableModulePermissions || []) || [];
-        
-        this.updateTemplateModulePermissionNameForm = 
-          buildTemplateModulePermissionNameForm(this._formBuilder, templateModulerPermissions || []);
+      .subscribe(claimPermissionGroups => {
+        this.updatePermissionTemplateForm = 
+          buildPermissionTemplateForm(this._formBuilder, claimPermissionGroups || []);
       });
   }
 
-  private _listenForSelectedUserAccountChanges(): void {
-    this._store.select(SecurityPermissionsSelectors.selectSelectedTemplateModulerPermissionName)
-      .pipe(takeUntil(this._destroy$))
-      .subscribe(selectedTemplateModulePermissionName => {
-
-        // Patch Template Moduler Permission Name Details
-        this.updateTemplateModulePermissionNameForm?.get('templateModulePermissionName')?.patchValue({
-          id: selectedTemplateModulePermissionName?.id || null,
-          name: selectedTemplateModulePermissionName?.name || null,
-          description: selectedTemplateModulePermissionName?.description || null
+  private _listenForSelectedPermissionTemplateChange(): void {
+    this._store.select(SecurityPermissionsSelectors.selectSelectedPermissionTemplate)
+      .pipe(
+        takeUntil(this._destroy$),
+        withLatestFrom(this._store.select(PermissionsSelectors.selectClaimPermissionGroups))  
+      )
+      .subscribe(([selectedPermissionTemplate, claimPermissionGroups]) => {
+        this.updatePermissionTemplateForm.patchValue({
+          ...selectedPermissionTemplate
         });
 
-        // Patch Template Moduler Permission Name Permissions
-        (this.updateTemplateModulePermissionNameForm?.get('templateModulePermissions') as UntypedFormArray)?.controls.forEach(control => {
-          const templateModulePermissionFormGroup: UntypedFormGroup = control as UntypedFormGroup;
+        // Map permission template claims to claim permission groups
+        const permissionTemplateClaimPermissions: ClaimPermissionNode[] = 
+          createClaimPermissionGroups(selectedPermissionTemplate?.claims || [], true);
 
-          const templateModulePermission: TemplateModulePermission | undefined = selectedTemplateModulePermissionName
-            ?.templateModulePermissions
-            ?.find(ump => ump?.modulePermission?.id === templateModulePermissionFormGroup?.value?.modulePermission?.id);
+        // Patch through permission template claim permissions groups to assignable
+        const patchedClaimPermissionGroups:  ClaimPermissionNode[] = 
+          patchAssignedClaimPermissionsToAvailableClaimPermissions(
+            permissionTemplateClaimPermissions, claimPermissionGroups ?? [])
+          ;
+        
+        // Build new claims form array with patched assignable permissions
+        const claimPermissionGroupsFromArray = 
+          buildClaimPermissionGroupFormArray(this._formBuilder, patchedClaimPermissionGroups || []);
 
-          templateModulePermissionFormGroup?.patchValue({
-            ...templateModulePermission,
-            canCreateAll: templateModulePermission?.templatePermissions?.some(up => up.canCreate) || false,
-            canReadAll: templateModulePermission?.templatePermissions?.some(up => up.canRead) || false,
-            canUpdateAll: templateModulePermission?.templatePermissions?.some(up => up.canUpdate) || false,
-            canDeleteAll: templateModulePermission?.templatePermissions?.some(up => up.canDelete) || false
-          }, {emitEvent: false});
-        });
+        if (claimPermissionGroupsFromArray) {
+          this.updatePermissionTemplateForm
+            ?.get('claimPermissionGroups')
+            ?.patchValue([ ...(claimPermissionGroupsFromArray.value || []) ]);
+        }
       });
   }
 
   ngOnDestroy(): void {
-    this._store.dispatch(SecurityPermissionsActions.setSelectedTemplateModulePermissionName({ 
-      templateModulePermissionName: null
+    this._store.dispatch(SecurityPermissionsActions.setSelectedPermissionTemplate({ 
+      permissionTemplate: null
     }));
     this._destroy$.next(null);
     this._destroy$.complete();
