@@ -8,6 +8,7 @@ export class PermissionTemplateMapper {
       id: entity.id,
       createdOn: entity.createdOn,
       updatedOn: entity.updatedOn,
+      deletedOn: entity.deletedOn,
       name: entity.name,
       description: entity.description,
       claims: entity?.claims?.length ? ClaimMapper.toDtoList(entity.claims) : undefined,

@@ -1,8 +1,22 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
-import { Claim, CreatePermissionTemplateDto, DeletePermissionTemplateDto, GetPermissionTemplatesDto, IPageable, Page, PageRequest, PermissionTemplate, PermissionTemplateDto, PermissionTemplateMapper, PermissionTemplatesSearchFilter, UpdatePermissionTemplateDto } from '@vsp/common';
+import { ILike, IsNull, Not } from 'typeorm';
+
+import { 
+  Claim, 
+  CreatePermissionTemplateDto, 
+  DeletePermissionTemplateDto, 
+  GetPermissionTemplatesDto, 
+  IPageable, 
+  Page, 
+  PermissionTemplate, 
+  PermissionTemplateDto, 
+  PermissionTemplateMapper, 
+  PermissionTemplatesSearchFilter, 
+  RestorePermissionTemplateDto, 
+  UpdatePermissionTemplateDto } from '@vsp/common';
+
 import { LoggerService } from '@vsp/logger';
-import { ILike, IsNull, Like } from 'typeorm';
 
 import { IPermissionTemplatesRepository, PERMISSION_TEMPLATES_REPOSITORY_TOKEN } from '../interfaces/permission-template-repository.interface';
 import { IPermissionTemplatesService } from '../interfaces/permission-template-service.interface';
@@ -28,17 +42,11 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
   }
 
   
-  public async updateTemplate(templateId: string, updatePermissionTemplateDto: UpdatePermissionTemplateDto): Promise<PermissionTemplateDto> {
-    const existingTemplate: PermissionTemplate | null = await this._permissionTemplatesRepository
-      .findByCondition({
-        where: [{ id: templateId, tenantId : updatePermissionTemplateDto.tenantId }]
-      });
-
-    if (!existingTemplate) {
-      throw new RpcException(
-        new NotFoundException('Template was not found!')
-      )
-    }
+  public async updateTemplate(
+        templateId: string, updatePermissionTemplateDto: UpdatePermissionTemplateDto): Promise<PermissionTemplateDto> {
+    
+    const existingTemplate: PermissionTemplate = 
+      await this._getTemplateWithClaimsByIdAndTenant(templateId, updatePermissionTemplateDto.tenantId);
 
     existingTemplate.name = updatePermissionTemplateDto.name;
     existingTemplate.description = updatePermissionTemplateDto.description;
@@ -51,18 +59,11 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
   }
 
 
-  public async deleteTemplate(templateId: string, deletePermissionTemplateDto: DeletePermissionTemplateDto): Promise<PermissionTemplateDto> {
-    const existingTemplate: PermissionTemplate | null = await this._permissionTemplatesRepository
-      .findByCondition({
-        relations: ['claims'],
-        where: [{ id: templateId, tenantId : deletePermissionTemplateDto.tenantId }]
-      });
-
-    if (!existingTemplate) {
-      throw new RpcException(
-        new NotFoundException('Template was not found!')
-      )
-    }
+  public async deleteTemplate(
+      templateId: string, deletePermissionTemplateDto: DeletePermissionTemplateDto): Promise<PermissionTemplateDto> {
+    
+    const existingTemplate: PermissionTemplate = 
+      await this._getTemplateWithClaimsByIdAndTenant(templateId, deletePermissionTemplateDto.tenantId);
 
     existingTemplate.deletedById = deletePermissionTemplateDto.deletedById,
     existingTemplate.deletedOn = new Date();
@@ -73,7 +74,9 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
   }
 
 
-  public async getTemplates(getPermissionTemplatesDto: GetPermissionTemplatesDto): Promise<PermissionTemplateDto[]> {
+  public async getTemplates(
+      getPermissionTemplatesDto: GetPermissionTemplatesDto): Promise<PermissionTemplateDto[]> {
+    
     const templates: PermissionTemplate[] = await this._permissionTemplatesRepository
       .findAll({
         relations: ['claims'], 
@@ -91,7 +94,14 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
       filter: PermissionTemplatesSearchFilter, pageable: IPageable): Promise<Page<PermissionTemplateDto>> {
 
     const queryFilter: string = filter?.query?.trim() || '';
-
+    let deletedState: any = undefined;
+    
+    if (filter.isDeleted === null || filter.isDeleted === undefined) {
+      deletedState = undefined;
+    } else {
+      deletedState = filter.isDeleted == true ? Not(IsNull()) : IsNull();
+    }
+    
     const [templates, count]: [PermissionTemplate[], number] = 
       await this._permissionTemplatesRepository.findByPageable(
         pageable, {
@@ -99,7 +109,7 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
           where: { 
             name: queryFilter.length ? ILike(`%${queryFilter}%`) : undefined,
             tenantId: filter.tenantId,
-            deletedOn: IsNull()
+            deletedOn: deletedState
           }
         }
       );
@@ -107,5 +117,47 @@ export class PermissionTemplatesService implements IPermissionTemplatesService {
     return new Page<PermissionTemplateDto>(
       PermissionTemplateMapper.toDtoList(templates), count, pageable
     );
+  }
+
+
+  public async restoreTemplate(templateId: string, restorePermissionTemplateDto: RestorePermissionTemplateDto): Promise<PermissionTemplateDto> {
+    const existingTemplate: PermissionTemplate = 
+      await this._getTemplateWithClaimsByIdAndTenant(templateId, restorePermissionTemplateDto.tenantId);
+
+    existingTemplate.deletedBy = null;
+    existingTemplate.deletedOn = null;
+    existingTemplate.updatedOn = new Date();
+    existingTemplate.updatedById = restorePermissionTemplateDto.updatedById;
+
+    await this._permissionTemplatesRepository.save(existingTemplate);
+
+    return PermissionTemplateMapper.toDto(existingTemplate);
+  }
+
+
+  public async getTemplateById(
+      templateId: string, getPermissionTemplatesDto: GetPermissionTemplatesDto): Promise<PermissionTemplateDto> {
+    
+    const foundTemplate: PermissionTemplate = 
+      await this._getTemplateWithClaimsByIdAndTenant(templateId, getPermissionTemplatesDto.tenantId);
+
+    return PermissionTemplateMapper.toDto(foundTemplate)
+  }
+
+
+  private async _getTemplateWithClaimsByIdAndTenant(templateId: string, tenantId: string): Promise<PermissionTemplate> {
+    const foundTemplate: PermissionTemplate | null = await this._permissionTemplatesRepository
+      .findByCondition({
+        relations: ['claims'],
+        where: [{ id: templateId, tenantId : tenantId }]
+      });
+
+    if (!foundTemplate) {
+      throw new RpcException(
+        new NotFoundException('Template was not found!')
+      )
+    }
+
+    return foundTemplate;
   }
 }

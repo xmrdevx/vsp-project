@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Inject, Param, Post, Put, Query, UseGuards, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Inject, Param, ParseBoolPipe, Post, Put, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { ApiTags } from '@nestjs/swagger';
 import { catchError, Observable, of, throwError } from 'rxjs';
@@ -26,7 +26,10 @@ import {
   PermissionTemplatesSearchFilter,
   IPageable,
   PageRequest,
-  SearchPermissionTemplatesRequest} from '@vsp/common'; 
+  SearchPermissionTemplatesRequest,
+  RestorePermissionTemplateDto,
+  restorePermissionTemplateCommand,
+  getPermissionTemplateByIdCommand} from '@vsp/common'; 
 import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
 
 @ApiTags('identity')
@@ -42,7 +45,7 @@ export class PermissionsController {
     this._logger.setContext(PermissionsController.name);
   }
 
-  
+
   @Get('available')
   public getAvailablePerissions(): Observable<any> {
     return this._identityServiceClient
@@ -87,18 +90,39 @@ export class PermissionsController {
 
   
   @Get('templates/search')
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchPermissionTemplates(
     @Body('tenantId') tenantId: string,
     @Query('query') query: string = '',
+    @Query('isDeleted') isDeleted: boolean | null | undefined = undefined,
     @Query('index') index: number = 0,
     @Query('size') size: number = 10,
     @Query('column') column: string = defaultSortColumn,
     @Query('direction') direction: string = defaultSortDirection
   ): Observable<any> {
     const pageable: IPageable = PageRequest.from(index, size, column, direction);
-    const filter: PermissionTemplatesSearchFilter = new PermissionTemplatesSearchFilter({ query, tenantId });
+    const filter: PermissionTemplatesSearchFilter = new PermissionTemplatesSearchFilter({ 
+      query, tenantId, isDeleted: ((''+isDeleted).length <= 0) ? undefined : ''+isDeleted == 'true'
+    });
     return this._identityServiceClient
       .send(searchPermissionTemplatesCommand, new SearchPermissionTemplatesRequest({ filter, pageable }))
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))))
+  }
+
+  @Get('templates/:templateId')
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+  public getPermissionTemplateById(
+    @Param('templateId') templateId: string,
+    @Body() getPermissionTemplatesDto: GetPermissionTemplatesDto
+  ):  Observable<any> {
+    return this._identityServiceClient
+      .send(
+        getPermissionTemplateByIdCommand,
+        new GetResourceRequest<GetPermissionTemplatesDto>({
+          resourceId: templateId,
+          resource: getPermissionTemplatesDto
+        })  
+      )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 
@@ -139,6 +163,27 @@ export class PermissionsController {
         new DeleteResourceRequest<DeletePermissionTemplateDto>({ 
           resourceId: templateId,
           resource: deletePermissionTemplateDto
+        })
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))))
+  }
+
+
+  @Delete('templates/:templateId/restore')
+  @UseInterceptors(
+    EnrichBodyWithTenantInterceptor,
+    EnrichBodyWithUpdatedByInterceptor
+  )
+  public restorePermissionTemplate(
+    @Param('templateId') templateId: string,
+    @Body() restorePermissionTemplateDto: RestorePermissionTemplateDto
+  ): Observable<any> {
+    return this._identityServiceClient
+      .send(
+        restorePermissionTemplateCommand, 
+        new DeleteResourceRequest<RestorePermissionTemplateDto>({ 
+          resourceId: templateId,
+          resource: restorePermissionTemplateDto
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))

@@ -2,7 +2,7 @@ import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
 import { LoggerService } from '@vsp/logger';
-import { createPermissionTemplateCommand, CreatePermissionTemplateDto, CreateResourceRequest, deletePermissionTemplateCommand, DeletePermissionTemplateDto, DeleteResourceRequest, getAvailablePermissionsCommand, getPermissionTemplatesCommand, GetPermissionTemplatesDto, GetResourceRequest, PermissionTemplateDto, searchPermissionTemplatesCommand, SearchPermissionTemplatesRequest, updatePermissionTemplateCommand, UpdatePermissionTemplateDto, UpdateResourceRequest } from '@vsp/common';
+import { createPermissionTemplateCommand, CreatePermissionTemplateDto, CreateResourceRequest, deletePermissionTemplateCommand, DeletePermissionTemplateDto, DeleteResourceRequest, getAvailablePermissionsCommand, getPermissionTemplateByIdCommand, getPermissionTemplatesCommand, GetPermissionTemplatesDto, GetResourceRequest, PermissionTemplateDto, restorePermissionTemplateCommand, RestorePermissionTemplateDto, searchPermissionTemplatesCommand, SearchPermissionTemplatesRequest, updatePermissionTemplateCommand, UpdatePermissionTemplateDto, UpdateResourceRequest } from '@vsp/common';
 import { IPermissionsService, PERMISSIONS_SERVICE_TOKEN } from '../interfaces/permissions-service.interface';
 import { IPermissionTemplatesService, PERMISSION_TEMPLATES_SERVICE_TOKEN } from '../interfaces/permission-template-service.interface';
 
@@ -33,6 +33,7 @@ export class PermissionsController {
     request: GetResourceRequest<GetPermissionTemplatesDto>
   ): Promise<PermissionTemplateDto[]> {
     try {
+      console.log("getting templates")
       return await this._permissionTemplatesService.getTemplates(request.resource);
     } catch (error) {
       this._logger.error('Error getting permissions templates', error);
@@ -83,6 +84,30 @@ export class PermissionsController {
       return await this._permissionTemplatesService.deleteTemplate(request.resourceId, request.resource);
     } catch (error) {
       this._logger.error('Error deleting permission template', error);
+      return error;
+    }
+  }
+
+  @MessagePattern(restorePermissionTemplateCommand)
+  public async restorePermissionTemplateCommand(
+    request: DeleteResourceRequest<RestorePermissionTemplateDto>
+  ): Promise<any> {
+    try {
+      return await this._permissionTemplatesService.restoreTemplate(request.resourceId, request.resource);
+    } catch (error) {
+      this._logger.error('Error restoring permission template', error);
+      return error;
+    }
+  }
+
+  @MessagePattern(getPermissionTemplateByIdCommand)
+  public async getPermissionTemplateByIdCommand(
+    request: GetResourceRequest<GetPermissionTemplatesDto>
+  ): Promise<any> {
+    try {
+      return await this._permissionTemplatesService.getTemplateById(request.resourceId, request.resource);
+    } catch (error) {
+      this._logger.error('Error getting permission template by id', error);
       return error;
     }
   }

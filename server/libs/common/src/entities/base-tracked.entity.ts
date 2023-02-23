@@ -28,12 +28,12 @@ export abstract class BaseTrackedEntity {
   @JoinColumn()
   public updatedBy: User;
 
-  @Column({ nullable: true })
-  public deletedById: string;
+  @Column({ type: String, nullable: true })
+  public deletedById: string | null | undefined;
 
   @ManyToOne(type => User)
   @JoinColumn()
-  public deletedBy: User;
+  public deletedBy: User | null | undefined;
 
   @BeforeInsert()
   public initializeTimestamps() {

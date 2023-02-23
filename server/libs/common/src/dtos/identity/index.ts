@@ -20,6 +20,7 @@ export * from './profile.dto';
 export * from './refresh-token-request.dto';
 export * from './registration.dto';
 export * from './reset-password.dto';
+export * from './restore-permission-template.dto';
 export * from './role.dto';
 export * from './tenant.dto';
 export * from './token-pair.dto';

@@ -6,6 +6,7 @@ import {
   Page, 
   PermissionTemplateDto, 
   PermissionTemplatesSearchFilter, 
+  RestorePermissionTemplateDto, 
   UpdatePermissionTemplateDto } from '@vsp/common';
 
 export const PERMISSION_TEMPLATES_SERVICE_TOKEN: string = 'PERMISSION_TEMPLATES_SERVICE_TOKEN';
@@ -58,4 +59,24 @@ export interface IPermissionTemplatesService {
    * @async
    */
   searchTemplates(filter: PermissionTemplatesSearchFilter, pageable: IPageable): Promise<Page<PermissionTemplateDto>>;
+
+  /**
+   * Restores a deleted permission template for a tenant.
+   * @param {string} templateId The id of the template to store.
+   * @param {RestorePermissionTemplateDto} Addiontal options for restoring
+   * @returns {PermissionTemplateDto} Returns the restored permission template.
+   * @abstract
+   * @async
+   */
+  restoreTemplate(templateId: string, restorePermissionTemplateDto: RestorePermissionTemplateDto): Promise<PermissionTemplateDto>;
+
+  /**
+   * Gets a permission template by its Id for a tenant.
+   * @param {string} templateId The id of the template to retrieve.
+   * @param {GetPermissionTemplatesDto} getPermissionTemplatesDto Addtional options for the template (tenant)
+   * @returns {PermissionTemplateDto} Returns the permission template with claims
+   * @abstract
+   * @async
+   */
+  getTemplateById(templateId: string, getPermissionTemplatesDto: GetPermissionTemplatesDto): Promise<PermissionTemplateDto>;
 }

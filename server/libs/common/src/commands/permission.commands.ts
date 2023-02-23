@@ -21,5 +21,13 @@ export const getPermissionTemplatesCommand: MessagePatternCommand<void> = {
 } as MessagePatternCommand<void>;
 
 export const searchPermissionTemplatesCommand: MessagePatternCommand<void> = {
-  cmd: 'search-permissions-templates'
+  cmd: 'search-permission-templates'
+} as MessagePatternCommand<void>;
+
+export const restorePermissionTemplateCommand: MessagePatternCommand<void> = {
+  cmd: 'restore-permission-templates'
+} as MessagePatternCommand<void>;
+
+export const getPermissionTemplateByIdCommand: MessagePatternCommand<void> = {
+  cmd: 'get-permission-template-by-id'
 } as MessagePatternCommand<void>;
