@@ -4,10 +4,13 @@ import { ApiTags } from '@nestjs/swagger';
 import { catchError, Observable, of, throwError } from 'rxjs';
 
 import { LoggerService } from '@vsp/logger';
-import { EnrichBodyWithTenantInterceptor, JwtAuthGuard } from '@vsp/authorization';
+import { EnrichBodyWithTenantInterceptor, HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorization';
 
 import { 
   AccountUsersSearchFilter,
+  ClaimAuthorizationOperations,
+  ClaimAuthorizationTypes,
+  ClaimValues,
   confirmEmailCommand, 
   ConfirmEmailDto, 
   createAccountUserCommand, 
@@ -47,9 +50,11 @@ export class AccountsController {
   @Inject(IDENTITY_SERVICE_TOKEN)
   private readonly _identityServiceClient: ClientProxy;
   
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(AccountsController.name);
   }
+
 
   @Post('register')
   @HttpCode(HttpStatus.OK)
@@ -59,6 +64,7 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+
   @Post('forgot-password')
   @HttpCode(HttpStatus.OK)
   public forgotPassword(@Body() forgotPassword: ForgotPasswordDto): Observable<any> {
@@ -66,6 +72,7 @@ export class AccountsController {
       .send(forgotPasswordCommand, forgotPassword)
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
+
 
   @Post('reset-password')
   @HttpCode(HttpStatus.OK)
@@ -75,6 +82,7 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+
   @Post('confirm-email')
   @HttpCode(HttpStatus.OK)
   public confirmEmail(@Body() confirmEmail: ConfirmEmailDto): Observable<any> {
@@ -82,6 +90,7 @@ export class AccountsController {
       .send(confirmEmailCommand, confirmEmail)
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
+
 
   @Head('usernames')
   @HttpCode(HttpStatus.NO_CONTENT)
@@ -91,6 +100,7 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+
   @Head('emails')
   @HttpCode(HttpStatus.NO_CONTENT)
   public doesEmailExist(@Query('query') email: string): Observable<any> {
@@ -99,9 +109,14 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+
   @Get('users/search')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.USER_ACCOUNTS }]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchAccountUsers(
     @Body('tenantId') tenantId: string,
     @Query('query') query: string = '',
@@ -117,9 +132,14 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+
   @Post('users')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.USER_ACCOUNTS }]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public createAccountUser(@Body() createAccountUser: CreateUserDto): Observable<UserDto> {
     return this._identityServiceClient
       .send(
@@ -129,9 +149,14 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+
   @Put('users/:userId')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.USER_ACCOUNTS }]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public updateAccountUser(@Param('userId') userId: string, @Body() updateUser: UpdateUserDto): Observable<UserDto> {
     return this._identityServiceClient
       .send(
@@ -144,9 +169,14 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+
   @Get('users/:userId')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.USER_ACCOUNTS }]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public getAccountUserById(
     @Param('userId') userId: string,
     @Body() getUserRequest: GetUserRequest
@@ -162,9 +192,14 @@ export class AccountsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(EnrichBodyWithTenantInterceptor)
+  
   @Put('users/:userId/lockout')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.USER_ACCOUNTS }]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public lockoutAccountUser(
     @Param('userId') userId: string, 
     @Body() lockoutUserRequest: LockoutUserRequest

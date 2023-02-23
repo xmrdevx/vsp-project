@@ -5,7 +5,7 @@ import { catchError, Observable, of, throwError } from 'rxjs';
 
 import { HttpCacheInterceptor } from '@vsp/core';
 import { LoggerService } from '@vsp/logger';
-import { EnrichBodyWithCreatedByInterceptor, EnrichBodyWithDeletedByInterceptor, EnrichBodyWithTenantInterceptor, EnrichBodyWithUpdatedByInterceptor, JwtAuthGuard } from '@vsp/authorization';
+import { EnrichBodyWithCreatedByInterceptor, EnrichBodyWithDeletedByInterceptor, EnrichBodyWithTenantInterceptor, EnrichBodyWithUpdatedByInterceptor, HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorization';
 
 import { 
   IDENTITY_SERVICE_TOKEN, 
@@ -29,7 +29,10 @@ import {
   SearchPermissionTemplatesRequest,
   RestorePermissionTemplateDto,
   restorePermissionTemplateCommand,
-  getPermissionTemplateByIdCommand} from '@vsp/common'; 
+  getPermissionTemplateByIdCommand,
+  ClaimAuthorizationOperations,
+  ClaimAuthorizationTypes,
+  ClaimValues} from '@vsp/common'; 
 import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
 
 @ApiTags('identity')
@@ -47,6 +50,11 @@ export class PermissionsController {
 
 
   @Get('available')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   public getAvailablePerissions(): Observable<any> {
     return this._identityServiceClient
       .send(getAvailablePermissionsCommand, {})
@@ -55,6 +63,14 @@ export class PermissionsController {
 
 
   @Get('templates')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ANY,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.PERMISSION_TEMPLATES },
+      { key: ClaimAuthorizationTypes.CAN_ACCESS, value: ClaimValues.USER_ACCOUNTS }
+    ]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public getPermissionTemplates(
     @Body() getPermissionTemplatesDto: GetPermissionTemplatesDto
@@ -71,6 +87,11 @@ export class PermissionsController {
 
 
   @Post('templates')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithTenantInterceptor,
     EnrichBodyWithCreatedByInterceptor,
@@ -90,6 +111,11 @@ export class PermissionsController {
 
   
   @Get('templates/search')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchPermissionTemplates(
     @Body('tenantId') tenantId: string,
@@ -109,7 +135,13 @@ export class PermissionsController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 
+
   @Get('templates/:templateId')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public getPermissionTemplateById(
     @Param('templateId') templateId: string,
@@ -128,6 +160,11 @@ export class PermissionsController {
 
   
   @Put('templates/:templateId')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithTenantInterceptor,
     EnrichBodyWithUpdatedByInterceptor  
@@ -149,6 +186,11 @@ export class PermissionsController {
 
   
   @Delete('templates/:templateId')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithTenantInterceptor,
     EnrichBodyWithDeletedByInterceptor  
@@ -170,6 +212,11 @@ export class PermissionsController {
 
 
   @Delete('templates/:templateId/restore')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.PERMISSION_TEMPLATES }]
+  })
+  @UseGuards(HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithTenantInterceptor,
     EnrichBodyWithUpdatedByInterceptor
