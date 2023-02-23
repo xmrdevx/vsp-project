@@ -1,5 +1,25 @@
 import { MessagePatternCommand } from '../models/message-pattern-command.model';
 
-export const getAvailablePermissions: MessagePatternCommand<void> = {
+export const getAvailablePermissionsCommand: MessagePatternCommand<void> = {
   cmd: 'get-available-permissions'
+} as MessagePatternCommand<void>;
+
+export const createPermissionTemplateCommand: MessagePatternCommand<void> = {
+  cmd: 'create-permission-template'
+} as MessagePatternCommand<void>;
+
+export const updatePermissionTemplateCommand: MessagePatternCommand<void> = {
+  cmd: 'update-permission-template'
+} as MessagePatternCommand<void>;
+
+export const deletePermissionTemplateCommand: MessagePatternCommand<void> = {
+  cmd: 'delete-permission-template'
+} as MessagePatternCommand<void>;
+
+export const getPermissionTemplatesCommand: MessagePatternCommand<void> = {
+  cmd: 'get-permission-templates'
+} as MessagePatternCommand<void>;
+
+export const searchPermissionTemplatesCommand: MessagePatternCommand<void> = {
+  cmd: 'search-permissions-templates'
 } as MessagePatternCommand<void>;

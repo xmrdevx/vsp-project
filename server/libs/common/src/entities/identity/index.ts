@@ -8,3 +8,4 @@ export * from './refresh-token.entity';
 export * from './role.entity';
 export * from './tenant.entity';
 export * from './user.entity';
+export * from './permission-template.entity';

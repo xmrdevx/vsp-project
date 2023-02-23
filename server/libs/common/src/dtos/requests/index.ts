@@ -8,4 +8,5 @@ export * from './get-resource-request.dto';
 export * from './search-account-users-request.dto';
 export * from './search-offenders-request.dto';
 export * from './search-offenders-by-bounds-request.dto';
+export * from './search-permission-templates-request.dto';
 export * from './update-resource-request.dto';

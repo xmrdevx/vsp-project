@@ -25,4 +25,9 @@ export class PermissionTemplate extends BaseTrackedEntity {
     inverseJoinColumn: { name: 'app_claim_id', referencedColumnName: "id" }
   })
   public claims: Claim[] | null | undefined;
+
+  constructor(obj: Partial<PermissionTemplate>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorizationModule } from '@vsp/authorization';
 
-import { Account, Client, RefreshToken, Role, User } from '@vsp/common';
+import { Account, Client, PermissionTemplate, RefreshToken, Role, User } from '@vsp/common';
 import { Address } from '@vsp/common/entities/identity/address.entity';
 import { Claim } from '@vsp/common/entities/identity/claim.entity';
 import { DeviceCode } from '@vsp/common/entities/identity/device-code.entity';
@@ -13,6 +13,7 @@ import { LoggerModule } from '@vsp/logger';
 
 import { AccountsController } from './controllers/accounts.controller';
 import { AuthController } from './controllers/auth.controller';
+import { PermissionsController } from './controllers/permissions.controller';
 
 import { AUTH_SERVICE_TOKEN } from './interfaces/auth-service.interface';
 import { AuthService } from './services/auth.service';
@@ -43,9 +44,16 @@ import { RolesRepository } from './repositories/roles.repository';
 
 import { CLAIMS_REPOSITORY_TOKEN } from './interfaces/claims-repository.interface';
 import { ClaimsRepository } from './repositories/claims.repository';
-import { PermissionsController } from './controllers/permissions.controller';
-import { PermissionsService } from './services/permissions.service';
+
 import { PERMISSIONS_SERVICE_TOKEN } from './interfaces/permissions-service.interface';
+import { PermissionsService } from './services/permissions.service';
+
+import { PERMISSION_TEMPLATES_REPOSITORY_TOKEN } from './interfaces/permission-template-repository.interface';
+import { PermissionTemplatesRepository } from './repositories/permission-templates.repository';
+
+import { PERMISSION_TEMPLATES_SERVICE_TOKEN } from './interfaces/permission-template-service.interface';
+import { PermissionTemplatesService } from './services/permission-templates.service';
+
 
 @Module({
   imports: [
@@ -62,6 +70,7 @@ import { PERMISSIONS_SERVICE_TOKEN } from './interfaces/permissions-service.inte
       Claim,
       Client,
       DeviceCode,
+      PermissionTemplate,
       Profile,
       RefreshToken,
       Role,
@@ -118,7 +127,15 @@ import { PERMISSIONS_SERVICE_TOKEN } from './interfaces/permissions-service.inte
     {
       provide: PERMISSIONS_SERVICE_TOKEN,
       useClass: PermissionsService
-    }
+    },
+    {
+      provide: PERMISSION_TEMPLATES_REPOSITORY_TOKEN,
+      useClass: PermissionTemplatesRepository
+    },
+    {
+      provide: PERMISSION_TEMPLATES_SERVICE_TOKEN,
+      useClass: PermissionTemplatesService
+    },
   ],
 })
 export class IdentityModule {}
