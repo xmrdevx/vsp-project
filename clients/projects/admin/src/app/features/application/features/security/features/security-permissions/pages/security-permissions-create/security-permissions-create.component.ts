@@ -8,19 +8,18 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
-import { fadeAnimation, ResponseStatus, TemplateModulePermission, TemplateModulePermissionName } from '@vsp/core';
+import { fadeAnimation, ResponseStatus, PermissionTemplate } from '@vsp/core';
 
-import { buildTemplateModulePermissionNameForm } from '../../components/template-module-permission-name-form/template-module-permission-name-form.builder';
-import { mapAssignableModulePermissionsToTemplateModulePermissions } from '../../utils';
+import { PermissionsSelectors } from '@vsp/admin/store/permissions';
+import { buildClaimPermissionGroupFormArray } from '@vsp/admin/shared/form-controls';
 
-import { PermissionsActions, PermissionsSelectors } from '@vsp/admin/store/permissions';
-import { removeEmptyKeys } from '@vsp/admin/shared/utils';
-
-import { SecurityPermissionsActions, SecurityPermissionsState, SecurityPermissionsSelectors } from '../../store';
-import { TemplateModulePermissionNameFormComponent } from '../../components/template-module-permission-name-form/template-module-permission-name-form.component';
-
+import { SecurityPermissionsActions, SecurityPermissionsSelectors } from '../../store';
+import { PermissionTemplateFormComponent } from '../../components/permission-template-form/permission-template-form.component';
+import { buildPermissionTemplateForm } from '../../components/permission-template-form/permission-template-form.builder';
+import { createPermissionTemplateFromFormValue } from '../../utils';
 
 @Component({
   selector: 'vsp-security-permissions-create',
@@ -35,8 +34,10 @@ import { TemplateModulePermissionNameFormComponent } from '../../components/temp
     NzButtonModule,
     NzCardModule,
     NzPageHeaderModule,
+    NzMessageModule,
+    NzTypographyModule,
     ReactiveFormsModule,
-    TemplateModulePermissionNameFormComponent,
+    PermissionTemplateFormComponent
   ]
 })
 export class SecurityPermissionsCreateComponent {
@@ -45,39 +46,34 @@ export class SecurityPermissionsCreateComponent {
   private readonly _store: Store = inject(Store);
   private readonly _messageService: NzMessageService = inject(NzMessageService);
   
-  @ViewChild(TemplateModulePermissionNameFormComponent)
-  public formComponent!: TemplateModulePermissionNameFormComponent;
+  @ViewChild(PermissionTemplateFormComponent)
+  public formComponent!: PermissionTemplateFormComponent;
 
-  public createTemplateModulePermissionNameForm!: UntypedFormGroup;
+  public createPermissionTemplateForm!: UntypedFormGroup;
 
   constructor() {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
       .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const templateModulerPermissions: TemplateModulePermission[] = 
-          mapAssignableModulePermissionsToTemplateModulePermissions(assignableModulePermissions || []) || [];
-        
-          this.createTemplateModulePermissionNameForm = 
-          buildTemplateModulePermissionNameForm(this._formBuilder, templateModulerPermissions || []);
+      .subscribe(claimPermissionGroups => {
+        this.createPermissionTemplateForm = 
+          buildPermissionTemplateForm(this._formBuilder, claimPermissionGroups || []);
       });
   }
 
-  public onCreateTempalteModulePermissionName(template: TemplateModulePermissionName, shouldReturn: boolean): void {
-    if (this.createTemplateModulePermissionNameForm.invalid) return;
-    removeEmptyKeys(template);
+  public onCreatePermissionTemplate(formValue: any, shouldReturn: boolean): void {
+    if (this.createPermissionTemplateForm.invalid) return;
+    delete formValue['id'];
+    const permissionTemplate: PermissionTemplate = createPermissionTemplateFromFormValue(formValue);
+    this._handleCreatePermissionTemplateResponseMessage(shouldReturn);
+    this._store.dispatch(SecurityPermissionsActions.createPermissionTemplateRequest({ permissionTemplate }));
+  }
 
-    this._store.dispatch(SecurityPermissionsActions.createTemplateModulePermissionNameRequest({
-      templateModulePermissionName: template 
-    }));
-
-    this._store.select(SecurityPermissionsSelectors.selectCreateTemplateModulePermissionNameResponseMessage)
-      .pipe(
-        filter(message => !!message),
-        take(1)
-      )
+  private _handleCreatePermissionTemplateResponseMessage(shouldReturn: boolean): void {
+    this._store.select(SecurityPermissionsSelectors.selectCreatePermissionTemplateResponseMessage)
+      .pipe(filter(message => !!message), take(1))
       .subscribe(message => {
         if (message?.status === ResponseStatus.SUCCESS) {
-          this._resetCreateUserAccountForm();
+          this._resetCreatePermissionTemplateForm();
           this._messageService.success(message?.message || 'Success!')
           if (shouldReturn) {
             this._location.back();
@@ -85,18 +81,28 @@ export class SecurityPermissionsCreateComponent {
         } else {
           this._messageService.error(message?.message || 'Error!')
         }
-        this._store.dispatch(SecurityPermissionsActions.setCreateTemplateModulePermissionNameResponseMessage({ message: null } ))
+        this._store.dispatch(SecurityPermissionsActions.setCreatePermissionTemplateResponseMessage({ message: null } ))
       });
   }
 
-  private _resetCreateUserAccountForm(): void {
-    this._store.select(PermissionsSelectors.selectAssignableModulePermissions)
+  private _resetCreatePermissionTemplateForm(): void {
+    this.createPermissionTemplateForm.reset();
+    this._resetClaimPermissionGroups();
+  }
+
+  private _resetClaimPermissionGroups(): void {
+    this._store.select(PermissionsSelectors.selectClaimPermissionGroups)
       .pipe(take(1))
-      .subscribe(assignableModulePermissions => {
-        const userModulerPermissions: TemplateModulePermission[] = mapAssignableModulePermissionsToTemplateModulePermissions(assignableModulePermissions || []) || [];
-        const blankFormGroup = buildTemplateModulePermissionNameForm(this._formBuilder, userModulerPermissions);
-        this.createTemplateModulePermissionNameForm.reset();
-        this.createTemplateModulePermissionNameForm.patchValue({ ...blankFormGroup?.value });
+      .subscribe(claimPermissionGroups => {
+        const claimPermissionGroupsFromArray = 
+          buildClaimPermissionGroupFormArray(this._formBuilder, claimPermissionGroups || []);
+
+        if (claimPermissionGroupsFromArray) {
+          this.createPermissionTemplateForm
+            ?.get('claimPermissionGroups')
+            ?.patchValue([ ...(claimPermissionGroupsFromArray.value || []) ]);
+        }
+        
         this.formComponent?.autoFocusControl?.setFocusToControl();
       });
   }

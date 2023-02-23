@@ -1,0 +1,43 @@
+<div class="block" *ngIf="permissionTemplateForm" [formGroup]="permissionTemplateForm">
+  <div class="w-100" nz-row [nzGutter]="16">
+    <div class="bordered-right" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="8" nzXl="8">
+      <div class="block p-4">
+
+        <!-- Template Details Section -->
+        <nz-divider nzOrientation="center" nzText="Template Details"></nz-divider>
+        
+          <nz-form-item>
+            <nz-form-label class="text-left"  [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzErrorTip]="nameErrorTemplate">
+              <input vspAutoFocusControl type="text" nz-input formControlName="name" />
+              <ng-template #nameErrorTemplate let-control>
+                <ng-container *ngIf="control.hasError('required')">Name is required!</ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="description">Description</nz-form-label>
+            <nz-form-control [nzXs]="24" [nzErrorTip]="descriptionErrorTemplate">
+              <textarea type="password" nz-input formControlName="description" rows="6"></textarea>
+              <ng-template #descriptionErrorTemplate let-control>
+                <ng-container *ngIf="control.hasError('required')">Description is required!</ng-container>
+                <ng-container *ngIf="control.hasError('pattern')">Description must be 6 characters (upper/lower case, numbers and symbols)!</ng-container>
+              </ng-template>
+            </nz-form-control>
+          </nz-form-item>
+      
+      </div>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="16" nzXl="16">
+      <div class="block p-4">
+        <!-- Template Permissions Section -->
+        <nz-divider nzOrientation="left" nzText="Permissions"></nz-divider>
+
+        <!-- Claim Permission Switches Control -->
+        <vsp-claim-permissions-control
+            [claimPermissionsFormArray]="claimPermissionGroupsArray">
+        </vsp-claim-permissions-control>
+      </div>
+    </div>
+  </div>
+</div>

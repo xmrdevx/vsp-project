@@ -1,29 +1,9 @@
-import {  } from '@vsp/core';
+import { collectClaimsFromClaimPermissionGroups } from '@vsp/admin/shared/form-controls';
+import { PermissionTemplate } from '@vsp/core';
 
-
-// export const mapAssignableModulePermissionsToTemplateModulePermissions = (modulePermissions: ModulePermission[]): TemplateModulePermission[] => {
-//   return modulePermissions
-//     .map(modulePermission => modulePermissionToTemplateModulePermission(modulePermission));
-// }
-
-// export const modulePermissionToTemplateModulePermission = (modulePermission: ModulePermission): TemplateModulePermission => {
-//   return {
-//     hasAccess: false,
-//     modulePermission: {
-//       ...modulePermission
-//     },
-//     templatePermissions: [
-//       ...modulePermission?.permissions?.map(permission => permissionToTemplatePermission(permission)) || []
-//     ] as TemplatePermission[]
-//   } as TemplateModulePermission;
-// }
-
-// export const permissionToTemplatePermission = (permission: Permission): TemplatePermission => {
-//   return {
-//     permission: permission,
-//     canCreate: false,
-//     canRead: false,
-//     canUpdate: false,
-//     canDelete: false
-//   } as TemplatePermission
-// }
+export function createPermissionTemplateFromFormValue(formValue: any): PermissionTemplate {
+  return {
+    ...formValue,
+    claims: collectClaimsFromClaimPermissionGroups(formValue.claimPermissionGroups)
+  } as PermissionTemplate
+}

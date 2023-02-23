@@ -1,24 +1,20 @@
-<nz-page-header style="background: white;" class="bordered-bottom" nzTitle="Create Permissions Template" nzBackIcon>
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a>Security</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>
-      <a>Permissions</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Create</nz-breadcrumb-item>
-  </nz-breadcrumb>
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1 nz-typography>Create Permission Template</h1>
+  </div>
   <nz-page-header-extra>
     <button
+        class="mr-1"
         nz-button 
         nzType="primary"
-        (click)="onCreateTempalteModulePermissionName(createTemplateModulePermissionNameForm.value, true)">
+        (click)="onCreatePermissionTemplate(createPermissionTemplateForm.value, true)">
       Save
     </button>
     <button
         nz-button 
-        nzType="default"
-        (click)="onCreateTempalteModulePermissionName(createTemplateModulePermissionNameForm.value, false)">
+        nzType="primary"
+        nzGhost
+        (click)="onCreatePermissionTemplate(createPermissionTemplateForm.value, false)">
       Save & Create Another
     </button>
   </nz-page-header-extra>
@@ -26,8 +22,8 @@
 
 <div [@fadeAnimation] class="p-4">
   <nz-card class="w-100 p-0">
-    <form class="block" [formGroup]="createTemplateModulePermissionNameForm">
-      <vsp-template-module-permission-name-form></vsp-template-module-permission-name-form>
+    <form class="block" [formGroup]="createPermissionTemplateForm">
+      <vsp-permission-template-form></vsp-permission-template-form>
     </form>
   </nz-card>
 </div>

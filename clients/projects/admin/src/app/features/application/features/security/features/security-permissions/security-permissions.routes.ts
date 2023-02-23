@@ -13,13 +13,13 @@ export const securityPermissionsRoutes: Routes = [
       import('./pages/security-permissions/security-permissions.component')
         .then(c => c.SecurityPermissionsComponent)
   },
-  // {
-  //   path: 'create',
-  //   canActivate: [AvailablePermissionsLoadedGuard],
-  //   loadComponent: () => 
-  //     import('./pages/security-permissions-create/security-permissions-create.component')
-  //       .then(c => c.SecurityPermissionsCreateComponent)
-  // },
+  {
+    path: 'create',
+    canActivate: [AvailablePermissionsLoadedGuard],
+    loadComponent: () => 
+      import('./pages/security-permissions-create/security-permissions-create.component')
+        .then(c => c.SecurityPermissionsCreateComponent)
+  },
   // {
   //   path: ':templateId',
   //   canActivate: [SelectedPermissionTemplateLoadedGuard],

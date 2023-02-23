@@ -20,12 +20,12 @@ import {
 import { PermissionsSelectors } from '@vsp/admin/store/permissions';
 import { ClaimPermissionNode } from '@vsp/admin/core/models';
 import { createClaimPermissionGroups } from '@vsp/admin/shared/utils';
-import { buildClaimPermissionGroupFormArray } from '@vsp/admin/shared/form-controls';
+import { buildClaimPermissionGroupFormArray, patchAssignedClaimPermissionsToAvailableClaimPermissions } from '@vsp/admin/shared/form-controls';
 
 import { buildUserAccountUpdateForm } from '../../components/user-account-update-form/user-account-update-form.builder';
 import { UserAccountsActions, UserAccountsSelectors } from '../../store';
 import { UserAccountUpdateFormComponent } from '../../components/user-account-update-form/user-account-update-form.component';
-import { createUserFromFormValue, patchUserClaimPermissionsToAssignableClaimPermissions } from '../../utils';
+import { createUserFromFormValue } from '../../utils';
 
 
 
@@ -156,7 +156,7 @@ export class UserAccountsUpdateComponent implements OnInit, OnDestroy {
 
         // Patch through users claim permissions groups to assignable
         const patchedClaimPermissionGroups:  ClaimPermissionNode[] = 
-          patchUserClaimPermissionsToAssignableClaimPermissions(userClaimPermissions, claimPermissionGroups ?? []);
+          patchAssignedClaimPermissionsToAvailableClaimPermissions(userClaimPermissions, claimPermissionGroups ?? []);
         
         // Build new claims form array with patched assignable permissions
         const claimPermissionGroupsFromArray = 
