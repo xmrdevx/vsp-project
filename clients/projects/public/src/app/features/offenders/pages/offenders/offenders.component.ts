@@ -16,7 +16,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 
 import { 
   OffenderSimpleProfileComponent, 
-  OffenderSimpleProfileSkeletonComponent } from '@vsp/public/shared/offenders';
+  OffenderSimpleProfileSkeletonComponent } from '@vsp/offenders';
 
 import { 
   Offender, 

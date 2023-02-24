@@ -10,7 +10,7 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 import { Offender, fadeAnimation, LoadingState } from '@vsp/core';
 import { OffendersStore } from '@vsp/public/core/stores/offenders-store.service';
-import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/public/shared/offenders';
+import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/offenders';
 
 @Component({
   selector: 'vsp-offender-profile',

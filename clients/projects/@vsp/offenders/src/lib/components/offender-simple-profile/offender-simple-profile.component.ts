@@ -6,7 +6,7 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { EllipsisPipe } from '@vsp/public/shared/pipes';
+import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { Offender } from '@vsp/core';
 
 

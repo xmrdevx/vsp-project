@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
-import { EllipsisPipe } from '@vsp/public/shared/pipes';
+import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { Offender } from '@vsp/core';
 
 @Component({

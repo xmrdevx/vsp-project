@@ -9,7 +9,7 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 import { LoadingState, Offender } from '@vsp/core';
-import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/public/shared/offenders';
+import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/offenders';
 
 import { ExploreStore } from '../../stores/explore-store.service';
 

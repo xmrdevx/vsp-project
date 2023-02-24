@@ -25,7 +25,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 
 import { GeocodingStore } from '@vsp/public/core/stores/geocoding-store.service';
 import { MissingPersonSimpleProfileComponent, MissingPersonSimpleProfileSkeletonComponent } from '@vsp/public/shared/missing-person';
-import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/public/shared/offenders';
+import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/offenders';
 
 import { 
   GeocodingLocation, 

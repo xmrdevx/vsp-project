@@ -7,7 +7,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 
 import { fadeAnimation, LoadingState, Offender } from '@vsp/core';
 
-import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/public/shared/offenders';
+import { OffenderSimpleProfileComponent, OffenderSimpleProfileSkeletonComponent } from '@vsp/offenders';
 
 @Component({
   selector: 'vsp-latest-offenders-grid',
