@@ -34,7 +34,7 @@
 </div>
 <div>
   <h4 class="fw-bold">Summary</h4>
-  <p>{{ (offender?.summary || '') | pjoEllipsis:128 }}</p>
+  <p>{{ (offender?.summary || '') | pjoEllipsis:maxSummaryLength }}</p>
   <div *ngIf="includeProfileLinks">
     <a
         [routerLink]="offenderRouterLink"

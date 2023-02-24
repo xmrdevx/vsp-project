@@ -48,9 +48,16 @@ const handleSetOffendersTableDefinition = (state: OffendersState, { tableDefinit
   offendersTableDefinition: tableDefinition
 } as OffendersState);
 
+
 const handleResetOffendersTableDefinition = (state: OffendersState) => ({
   ...state,
   offendersTableDefinition: getDefaultOffendersOverviewTableDefinition()
+} as OffendersState);
+
+
+const handlGetOffenderByIdRequestSuccess = (state: OffendersState, { offender }: any) => ({
+  ...state,
+  selectedOffender: offender
 } as OffendersState);
 
 
@@ -73,6 +80,10 @@ export const offendersFeature = createFeature({
     on(
       OffendersActions.resetOffendersTableDefinition,
       handleResetOffendersTableDefinition
+    ),
+    on(
+      OffendersActions.getOffenderByIdRequestSuccess,
+      handlGetOffenderByIdRequestSuccess
     )
   )
 });

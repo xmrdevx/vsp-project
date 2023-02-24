@@ -36,6 +36,9 @@ export class OffenderSimpleProfileComponent {
   @Input()
   public includeProfileLinks: boolean = true;
 
+  @Input()
+  public maxSummaryLength: number = 128;
+
   public get offenderRouterLink(): string[] {
     return ['/offenders', this.offender?.id || '', 'profile'];
   }

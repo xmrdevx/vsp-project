@@ -40,6 +40,6 @@ export class CommentComponent {
 
   public get commentAuthor(): string {
     const commentedBy: User | null = this.comment?.commentedBy || null;
-    return `${commentedBy?.profile?.firstName} ${commentedBy?.profile?.lastName} (${commentedBy?.userName})` || 'anonymous';
+    return `${commentedBy?.profile?.firstName} ${commentedBy?.profile?.lastName} (${commentedBy?.username})` || 'anonymous';
   }
 }

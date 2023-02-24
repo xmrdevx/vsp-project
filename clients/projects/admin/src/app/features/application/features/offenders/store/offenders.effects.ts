@@ -80,27 +80,27 @@ export class OffendersEffects {
     )
   );
 
-  // public getOffenderByIdRequest = createEffect(() => this._actions
-  //   .pipe(
-  //     ofType(OffendersActions.getOffenderByIdRequest),
-  //     switchMap(({ offenderId }) =>
-  //       this._offendersService.getOffenderById(offenderId)
-  //         .pipe(
-  //           mergeMap((offender: Offender) => of(
-  //             OffendersActions.getOffenderByIdRequestSuccess({ 
-  //               offender: offender 
-  //             })
-  //           )),
-  //           catchError((error: any) => of(OffendersActions.getOffenderByIdRequestFailure({
-  //             message: {
-  //               status: ResponseStatus.ERROR,
-  //               message: error?.error || 'Error getting offender'
-  //             } as ResponseMessage<void>
-  //           })))
-  //         )
-  //     )
-  //   )
-  // )
+  public getOffenderByIdRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(OffendersActions.getOffenderByIdRequest),
+      switchMap(({ offenderId }) =>
+        this._offendersService.getOffenderById(offenderId)
+          .pipe(
+            mergeMap((offender: Offender) => of(
+              OffendersActions.getOffenderByIdRequestSuccess({ 
+                offender: offender 
+              })
+            )),
+            catchError((error: any) => of(OffendersActions.getOffenderByIdRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error?.error || 'Error getting offender'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  )
 
   // public deleteOffenderRequest = createEffect(() => this._actions
   //   .pipe(

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { InitialOffendersSearchLoadedGuard } from './guards/initial-offenders-search-loaded.guard';
+import { SelectedOffenderLoadedGuard } from './guards/selected-offender-loaded.guard';
 
 export const offendersRoutes: Routes = [
   {
@@ -32,11 +33,24 @@ export const offendersRoutes: Routes = [
   },
   {
     path: ':offenderId',
+    canActivate: [
+      SelectedOffenderLoadedGuard
+    ],
     children: [
       {
         path: 'edit',
         loadComponent: () => 
           import('./pages/offenders-update/offenders-update.component').then(c => c.OffendersUpdateComponent)
+      },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./pages/offender-profile/offender-profile.component').then(c => c.OffenderProfileComponent)
+      },
+      {
+        path: '**',
+        redirectTo: 'profile',
+        pathMatch: 'full'
       }
     ]
   },

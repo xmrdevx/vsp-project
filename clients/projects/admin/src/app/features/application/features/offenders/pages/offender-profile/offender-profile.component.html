@@ -1,0 +1,67 @@
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1 nz-typography>Offender Profile</h1>
+  </div>
+  <nz-page-header-extra></nz-page-header-extra>
+</nz-page-header>
+
+<div [@fadeAnimation] class="px-4">
+  <!-- <nz-card class="w-100 p-0"> -->
+    <ng-container *ngIf="selectedOffender$ | async as offender; else noOffenderDetailsLoaded">
+      <nz-row [nzGutter]="[16, 16]">
+        
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
+          <nz-card class="w-100 p-0">
+            <vsp-offender-simple-profile
+                [offender]="offender"
+                [includeProfileLinks]="false"
+                [maxSummaryLength]="300">
+            </vsp-offender-simple-profile>
+          </nz-card>
+        </nz-col>
+
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
+          <nz-card class="w-100 p-0">
+            <pre>{{ offender?.cases | json }}</pre>
+          </nz-card>
+        </nz-col>
+
+        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
+          <nz-card class="w-100 p-0">
+            offender comments
+          </nz-card>
+        </nz-col>
+      </nz-row>
+    </ng-container>
+  <!-- </nz-card> -->
+</div>
+
+<!-- No Offender Cases Template -->
+<ng-template #noOffenderCasesLoaded>
+  <nz-card class="w-100 p-0">
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No offender cases to display!">
+    </nz-empty>
+  </nz-card>
+</ng-template>
+
+<!-- No Offender Comments Template -->
+<ng-template #noOffenderCommentsLoaded>
+  <nz-card class="w-100 p-0">
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No offender comments to display!">
+    </nz-empty>
+  </nz-card>
+</ng-template>
+
+<!-- No Offender Details Template -->
+<ng-template #noOffenderDetailsLoaded>
+  <nz-card class="w-100 p-0">
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No offender details to display!">
+    </nz-empty>
+  </nz-card>
+</ng-template>

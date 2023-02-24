@@ -39,6 +39,15 @@
       <nz-button-group>
         <a 
             class=""
+            [routerLink]="[row.id, 'profile']"
+            nz-button 
+            nzType="default" 
+            nzSize="small"
+            title="View profile">
+          <i nz-icon nzType="folder-view"></i>
+        </a>
+        <a 
+            class=""
             [routerLink]="[row.id, 'edit']"
             nz-button 
             nzType="default" 

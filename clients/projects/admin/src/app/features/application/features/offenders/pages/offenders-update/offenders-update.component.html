@@ -1,1 +1,21 @@
-<p>offenders-update works!</p>
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1 nz-typography>Update Offender</h1>
+  </div>
+  <nz-page-header-extra>
+    <button
+        class="mr-1"
+        nz-button 
+        nzType="primary">
+      Save
+    </button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<div [@fadeAnimation] class="px-4">
+  <nz-card class="w-100 p-0">
+    <form class="block">
+      <pre>{{ (selectedOffender$ | async) | json }}</pre>
+    </form>
+  </nz-card>
+</div>

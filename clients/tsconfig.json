@@ -29,6 +29,9 @@
       ],
       "@vsp/pipes": [
         "dist/@vsp/pipes"
+      ],
+      "@vsp/comments": [
+        "dist/@vsp/comments"
       ]
     },
     "outDir": "./dist/out-tsc",
