@@ -32,8 +32,8 @@ import {
   getPermissionTemplateByIdCommand,
   ClaimAuthorizationOperations,
   ClaimAuthorizationTypes,
-  ClaimValues} from '@vsp/common'; 
-import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
+  ClaimValues,
+  BasicSearchFilterQueryParams } from '@vsp/common'; 
 
 @ApiTags('identity')
 @Controller('permissions')
@@ -118,17 +118,12 @@ export class PermissionsController {
   @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchPermissionTemplates(
-    @Body('tenantId') tenantId: string,
-    @Query('query') query: string = '',
-    @Query('isDeleted') isDeleted: boolean | null | undefined = undefined,
-    @Query('index') index: number = 0,
-    @Query('size') size: number = 10,
-    @Query('column') column: string = defaultSortColumn,
-    @Query('direction') direction: string = defaultSortDirection
+    @Body('tenantId') tenantId: string, 
+    @Query() query: BasicSearchFilterQueryParams
   ): Observable<any> {
-    const pageable: IPageable = PageRequest.from(index, size, column, direction);
+    const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
     const filter: PermissionTemplatesSearchFilter = new PermissionTemplatesSearchFilter({ 
-      query, tenantId, isDeleted: ((''+isDeleted).length <= 0) ? undefined : ''+isDeleted == 'true'
+      query: query.query, isDeleted: query.isDeleted, tenantId,
     });
     return this._identityServiceClient
       .send(searchPermissionTemplatesCommand, new SearchPermissionTemplatesRequest({ filter, pageable }))

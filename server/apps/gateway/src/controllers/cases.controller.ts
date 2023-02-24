@@ -22,7 +22,8 @@ import {
   createCaseWithOffenderCommand,
   ClaimAuthorizationOperations,
   ClaimAuthorizationTypes,
-  ClaimValues} from '@vsp/common';
+  ClaimValues,
+  MapBoundQueryParams} from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -65,18 +66,12 @@ export class CasesController {
   }
 
   @Get('by-bounds/markers')
-  public getCaseMarkersByBounds(
-    @Query('northEastLatitude') northEastLatitude: number,
-    @Query('northEastLongitude') northEastLongitude: number,
-    @Query('southWestLatitude') southWestLatitude: number,
-    @Query('southWestLongitude') southWestLongitude: number,
-  ): Observable<MapMarkerDto<Case>[]> {
-    
+  public getCaseMarkersByBounds(@Query() query: MapBoundQueryParams): Observable<MapMarkerDto<Case>[]> {
     const mapBounds: MapBoundsDto = new MapBoundsDto({
       northEast: new MapCoordinateDto({ 
-        latitude: northEastLatitude, longitude: northEastLongitude } satisfies MapCoordinateDto),
+        latitude: query.northEastLatitude, longitude: query.northEastLongitude } satisfies MapCoordinateDto),
       southWest: new MapCoordinateDto({ 
-        latitude: southWestLatitude, longitude: southWestLongitude } satisfies MapCoordinateDto)
+        latitude: query.southWestLatitude, longitude: query.southWestLongitude } satisfies MapCoordinateDto)
     } satisfies MapBoundsDto);   
 
     return this._offendersServiceClient

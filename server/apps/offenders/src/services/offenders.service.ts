@@ -191,6 +191,6 @@ export class OffendersService implements IOffendersService {
       && filter.location !== null 
       && (filter?.location?.latitude || 0) !== 0
       && (filter?.location?.longitude || 0) !== 0
-      && filter?.distanceUnit !== null
+      && (filter?.distanceUnit?.length || null) !== null
   }
 }

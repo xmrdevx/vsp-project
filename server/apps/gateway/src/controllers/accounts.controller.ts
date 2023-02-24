@@ -8,6 +8,7 @@ import { EnrichBodyWithTenantInterceptor, HasPermissionsGuard, JwtAuthGuard, Per
 
 import { 
   AccountUsersSearchFilter,
+  BasicSearchFilterQueryParams,
   ClaimAuthorizationOperations,
   ClaimAuthorizationTypes,
   ClaimValues,
@@ -41,8 +42,6 @@ import {
   UpdateResourceRequest, 
   UpdateUserDto, 
   UserDto } from '@vsp/common';
-
-import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
 
 @ApiTags('identity')
 @Controller('accounts')
@@ -119,14 +118,12 @@ export class AccountsController {
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchAccountUsers(
     @Body('tenantId') tenantId: string,
-    @Query('query') query: string = '',
-    @Query('index') index: number = 0,
-    @Query('size') size: number = 10,
-    @Query('column') column: string = defaultSortColumn,
-    @Query('direction') direction: string = defaultSortDirection
+    @Query() query: BasicSearchFilterQueryParams
   ): Observable<Page<UserDto>> {
-    const pageable: IPageable = PageRequest.from(index, size, column, direction);
-    const filter: AccountUsersSearchFilter = new AccountUsersSearchFilter({ query, tenantId });
+    const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
+    const filter: AccountUsersSearchFilter = new AccountUsersSearchFilter({ 
+      query: query.query, tenantId
+    });
     return this._identityServiceClient
       .send(searchAccountUsersCommand, new SearchAccountUsersRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));

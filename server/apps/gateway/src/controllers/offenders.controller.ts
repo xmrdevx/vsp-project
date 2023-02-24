@@ -31,6 +31,7 @@ import {
   MapBoundsDto, 
   MapCoordinateDto, 
   OffenderDto, 
+  OffenderSearchFilterQueryParams, 
   OffendersSearchFilter, 
   OFFENDERS_SERVICE_TOKEN, 
   Page, 
@@ -43,9 +44,10 @@ import {
   UpdateCaseDto, 
   updateOffenderCommand, 
   UpdateOffenderDto,
-  UpdateResourceRequest} from '@vsp/common';
-
-import { defaultSortColumn, defaultSortDirection } from '../constants/query-params.defaults';
+  UpdateResourceRequest, 
+  defaultSortColumn,
+  defaultSortDirection, 
+  OffenderSearchFilterByBoundsQueryParams} from '@vsp/common';
 
 import { 
   EnrichBodyWithCreatedByInterceptor, 
@@ -63,6 +65,7 @@ export class OffendersController {
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffendersController.name);
   }
+
 
   @Post()
   @Permissions({
@@ -85,61 +88,43 @@ export class OffendersController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+
   @Get('search')
-  public searchOffenders(
-    @Query('query') query: string | null = null,
-    @Query('locationLatitude') locationLatitude: number | null = null,
-    @Query('locationLongitude') locationLongitude: number | null = null,
-    @Query('distance') distance: number | null = null,
-    @Query('distanceUnit') distanceUnit: DistanceUnit | null = null,
-    @Query('index') index: number = 0,
-    @Query('size') size: number = 10,
-    @Query('column') column: string = defaultSortColumn,
-    @Query('direction') direction: string = defaultSortDirection
-  ): Observable<Page<OffenderDto>> {
-    
+  public searchOffenders(@Query() query: OffenderSearchFilterQueryParams): Observable<Page<OffenderDto>> {
     const filter: OffendersSearchFilter = new OffendersSearchFilter({ 
-      query: query,
+      query: query.query,
       location: new MapCoordinateDto({
-        latitude: locationLatitude ? +locationLatitude : null,
-        longitude: locationLongitude ? +locationLongitude : null,
+        latitude: query.locationLatitude,
+        longitude: query.locationLongitude,
       } satisfies MapCoordinateDto),
-      distance: distance ? +distance : null,
-      distanceUnit: distanceUnit
+      distance: query.distance,
+      distanceUnit: query.distanceUnit
     });
     
-    const pageable: IPageable = PageRequest.from(index, size, column, direction);
-
+    const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
+    console.log("filter ", filter, pageable);
     return this._offendersServiceClient
       .send(searchOffendersCommand, new SearchOffendersRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 
-  @Get('by-bounds/search')
-  public searchOffendersByBounds(
-    @Query('northEastLatitude') northEastLatitude: number,
-    @Query('northEastLongitude') northEastLongitude: number,
-    @Query('southWestLatitude') southWestLatitude: number,
-    @Query('southWestLongitude') southWestLongitude: number,
-    @Query('index') index: number = 0,
-    @Query('size') size: number = 10,
-    @Query('column') column: string = defaultSortColumn,
-    @Query('direction') direction: string = defaultSortDirection
-  ): Observable<OffenderDto[]> {
 
+  @Get('by-bounds/search')
+  public searchOffendersByBounds(@Query() query: OffenderSearchFilterByBoundsQueryParams): Observable<OffenderDto[]> {
     const mapBounds: MapBoundsDto = new MapBoundsDto({
       northEast: new MapCoordinateDto({ 
-        latitude: northEastLatitude, longitude: northEastLongitude } satisfies MapCoordinateDto),
+        latitude: query.northEastLatitude, longitude: query.northEastLongitude } satisfies MapCoordinateDto),
       southWest: new MapCoordinateDto({ 
-        latitude: southWestLatitude, longitude: southWestLongitude } satisfies MapCoordinateDto)
+        latitude: query.southWestLatitude, longitude: query.southWestLongitude } satisfies MapCoordinateDto)
     } satisfies MapBoundsDto);    
 
-    const pageable: IPageable = PageRequest.from(index, size, column, direction);
+    const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
 
     return this._offendersServiceClient
       .send(searchOffendersByBoundsCommand, new SearchOffendersByBoundsRequest({ mapBounds, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
+
 
   @Get('latest')
   public getLatestOffendersByCount(@Query('count') count: number): Observable<OffenderDto[]> {
@@ -148,12 +133,14 @@ export class OffendersController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 
+
   @Get(':offenderId')
   public getOffenderById(@Param('offenderId') offenderId: string): Observable<OffenderDto> {
     return this._offendersServiceClient
       .send(getOffenderByIdCommand, new GetOffenderByIdRequest({ offenderId }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
+
 
   @Put(':offenderId')
   @Permissions({
@@ -175,6 +162,7 @@ export class OffendersController {
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
+
 
   @Delete(':offenderId')
   @Permissions({
@@ -199,6 +187,7 @@ export class OffendersController {
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
+
 
   @Post(':offenderId/cases')
   @Permissions({
@@ -226,6 +215,7 @@ export class OffendersController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+
   @Put(':offenderId/cases/:caseId')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
@@ -250,6 +240,7 @@ export class OffendersController {
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
+
 
   @Delete(':offenderId/cases/:caseId')
   @Permissions({

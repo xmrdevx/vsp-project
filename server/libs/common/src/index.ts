@@ -13,6 +13,7 @@ export * from './dtos/geocoding';
 export * from './dtos/identity';
 export * from './dtos/offenders';
 export * from './dtos/paging';
+export * from './dtos/query';
 export * from './dtos/requests';
 export * from './dtos/search-filters';
 export * from './dtos/streams';
