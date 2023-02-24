@@ -1,7 +1,7 @@
 import { DatePipe, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 import { Component, ChangeDetectionStrategy, HostBinding, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AgePipe, EllipsisPipe } from '@vsp/public/shared/pipes';
+import { AgePipe, EllipsisPipe } from '@vsp/pipes';
 
 import { MissingPerson } from '@vsp/core';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
