@@ -23,8 +23,9 @@ import {
   Page, 
   PageRequest } from '@vsp/core';
 
+import { CommentListComponent, CommentListSkeletonComponent } from '@vsp/comments';
+
 import { VspIfAuthenticatedDirective } from '@vsp/public/shared/authenticated';
-import { CommentListComponent, CommentListSkeletonComponent } from '@vsp/public/shared/comments';
 import { VideoCardPlayerComponent, VideoCardPlayerSkeletonComponent, VideoListComponent, VideoListSkeletonComponent } from '@vsp/public/shared/videos';
 
 import { WatchStore } from '../../store/watch-store.service';

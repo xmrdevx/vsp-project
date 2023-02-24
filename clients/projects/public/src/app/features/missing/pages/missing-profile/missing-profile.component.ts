@@ -30,7 +30,7 @@ import {
 
 import { 
   CommentListComponent, 
-  CommentListSkeletonComponent } from '@vsp/public/shared/comments';
+  CommentListSkeletonComponent } from '@vsp/comments';
 
 import { VspIfAuthenticatedDirective } from '@vsp/public/shared/authenticated';
 
