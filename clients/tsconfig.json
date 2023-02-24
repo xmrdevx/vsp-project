@@ -23,6 +23,12 @@
       ],
       "@vsp/admin/env/*": [
         "projects/admin/src/environments/*"
+      ],
+      "@vsp/offenders": [
+        "dist/@vsp/offenders"
+      ],
+      "@vsp/pipes": [
+        "dist/@vsp/pipes"
       ]
     },
     "outDir": "./dist/out-tsc",
