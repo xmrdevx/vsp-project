@@ -5,7 +5,6 @@ import { Store } from '@ngrx/store';
 import { filter, take } from 'rxjs';
 
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
-import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message';
@@ -30,7 +29,6 @@ import { createPermissionTemplateFromFormValue } from '../../utils';
   standalone: true,
   imports: [
     AsyncPipe,
-    NzBreadCrumbModule,
     NzButtonModule,
     NzCardModule,
     NzPageHeaderModule,
