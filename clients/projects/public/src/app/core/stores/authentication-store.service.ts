@@ -38,12 +38,12 @@ export class AuthenticationStore extends ComponentStore<AuthenticationState> {
     super({...initialAuthenticationState});
   }
 
-  public readonly setSignInResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage<void>| null) => ({
+  public readonly setSignInResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage<void> | null) => ({
     ...state,
     signInResponseMessage: message
   }));
 
-  public readonly setRefreshAccessTokenResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage) => ({
+  public readonly setRefreshAccessTokenResponseMessage = this.updater((state: AuthenticationState, message: ResponseMessage<void> | null) => ({
     ...state,
     refreshAccessTokenResponseMessage: message
   }));
@@ -119,13 +119,13 @@ export class AuthenticationStore extends ComponentStore<AuthenticationState> {
             error => this.setPasswordResetRequestResponseMessage({ 
               status: ResponseStatus.ERROR, 
               message: error || 'Error' 
-            } as ResponseMessage)
+            } as ResponseMessage<void>)
           ),
           catchError((error) => {
             this.setPasswordResetRequestResponseMessage({ 
               status: ResponseStatus.ERROR, 
               message: error.error || 'Error' 
-            } as ResponseMessage);
+            } as ResponseMessage<void>);
             return EMPTY;
           })
         );
@@ -144,13 +144,13 @@ export class AuthenticationStore extends ComponentStore<AuthenticationState> {
             error => this.setResetPasswordResponseMessage({ 
               status: ResponseStatus.ERROR, 
               message: error || 'Error' 
-            } as ResponseMessage)
+            } as ResponseMessage<void>)
           ),
           catchError((error) => {
             this.setResetPasswordResponseMessage({ 
               status: ResponseStatus.ERROR, 
               message: error.error || 'Error' 
-            } as ResponseMessage);
+            } as ResponseMessage<void>);
             return EMPTY;
           })
         );

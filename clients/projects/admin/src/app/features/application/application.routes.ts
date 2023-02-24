@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { provideEffects } from '@ngrx/effects';
+import { provideState } from '@ngrx/store';
+import { OffendersEffects, offendersFeature } from './features/offenders/store';
 
 export const applicationRoutes: Routes = [
   {
@@ -6,6 +9,11 @@ export const applicationRoutes: Routes = [
     loadComponent: () => 
       import('./pages/application/application.component').then(c => c.ApplicationComponent),
     children: [
+      {
+        path: 'account',
+        loadChildren: () => 
+          import('./features/account/account.routes').then(r => r.accountRoutes)
+      },
       {
         path: 'admin',
         loadChildren: () => 
@@ -17,14 +25,18 @@ export const applicationRoutes: Routes = [
           import('./features/dashboard/dashboard.routes').then(r => r.dashboardRoutes)
       },
       {
+        path: 'offenders',
+        providers: [
+          provideState(offendersFeature),
+          provideEffects(OffendersEffects)
+        ],
+        loadChildren: () => 
+          import('./features/offenders/offenders.routes').then(r => r.offendersRoutes)
+      },
+      {
         path: 'security',
         loadChildren: () => 
           import('./features/security/security.routes').then(r => r.securityRoutes)
-      },
-      {
-        path: 'account',
-        loadChildren: () => 
-          import('./features/account/account.routes').then(r => r.accountRoutes)
       },
       {
         path: '**',

@@ -29,10 +29,10 @@ export class ExploreCaseStatisticsComponent {
   }
 
   public get closedCases(): number {
-    return this.cases?.filter(c => c.status === CaseStatus.Closed).length || 0;
+    return this.cases?.filter(c => c.status === CaseStatus.CLOSED).length || 0;
   }
 
   public get openCases(): number {
-    return this.cases?.filter(c => c.status === CaseStatus.Open).length || 0;
+    return this.cases?.filter(c => c.status === CaseStatus.OPEN).length || 0;
   }
 }

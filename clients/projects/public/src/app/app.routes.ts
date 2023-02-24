@@ -68,7 +68,7 @@ export const appRoutes: Routes = [
       import('./features/errors/errors.routes').then(r => r.errorRoutes)
   },
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => 
       import('./features/identity/identity.routes').then(r => r.identityRoutes)    
   },

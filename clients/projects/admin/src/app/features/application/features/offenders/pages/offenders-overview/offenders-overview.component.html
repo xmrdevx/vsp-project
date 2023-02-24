@@ -1,0 +1,80 @@
+<nz-page-header class="py-0">
+  <div nz-page-header-title>
+    <h1  nz-typography>Offenders</h1>
+  </div>
+  <nz-page-header-extra>
+    <a  routerLink="./create" 
+        nz-button 
+        nzType="primary">
+      Create New Offender
+    </a>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<div [@fadeAnimation] class="px-4 py-0">
+  <nz-card class="w-100 p-0">
+    <div>
+      <div class="mb-3 flex flex-row">
+        <vsp-basic-query-search-with-deleted-filter
+            class="flex-grow-1"
+            [filter]="offendersSearchFilter$ | async"
+            (searchChange)="onSearchFilterChanges($event)">
+        </vsp-basic-query-search-with-deleted-filter>
+        <vsp-datatable-widget-column-editor
+            class="ml-3"
+            [tableDefinition]="offendersTableDefinition$ | async"
+            (applyColumnChanges)="onApplyColumnChanges($event)"
+            (resetColumnChanges)="onResetColumnChanges($event)">
+        </vsp-datatable-widget-column-editor>
+      </div>
+      <vsp-datatable      
+          [page]="offendersPage$ | async"
+          [definition]="offendersTableDefinition$ | async"
+          [actionsContent]="offendersActions"
+          [defaultSort]="defaultSort"
+          (pageChange)="onOffendersPageChange($event)">
+      </vsp-datatable>
+    </div>
+    <ng-template #offendersActions let-row="row">
+      <nz-button-group>
+        <a 
+            class=""
+            [routerLink]="[row.id, 'edit']"
+            nz-button 
+            nzType="default" 
+            nzSize="small"
+            title="Edit">
+          <i nz-icon nzType="edit"></i>
+        </a>
+        <!-- <button
+            title="Delete"
+            nz-button 
+            nzType="default" 
+            nzSize="small"
+            nz-popconfirm
+            nzPopoverTrigger="click"
+            nzPopconfirmTitle="Deleting offender, are you sure?"
+            nzPopconfirmPlacement="left"
+            nzOkText="Delete"
+            [disabled]="row?.deletedOn"
+            (nzOnConfirm)="onDeleteOffender(row)">
+          <i nz-icon nzType="delete"></i>
+        </button>
+        <button
+            *ngIf="row.deletedOn"
+            title="Restore"
+            nz-button 
+            nzType="default" 
+            nzSize="small"
+            nz-popconfirm
+            nzPopoverTrigger="click"
+            nzPopconfirmTitle="Restoring offender, are you sure?"
+            nzPopconfirmPlacement="left"
+            nzOkText="Restore"
+            (nzOnConfirm)="onRestoreOffender(row)">
+          <i nz-icon nzType="undo"></i>
+        </button> -->
+      </nz-button-group>
+    </ng-template>
+  </nz-card>
+</div>

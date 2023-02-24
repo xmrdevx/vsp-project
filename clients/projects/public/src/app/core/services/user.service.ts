@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EnvironmentService, RegistrationUser, UserAccount, UserSettings, ValidationResult } from '@vsp/core';
+import { EnvironmentService, RegistrationUser, User, ValidationResult } from '@vsp/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class UserService {
   private readonly _environmentService: EnvironmentService = inject(EnvironmentService);
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
-  public registerUser(registration: RegistrationUser): Observable<UserAccount> {
-    return this._httpClient.post<UserAccount>(
+  public registerUser(registration: RegistrationUser): Observable<User> {
+    return this._httpClient.post<User>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/register`,
       registration
     );
@@ -33,8 +33,8 @@ export class UserService {
     );
   }
 
-  public getUserSettings(): Observable<UserSettings> {
-    return this._httpClient.get<UserSettings>(
+  public getUserSettings(): Observable<User> {
+    return this._httpClient.get<User>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/settings`
     );
   }

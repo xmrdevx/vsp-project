@@ -24,7 +24,7 @@ export const defaultNavigationMenu: AdminNavigationLink[] = [
       },
       {
         label: 'Manage Offenders',
-        routerLink: '/app/offenders/manage',
+        routerLink: '/app/offenders',
       },
     ]
   },

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 
-import { ResponseMessage, LoadingState, ResponseStatus, RegistrationUser, UserSettings } from '@vsp/core';
+import { ResponseMessage, LoadingState, ResponseStatus, RegistrationUser } from '@vsp/core';
 import { catchError, EMPTY, Observable, of, switchMap, take, tap } from 'rxjs';
 
 import { UserService } from '../services';
@@ -10,7 +10,7 @@ export interface UserState {
   registerUserResponseMessage: ResponseMessage<void>| null,
   registrationLoadingState: LoadingState,
   updateUserResponseMessage: ResponseMessage<void>| null,
-  userSettings: UserSettings | null
+  userSettings: any | null
 }
 
 export const initialUserState: UserState = {
@@ -38,12 +38,12 @@ export class UserStore extends ComponentStore<UserState> {
     registerUserResponseMessage: message
   }));
 
-  public readonly setUpdateUserResponseMessage = this.updater((state: UserState, message: ResponseMessage) => ({
+  public readonly setUpdateUserResponseMessage = this.updater((state: UserState, message: ResponseMessage<void>) => ({
     ...state,
     updateUserResponseMessage: message
   }));
 
-  public readonly setUserSettings = this.updater((state: UserState, settings: UserSettings | null) => ({
+  public readonly setUserSettings = this.updater((state: UserState, settings: any | null) => ({
     ...state,
     userSettings: settings
   }));
@@ -102,7 +102,7 @@ export class UserStore extends ComponentStore<UserState> {
           return EMPTY;
         })
       )
-      .subscribe((userSettings: UserSettings) => {
+      .subscribe((userSettings: any) => {
         this.setUserSettings(userSettings);
       });
   };

@@ -13,7 +13,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 
-import { AuthenticatedStatus, AuthenticatedUser, NavigationLink, UserSettings } from '@vsp/core';
+import { AuthenticatedStatus, AuthenticatedUser, NavigationLink } from '@vsp/core';
 import { AuthenticationStore, UserStore } from './core/stores';
 
 import { defaultAccountNavigationMenu, defaultLeftNavigationMenu, defaultRightNavigationMenu } from './constants/navigation-menu.defaults';
@@ -67,7 +67,7 @@ export class AppComponent implements OnDestroy {
   public authenticatedStatus$: Observable<AuthenticatedStatus | null> = this._authenticationStore.authenticatedStatus$;
   public AuthenticatedStatus = AuthenticatedStatus;
 
-  public userSettings$: Observable<UserSettings | null> = this._userStore.userSettings$;;
+  public userSettings$: Observable<any | null> = this._userStore.userSettings$;;
 
   constructor() {
     // @Note - This is for server side rendering.  It is also used by Caching Service
