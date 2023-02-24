@@ -102,7 +102,7 @@ export class OffendersController {
     });
     
     const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
-    console.log("filter ", filter, pageable);
+    
     return this._offendersServiceClient
       .send(searchOffendersCommand, new SearchOffendersRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
