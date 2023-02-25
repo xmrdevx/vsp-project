@@ -1,10 +1,10 @@
 import { Column, Entity, Index, ManyToOne } from 'typeorm';
 import { BaseEntity } from '../base.entity';
 import { User } from '../identity';
-import { Comment } from './comment.entity';
+import { OffenderComment } from './offender-comment.entity';
 
 @Entity()
-export class CommentLike extends BaseEntity {
+export class OffenderCommentLike extends BaseEntity {
   @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
   public likedOn: Date;
 
@@ -17,8 +17,8 @@ export class CommentLike extends BaseEntity {
   @Column()
   public commentId: string;
 
-  @ManyToOne(type => Comment, comment => comment.commentLikes)
-  public comment: Comment;
+  @ManyToOne(type => OffenderComment, comment => comment.commentLikes)
+  public comment: OffenderComment;
 
   @Column()
   @Index()
