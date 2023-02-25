@@ -1,11 +1,11 @@
-import { CaseDto } from '../dtos/offenders';
-import { Case } from '../entities/offenders';
+import { OffenderCaseDto } from '../dtos/offenders';
+import { OffenderCase } from '../entities/offenders';
 import { GeoLocationMapper } from './geo-location.mapper';
 import { OffenderMapper } from './offender.mapper';
 
-export class CaseMapper {
-  public static toDto(entity: Case): CaseDto {
-    return new CaseDto({
+export class OffenderCaseMapper {
+  public static toDto(entity: OffenderCase): OffenderCaseDto {
+    return new OffenderCaseDto({
       id: entity.id,
       createdOn: entity.createdOn,
       updatedOn: entity.updatedOn,
@@ -19,18 +19,18 @@ export class CaseMapper {
     });
   }
   
-  public static toDtoList(entities: Case[]): CaseDto[] {
-    return entities.map(entity => CaseMapper.toDto(entity));
+  public static toDtoList(entities: OffenderCase[]): OffenderCaseDto[] {
+    return entities.map(entity => OffenderCaseMapper.toDto(entity));
   }
   
-  public static toEntity(dto: CaseDto): Case {
+  public static toEntity(dto: OffenderCaseDto): OffenderCase {
     // @TODO Not really needed as of right now.
-    return new Case({
+    return new OffenderCase({
       
     });
   }
 
-  public static toEntityList(dtos: CaseDto[]): Case[] {
-    return dtos.map(dto => CaseMapper.toEntity(dto))
+  public static toEntityList(dtos: OffenderCaseDto[]): OffenderCase[] {
+    return dtos.map(dto => OffenderCaseMapper.toEntity(dto))
   }
 }

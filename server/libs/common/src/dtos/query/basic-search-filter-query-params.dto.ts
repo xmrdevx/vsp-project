@@ -1,7 +1,7 @@
-import { toIntNumber, toOptionalBoolean } from '@vsp/common/utils/cast.utils';
-import { defaultSortColumn, defaultSortDirection } from '../../constants/query-params.defaults';
-import { Transform } from 'class-transformer';
 import { IsDefined, IsInt, IsNumber, IsOptional, IsString } from 'class-validator'
+import { Transform } from 'class-transformer';
+import { toIntNumber, toOptionalBoolean } from '../../utils/cast.utils';
+import { defaultSortColumn, defaultSortDirection } from '../../constants/query-params.defaults';
 
 export class BasicSearchFilterQueryParams {
   @IsDefined()

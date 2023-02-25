@@ -20,7 +20,7 @@ import {
 import { LoggerService } from '@vsp/logger';
 import { off } from 'process';
 
-import { CASES_REPOSITORY_TOKEN, ICasesRepository } from '../interfaces/cases-repository.interface';
+import { OFFENDER_CASES_REPOSITORY_TOKEN, IOffenderCasesRepository } from '../interfaces/offender-cases-repository.interface';
 import { IOffendersRepository, OFFENDERS_REPOSITORY_TOKEN } from '../interfaces/offenders-repository.interface';
 import { IOffendersService } from '../interfaces/offenders-service.interface';
 
@@ -29,8 +29,8 @@ export class OffendersService implements IOffendersService {
   @Inject(OFFENDERS_REPOSITORY_TOKEN)
   private readonly _offendersRepository: IOffendersRepository;
 
-  @Inject(CASES_REPOSITORY_TOKEN)
-  private readonly _casesRepository: ICasesRepository;
+  @Inject(OFFENDER_CASES_REPOSITORY_TOKEN)
+  private readonly _casesRepository: IOffenderCasesRepository;
 
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffendersService.name);

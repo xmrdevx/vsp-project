@@ -5,7 +5,7 @@ import { GeoLocation } from '../geocoding/geo-location.entity';
 import { Offender } from './offender.entity';
 import { Tenant } from '../identity/tenant.entity';
 
-export interface Case extends BaseTrackedEntity {
+export interface OffenderCase extends BaseTrackedEntity {
   openedOn: Date,
   closedOn?: Date | null,
   status: CaseStatus,

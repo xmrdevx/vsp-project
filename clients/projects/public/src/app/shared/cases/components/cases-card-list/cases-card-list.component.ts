@@ -5,7 +5,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
-import { Case, Page } from '@vsp/core';
+import { OffenderCase, Page } from '@vsp/core';
 import { FlattenPageCollectionPipe } from '@vsp/public/shared/pipes';
 
 import { CaseSimpleProfileComponent } from '../case-simple-profile/case-simple-profile.component';
@@ -28,5 +28,5 @@ import { CaseSimpleProfileComponent } from '../case-simple-profile/case-simple-p
 })
 export class CasesCardListComponent {
   @Input()
-  public loadedPages: Page<Case>[] | null = null;
+  public loadedPages: Page<OffenderCase>[] | null = null;
 }

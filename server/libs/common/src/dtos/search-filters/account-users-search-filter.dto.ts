@@ -1,4 +1,4 @@
-import { DistanceUnit } from '@vsp/common/enums/distance-unit.enum'
+import { DistanceUnit } from '../../enums/distance-unit.enum'
 import { MapCoordinateDto } from '../geocoding/map-coordinate.dto';
 
 export class AccountUsersSearchFilter {

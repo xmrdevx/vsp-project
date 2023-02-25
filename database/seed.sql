@@ -190,95 +190,95 @@ INSERT INTO offender (avatar_url, created_by_id, updated_by_id, summary, id, fir
 VALUES ('https://i.pravatar.cc/300', '37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...', 'e3243aff-1b9c-4866-a491-1032f3c10029', 'Joe', 'Bloomberg', NOW(), NOW());
 
 
--- "case"
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+-- offender_case
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10090','143f154d-9a1b-4815-8760-7fd7a0d9b8cc','c81748a6-e939-4e45-bf35-91093f3307a0','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10091','243f154d-9a1b-4815-8760-7fd7a0d9b8cc','3b5ca1e5-3a0d-4f9d-b9e6-0f5949a7f904','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10092','343f154d-9a1b-4815-8760-7fd7a0d9b8cc','ea7d4930-b2eb-4d5e-9674-1017b1c2c5a9','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10093','443f154d-9a1b-4815-8760-7fd7a0d9b8cc','255b2405-f926-4577-9373-f8fac8bb9293','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10094','543f154d-9a1b-4815-8760-7fd7a0d9b8cc','953b379d-ee80-4a16-875b-1b758fb20238','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10095','643f154d-9a1b-4815-8760-7fd7a0d9b8cc','4a0e93d3-b4e9-4c7c-870c-f5189a9953a5','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10096','743f154d-9a1b-4815-8760-7fd7a0d9b8cc','40f0c5df-48fa-42af-aa2c-72687e98c54f','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10097','843f154d-9a1b-4815-8760-7fd7a0d9b8cc','53e2ecac-220d-4f72-a1b0-84095f4e1afb','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10098','943f154d-9a1b-4815-8760-7fd7a0d9b8cc','3e65aff9-af9a-4af1-a209-426c133a10e2','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10099','043f154d-9a1b-4815-8760-7fd7a0d9b8cc','2dbe4fde-3e6a-494c-a6cc-e970c9546c8f','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10010','113f154d-9a1b-4815-8760-7fd7a0d9b8cc','7d02fd2b-b887-44f2-9733-1fd705e4b006','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10011','123f154d-9a1b-4815-8760-7fd7a0d9b8cc','8903248a-847c-4d40-a7b0-48f28d6dbf83','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10012','133f154d-9a1b-4815-8760-7fd7a0d9b8cc','2dc30f9f-58fb-4f2e-88b8-81253dbf111e','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10013','144f154d-9a1b-4815-8760-7fd7a0d9b8cc','a1400513-b9c5-425f-b2b8-16e217b261dd','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10014','153f154d-9a1b-4815-8760-7fd7a0d9b8cc','18312f8d-fe8f-4957-b97f-c565456f5460','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10015','163f154d-9a1b-4815-8760-7fd7a0d9b8cc','060c1c50-0c0b-4f85-b1b8-a65c870fb04e','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10016','173f154d-9a1b-4815-8760-7fd7a0d9b8cc','d1d4dd2b-3577-4177-be06-d91bd6e6ef33','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10017','183f154d-9a1b-4815-8760-7fd7a0d9b8cc','4306a0d3-03d9-4ef0-9ace-a883cdc77b30','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10018','193f154d-9a1b-4815-8760-7fd7a0d9b8cc','fc376834-a85f-4573-8a0f-8a7b05d8116c','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10019','103f154d-9a1b-4815-8760-7fd7a0d9b8cc','f3e24879-9324-43f4-9e63-a9586ed16845','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10020','213f154d-9a1b-4815-8760-7fd7a0d9b8cc','971d1cc9-b440-4d84-9f9a-8ab3bb0b60e6','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10021','223f154d-9a1b-4815-8760-7fd7a0d9b8cc','b462fd2d-bea4-4a14-8ae5-9a5fea942b58','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10022','233f154d-9a1b-4815-8760-7fd7a0d9b8cc','017bd55b-32ee-42cf-9b80-9650a79d5117','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10023','244f154d-9a1b-4815-8760-7fd7a0d9b8cc','a9f1ba09-4f04-4b46-bb5a-4cefee90456f','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10024','253f154d-9a1b-4815-8760-7fd7a0d9b8cc','4d960d88-8a25-4079-b0ae-812c440ebbf0','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10025','263f154d-9a1b-4815-8760-7fd7a0d9b8cc','cec35422-af86-4533-a6f6-2e552c853750','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10026','273f154d-9a1b-4815-8760-7fd7a0d9b8cc','9be09331-5464-4a58-9d01-7fba0d4ce487','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10027','283f154d-9a1b-4815-8760-7fd7a0d9b8cc','5fdd11b9-0c9f-40cd-a9f3-d403273129cb','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10028','293f154d-9a1b-4815-8760-7fd7a0d9b8cc','08130f82-b404-436e-8d9b-c5b72476bf99','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10029','303f154d-9a1b-4815-8760-7fd7a0d9b8cc','fade78f8-0e03-43d0-8797-03fe344a90c1','open', NOW(), NOW());
 
 
@@ -470,95 +470,95 @@ INSERT INTO offender (avatar_url, created_by_id, updated_by_id, summary, id, fir
 VALUES ('https://i.pravatar.cc/300', '37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...', 'e3243aff-1b9c-4866-a491-1032f3c10193', 'Lyn', 'Ludlamme', '2021-07-29 03:33:34', '2022-06-21 19:08:26');
 
 
--- "case"
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+-- offender_case
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e324c43a-d540-4707-a51a-6b8852fd1926','36b5adf1-a0fd-4b02-ae51-51b4289d440c','bd6de7e1-7ecb-4125-9bdf-6c43981a163d','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '98cbd065-088b-43eb-8829-2c5a2ff81363','16b5adf1-a0fd-4b02-ae51-51b4289d440c','2c4f1cc0-82e3-44cd-af31-c2e1765fd014','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '238bc544-f9c5-4bc0-b59a-83455e824636','34b5adf1-a0fd-4b02-ae51-51b4289d440c','1a92591c-9804-4ca6-89fe-17059c8a6225','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e2f563bf-6a2f-4c42-b772-088ba970e6d9','33b5adf1-a0fd-4b02-ae51-51b4289d440c','fc019811-c852-448f-95a3-65892e837773','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'f31ddd44-b0a4-45cc-84ed-357eed4393bd','12b5adf1-a0fd-4b02-ae51-51b4289d440c','ff4d0312-58d9-4aa6-af51-bd2d6cd9c9bc','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '605e22ab-a481-4588-a5bc-40bcb67a6348','32b5cdf1-a0fd-4b02-ae51-51b4289d440c','09223771-dc09-4214-8513-44e3a997d05f','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '90ac3143-d34c-4a08-a1b0-d2831009ba8f','35b3cdf1-a0fd-4b02-ae51-51b4289d440c','436f3e84-9ed0-4ec0-aa52-d86c5ce55c48','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '9a69a62f-474b-45cd-a887-9c220a284dd4','3ab5adf1-a0fd-4b02-ae51-51b4289d440c','7cc0076c-3eaf-4c8a-908b-87a2aa9fd061','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '21d50fc5-6662-49a1-b756-59ab291ec1dc','32b5adf1-a0fd-4b02-ae51-51b4289d440c','8297051a-be87-42bf-8843-ed74ff73d7bd','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'b318047a-1f76-468e-84b2-32dee04c6855','11b5adf1-a0fd-4b02-ae51-51b4289d440c','e17d7c4b-a6f3-4a50-8ea2-ea076d0dca06','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '052d00f0-e9e5-4968-a1f0-d8610329a821','22b5adf1-a0fd-4b02-ae51-51b4289d440c','04ee19d3-201e-4faf-8da0-310d03e98325','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e4189ec9-df6f-4f16-8d06-6be161d31391','43b5adf1-a0fd-4b02-ae51-51b4289d440c','628b086c-c57d-4f82-b615-05ddd80ec3de','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'd0063d78-edd2-4fb5-badf-f791ea8d82cd','16b2adf1-a0fd-4b02-ae51-51b4289d440c','a1bb557f-9ccf-44a0-a364-59ac3a2a8478','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '86a344b0-f7a6-4544-b8e1-5fd7f2b9f387','66b5adf1-a0fd-4b02-ae51-51b4289d440c','7ee9ae47-7a61-4a2d-aff2-4ef230ed9e3c','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '3a1324b4-2cd2-4fc3-bd1f-ab8414004fbf','88b5adf1-a0fd-4b02-ae51-51b4289d440c','43776449-cf52-4676-9f77-d553d7d465ef','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '9d17567c-652e-43f1-8156-b952141e3efc','36b6adf1-a0fd-4b02-ae51-51b4289d440c','48e1f8e5-d29f-4b97-8c79-0764c937a22f','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '8cf52d84-b8c7-4fb9-ad8d-526eb6b2aaa6','36b1adf1-a0fd-4b02-ae51-51b4289d440c','28a2a7ee-96a7-4773-b9bf-60edbc564cfa','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'aac61e98-2166-40cf-956d-2bba7e937e2b','36b8adf1-a0fd-4b02-ae51-51b4289d440c','adb6a187-38ba-4caa-a46d-13ed9a286956','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e4648545-c1d0-4c51-ba22-be05360d60c2','36b52df1-a0fd-4b02-ae51-51b4289d440c','e1fcf2c1-9977-4b35-8b6d-64e3a2f45a0c','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '8810c96a-83dd-40fb-9ea3-bc6e1bf4c0ac','36b57df1-a0fd-4b02-ae51-51b4289d440c','3bb7a349-05cd-4b1d-a158-1d7e1ad78c8b','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c0c28f24-9edc-410f-b24e-6f2d2177491a','36b51df1-a0fd-4b02-ae51-51b4289d440c','87028313-4884-4965-9220-4fe5a869d185','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fcbe3730-6049-4975-a9e1-14b90d1fcc5a','36b5bdf1-a0fd-4b02-ae51-51b4289d440c','cf0ffda9-8d3b-4d41-8f29-86f927b718d1','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '5dadcfe9-11ac-490e-a078-2aba86d5f3fc','36b5cdf1-a0fd-4b02-ae51-51b4289d440c','8b758c1a-6d1a-4fde-8e57-c09ca28ee5a4','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'b6d5914b-90b0-4a87-8664-58013b06cd09','36b5ddf1-a0fd-4b02-ae51-51b4289d440c','7ce4f8a6-f7ed-410a-8a26-d88f949adfb8','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '0ce099be-02b5-4708-9bc8-ec3622777a57','36b59df1-a0fd-4b02-ae51-51b4289d440c','39b21a66-b82c-4491-ab7a-01447dce0075','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'ec120e5c-c544-41e0-90ec-64b522820372','36b53df1-a0fd-4b02-ae51-51b4289d440c','07e44887-080c-4857-b8a9-68970dda1b73','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '0b061a51-33bb-4ccd-b588-6eb180a60427','36b3adf1-a0fd-4b02-ae51-51b4289d440c','1a8e96c3-ef7e-472e-8bcc-c6c304a632ab','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a4c2d076-48d4-458b-8556-2477437de641','36b55df1-a0fd-4b02-ae51-51b4289d440c','4052fd89-40d6-424e-bf81-645879ce8921','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '0eb9e6e5-ad2f-4955-8ab5-2ff7725d5025','36b2bdf1-a0fd-4b02-ae51-51b4289d440c','7d41523c-7a6e-48a0-a55d-9a92b183155a','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e3243aff-1b9c-4866-a491-1032f3c10093','36b1cdf1-a0fd-4b02-ae51-51b4289d440c','5dde2a7a-6a91-4058-a2bd-7505e87c75c7','open', NOW(), NOW());
 
 
@@ -871,155 +871,155 @@ INSERT INTO offender (id, created_by_id, updated_by_id, first_name, last_name, c
 VALUES ('bf8fa896-c0ba-4706-b4f4-58055ba8a369', '37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', 'Zahara', 'Sydry', '6/26/2022', '4/25/2022', 'https://robohash.org/sapienteoccaecatiest.png?size=50x50&set=set1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...');
 
 
--- "case"
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+-- offender_case
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a131a4f1-c5f5-4a07-a274-3223a404095a','3fa7852b-82e4-4bbc-b3a3-e3e94205ee01','9293c6ab-e6eb-4e97-bc1b-a6441c3b8701','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '851cf48b-27d7-47e7-9074-ebda66f604aa','3fa7852b-82e4-4bbc-b3a3-e3e94205ee02','9293c6ab-e6eb-4e97-bc1b-a6441c3b8702','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '4bb5a73d-1118-4af7-b686-0e0586ad2b06','3fa7852b-82e4-4bbc-b3a3-e3e94205ee03','9293c6ab-e6eb-4e97-bc1b-a6441c3b8703','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e0e5f5b0-8599-4272-b6dd-14e2eac9eb99','3fa7852b-82e4-4bbc-b3a3-e3e94205ee04','9293c6ab-e6eb-4e97-bc1b-a6441c3b8704','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'debafe42-504b-4929-83ff-a4b02ffb22d2','3fa7852b-82e4-4bbc-b3a3-e3e94205ee05','9293c6ab-e6eb-4e97-bc1b-a6441c3b8705','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'f8ab8cc0-6dbc-4dea-b86e-b158522f32a0','3fa7852b-82e4-4bbc-b3a3-e3e94205ee06','9293c6ab-e6eb-4e97-bc1b-a6441c3b8706','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'dc3ac6fa-e180-48c2-95ad-33a108d64218','3fa7852b-82e4-4bbc-b3a3-e3e94205ee07','9293c6ab-e6eb-4e97-bc1b-a6441c3b8707','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'f5499565-1cff-4247-965c-15c8222c0db5','3fa7852b-82e4-4bbc-b3a3-e3e94205ee08','9293c6ab-e6eb-4e97-bc1b-a6441c3b8708','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c8cacdb8-8716-4949-bcaf-b80a58c6394d','3fa7852b-82e4-4bbc-b3a3-e3e94205ee09','9293c6ab-e6eb-4e97-bc1b-a6441c3b8709','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'ba432cc9-4596-4854-97b5-c18cf97c0009','3fa7852b-82e4-4bbc-b3a3-e3e94205ee10','9293c6ab-e6eb-4e97-bc1b-a6441c3b8710','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '34828031-1b2f-4623-8110-dffa28f656c3','3fa7852b-82e4-4bbc-b3a3-e3e94205ee11','9293c6ab-e6eb-4e97-bc1b-a6441c3b8711','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '2baec2ce-f104-4b2d-8068-0c31f53fb55c','3fa7852b-82e4-4bbc-b3a3-e3e94205ee12','9293c6ab-e6eb-4e97-bc1b-a6441c3b8712','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a7013aa6-ed55-4b2a-9aba-dec848508989','3fa7852b-82e4-4bbc-b3a3-e3e94205ee13','9293c6ab-e6eb-4e97-bc1b-a6441c3b8713','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7e59e29c-c1c0-40e2-8e0d-f0dd6292e79a','3fa7852b-82e4-4bbc-b3a3-e3e94205ee14','9293c6ab-e6eb-4e97-bc1b-a6441c3b8714','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '4ce36a50-6dc4-4901-aba4-0401e3670bba','3fa7852b-82e4-4bbc-b3a3-e3e94205ee15','9293c6ab-e6eb-4e97-bc1b-a6441c3b8715','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '5beed044-9ecb-4d47-83ef-2795f4b47106','3fa7852b-82e4-4bbc-b3a3-e3e94205ee16','9293c6ab-e6eb-4e97-bc1b-a6441c3b8716','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e1f1ac21-94fa-4b1a-b907-3b3fabd5d61e','3fa7852b-82e4-4bbc-b3a3-e3e94205ee17','9293c6ab-e6eb-4e97-bc1b-a6441c3b8717','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'bfafc202-afd7-417f-a4be-64b13530b136','3fa7852b-82e4-4bbc-b3a3-e3e94205ee18','9293c6ab-e6eb-4e97-bc1b-a6441c3b8718','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '2def3d37-74e7-4c7a-99c8-3e5c750ad47e','3fa7852b-82e4-4bbc-b3a3-e3e94205ee19','9293c6ab-e6eb-4e97-bc1b-a6441c3b8719','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '3e8d1a85-ee7e-4c55-8bb3-b10158439ad4','3fa7852b-82e4-4bbc-b3a3-e3e94205ee20','9293c6ab-e6eb-4e97-bc1b-a6441c3b8720','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '9922a5b0-cb0c-4b20-8a59-03429a8fd271','3fa7852b-82e4-4bbc-b3a3-e3e94205ee21','9293c6ab-e6eb-4e97-bc1b-a6441c3b8721','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7c287216-49a6-4b36-8fc3-ec6f5fc01e50','3fa7852b-82e4-4bbc-b3a3-e3e94205ee22','9293c6ab-e6eb-4e97-bc1b-a6441c3b8722','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '27fbfad5-ad97-46a9-86eb-3b73b533685a','3fa7852b-82e4-4bbc-b3a3-e3e94205ee23','9293c6ab-e6eb-4e97-bc1b-a6441c3b8723','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '31cbcc48-e1c8-4248-a8b7-f372e73578ae','3fa7852b-82e4-4bbc-b3a3-e3e94205ee24','9293c6ab-e6eb-4e97-bc1b-a6441c3b8724','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '6e24044e-1c9f-469f-bb31-eee8cca8c8a8','3fa7852b-82e4-4bbc-b3a3-e3e94205ee25','9293c6ab-e6eb-4e97-bc1b-a6441c3b8725','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '911202bd-4d13-4868-9d90-7f19031cecd3','3fa7852b-82e4-4bbc-b3a3-e3e94205ee26','9293c6ab-e6eb-4e97-bc1b-a6441c3b8726','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a22b37ec-ebbe-44d2-ae2b-58b9b4aca9fe','3fa7852b-82e4-4bbc-b3a3-e3e94205ee27','9293c6ab-e6eb-4e97-bc1b-a6441c3b8727','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a8df77f0-49ea-42b0-b35a-715226230628','3fa7852b-82e4-4bbc-b3a3-e3e94205ee28','9293c6ab-e6eb-4e97-bc1b-a6441c3b8728','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '26fa52fa-2570-461c-83de-f489ac8f9b2c','3fa7852b-82e4-4bbc-b3a3-e3e94205ee29','9293c6ab-e6eb-4e97-bc1b-a6441c3b8729','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a8715d50-274d-47f5-b19f-379555029e0f','3fa7852b-82e4-4bbc-b3a3-e3e94205ee30','9293c6ab-e6eb-4e97-bc1b-a6441c3b8730','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '38cb295f-1847-4a83-b801-3d82877f5dca','3fa7852b-82e4-4bbc-b3a3-e3e94205ee31','9293c6ab-e6eb-4e97-bc1b-a6441c3b8731','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fbd9e74f-db9b-4c84-9f56-c871c56169ba','3fa7852b-82e4-4bbc-b3a3-e3e94205ee32','9293c6ab-e6eb-4e97-bc1b-a6441c3b8732','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '266a67b4-8bd9-42e4-a3ff-4be77ad0e4ea','3fa7852b-82e4-4bbc-b3a3-e3e94205ee33','9293c6ab-e6eb-4e97-bc1b-a6441c3b8733','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'f9f74807-7dca-4edb-b676-9b09912fc922','3fa7852b-82e4-4bbc-b3a3-e3e94205ee34','9293c6ab-e6eb-4e97-bc1b-a6441c3b8734','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c3fae077-05aa-4612-8167-752b6e22c18e','3fa7852b-82e4-4bbc-b3a3-e3e94205ee35','9293c6ab-e6eb-4e97-bc1b-a6441c3b8735','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '13272acf-1446-41c9-bf19-f855b0a25bcd','3fa7852b-82e4-4bbc-b3a3-e3e94205ee36','9293c6ab-e6eb-4e97-bc1b-a6441c3b8736','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c6b607b9-36e4-4b44-a472-a1d205551613','3fa7852b-82e4-4bbc-b3a3-e3e94205ee37','9293c6ab-e6eb-4e97-bc1b-a6441c3b8737','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'ba350adf-563e-486a-8561-71ffa1700432','3fa7852b-82e4-4bbc-b3a3-e3e94205ee38','9293c6ab-e6eb-4e97-bc1b-a6441c3b8738','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '3b600f24-4415-4eff-9977-a341d679d31d','3fa7852b-82e4-4bbc-b3a3-e3e94205ee39','9293c6ab-e6eb-4e97-bc1b-a6441c3b8739','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '8dab5ae2-f90e-4c2b-ad16-d39ae10f39df','3fa7852b-82e4-4bbc-b3a3-e3e94205ee40','9293c6ab-e6eb-4e97-bc1b-a6441c3b8740','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '5db6b6f1-283a-4d2f-8b4f-fb26639ca779','3fa7852b-82e4-4bbc-b3a3-e3e94205ee41','9293c6ab-e6eb-4e97-bc1b-a6441c3b8741','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '97374cfa-8b01-478c-aa11-26cb8c66a918','3fa7852b-82e4-4bbc-b3a3-e3e94205ee42','9293c6ab-e6eb-4e97-bc1b-a6441c3b8742','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'efcb6994-7276-4657-a291-038e5a1c4826','3fa7852b-82e4-4bbc-b3a3-e3e94205ee43','9293c6ab-e6eb-4e97-bc1b-a6441c3b8743','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '534b9443-f624-40ec-8c05-0cdfef4d21ab','3fa7852b-82e4-4bbc-b3a3-e3e94205ee44','9293c6ab-e6eb-4e97-bc1b-a6441c3b8744','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '4d9fdd65-7908-417c-96b0-9fb86ac34028','3fa7852b-82e4-4bbc-b3a3-e3e94205ee45','9293c6ab-e6eb-4e97-bc1b-a6441c3b8745','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e590a031-86db-4d72-acfd-95abfa81feb4','3fa7852b-82e4-4bbc-b3a3-e3e94205ee46','9293c6ab-e6eb-4e97-bc1b-a6441c3b8746','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '70fd5eb3-0b53-4c58-8358-e2b02cc444b0','3fa7852b-82e4-4bbc-b3a3-e3e94205ee47','9293c6ab-e6eb-4e97-bc1b-a6441c3b8747','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a363f796-4d34-41c9-9971-1a23bc11df8d','3fa7852b-82e4-4bbc-b3a3-e3e94205ee48','9293c6ab-e6eb-4e97-bc1b-a6441c3b8748','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'a351d2c4-a86f-4934-b2ab-c9e8dcab180f','3fa7852b-82e4-4bbc-b3a3-e3e94205ee49','9293c6ab-e6eb-4e97-bc1b-a6441c3b8749','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'bf8fa896-c0ba-4706-b4f4-58055ba8a369','3fa7852b-82e4-4bbc-b3a3-e3e94205ee50','9293c6ab-e6eb-4e97-bc1b-a6441c3b8750','open', NOW(), NOW());
 
 
@@ -1331,155 +1331,155 @@ INSERT INTO offender (id, created_by_id, updated_by_id, first_name, last_name, c
 VALUES ('1e421410-e9ee-411c-a446-4bdc72460cf0', '37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', 'Ingaborg', 'Kayne', '3/28/2022', '3/10/2022', 'https://robohash.org/mollitiavelpossimus.png?size=50x50&set=set1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...');
 
 
--- "case"
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+-- offender_case
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'ac03e634-5462-4c95-a9df-cfc2d634283d','42649166-aac5-4b34-a4f5-e62be0becc01','e2206e84-998d-42e1-b992-72e557f44801','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '3b5ac8b5-5531-4185-ad0a-af1d9a1fde1a','42649166-aac5-4b34-a4f5-e62be0becc02','e2206e84-998d-42e1-b992-72e557f44802','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '36261f50-9f28-432a-b32e-44d8fc00d31a','42649166-aac5-4b34-a4f5-e62be0becc03','e2206e84-998d-42e1-b992-72e557f44803','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '991e8e0f-364c-46c5-ae24-031117c6df9c','42649166-aac5-4b34-a4f5-e62be0becc04','e2206e84-998d-42e1-b992-72e557f44804','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '02f6ca42-5319-4c3a-bc9a-d9458f07db7d','42649166-aac5-4b34-a4f5-e62be0becc05','e2206e84-998d-42e1-b992-72e557f44805','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '430c5d77-5209-4ad3-9495-bfcff8022353','42649166-aac5-4b34-a4f5-e62be0becc06','e2206e84-998d-42e1-b992-72e557f44806','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7c811c10-bb7c-45bd-b5ba-ba1dee09eb37','42649166-aac5-4b34-a4f5-e62be0becc07','e2206e84-998d-42e1-b992-72e557f44807','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '2e53dafc-6d98-4a74-b1e6-e89707606706','42649166-aac5-4b34-a4f5-e62be0becc08','e2206e84-998d-42e1-b992-72e557f44808','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'ac290702-47b9-41b7-ab72-56ed583f15e0','42649166-aac5-4b34-a4f5-e62be0becc09','e2206e84-998d-42e1-b992-72e557f44809','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '6461a70c-6702-4d37-8337-210d98509603','42649166-aac5-4b34-a4f5-e62be0becc10','e2206e84-998d-42e1-b992-72e557f44810','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '2d8a0b8a-6499-4c19-b98c-816f2e7ea81d','42649166-aac5-4b34-a4f5-e62be0becc11','e2206e84-998d-42e1-b992-72e557f44811','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7bb523cb-0eda-47b5-9dc8-706461f4accd','42649166-aac5-4b34-a4f5-e62be0becc12','e2206e84-998d-42e1-b992-72e557f44812','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '34786f8e-9895-45b5-b6fc-bc7dd986b45b','42649166-aac5-4b34-a4f5-e62be0becc13','e2206e84-998d-42e1-b992-72e557f44813','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '1a7d3317-a013-4959-b32d-c4282cb7b1e8','42649166-aac5-4b34-a4f5-e62be0becc14','e2206e84-998d-42e1-b992-72e557f44814','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '42a1c9ab-a96b-4f37-ad61-5765b4c442d4','42649166-aac5-4b34-a4f5-e62be0becc15','e2206e84-998d-42e1-b992-72e557f44815','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'e0066784-644f-4197-ab79-4deab35f228b','42649166-aac5-4b34-a4f5-e62be0becc16','e2206e84-998d-42e1-b992-72e557f44816','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7c3fa210-39c1-4696-a1d1-95a513f52201','42649166-aac5-4b34-a4f5-e62be0becc17','e2206e84-998d-42e1-b992-72e557f44817','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '17da8a1b-55a9-450a-abf6-2f04a84213d0','42649166-aac5-4b34-a4f5-e62be0becc18','e2206e84-998d-42e1-b992-72e557f44818','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '581b0906-5b43-425f-a3c1-6ec09a50f114','42649166-aac5-4b34-a4f5-e62be0becc19','e2206e84-998d-42e1-b992-72e557f44819','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'f94a621b-b76c-484f-85ad-20db75dadaf4','42649166-aac5-4b34-a4f5-e62be0becc20','e2206e84-998d-42e1-b992-72e557f44820','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '59103bd7-a7fc-478d-a58f-c35932c52b32','42649166-aac5-4b34-a4f5-e62be0becc21','e2206e84-998d-42e1-b992-72e557f44821','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'ca6c8eef-f154-470c-84ab-df169da073d6','42649166-aac5-4b34-a4f5-e62be0becc22','e2206e84-998d-42e1-b992-72e557f44822','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '20d3f32e-3910-4307-8efc-14606f7c4061','42649166-aac5-4b34-a4f5-e62be0becc23','e2206e84-998d-42e1-b992-72e557f44823','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7a95561c-4556-49f1-ab0e-6ab732da21f4','42649166-aac5-4b34-a4f5-e62be0becc24','e2206e84-998d-42e1-b992-72e557f44824','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '4d386050-270d-4b1f-8928-7c2185c6fe08','42649166-aac5-4b34-a4f5-e62be0becc25','e2206e84-998d-42e1-b992-72e557f44825','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7813dcb6-477d-4d88-a589-55a1c7143bf2','42649166-aac5-4b34-a4f5-e62be0becc26','e2206e84-998d-42e1-b992-72e557f44826','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '6a347530-5dfe-4a36-8700-f30ea2bb6045','42649166-aac5-4b34-a4f5-e62be0becc27','e2206e84-998d-42e1-b992-72e557f44827','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7f5a03bc-82cd-410b-bbd6-1ce463cd5145','42649166-aac5-4b34-a4f5-e62be0becc28','e2206e84-998d-42e1-b992-72e557f44828','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '7a0647b3-4e42-42b5-9cd3-bca834e97fb6','42649166-aac5-4b34-a4f5-e62be0becc29','e2206e84-998d-42e1-b992-72e557f44829','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '1659fd36-e4a2-45ba-925c-d1916f90aebf','42649166-aac5-4b34-a4f5-e62be0becc30','e2206e84-998d-42e1-b992-72e557f44830','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'b5371c89-1fbe-4c87-bc89-cab6ca61fcde','42649166-aac5-4b34-a4f5-e62be0becc31','e2206e84-998d-42e1-b992-72e557f44831','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '22ae181a-7294-43a9-8039-ab6599dcb8d1','42649166-aac5-4b34-a4f5-e62be0becc32','e2206e84-998d-42e1-b992-72e557f44832','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '72ee2fe8-6635-475d-ba51-f9166423331e','42649166-aac5-4b34-a4f5-e62be0becc33','e2206e84-998d-42e1-b992-72e557f44833','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'b8328ab0-a7ef-49ee-94cd-2cd3760e7982','42649166-aac5-4b34-a4f5-e62be0becc34','e2206e84-998d-42e1-b992-72e557f44834','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '8075cb82-2f82-45b1-a988-64424da67f95','42649166-aac5-4b34-a4f5-e62be0becc35','e2206e84-998d-42e1-b992-72e557f44835','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'bb34ba3b-7b01-45e9-a63c-b360b95f64b9','42649166-aac5-4b34-a4f5-e62be0becc36','e2206e84-998d-42e1-b992-72e557f44836','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'b5d1f2a1-33bc-4bbf-91a8-b7be68fe006a','42649166-aac5-4b34-a4f5-e62be0becc37','e2206e84-998d-42e1-b992-72e557f44837','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '88ffcee5-749a-494a-a8d9-8d8d769c5cd7','42649166-aac5-4b34-a4f5-e62be0becc38','e2206e84-998d-42e1-b992-72e557f44838','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '3bbfb790-542d-45de-84c0-014d7f0a19b1','42649166-aac5-4b34-a4f5-e62be0becc39','e2206e84-998d-42e1-b992-72e557f44839','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fad0d475-5108-468c-8427-7a4f263f4434','42649166-aac5-4b34-a4f5-e62be0becc40','e2206e84-998d-42e1-b992-72e557f44840','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'add11a0d-e18b-42f3-b503-ea638d32b5ef','42649166-aac5-4b34-a4f5-e62be0becc41','e2206e84-998d-42e1-b992-72e557f44841','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '5a7847af-e694-4fef-857e-af4d58e5c774','42649166-aac5-4b34-a4f5-e62be0becc42','e2206e84-998d-42e1-b992-72e557f44842','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '4f6215ac-8efa-46d8-b86d-2fd27eba5d64','42649166-aac5-4b34-a4f5-e62be0becc43','e2206e84-998d-42e1-b992-72e557f44843','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '9948f025-774b-43e6-adc9-b45b2a4494e0','42649166-aac5-4b34-a4f5-e62be0becc44','e2206e84-998d-42e1-b992-72e557f44844','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '264bd7da-4652-4fc0-a05d-f4c1314b5c6f','42649166-aac5-4b34-a4f5-e62be0becc45','e2206e84-998d-42e1-b992-72e557f44845','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'd46d6ec3-399c-4df2-9549-824377452e70','42649166-aac5-4b34-a4f5-e62be0becc46','e2206e84-998d-42e1-b992-72e557f44846','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '276a8f09-2d41-42c0-84e8-128f0942533d','42649166-aac5-4b34-a4f5-e62be0becc47','e2206e84-998d-42e1-b992-72e557f44847','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '137f923b-3081-4678-8440-32af66b8e95b','42649166-aac5-4b34-a4f5-e62be0becc48','e2206e84-998d-42e1-b992-72e557f44848','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '1e421410-e9ee-411c-a446-4bdc72460cf0','42649166-aac5-4b34-a4f5-e62be0becc49','e2206e84-998d-42e1-b992-72e557f44849','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', '174cd652-121c-4a5d-b8ae-fe2b614830fe','42649166-aac5-4b34-a4f5-e62be0becc50','e2206e84-998d-42e1-b992-72e557f44850','open', NOW(), NOW());
 
 
@@ -1623,71 +1623,71 @@ INSERT INTO offender (id, created_by_id, updated_by_id, first_name, last_name, c
 VALUES ('fb3c968f-0fca-41db-ae6d-d0591e4e1022', '37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', 'Elisha', 'Gingle', '1/13/2022', '12/11/2021', 'https://robohash.org/quiarerumdolores.png?size=50x50&set=set1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...');
 
 
--- "case"
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+-- offender_case
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1001','3678f3bc-b929-4d34-a328-00695c168701','886b0362-963f-49bd-882f-fc654f3bf001','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1002','3678f3bc-b929-4d34-a328-00695c168702','886b0362-963f-49bd-882f-fc654f3bf002','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1003','3678f3bc-b929-4d34-a328-00695c168703','886b0362-963f-49bd-882f-fc654f3bf003','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1004','3678f3bc-b929-4d34-a328-00695c168704','886b0362-963f-49bd-882f-fc654f3bf004','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1005','3678f3bc-b929-4d34-a328-00695c168705','886b0362-963f-49bd-882f-fc654f3bf005','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1006','3678f3bc-b929-4d34-a328-00695c168706','886b0362-963f-49bd-882f-fc654f3bf006','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1007','3678f3bc-b929-4d34-a328-00695c168707','886b0362-963f-49bd-882f-fc654f3bf007','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1008','3678f3bc-b929-4d34-a328-00695c168708','886b0362-963f-49bd-882f-fc654f3bf008','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1009','3678f3bc-b929-4d34-a328-00695c168709','886b0362-963f-49bd-882f-fc654f3bf009','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1010','3678f3bc-b929-4d34-a328-00695c168710','886b0362-963f-49bd-882f-fc654f3bf010','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1011','3678f3bc-b929-4d34-a328-00695c168711','886b0362-963f-49bd-882f-fc654f3bf011','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1012','3678f3bc-b929-4d34-a328-00695c168712','886b0362-963f-49bd-882f-fc654f3bf012','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1013','3678f3bc-b929-4d34-a328-00695c168713','886b0362-963f-49bd-882f-fc654f3bf013','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1014','3678f3bc-b929-4d34-a328-00695c168714','886b0362-963f-49bd-882f-fc654f3bf014','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1015','3678f3bc-b929-4d34-a328-00695c168715','886b0362-963f-49bd-882f-fc654f3bf015','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1016','3678f3bc-b929-4d34-a328-00695c168716','886b0362-963f-49bd-882f-fc654f3bf016','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1017','3678f3bc-b929-4d34-a328-00695c168717','886b0362-963f-49bd-882f-fc654f3bf017','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1018','3678f3bc-b929-4d34-a328-00695c168718','886b0362-963f-49bd-882f-fc654f3bf018','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1019','3678f3bc-b929-4d34-a328-00695c168719','886b0362-963f-49bd-882f-fc654f3bf019','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1020','3678f3bc-b929-4d34-a328-00695c168720','886b0362-963f-49bd-882f-fc654f3bf020','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1021','3678f3bc-b929-4d34-a328-00695c168721','886b0362-963f-49bd-882f-fc654f3bf021','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'fb3c968f-0fca-41db-ae6d-d0591e4e1022','3678f3bc-b929-4d34-a328-00695c168722','886b0362-963f-49bd-882f-fc654f3bf022','open', NOW(), NOW());
 
 
@@ -1999,156 +1999,156 @@ INSERT INTO offender (id, created_by_id, updated_by_id, first_name, last_name, c
 VALUES ('c100e4c4-afdf-4b61-a805-2685225ec749', '37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', 'Aldridge', 'Baudouin', '3/5/2022', '5/7/2022', 'https://robohash.org/explicabosapientemodi.png?size=50x50&set=set1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...');
 
 
--- "case"
+-- offender_case
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec700','d4580117-654d-445b-bf86-eedc0b214600','a38dfe60-265c-4ff2-8957-7d3b0bc4d700','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec701','d4580117-654d-445b-bf86-eedc0b214601','a38dfe60-265c-4ff2-8957-7d3b0bc4d701','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec702','d4580117-654d-445b-bf86-eedc0b214602','a38dfe60-265c-4ff2-8957-7d3b0bc4d702','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec703','d4580117-654d-445b-bf86-eedc0b214603','a38dfe60-265c-4ff2-8957-7d3b0bc4d703','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec704','d4580117-654d-445b-bf86-eedc0b214604','a38dfe60-265c-4ff2-8957-7d3b0bc4d704','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec705','d4580117-654d-445b-bf86-eedc0b214605','a38dfe60-265c-4ff2-8957-7d3b0bc4d705','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec706','d4580117-654d-445b-bf86-eedc0b214606','a38dfe60-265c-4ff2-8957-7d3b0bc4d706','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec707','d4580117-654d-445b-bf86-eedc0b214607','a38dfe60-265c-4ff2-8957-7d3b0bc4d707','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec708','d4580117-654d-445b-bf86-eedc0b214608','a38dfe60-265c-4ff2-8957-7d3b0bc4d708','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec709','d4580117-654d-445b-bf86-eedc0b214609','a38dfe60-265c-4ff2-8957-7d3b0bc4d709','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec710','d4580117-654d-445b-bf86-eedc0b214610','a38dfe60-265c-4ff2-8957-7d3b0bc4d710','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec711','d4580117-654d-445b-bf86-eedc0b214611','a38dfe60-265c-4ff2-8957-7d3b0bc4d711','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec712','d4580117-654d-445b-bf86-eedc0b214612','a38dfe60-265c-4ff2-8957-7d3b0bc4d712','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec713','d4580117-654d-445b-bf86-eedc0b214613','a38dfe60-265c-4ff2-8957-7d3b0bc4d713','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec714','d4580117-654d-445b-bf86-eedc0b214614','a38dfe60-265c-4ff2-8957-7d3b0bc4d714','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec715','d4580117-654d-445b-bf86-eedc0b214615','a38dfe60-265c-4ff2-8957-7d3b0bc4d715','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec716','d4580117-654d-445b-bf86-eedc0b214616','a38dfe60-265c-4ff2-8957-7d3b0bc4d716','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec717','d4580117-654d-445b-bf86-eedc0b214617','a38dfe60-265c-4ff2-8957-7d3b0bc4d717','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec718','d4580117-654d-445b-bf86-eedc0b214618','a38dfe60-265c-4ff2-8957-7d3b0bc4d718','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec719','d4580117-654d-445b-bf86-eedc0b214619','a38dfe60-265c-4ff2-8957-7d3b0bc4d719','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec720','d4580117-654d-445b-bf86-eedc0b214620','a38dfe60-265c-4ff2-8957-7d3b0bc4d720','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec721','d4580117-654d-445b-bf86-eedc0b214621','a38dfe60-265c-4ff2-8957-7d3b0bc4d721','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec722','d4580117-654d-445b-bf86-eedc0b214622','a38dfe60-265c-4ff2-8957-7d3b0bc4d722','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec723','d4580117-654d-445b-bf86-eedc0b214623','a38dfe60-265c-4ff2-8957-7d3b0bc4d723','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec724','d4580117-654d-445b-bf86-eedc0b214624','a38dfe60-265c-4ff2-8957-7d3b0bc4d724','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec725','d4580117-654d-445b-bf86-eedc0b214625','a38dfe60-265c-4ff2-8957-7d3b0bc4d725','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec726','d4580117-654d-445b-bf86-eedc0b214626','a38dfe60-265c-4ff2-8957-7d3b0bc4d726','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec727','d4580117-654d-445b-bf86-eedc0b214627','a38dfe60-265c-4ff2-8957-7d3b0bc4d727','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec728','d4580117-654d-445b-bf86-eedc0b214628','a38dfe60-265c-4ff2-8957-7d3b0bc4d728','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec729','d4580117-654d-445b-bf86-eedc0b214629','a38dfe60-265c-4ff2-8957-7d3b0bc4d729','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec730','d4580117-654d-445b-bf86-eedc0b214630','a38dfe60-265c-4ff2-8957-7d3b0bc4d730','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec731','d4580117-654d-445b-bf86-eedc0b214631','a38dfe60-265c-4ff2-8957-7d3b0bc4d731','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec732','d4580117-654d-445b-bf86-eedc0b214632','a38dfe60-265c-4ff2-8957-7d3b0bc4d732','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec733','d4580117-654d-445b-bf86-eedc0b214633','a38dfe60-265c-4ff2-8957-7d3b0bc4d733','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec734','d4580117-654d-445b-bf86-eedc0b214634','a38dfe60-265c-4ff2-8957-7d3b0bc4d734','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec735','d4580117-654d-445b-bf86-eedc0b214635','a38dfe60-265c-4ff2-8957-7d3b0bc4d735','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec736','d4580117-654d-445b-bf86-eedc0b214636','a38dfe60-265c-4ff2-8957-7d3b0bc4d736','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec737','d4580117-654d-445b-bf86-eedc0b214637','a38dfe60-265c-4ff2-8957-7d3b0bc4d737','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec738','d4580117-654d-445b-bf86-eedc0b214638','a38dfe60-265c-4ff2-8957-7d3b0bc4d738','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec739','d4580117-654d-445b-bf86-eedc0b214639','a38dfe60-265c-4ff2-8957-7d3b0bc4d739','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec740','d4580117-654d-445b-bf86-eedc0b214640','a38dfe60-265c-4ff2-8957-7d3b0bc4d740','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec741','d4580117-654d-445b-bf86-eedc0b214641','a38dfe60-265c-4ff2-8957-7d3b0bc4d741','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec742','d4580117-654d-445b-bf86-eedc0b214642','a38dfe60-265c-4ff2-8957-7d3b0bc4d742','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec743','d4580117-654d-445b-bf86-eedc0b214643','a38dfe60-265c-4ff2-8957-7d3b0bc4d743','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec744','d4580117-654d-445b-bf86-eedc0b214644','a38dfe60-265c-4ff2-8957-7d3b0bc4d744','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec745','d4580117-654d-445b-bf86-eedc0b214645','a38dfe60-265c-4ff2-8957-7d3b0bc4d745','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec746','d4580117-654d-445b-bf86-eedc0b214646','a38dfe60-265c-4ff2-8957-7d3b0bc4d746','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec747','d4580117-654d-445b-bf86-eedc0b214647','a38dfe60-265c-4ff2-8957-7d3b0bc4d747','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec748','d4580117-654d-445b-bf86-eedc0b214648','a38dfe60-265c-4ff2-8957-7d3b0bc4d748','open', NOW(), NOW());
 
-INSERT INTO "case" (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
+INSERT INTO offender_case (created_by_id, updated_by_id, tenant_id, offender_id, caught_at_id, id, status, created_on, updated_on) 
 VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '2ab016e3-ec7d-4784-931d-6011a81eeef7', 'c100e4c4-afdf-4b61-a805-2685225ec749','d4580117-654d-445b-bf86-eedc0b214649','a38dfe60-265c-4ff2-8957-7d3b0bc4d749','open', NOW(), NOW());
 
 

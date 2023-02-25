@@ -8,17 +8,17 @@ import { HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorizati
 import { LoggerService } from '@vsp/logger';
 
 import { 
-  CaseDto,
+  OffenderCaseDto,
   ClaimAuthorizationOperations,
   ClaimAuthorizationTypes,
   ClaimValues,
-  createCaseCommand,
+  createOffenderCaseCommand,
   CreateCaseDto,
   createOffenderCommand,
   CreateOffenderDto,
   CreateResourceRequest,
-  deleteCaseCommand,
-  DeleteCaseDto,
+  deleteOffenderCaseCommand,
+  DeleteOffenderCaseDto,
   deleteOffenderCommand,
   DeleteOffenderDto,
   DeleteResourceRequest,
@@ -40,8 +40,8 @@ import {
   SearchOffendersByBoundsRequest, 
   searchOffendersCommand, 
   SearchOffendersRequest, 
-  updateCaseCommand, 
-  UpdateCaseDto, 
+  updateOffenderCaseCommand, 
+  UpdateOffenderCaseDto, 
   updateOffenderCommand, 
   UpdateOffenderDto,
   UpdateResourceRequest, 
@@ -204,10 +204,10 @@ export class OffendersController {
   )
   public createOffenderCase(
     @Body() createCaseDto: CreateCaseDto, @Param('offenderId') offenderId: string
-  ): Observable<CaseDto> {
+  ): Observable<OffenderCaseDto> {
     return this._offendersServiceClient
       .send(
-        createCaseCommand, 
+        createOffenderCaseCommand, 
         new CreateResourceRequest<CreateCaseDto>({ 
           resource: { ...createCaseDto, offenderId }
         })
@@ -226,14 +226,14 @@ export class OffendersController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
   public updatedOffenderCase(
-    @Body() updateCaseDto: UpdateCaseDto, 
+    @Body() updateCaseDto: UpdateOffenderCaseDto, 
     @Param('offenderId') offenderId: string,
     @Param('caseId') caseId: string
-  ): Observable<CaseDto> {
+  ): Observable<OffenderCaseDto> {
     return this._offendersServiceClient
       .send(
-        updateCaseCommand, 
-        new UpdateResourceRequest<UpdateCaseDto>({ 
+        updateOffenderCaseCommand, 
+        new UpdateResourceRequest<UpdateOffenderCaseDto>({ 
           resourceId: caseId,
           resource: { ...updateCaseDto, offenderId }
         })
@@ -255,13 +255,13 @@ export class OffendersController {
     @Body('deletedById') deletedById: string, 
     @Param('offenderId') offenderId: string,
     @Param('caseId') caseId: string
-  ): Observable<CaseDto> {
+  ): Observable<OffenderCaseDto> {
     return this._offendersServiceClient
       .send(
-        deleteCaseCommand, 
-        new UpdateResourceRequest<DeleteCaseDto>({ 
+        deleteOffenderCaseCommand, 
+        new UpdateResourceRequest<DeleteOffenderCaseDto>({ 
           resourceId: caseId,
-          resource: new DeleteCaseDto({ deletedById, offenderId, caseId })
+          resource: new DeleteOffenderCaseDto({ deletedById, offenderId, caseId })
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));

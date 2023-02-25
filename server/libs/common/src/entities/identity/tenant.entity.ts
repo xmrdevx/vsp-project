@@ -1,6 +1,6 @@
 import { Column, Entity, Generated, Index, JoinColumn, OneToMany, OneToOne } from "typeorm";
 import { BaseEntity } from "../base.entity";
-import { Case } from '../offenders/case.entity';
+import { OffenderCase } from '../offenders/offender-case.entity';
 import { Account } from "./account.entity";
 import { User } from './user.entity';
 

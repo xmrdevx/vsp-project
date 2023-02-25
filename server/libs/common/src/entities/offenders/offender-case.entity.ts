@@ -8,7 +8,7 @@ import { GeoLocation } from '../geocoding/geo-location.entity';
 import { Tenant } from '../identity/tenant.entity';
 
 @Entity()
-export class Case extends BaseTrackedEntity {
+export class OffenderCase extends BaseTrackedEntity {
   @Column({ type: 'timestamp with time zone', default: () => 'NOW()' })
   public openedOn: Date;
 
@@ -47,7 +47,7 @@ export class Case extends BaseTrackedEntity {
 
   // @TODO media
 
-  constructor(obj: Partial<Case>) {
+  constructor(obj: Partial<OffenderCase>) {
     super();
     Object.assign(this, obj);
   }

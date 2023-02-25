@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseTrackedEntity } from '../base-tracked.entity';
-import { Case } from './case.entity';
+import { OffenderCase } from './offender-case.entity';
 
 @Entity()
 export class Offender extends BaseTrackedEntity {
@@ -16,8 +16,8 @@ export class Offender extends BaseTrackedEntity {
   @Column({ type: String, nullable: true })
   public summary: string | null | undefined;
 
-  @OneToMany(type => Case, c => c.offender)
-  public cases: Case[] | null | undefined;
+  @OneToMany(type => OffenderCase, c => c.offender)
+  public cases: OffenderCase[] | null | undefined;
 
   constructor(obj: Partial<Offender>) {
     super();

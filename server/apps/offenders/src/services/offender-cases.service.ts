@@ -2,29 +2,39 @@ import { BadRequestException, Inject, Injectable, NotFoundException } from '@nes
 import { RpcException } from '@nestjs/microservices';
 import { Point } from 'geojson';
 
-import { Case, CaseDto, CaseMapper, CreateCaseDto, CreateCaseWithOffenderDto, GeoLocation, MapBoundsDto, MapCoordinateDto, MapMarkerDto, Offender, UpdateCaseDto } from '@vsp/common';
-import { DeleteCaseDto } from '@vsp/common/dtos/offenders/delete-case.dto';
+import { 
+  DeleteOffenderCaseDto, 
+  OffenderCase, 
+  OffenderCaseDto, 
+  OffenderCaseMapper, 
+  CreateCaseDto, 
+  CreateOffenderCaseWithOffenderDto, 
+  MapBoundsDto, 
+  MapCoordinateDto, 
+  MapMarkerDto, 
+  Offender, 
+  UpdateOffenderCaseDto } from '@vsp/common';
+
 import { CaseStatus } from '@vsp/common/enums/case-status.enum';
 import { LoggerService } from '@vsp/logger';
-import { off } from 'process';
 
-import { CASES_REPOSITORY_TOKEN, ICasesRepository } from '../interfaces/cases-repository.interface';
+import { OFFENDER_CASES_REPOSITORY_TOKEN, IOffenderCasesRepository } from '../interfaces/offender-cases-repository.interface';
 import { IOffendersRepository, OFFENDERS_REPOSITORY_TOKEN } from '../interfaces/offenders-repository.interface';
 
 @Injectable()
-export class CasesService {
-  @Inject(CASES_REPOSITORY_TOKEN)
-  private readonly _casesRepository: ICasesRepository;
+export class OffenderCasesService {
+  @Inject(OFFENDER_CASES_REPOSITORY_TOKEN)
+  private readonly _casesRepository: IOffenderCasesRepository;
 
   @Inject(OFFENDERS_REPOSITORY_TOKEN)
   private readonly _offendersRepository: IOffendersRepository;
 
   constructor(private _logger: LoggerService) {
-    this._logger.setContext(CasesService.name);
+    this._logger.setContext(OffenderCasesService.name);
   }
 
 
-  public async create(createCaseDto: CreateCaseDto): Promise<CaseDto> {
+  public async create(createCaseDto: CreateCaseDto): Promise<OffenderCaseDto> {
     const offender: Offender | null = await this._offendersRepository
       .findByCondition({ where: { id: createCaseDto.offenderId }})
       
@@ -34,7 +44,7 @@ export class CasesService {
       );
     }
     
-    const newCase: Case = await this._casesRepository.save(
+    const newCase: OffenderCase = await this._casesRepository.save(
       this._casesRepository.create({ 
         ...createCaseDto,
         caughtAt: !createCaseDto?.caughtAt ? null : {
@@ -53,13 +63,13 @@ export class CasesService {
     );
     newCase.offender = offender;
 
-    return CaseMapper.toDto(newCase);
+    return OffenderCaseMapper.toDto(newCase);
   }
 
 
-  public async update(caseId: string, updateCaseDto: UpdateCaseDto): Promise<CaseDto> {
-    const existingCase: Case = await this._checkForExistingCase(caseId, updateCaseDto.offenderId);
-    const updatedCase: Case = await this._casesRepository.save({ 
+  public async update(caseId: string, updateCaseDto: UpdateOffenderCaseDto): Promise<OffenderCaseDto> {
+    const existingCase: OffenderCase = await this._checkForExistingCase(caseId, updateCaseDto.offenderId);
+    const updatedCase: OffenderCase = await this._casesRepository.save({ 
       ...existingCase, 
       ...updateCaseDto,
       caughtAt: !updateCaseDto?.caughtAt ? null : {
@@ -79,21 +89,21 @@ export class CasesService {
     
     updatedCase.offender = existingCase.offender;
 
-    return CaseMapper.toDto(updatedCase);
+    return OffenderCaseMapper.toDto(updatedCase);
   }
   
 
-  public async delete(caseId: string, deleteCaseDto: DeleteCaseDto): Promise<CaseDto> {
-    const existingCase: Case = await this._checkForExistingCase(caseId, deleteCaseDto.offenderId);
-    const updatedCaseDto: Case = await this._casesRepository.save({ ...existingCase, ...deleteCaseDto });
+  public async delete(caseId: string, deleteCaseDto: DeleteOffenderCaseDto): Promise<OffenderCaseDto> {
+    const existingCase: OffenderCase = await this._checkForExistingCase(caseId, deleteCaseDto.offenderId);
+    const updatedCaseDto: OffenderCase = await this._casesRepository.save({ ...existingCase, ...deleteCaseDto });
 
     updatedCaseDto.offender = existingCase.offender;
 
-    return CaseMapper.toDto(updatedCaseDto);
+    return OffenderCaseMapper.toDto(updatedCaseDto);
   }
 
 
-  public async createWithOffender(createCaseWithOffenderDto: CreateCaseWithOffenderDto): Promise<CaseDto> {
+  public async createWithOffender(createCaseWithOffenderDto: CreateOffenderCaseWithOffenderDto): Promise<OffenderCaseDto> {
     const newOffender: Offender = await this._offendersRepository
       .save(
         this._offendersRepository
@@ -110,7 +120,7 @@ export class CasesService {
       );
     }
 
-    const newCase: Case = await this._casesRepository.save(
+    const newCase: OffenderCase = await this._casesRepository.save(
       this._casesRepository.create({
         ...createCaseWithOffenderDto, 
         offender: newOffender,
@@ -129,11 +139,11 @@ export class CasesService {
       })
     );
     
-    return CaseMapper.toDto(newCase);
+    return OffenderCaseMapper.toDto(newCase);
   }
 
 
-  public async getCaseMarkersByBounds(mapBounds: MapBoundsDto): Promise<MapMarkerDto<CaseDto>[]> {
+  public async getCaseMarkersByBounds(mapBounds: MapBoundsDto): Promise<MapMarkerDto<OffenderCaseDto>[]> {
     return (await this._casesRepository
       .getRepository()
       .createQueryBuilder('c')
@@ -149,17 +159,17 @@ export class CasesService {
       )
       .select(['c', 'o', 'ca'])
       .getMany())
-      .map(c => new MapMarkerDto<CaseDto>({
+      .map(c => new MapMarkerDto<OffenderCaseDto>({
         coordinate: new MapCoordinateDto({
           latitude: c.caughtAt?.latitude || 0,
           longitude: c.caughtAt?.longitude || 0
         } satisfies MapCoordinateDto),
-        payload: CaseMapper.toDto(c)
-      } satisfies MapMarkerDto<CaseDto>));
+        payload: OffenderCaseMapper.toDto(c)
+      } satisfies MapMarkerDto<OffenderCaseDto>));
   }
 
-  private async _checkForExistingCase(caseId: string, offenderId: string): Promise<Case> {
-    const existingCase: Case | null = await this._casesRepository.findByCondition({
+  private async _checkForExistingCase(caseId: string, offenderId: string): Promise<OffenderCase> {
+    const existingCase: OffenderCase | null = await this._casesRepository.findByCondition({
       relations: ['offender'],
       where: [{ id : caseId, offenderId: offenderId }] 
     });

@@ -1,6 +1,6 @@
 import { MediaType, MediaVisibility } from '../models';
 import { BaseEntity } from './base.entity';
-import { Case } from './offenders/case.entity';
+import { OffenderCase } from './offenders/case.entity';
 import { User } from './identity/user.entity';
 
 export interface Media extends BaseEntity {
@@ -13,6 +13,6 @@ export interface Media extends BaseEntity {
   uploadedById: string,
   caseId?: string,
 
-  case?: Case,
+  case?: OffenderCase,
   uploadedBy?: User,
 }

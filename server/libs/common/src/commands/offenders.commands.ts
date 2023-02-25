@@ -29,21 +29,21 @@ export const updateOffenderCommand: MessagePatternCommand<void> = {
 } as MessagePatternCommand<void>;
 
 export const deleteOffenderCommand: MessagePatternCommand<void> = {
-  cmd: 'delete-offender'
+  cmd: 'delete-offender-offender'
 } as MessagePatternCommand<void>;
 
-export const createCaseCommand: MessagePatternCommand<void> = {
-  cmd: 'create-case'
+export const createOffenderCaseCommand: MessagePatternCommand<void> = {
+  cmd: 'create-offender-case'
 } as MessagePatternCommand<void>;
 
-export const createCaseWithOffenderCommand: MessagePatternCommand<void> = {
-  cmd: 'create-case-with-offender'
+export const createOffenderCaseWithOffenderCommand: MessagePatternCommand<void> = {
+  cmd: 'create-offender-case-with-offender'
 } as MessagePatternCommand<void>;
 
-export const updateCaseCommand: MessagePatternCommand<void> = {
-  cmd: 'update-case'
+export const updateOffenderCaseCommand: MessagePatternCommand<void> = {
+  cmd: 'update-offender-case'
 } as MessagePatternCommand<void>;
 
-export const deleteCaseCommand: MessagePatternCommand<void> = {
-  cmd: 'delete-case'
+export const deleteOffenderCaseCommand: MessagePatternCommand<void> = {
+  cmd: 'delete-offender-case'
 } as MessagePatternCommand<void>;

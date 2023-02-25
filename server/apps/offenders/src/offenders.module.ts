@@ -1,24 +1,24 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Account, Address, Case, Claim, DeviceCode, GeoLocation, Offender, Profile, RefreshToken, Role, Tenant, User } from '@vsp/common';
+import { Account, Address, OffenderCase, Claim, DeviceCode, GeoLocation, Offender, Profile, RefreshToken, Role, Tenant, User } from '@vsp/common';
 import { CoreModule, TypeOrmConfigService } from '@vsp/core';
 import { LoggerModule } from '@vsp/logger';
 
 import { OffendersController } from './controllers/offenders.controller';
 
-import { CASES_SERVICE_TOKEN } from './interfaces/cases-service.interface';
-import { CasesService } from './services/cases.service';
+import { OFFENDER_CASES_SERVICE_TOKEN } from './interfaces/offender-cases-service.interface';
+import { OffenderCasesService } from './services/offender-cases.service';
 
-import { CASES_REPOSITORY_TOKEN } from './interfaces/cases-repository.interface';
-import { CasesRepository } from './repositories/cases.repository';
+import { OFFENDER_CASES_REPOSITORY_TOKEN } from './interfaces/offender-cases-repository.interface';
+import { OffenderCasesRepository } from './repositories/offender-cases.repository';
 
 import { OFFENDERS_REPOSITORY_TOKEN } from './interfaces/offenders-repository.interface';
 import { OffendersRepository } from './repositories/offenders.repository';
 
 import { OFFENDERS_SERVICE_TOKEN } from './interfaces/offenders-service.interface';
 import { OffendersService } from './services/offenders.service';
-import { CasesController } from './controllers/cases.controller';
+import { OffenderCasesController } from './controllers/offender-cases.controller';
 
 @Module({
   imports: [
@@ -31,7 +31,7 @@ import { CasesController } from './controllers/cases.controller';
     TypeOrmModule.forFeature([
       Account,
       Address,
-      Case,
+      OffenderCase,
       Claim,
       DeviceCode,
       GeoLocation,
@@ -45,7 +45,7 @@ import { CasesController } from './controllers/cases.controller';
   ],
   controllers: [
     OffendersController,
-    CasesController
+    OffenderCasesController
   ],
   providers: [
     {
@@ -57,12 +57,12 @@ import { CasesController } from './controllers/cases.controller';
       useClass: OffendersService
     },
     {
-      provide: CASES_REPOSITORY_TOKEN,
-      useClass: CasesRepository
+      provide: OFFENDER_CASES_REPOSITORY_TOKEN,
+      useClass: OffenderCasesRepository
     },
     {
-      provide: CASES_SERVICE_TOKEN,
-      useClass: CasesService
+      provide: OFFENDER_CASES_SERVICE_TOKEN,
+      useClass: OffenderCasesService
     }
   ],
 })

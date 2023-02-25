@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Case, EnvironmentService, MapBounds, MapMarker, MissingPerson } from '@vsp/core';
+import { OffenderCase, EnvironmentService, MapBounds, MapMarker, MissingPerson } from '@vsp/core';
 
 
 @Injectable({
@@ -13,14 +13,14 @@ export class ExploreService {
   private readonly _environmentService: EnvironmentService = inject(EnvironmentService);
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
-  public searchOffendersCaseMapMarkersByMapBounds(mapBounds: MapBounds): Observable<MapMarker<Case>[]> {
+  public searchOffendersCaseMapMarkersByMapBounds(mapBounds: MapBounds): Observable<MapMarker<OffenderCase>[]> {
     const queryParam: { [key: string]: string } = { 
       'northEastLatitude': mapBounds?.northEast?.latitude?.toString() || '0',
       'northEastLongitude': mapBounds?.northEast?.longitude?.toString() || '0',
       'southWestLatitude': mapBounds?.southWest?.latitude?.toString() || '0',
       'southWestLongitude': mapBounds?.southWest?.longitude?.toString() || '0'
     };
-    return this._httpClient.get<MapMarker<Case>[]>(
+    return this._httpClient.get<MapMarker<OffenderCase>[]>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/cases/by-bounds/markers`,
       { params: queryParam }
     );

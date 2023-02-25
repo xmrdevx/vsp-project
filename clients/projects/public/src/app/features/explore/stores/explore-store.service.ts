@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { catchError, EMPTY, forkJoin, Observable, switchMap, take, tap } from 'rxjs';
 
-import { Case, LoadingState, MapBounds, MapMarker, MissingPerson, MissingService, Offender, OffendersService } from '@vsp/core';
+import { OffenderCase, LoadingState, MapBounds, MapMarker, MissingPerson, MissingService, Offender, OffendersService } from '@vsp/core';
 
 import { ExploreService } from '@vsp/public/core/services/explore.service';
 
@@ -16,7 +16,7 @@ export interface ExploreState {
   selectedMissing: MissingPerson | null,
 
   currentOffendersMapMarkersLoadingState: LoadingState,
-  currentOffendersMapMarkers: MapMarker<Case>[] | null,
+  currentOffendersMapMarkers: MapMarker<OffenderCase>[] | null,
   currentMissingPeopleMapMarkersLoadingState: LoadingState,
   currentMissingPeopleMapMarkers: MapMarker<MissingPerson>[] | null,
 }
@@ -68,7 +68,7 @@ export class ExploreStore extends ComponentStore<ExploreState> {
     currentMapZoom: zoom
   }));
 
-  public readonly setOffenderCaseMapMappers = this.updater((state: ExploreState, mapMarkers: MapMarker<Case>[] | null) => ({
+  public readonly setOffenderCaseMapMappers = this.updater((state: ExploreState, mapMarkers: MapMarker<OffenderCase>[] | null) => ({
     ...state,
     currentOffendersMapMarkers: mapMarkers
   }));

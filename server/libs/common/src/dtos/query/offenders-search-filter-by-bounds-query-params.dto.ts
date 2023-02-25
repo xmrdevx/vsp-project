@@ -1,8 +1,8 @@
-import { defaultSortColumn, defaultSortDirection } from '../../constants';
-import { toFloatNumber, toIntNumber } from '@vsp/common/utils/cast.utils'
+import { IsDefined, IsInt, IsNumber, IsOptional, IsString } from 'class-validator'
 import { Transform } from 'class-transformer'
 
-import { IsDefined, IsInt, IsNumber, IsOptional, IsString } from 'class-validator'
+import { defaultSortColumn, defaultSortDirection } from '../../constants';
+import { toFloatNumber, toIntNumber } from '../../utils/cast.utils'
 
 export class OffenderSearchFilterByBoundsQueryParams {
   @Transform(({ value }) => toFloatNumber(value, { default: 0 }))

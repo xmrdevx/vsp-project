@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Case, Media, Team, TeamAnnouncement } from '../entities';
+import { OffenderCase, Media, Team, TeamAnnouncement } from '../entities';
 import { CasesSearchFilter, Page, PageRequest, TeamAnnouncementsSearchFilter } from '../models';
 import { TeamVideosSearchFilter } from '../models/search-filters/team-videos-search-filter.model';
 
@@ -38,7 +38,7 @@ export class TeamsService extends AbstractCrudService<Team, string> {
     )
   }
 
-  public searchCases(teamId: string, searchFilter: CasesSearchFilter, pageRequest: PageRequest): Observable<Page<Case>> {
+  public searchCases(teamId: string, searchFilter: CasesSearchFilter, pageRequest: PageRequest): Observable<Page<OffenderCase>> {
     const queryParams: { [key: string]: string } = {
       searchKeywords: searchFilter.searchKeywords || '',
       startDate: searchFilter?.startDate?.toISOString() || '',
@@ -48,7 +48,7 @@ export class TeamsService extends AbstractCrudService<Team, string> {
       column: pageRequest?.sort?.column?.toString() || '',
       direction: pageRequest?.sort?.direction?.toString() || ''
     };
-    return this.httpClient.get<Page<Case>>(
+    return this.httpClient.get<Page<OffenderCase>>(
       `${this.environmentService.getBaseApiUrl()}/${TeamsService._endpointSlug}/${teamId}/cases/search`,
       { params: queryParams }
     )

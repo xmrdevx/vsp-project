@@ -1,6 +1,6 @@
 import { LeafletControlLayersConfig } from '@asymmetrik/ngx-leaflet';
 import { icon, marker, Point, TileLayer, tileLayer, tooltip, TooltipOptions } from 'leaflet';
-import { Case, MapMarker, MissingPerson } from '@vsp/core';
+import { OffenderCase, MapMarker, MissingPerson } from '@vsp/core';
 
 export const streetMaps: TileLayer = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   detectRetina: true,
@@ -73,7 +73,7 @@ export const defaultLeafletMissingPopoverOptions = defaultLeafletMissingTooltipO
 // export const defaultLeafletPopoverOptions = defaultLeafletTooltipOptions;
 
 // Creates a map marker for an offender
-export const createOffenderMapMarker = (mapMarker: MapMarker<Case>): any => {
+export const createOffenderMapMarker = (mapMarker: MapMarker<OffenderCase>): any => {
   const popupContent = createCasePopover(mapMarker.payload);
   const markerPopover = tooltip()
     .setContent(popupContent)
@@ -103,7 +103,7 @@ export const createMissingMapMarker = (mapMarker: MapMarker<MissingPerson>): any
 };
 
 // Creates a tooltip for a case (used by offender map markers).
-export const createCaseTooltip = (offenderCase: Case): string => {
+export const createCaseTooltip = (offenderCase: OffenderCase): string => {
   const defaultAvatar = `
     <span class="mr-2" style="background: #CCC; border-radius: 4px; padding: 6px width: 32px; height: 32px;">
       <svg viewBox="64 64 896 896" focusable="false" fill="white" width="20px" height="20px" data-icon="user" aria-hidden="true">

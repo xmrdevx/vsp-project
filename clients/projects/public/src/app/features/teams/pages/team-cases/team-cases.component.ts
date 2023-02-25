@@ -9,7 +9,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { 
-  Case,
+ OffenderCase
   defaultInfiniteScrollSettings, 
   fadeAnimation, 
   InfiniteScrollSettings, 
@@ -53,8 +53,8 @@ export class TeamCasesComponent {
 
   public selectedTeam$: Observable<Team | null> = this._teamsProfileStore.selectedTeam$;
   public casesPageLoadingState$: Observable<LoadingState> = this._teamsProfileStore.casesPageLoadingState$;
-  public currentCasesSearchPage$: Observable<Page<Case> | null> = this._teamsProfileStore.currentCasesSearchPage$;
-  public loadedCasesPages$: Observable<Page<Case>[]> = this._teamsProfileStore.loadedCasesPages$;
+  public currentCasesSearchPage$: Observable<Page<OffenderCase> | null> = this._teamsProfileStore.currentCasesSearchPage$;
+  public loadedCasesPages$: Observable<Page<OffenderCase>[]> = this._teamsProfileStore.loadedCasesPages$;
   
   public casesSearchForm: UntypedFormGroup = this._formBuilder.group({
     searchKeywords: [null],

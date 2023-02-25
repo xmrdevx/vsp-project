@@ -5,7 +5,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 
-import { Case, CaseStatus } from '@vsp/core';
+import { OffenderCase, CaseStatus } from '@vsp/core';
 
 @Component({
   selector: 'vsp-explore-case-statistics',
@@ -22,7 +22,7 @@ import { Case, CaseStatus } from '@vsp/core';
 })
 export class ExploreCaseStatisticsComponent {
   @Input()
-  public cases: Case[] | null = null;
+  public cases: OffenderCase[] | null = null;
   
   public get totalCases(): number {
     return this.cases?.length || 0;

@@ -20,7 +20,7 @@ import { PermissionsController } from './controllers/permissions.controller';
 import { StreamsController } from './controllers/streams.controller';
 import { GeocodingController } from './controllers/geocoding.controller';
 import { OffendersController } from './controllers/offenders.controller';
-import { CasesController } from './controllers/cases.controller';
+import { OffenderCasesController } from './controllers/offender-cases.controller';
 
 @Module({
   imports: [
@@ -41,7 +41,7 @@ import { CasesController } from './controllers/cases.controller';
     StreamsController,
     GeocodingController,
     OffendersController,
-    CasesController
+    OffenderCasesController
   ],
   providers: [
     identityMicroserviceProvider,

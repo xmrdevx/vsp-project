@@ -1,6 +1,6 @@
 import { IsDefined, IsNotEmpty } from 'class-validator';
 
-export class DeleteCaseDto {
+export class DeleteOffenderCaseDto {
   @IsDefined()
   @IsNotEmpty()
   public offenderId: string;
@@ -17,7 +17,7 @@ export class DeleteCaseDto {
   @IsNotEmpty()
   public deletedOn: Date = new Date();
 
-  constructor(obj: Partial<DeleteCaseDto>) {
+  constructor(obj: Partial<DeleteOffenderCaseDto>) {
     Object.assign(this, obj);
   }
 }

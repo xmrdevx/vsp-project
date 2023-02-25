@@ -1,6 +1,6 @@
 export * from './account.mapper';
 export * from './address.mapper';
-export * from './case.mapper';
+export * from './offender-case.mapper';
 export * from './claim.mapper';
 export * from './geo-location.mapper';
 export * from './permission-template.mapper';

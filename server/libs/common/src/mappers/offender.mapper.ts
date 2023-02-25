@@ -1,6 +1,6 @@
 import { OffenderDto } from '../dtos/offenders';
 import { Offender } from '../entities/offenders';
-import { CaseMapper } from './case.mapper';
+import { OffenderCaseMapper } from './offender-case.mapper';
 
 export class OffenderMapper {
   public static toDto(entity: Offender): OffenderDto {
@@ -12,7 +12,7 @@ export class OffenderMapper {
       lastName: entity.lastName,
       avatarUrl: entity.avatarUrl,
       summary: entity.summary,
-      cases: entity?.cases?.length ? CaseMapper.toDtoList(entity.cases) : undefined
+      cases: entity?.cases?.length ? OffenderCaseMapper.toDtoList(entity.cases) : undefined
     });
   }
   

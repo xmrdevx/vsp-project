@@ -3,7 +3,7 @@ import { catchError, EMPTY, Observable, switchMap, take, tap } from 'rxjs';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 
 import { 
-  Case, 
+ OffenderCase 
   CasesSearchFilter, 
   DataLayoutStyle, 
   LoadingState, 
@@ -42,8 +42,8 @@ export interface TeamsProfileState {
   // Cases State
   currentCasesSearchFilter: CasesSearchFilter,
   casesPageLoadingState: LoadingState,
-  currentCasesSearchPage: Page<Case> | null,
-  loadedCasesPages: Page<Case>[],
+  currentCasesSearchPage: Page<OffenderCase> | null,
+  loadedCasesPages: Page<OffenderCase>[],
 }
 
 export const initialTeamsProfileState: TeamsProfileState = {
@@ -235,12 +235,12 @@ export class TeamsProfileStore extends ComponentStore<TeamsProfileState> {
 
 
   // Cases State
-  public readonly setSearchCasesPageResults = this.updater((state: TeamsProfileState, page: Page<Case> | null) => ({
+  public readonly setSearchCasesPageResults = this.updater((state: TeamsProfileState, page: Page<OffenderCase> | null) => ({
       ...state,
       currentCasesSearchPage: page,
       loadedCasesPages: page?.current?.index === 0 
-        ? [page] as Page<Case>[]
-        : [...state.loadedCasesPages, page] as Page<Case>[]
+        ? [page] as Page<OffenderCase>[]
+        : [...state.loadedCasesPages, page] as Page<OffenderCase>[]
     }));
 
   public readonly setCurrentCasesSearchFilter = this.updater((state: TeamsProfileState, searchFilter: CasesSearchFilter) => ({

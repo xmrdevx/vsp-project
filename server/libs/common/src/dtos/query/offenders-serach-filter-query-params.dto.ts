@@ -1,8 +1,9 @@
+import { IsDefined, IsEnum, IsInt, IsNumber, IsOptional, IsString } from 'class-validator';
+import { Transform } from 'class-transformer';
+
 import { defaultSortColumn, defaultSortDirection } from '../../constants';
-import { DistanceUnit } from '@vsp/common/enums';
-import { toFloatNumber, toIntNumber } from '@vsp/common/utils/cast.utils'
-import { Transform } from 'class-transformer'
-import { IsDefined, IsEnum, IsInt, IsNumber, IsOptional, IsString } from 'class-validator'
+import { DistanceUnit } from '../../enums';
+import { toFloatNumber, toIntNumber } from '../../utils/cast.utils'
 
 export class OffenderSearchFilterQueryParams {
   @IsDefined()

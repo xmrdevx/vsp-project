@@ -9,17 +9,17 @@ import {
   EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization';
 
 import { 
-  Case, 
+  OffenderCase, 
   GetOffenderCaseMarkersByBoundsRequest, 
   getOffenderCaseMarkersByBoundsCommand, 
   MapBoundsDto, 
   MapCoordinateDto, 
   MapMarkerDto, 
   OFFENDERS_SERVICE_TOKEN, 
-  CreateCaseWithOffenderDto, 
-  CaseDto, 
+  CreateOffenderCaseWithOffenderDto, 
+  OffenderCaseDto, 
   CreateResourceRequest, 
-  createCaseWithOffenderCommand,
+  createOffenderCaseWithOffenderCommand,
   ClaimAuthorizationOperations,
   ClaimAuthorizationTypes,
   ClaimValues,
@@ -31,12 +31,12 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 @ApiTags('offenders')
 @Controller('offenders/cases')
-export class CasesController {
+export class OffenderCasesController {
   @Inject(OFFENDERS_SERVICE_TOKEN)
   private readonly _offendersServiceClient: ClientProxy;
 
   constructor(private readonly _logger: LoggerService) {
-    this._logger.setContext(CasesController.name);
+    this._logger.setContext(OffenderCasesController.name);
   }
 
   @Post()
@@ -53,12 +53,12 @@ export class CasesController {
     EnrichBodyWithTenantInterceptor
   )
   public createCaseWithOffender(
-    @Body() createCaseWithOffenderDto: CreateCaseWithOffenderDto
-  ): Observable<CaseDto> {
+    @Body() createCaseWithOffenderDto: CreateOffenderCaseWithOffenderDto
+  ): Observable<OffenderCaseDto> {
     return this._offendersServiceClient
       .send(
-        createCaseWithOffenderCommand, 
-        new CreateResourceRequest<CreateCaseWithOffenderDto>({ 
+        createOffenderCaseWithOffenderCommand, 
+        new CreateResourceRequest<CreateOffenderCaseWithOffenderDto>({ 
           resource: createCaseWithOffenderDto
         })
       )
@@ -66,7 +66,7 @@ export class CasesController {
   }
 
   @Get('by-bounds/markers')
-  public getCaseMarkersByBounds(@Query() query: MapBoundQueryParams): Observable<MapMarkerDto<Case>[]> {
+  public getCaseMarkersByBounds(@Query() query: MapBoundQueryParams): Observable<MapMarkerDto<OffenderCase>[]> {
     const mapBounds: MapBoundsDto = new MapBoundsDto({
       northEast: new MapCoordinateDto({ 
         latitude: query.northEastLatitude, longitude: query.northEastLongitude } satisfies MapCoordinateDto),

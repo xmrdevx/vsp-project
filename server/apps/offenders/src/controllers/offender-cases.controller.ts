@@ -2,38 +2,38 @@ import { Controller, Inject } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 
 import { 
-  CaseDto, 
+  OffenderCaseDto, 
   GetOffenderCaseMarkersByBoundsRequest, 
   getOffenderCaseMarkersByBoundsCommand, 
   MapMarkerDto, 
-  createCaseCommand, 
+  createOffenderCaseCommand, 
   CreateResourceRequest, 
   CreateCaseDto, 
-  createCaseWithOffenderCommand, 
-  CreateCaseWithOffenderDto, 
-  updateCaseCommand,
-  deleteCaseCommand,
+  createOffenderCaseWithOffenderCommand, 
+  CreateOffenderCaseWithOffenderDto, 
+  updateOffenderCaseCommand,
+  deleteOffenderCaseCommand,
   DeleteResourceRequest,
   UpdateResourceRequest,
-  UpdateCaseDto,
-  DeleteCaseDto} from '@vsp/common';
+  UpdateOffenderCaseDto,
+  DeleteOffenderCaseDto} from '@vsp/common';
 
   import { LoggerService } from '@vsp/logger';
-import { CASES_SERVICE_TOKEN, ICasesService } from '../interfaces/cases-service.interface';
+import { OFFENDER_CASES_SERVICE_TOKEN, IOffenderCasesService } from '../interfaces/offender-cases-service.interface';
 
-@Controller('cases')
-export class CasesController {
-  @Inject(CASES_SERVICE_TOKEN)
-  private _casesService: ICasesService;
+@Controller('offenders/cases')
+export class OffenderCasesController {
+  @Inject(OFFENDER_CASES_SERVICE_TOKEN)
+  private _casesService: IOffenderCasesService;
 
   constructor(private readonly _logger: LoggerService) {
-    this._logger.setContext(CasesController.name);
+    this._logger.setContext(OffenderCasesController.name);
   }
 
   @MessagePattern(getOffenderCaseMarkersByBoundsCommand)
   public async getOffenderCaseMarkersByBounds(
     request: GetOffenderCaseMarkersByBoundsRequest
-  ): Promise<MapMarkerDto<CaseDto>[]> {
+  ): Promise<MapMarkerDto<OffenderCaseDto>[]> {
     try {
       return await this._casesService.getCaseMarkersByBounds(request.mapBounds);
     } catch (error) {
@@ -42,8 +42,8 @@ export class CasesController {
     }
   }
 
-  @MessagePattern(createCaseCommand)
-  public async createCase(request: CreateResourceRequest<CreateCaseDto>): Promise<CaseDto> {
+  @MessagePattern(createOffenderCaseCommand)
+  public async createOffenderCase(request: CreateResourceRequest<CreateCaseDto>): Promise<OffenderCaseDto> {
     try {
       return await this._casesService.create(request.resource);
     } catch (error) {
@@ -52,8 +52,8 @@ export class CasesController {
     }
   }
 
-  @MessagePattern(createCaseWithOffenderCommand)
-  public async createCaseWithOffender(request: CreateResourceRequest<CreateCaseWithOffenderDto>): Promise<CaseDto> {
+  @MessagePattern(createOffenderCaseWithOffenderCommand)
+  public async createOffenderCaseWithOffender(request: CreateResourceRequest<CreateOffenderCaseWithOffenderDto>): Promise<OffenderCaseDto> {
     try {
       return await this._casesService.createWithOffender(request.resource);
     } catch (error) {
@@ -62,8 +62,8 @@ export class CasesController {
     }
   }
 
-  @MessagePattern(updateCaseCommand)
-  public async updateOffenderCase(request: UpdateResourceRequest<UpdateCaseDto>): Promise<CaseDto> {
+  @MessagePattern(updateOffenderCaseCommand)
+  public async updateOffenderCase(request: UpdateResourceRequest<UpdateOffenderCaseDto>): Promise<OffenderCaseDto> {
     try {
       return await this._casesService.update(request.resourceId, request.resource);
     } catch (error) {
@@ -72,8 +72,8 @@ export class CasesController {
     }
   }
 
-  @MessagePattern(deleteCaseCommand)
-  public async deleteOffenderCase(request: DeleteResourceRequest<DeleteCaseDto>): Promise<CaseDto> {
+  @MessagePattern(deleteOffenderCaseCommand)
+  public async deleteOffenderCase(request: DeleteResourceRequest<DeleteOffenderCaseDto>): Promise<OffenderCaseDto> {
     try {
       return await this._casesService.delete(request.resourceId, request.resource);
     } catch (error) {

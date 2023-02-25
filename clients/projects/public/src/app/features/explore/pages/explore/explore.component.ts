@@ -34,7 +34,7 @@ import {
   MapMarker, 
   fadeAnimation, 
   LoadingState, 
-  Case, 
+  OffenderCase,
   Offender, 
   ExploreMarkerType, 
   MissingPerson } from '@vsp/core';
@@ -126,13 +126,13 @@ export class ExploreComponent implements OnInit, OnDestroy {
 
   public currentMapBounds$: Observable<MapBounds | null> = this._exploreStore.currentMapBounds$;
   public currentOffendersMapMarkersLoadingState$: Observable<LoadingState> = this._exploreStore.currentOffendersMapMarkersLoadingState$;
-  public currentOffendersMapMarkers$: Observable<MapMarker<Case>[] | null> = this._exploreStore.currentOffendersMapMarkers$;
+  public currentOffendersMapMarkers$: Observable<MapMarker<OffenderCase>[] | null> = this._exploreStore.currentOffendersMapMarkers$;
   public currentMissingMapMarkersLoadingState$: Observable<LoadingState> = this._exploreStore.currentMissingPeopleMapMarkersLoadingState$;
   public currentMissingMapMarkers$: Observable<MapMarker<MissingPerson>[] | null> = this._exploreStore.currentMissingPeopleMarkMarkers$;
   public geocodingLocationsResult$: Observable<GeocodingLocation[] | null> = this._geocodingStore.geocodingLocationsResult$;
   public selectedGeocodingLocation$: Observable<GeocodingLocation | null> = this._geocodingStore.selectedGeocodingLocation$;
 
-  public currentCasesWithinBounds$: Observable<Case[] | null> = this.currentOffendersMapMarkers$
+  public currentCasesWithinBounds$: Observable<OffenderCase[] | null> = this.currentOffendersMapMarkers$
       .pipe(map(markers => markers?.map(m => m.payload) || null));
 
   public currentMissingWithinBounds$: Observable<MissingPerson[] | null> = this.currentMissingMapMarkers$
@@ -283,7 +283,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
     }
   }
 
-  private _handleUpdatedMapMarkersFromBounds(offenderMapMarkers: MapMarker<Case>[] | null, missingMapMarkers: MapMarker<MissingPerson>[] | null): void {
+  private _handleUpdatedMapMarkersFromBounds(offenderMapMarkers: MapMarker<OffenderCase>[] | null, missingMapMarkers: MapMarker<MissingPerson>[] | null): void {
     // Remove the current active markers
     if (this.activeMarkers?.length) {
       this.activeMarkers.forEach(m => m.remove());
@@ -291,7 +291,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
     
     // Add new offender map markers.
     if (offenderMapMarkers?.length && this.mapInstance) {
-      this.activeOffenderMarkers = offenderMapMarkers.map((m: MapMarker<Case>) => 
+      this.activeOffenderMarkers = offenderMapMarkers.map((m: MapMarker<OffenderCase>) => 
         createOffenderMapMarker(m)
           .on('click', (e: any) => this._handleOffenderMarkerClickEventListener(m))
       ) || [];
@@ -314,7 +314,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
     this.mapInstance?.invalidateSize();
   }
 
-  private _handleOffenderMarkerClickEventListener(marker: MapMarker<Case>): void {
+  private _handleOffenderMarkerClickEventListener(marker: MapMarker<OffenderCase>): void {
     this._zone.run(() => {
       const offender: Offender | null = marker?.payload?.offender || null;
       if (!offender) return;
@@ -346,7 +346,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
     });
   }
 
-  public _addMarkerPopoverEventListeners(marker: MapMarker<Case>): void {
+  public _addMarkerPopoverEventListeners(marker: MapMarker<OffenderCase>): void {
     this._elementRef.nativeElement.querySelector(`[id="${marker?.payload?.id || 0}"]`)
       .addEventListener('click', (e: any) => {
         this._zone.run(() => {

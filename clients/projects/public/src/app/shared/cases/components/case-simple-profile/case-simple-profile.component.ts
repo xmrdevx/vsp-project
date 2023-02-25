@@ -8,7 +8,7 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
-import { Case } from '@vsp/core';
+import { OffenderCase } from '@vsp/core';
 
 @Component({
   selector: 'vsp-case-simple-profile',
@@ -29,7 +29,7 @@ import { Case } from '@vsp/core';
 })
 export class CaseSimpleProfileComponent {
   @Input()
-  public case: Case | null = null;
+  public case: OffenderCase | null = null;
 
   public get offenderRouterLink(): string[] {
     return ['/offenders', this.case?.offender?.id || '', 'profile'];
