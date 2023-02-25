@@ -11,7 +11,7 @@
       <nz-row [nzGutter]="[16, 16]">
         
         <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
-          <nz-card class="w-100 p-0">
+          <nz-card class="w-100 p-0 shadow-lg">
             <vsp-offender-simple-profile
                 [offender]="offender"
                 [includeProfileLinks]="false"
@@ -21,14 +21,101 @@
         </nz-col>
 
         <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
-          <nz-card class="w-100 p-0">
-            <pre>{{ offender?.cases | json }}</pre>
+          <nz-card class="w-100 p-0 shadow-lg">
+            <nz-page-header class="p-0">
+              <div nz-page-header-title>
+                <h3 nz-typography style="margin-bottom:0;">Cases</h3>
+              </div>
+              <nz-page-header-extra>
+                <button nz-button nzType="default" nzSize="small">
+                  <i nz-icon nzType="folder-add" nzTheme="outline"></i> Add Case
+                </button>
+              </nz-page-header-extra>
+            </nz-page-header>
+
+            <nz-divider class="mt-2 mb-4"></nz-divider>
+
+            <nz-row [nzGutter]="[16, 16]">
+              <nz-col [nzSpan]="24">
+                <nz-card>
+                  <pre>{{ offender?.cases | json }}</pre>
+                </nz-card>
+              </nz-col>
+            </nz-row>
+
+            <nz-row [nzGutter]="[16, 16]">
+              <nz-col [nzSpan]="24">
+                <nz-card>
+                  <pre>{{ offender?.cases | json }}</pre>
+                </nz-card>
+              </nz-col>
+            </nz-row>
+
+            <nz-row [nzGutter]="[16, 16]">
+              <nz-col [nzSpan]="24">
+                <nz-card>
+                  <pre>{{ offender?.cases | json }}</pre>
+                </nz-card>
+              </nz-col>
+            </nz-row>
+
           </nz-card>
         </nz-col>
 
         <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
-          <nz-card class="w-100 p-0">
-            offender comments
+          <nz-card class="w-100 p-0 shadow-lg">
+
+            <nz-page-header class="p-0">
+              <div nz-page-header-title>
+                <h3 nz-typography style="margin-bottom:0;">Comments</h3>
+              </div>
+              <nz-page-header-extra></nz-page-header-extra>
+            </nz-page-header>
+            
+            <nz-divider class="mt-2 mb-4"></nz-divider>
+
+            <nz-row [nzGutter]="[16, 16]">
+              <nz-col [nzSpan]="24">
+                <nz-form-item>
+                  <nz-form-control class="mb-3" [nzSpan]="24" nzErrorTip="Please write something here!">
+                    <textarea nz-input rows="4" placeholder="Add a Comment..."></textarea>
+                  </nz-form-control>
+                  <div class="text-right block w-100">
+                    <button nz-button nzType="primary">Comment</button>
+                  </div>
+                </nz-form-item>
+              </nz-col>
+            </nz-row>
+
+            <nz-divider class="mt-2 mb-2"></nz-divider>
+
+            <nz-row [nzGutter]="[16,16]">
+              <nz-col [nzSpan]="24">
+                <ng-container *ngIf="(currentOffenderCommentsPage$ | async) !== null; else skeletonCommentsTemplate">
+                  <div
+                      *ngIf="currentOffenderCommentsPage$ | async as page;"
+                      style="height: 100%;"
+                      infinite-scroll
+                      [infiniteScrollDistance]="defaultInfiniteScrollSettings.scrollDownDistance"
+                      [infiniteScrollThrottle]="defaultInfiniteScrollSettings.throttle"
+                      (scrolled)="onScrollDownComments(page.next || null)">
+                    <div [@fadeAnimation]>
+                      <vsp-comment-list 
+                          [loadedPages]="loadedOffenderCommentsPages$ | async">
+                      </vsp-comment-list>
+                    </div>
+                  </div>
+                </ng-container>
+                <!-- Skeleton Template -->
+                <ng-template #skeletonCommentsTemplate>
+                  <div class="block w-100">
+                    <vsp-comment-list-skeleton></vsp-comment-list-skeleton>
+                  </div>
+                </ng-template>
+              </nz-col>
+            </nz-row>
+
+
           </nz-card>
         </nz-col>
       </nz-row>
