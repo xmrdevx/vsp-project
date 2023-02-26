@@ -1,11 +1,28 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Account, Address, OffenderCase, Claim, DeviceCode, GeoLocation, Offender, Profile, RefreshToken, Role, Tenant, User } from '@vsp/common';
+import { 
+  Account, 
+  Address, 
+  OffenderCase, 
+  Claim, 
+  DeviceCode, 
+  GeoLocation, 
+  Offender, 
+  Profile, 
+  RefreshToken, 
+  Role, 
+  Tenant, 
+  User, 
+  OffenderComment, 
+  OffenderCommentLike } from '@vsp/common';
+
 import { CoreModule, TypeOrmConfigService } from '@vsp/core';
 import { LoggerModule } from '@vsp/logger';
 
 import { OffendersController } from './controllers/offenders.controller';
+import { OffenderCasesController } from './controllers/offender-cases.controller';
+import { OffenderCommentsController } from './controllers/offender-comments.controller';
 
 import { OFFENDER_CASES_SERVICE_TOKEN } from './interfaces/offender-cases-service.interface';
 import { OffenderCasesService } from './services/offender-cases.service';
@@ -18,7 +35,15 @@ import { OffendersRepository } from './repositories/offenders.repository';
 
 import { OFFENDERS_SERVICE_TOKEN } from './interfaces/offenders-service.interface';
 import { OffendersService } from './services/offenders.service';
-import { OffenderCasesController } from './controllers/offender-cases.controller';
+
+import { OFFENDER_COMMENTS_SERVICE_TOKEN } from './interfaces/offender-comments-service.interface';
+import { OffenderCommentsService } from './services/offender-comments.service';
+
+import { OFFENDER_COMMENTS_REPOSITORY_TOKEN } from './interfaces/offender-comments-repository.interface';
+import { OffenderCommentsRepository } from './repositories/offender-comments.repository';
+
+import { OFFENDER_COMMENT_LIKES_REPOSITORY_TOKEN } from './interfaces/offender-comment-likes-repository.interface';
+import { OffenderCommentLikesRepository } from './repositories/offender-comment-likes.repository';
 
 @Module({
   imports: [
@@ -31,6 +56,8 @@ import { OffenderCasesController } from './controllers/offender-cases.controller
     TypeOrmModule.forFeature([
       Account,
       Address,
+      OffenderComment,
+      OffenderCommentLike,
       OffenderCase,
       Claim,
       DeviceCode,
@@ -45,7 +72,8 @@ import { OffenderCasesController } from './controllers/offender-cases.controller
   ],
   controllers: [
     OffendersController,
-    OffenderCasesController
+    OffenderCasesController,
+    OffenderCommentsController
   ],
   providers: [
     {
@@ -63,6 +91,18 @@ import { OffenderCasesController } from './controllers/offender-cases.controller
     {
       provide: OFFENDER_CASES_SERVICE_TOKEN,
       useClass: OffenderCasesService
+    },
+    {
+      provide: OFFENDER_COMMENTS_SERVICE_TOKEN,
+      useClass: OffenderCommentsService
+    },
+    {
+      provide: OFFENDER_COMMENTS_REPOSITORY_TOKEN,
+      useClass: OffenderCommentsRepository
+    },
+    {
+      provide: OFFENDER_COMMENT_LIKES_REPOSITORY_TOKEN,
+      useClass: OffenderCommentLikesRepository
     }
   ],
 })

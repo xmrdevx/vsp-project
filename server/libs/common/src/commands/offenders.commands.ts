@@ -1,5 +1,6 @@
 import { MessagePatternCommand } from '../models/message-pattern-command.model';
 
+// Offender Commands
 export const searchOffendersCommand: MessagePatternCommand<void> = {
   cmd: 'search-offenders'
 } as MessagePatternCommand<void>;
@@ -32,6 +33,8 @@ export const deleteOffenderCommand: MessagePatternCommand<void> = {
   cmd: 'delete-offender-offender'
 } as MessagePatternCommand<void>;
 
+
+// Offender Cases
 export const createOffenderCaseCommand: MessagePatternCommand<void> = {
   cmd: 'create-offender-case'
 } as MessagePatternCommand<void>;
@@ -46,4 +49,14 @@ export const updateOffenderCaseCommand: MessagePatternCommand<void> = {
 
 export const deleteOffenderCaseCommand: MessagePatternCommand<void> = {
   cmd: 'delete-offender-case'
+} as MessagePatternCommand<void>;
+
+
+// Offender Comments
+export const searchOffenderCommentsCommand: MessagePatternCommand<void> = {
+  cmd: 'search-offender-comments'
+} as MessagePatternCommand<void>;
+
+export const createOffenderCommentCommand: MessagePatternCommand<void> = {
+  cmd: 'create-offender-comment'
 } as MessagePatternCommand<void>;

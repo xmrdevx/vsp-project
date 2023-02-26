@@ -14,6 +14,7 @@ import { EnrichBodyWithTenantInterceptor } from './interceptors/enrich-body-with
 import { EnrichBodyWithCreatedByInterceptor } from './interceptors/enrich-body-with-created-by.interceptor';
 import { EnrichBodyWithUpdatedByInterceptor } from './interceptors/enrich-body-with-updated-by.interceptor';
 import { EnrichBodyWithDeletedByInterceptor } from './interceptors/enrich-body-with-deleted-by.interceptor';
+import { EnrichBodyWithCommentedByInterceptor } from './interceptors/enrich-body-with-commented-by.interceptor';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { EnrichBodyWithDeletedByInterceptor } from './interceptors/enrich-body-w
     EnrichBodyWithCreatedByInterceptor,
     EnrichBodyWithUpdatedByInterceptor,
     EnrichBodyWithDeletedByInterceptor,
+    EnrichBodyWithCommentedByInterceptor,
   ],
   exports: [
     JwtAuthGuard,
@@ -58,6 +60,7 @@ import { EnrichBodyWithDeletedByInterceptor } from './interceptors/enrich-body-w
     EnrichBodyWithCreatedByInterceptor,
     EnrichBodyWithUpdatedByInterceptor,
     EnrichBodyWithDeletedByInterceptor,
+    EnrichBodyWithCommentedByInterceptor,
   ],
 })
 export class AuthorizationModule {}

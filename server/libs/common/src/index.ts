@@ -21,7 +21,6 @@ export * from './dtos/streams';
 // Entities
 export * from './entities/base.entity';
 export * from './entities/base-tracked.entity';
-export * from './entities/comments';
 export * from './entities/geocoding';
 export * from './entities/identity';
 export * from './entities/offenders';

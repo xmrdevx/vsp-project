@@ -32,4 +32,9 @@ export class OffenderComment extends BaseEntity {
 
   @OneToMany(type => OffenderCommentLike, commentLike => commentLike.comment)
   public commentLikes: OffenderCommentLike[];
+
+  constructor(obj: Partial<OffenderComment>) {
+    super();
+    Object.assign(this, obj);
+  }
 }

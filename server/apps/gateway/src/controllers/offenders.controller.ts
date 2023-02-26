@@ -22,7 +22,6 @@ import {
   deleteOffenderCommand,
   DeleteOffenderDto,
   DeleteResourceRequest,
-  DistanceUnit,
   getLatestOffenderByCountCommand,
   GetLatestOffendersRequestDto,
   getOffenderByIdCommand,
@@ -45,15 +44,22 @@ import {
   updateOffenderCommand, 
   UpdateOffenderDto,
   UpdateResourceRequest, 
-  defaultSortColumn,
-  defaultSortDirection, 
-  OffenderSearchFilterByBoundsQueryParams} from '@vsp/common';
+  OffenderSearchFilterByBoundsQueryParams,
+  BasicSearchFilterQueryParams,
+  CreateOffenderCommentDto,
+  createOffenderCommentCommand,
+  SearchOffenderCommentsRequest,
+  OffenderCommentDto,
+  searchOffenderCommentsCommand,
+  BasicQuerySearchFilter,
+  OffenderCommentsSearchFilter} from '@vsp/common';
 
 import { 
   EnrichBodyWithCreatedByInterceptor, 
   EnrichBodyWithUpdatedByInterceptor, 
   EnrichBodyWithDeletedByInterceptor, 
   EnrichBodyWithTenantInterceptor } from '@vsp/authorization';
+import { EnrichBodyWithCommentedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-commented-by.interceptor';
 
 @ApiTags('offenders')
 @Controller('offenders')
@@ -264,6 +270,41 @@ export class OffendersController {
           resource: new DeleteOffenderCaseDto({ deletedById, offenderId, caseId })
         })
       )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+
+  @Post(':offenderId/comments')
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(
+    EnrichBodyWithCreatedByInterceptor,
+    EnrichBodyWithUpdatedByInterceptor,
+    EnrichBodyWithCommentedByInterceptor,
+  )
+  public createOffenderComment(
+    @Param('offenderId') offenderId: string, 
+    @Body() createOffendCommentDto: CreateOffenderCommentDto
+  ): Observable<any> {
+    return this._offendersServiceClient
+      .send(
+        createOffenderCommentCommand, 
+        new CreateResourceRequest<CreateOffenderCommentDto>({ resource: { ...createOffendCommentDto, offenderId }})
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  
+  @Get(':offenderId/comments/search')
+  public searchOffenderComments(
+    @Query('offenderId') offenderId: string,
+    @Query() query: BasicSearchFilterQueryParams
+  ): Observable<Page<OffenderCommentDto>> {
+    const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
+    const filter: OffenderCommentsSearchFilter = new OffenderCommentsSearchFilter({ 
+      query: query.query, isDeleted: query.isDeleted,
+    });
+    return this._offendersServiceClient
+      .send(searchOffenderCommentsCommand, new SearchOffenderCommentsRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 }

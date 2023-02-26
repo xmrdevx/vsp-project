@@ -12,7 +12,7 @@ export class OffenderCommentLike extends BaseEntity {
   public likedById: string;
 
   @ManyToOne(type => User, { nullable: false })
-  public likedBy: User;
+  public likedBy: User | null | undefined;
 
   @Column()
   public commentId: string;
@@ -23,4 +23,9 @@ export class OffenderCommentLike extends BaseEntity {
   @Column()
   @Index()
   public isLiked: boolean;
+
+  constructor(obj: Partial<OffenderCommentLike>) {
+    super();
+    Object.assign(this, obj);
+  }
 }
