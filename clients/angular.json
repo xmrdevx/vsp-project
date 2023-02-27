@@ -134,7 +134,7 @@
       "projectType": "library",
       "root": "projects/@vsp/core",
       "sourceRoot": "projects/@vsp/core/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -167,7 +167,7 @@
       "projectType": "library",
       "root": "projects/@vsp/datatable",
       "sourceRoot": "projects/@vsp/datatable/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -200,7 +200,7 @@
       "projectType": "library",
       "root": "projects/@vsp/forms",
       "sourceRoot": "projects/@vsp/forms/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -233,7 +233,7 @@
       "projectType": "library",
       "root": "projects/@vsp/query-search-filters",
       "sourceRoot": "projects/@vsp/query-search-filters/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -437,7 +437,7 @@
       "projectType": "library",
       "root": "projects/@vsp/offenders",
       "sourceRoot": "projects/@vsp/offenders/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -470,7 +470,7 @@
       "projectType": "library",
       "root": "projects/@vsp/pipes",
       "sourceRoot": "projects/@vsp/pipes/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -503,7 +503,7 @@
       "projectType": "library",
       "root": "projects/@vsp/comments",
       "sourceRoot": "projects/@vsp/comments/src",
-      "prefix": "lib",
+      "prefix": "vsp",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
