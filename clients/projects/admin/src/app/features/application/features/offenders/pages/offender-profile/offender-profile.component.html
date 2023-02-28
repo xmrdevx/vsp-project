@@ -10,59 +10,56 @@
     <ng-container *ngIf="selectedOffender$ | async as offender; else noOffenderDetailsLoaded">
       <nz-row [nzGutter]="[16, 16]">
         
-        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
-          <nz-card class="w-100 p-0 shadow-lg">
-            <vsp-offender-simple-profile
-                [offender]="offender"
-                [includeProfileLinks]="false"
-                [maxSummaryLength]="300">
-            </vsp-offender-simple-profile>
-          </nz-card>
+        <!-- Offender Profile Details & Cases Sections -->
+        <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="16">
+          <nz-row [nzGutter]="[16, 16]">
+            
+            <!-- Details Section -->
+            <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12">
+              <nz-card class="w-100 p-0 shadow-lg">
+                <vsp-offender-simple-profile
+                    [offender]="offender"
+                    [includeProfileLinks]="false"
+                    [maxSummaryLength]="300">
+                </vsp-offender-simple-profile>
+              </nz-card>
+            </nz-col>
+            
+            <!-- Cases Section -->
+            <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12">
+              <nz-card class="w-100 p-0 shadow-lg">
+                <nz-page-header class="p-0">
+                  <div nz-page-header-title>
+                    <h3 nz-typography style="margin-bottom:0;">Cases</h3>
+                  </div>
+                  <nz-page-header-extra>
+                    <button nz-button nzType="default" nzSize="small">
+                      <i nz-icon nzType="folder-add" nzTheme="outline"></i> Add Case
+                    </button>
+                  </nz-page-header-extra>
+                </nz-page-header>
+
+                <nz-divider class="mt-2 mb-4"></nz-divider>
+
+                <ng-container *ngIf="offender?.cases?.length; else noOffenderCasesLoaded">
+                  <ng-container *ngFor="let case of offender.cases">
+                    <nz-row [nzGutter]="[16, 16]">
+                      <nz-col [nzSpan]="24">
+                        <nz-card>
+                          <vsp-offender-case-simple-details [case]="case"></vsp-offender-case-simple-details>
+                        </nz-card>
+                      </nz-col>
+                    </nz-row>
+                  </ng-container>
+                </ng-container>
+
+              </nz-card>
+            </nz-col>
+          </nz-row>
         </nz-col>
 
-        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
-          <nz-card class="w-100 p-0 shadow-lg">
-            <nz-page-header class="p-0">
-              <div nz-page-header-title>
-                <h3 nz-typography style="margin-bottom:0;">Cases</h3>
-              </div>
-              <nz-page-header-extra>
-                <button nz-button nzType="default" nzSize="small">
-                  <i nz-icon nzType="folder-add" nzTheme="outline"></i> Add Case
-                </button>
-              </nz-page-header-extra>
-            </nz-page-header>
-
-            <nz-divider class="mt-2 mb-4"></nz-divider>
-
-            <nz-row [nzGutter]="[16, 16]">
-              <nz-col [nzSpan]="24">
-                <nz-card>
-                  <pre>{{ offender?.cases | json }}</pre>
-                </nz-card>
-              </nz-col>
-            </nz-row>
-
-            <nz-row [nzGutter]="[16, 16]">
-              <nz-col [nzSpan]="24">
-                <nz-card>
-                  <pre>{{ offender?.cases | json }}</pre>
-                </nz-card>
-              </nz-col>
-            </nz-row>
-
-            <nz-row [nzGutter]="[16, 16]">
-              <nz-col [nzSpan]="24">
-                <nz-card>
-                  <pre>{{ offender?.cases | json }}</pre>
-                </nz-card>
-              </nz-col>
-            </nz-row>
-
-          </nz-card>
-        </nz-col>
-
-        <nz-col [nzXs]="24" [nzSm]="12" [nzMd]="8" [nzLg]="8">
+        <!-- Offender Comments Section -->
+        <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="12" [nzXl]="8">
           <nz-card class="w-100 p-0 shadow-lg">
 
             <nz-page-header class="p-0">

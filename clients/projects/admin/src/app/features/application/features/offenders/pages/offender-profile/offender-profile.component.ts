@@ -1,4 +1,4 @@
-import { AsyncPipe, DatePipe, JsonPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -24,6 +24,7 @@ import { OffenderSimpleProfileComponent } from '@vsp/offenders';
 import { CommentListComponent, CommentListSkeletonComponent } from '@vsp/comments';
 
 import { OffendersSelectors } from '../../store';
+import { OffenderCaseSimpleDetailsComponent } from 'projects/@vsp/offenders/src/lib/components/offender-case-simple-details/offender-case-simple-details.component';
 
 @Component({
   selector: 'vsp-offender-profile',
@@ -39,6 +40,7 @@ import { OffendersSelectors } from '../../store';
     DatePipe,
     InfiniteScrollModule,
     JsonPipe,
+    NgFor,
     NgIf,
     NzAvatarModule,
     NzButtonModule,
@@ -53,6 +55,7 @@ import { OffendersSelectors } from '../../store';
     NzMessageModule,
     NzTypographyModule,
     RouterLink,
+    OffenderCaseSimpleDetailsComponent,
     OffenderSimpleProfileComponent
   ]
 })

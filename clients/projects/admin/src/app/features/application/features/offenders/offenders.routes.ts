@@ -48,6 +48,21 @@ export const offendersRoutes: Routes = [
           import('./pages/offender-profile/offender-profile.component').then(c => c.OffenderProfileComponent)
       },
       {
+        path: 'cases',
+        children: [
+          {
+            path: ':caseId',
+            children: [
+              {
+                path: 'details',
+                loadComponent: () => 
+                  import('./pages/offender-cases-details/offender-cases-details.component').then(c => c.OffenderCasesDetailsComponent)
+              }
+            ]
+          }
+        ]
+      },
+      {
         path: '**',
         redirectTo: 'profile',
         pathMatch: 'full'

@@ -1,0 +1,63 @@
+<nz-card class="shadow-lg">
+  <!-- Avatar Section -->
+  <div class="flex flex-row w-100 align-items-top mb-4">
+    <span class="mr-2">
+      <nz-avatar 
+          [nzShape]="'square'" 
+          [nzSize]="74" 
+          [nzIcon]="'user'"
+          [nzSrc]="case?.offender?.avatarUrl || undefined">
+      </nz-avatar>
+    </span>
+
+    <!-- Deteails Section -->
+    <span class="flex-grow-1">
+      <h3 class="fw-bold mb-0">
+        <a 
+            [routerLink]="offenderRouterLink"
+            title="View full offender profile">
+          {{ case?.offender?.firstName }} {{ case?.offender?.lastName }}
+        </a>
+      </h3>
+      <div class="flex flex-row justify-content-between">
+        <small>Opened On: </small>
+        <small>{{ case?.openedOn | date }}</small>
+      </div>
+      <div class="flex flex-row justify-content-between">
+        <small>Closed On: </small>
+        <small>{{ case?.closedOn | date }}</small>
+      </div>
+      <div class="flex flex-row justify-content-between">
+        <small>Status: </small>
+        <small>
+          <nz-badge 
+              nzStandalone 
+              [nzStatus]="case?.status === 'closed' ? 'success' : 'danger'"
+              [nzText]="case?.status | titlecase"></nz-badge>
+        </small>
+      </div>
+    </span>
+  </div>
+  <div>
+    <h4 class="fw-bold">Summary</h4>
+    <p>{{ case?.summary || '' }}</p>
+    <div>
+      <a
+          [routerLink]="offenderRouterLink"
+          class="mr-2"
+          nz-button 
+          nzType="default" 
+          nzShape="circle"
+          title="View full offender profile">
+        <i nz-icon nzType="folder-view"></i>
+      </a>
+      <button 
+          nz-button 
+          nzType="default" 
+          nzShape="circle"
+          title="Contact about this offender">
+        <i nz-icon nzType="mail"></i>
+      </button>
+    </div>
+  </div>
+</nz-card>
