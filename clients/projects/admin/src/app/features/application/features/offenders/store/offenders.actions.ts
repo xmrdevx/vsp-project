@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Offender, Page, PageRequest, ResponseMessage } from '@vsp/core';
+import { Offender, OffenderComment, Page, PageRequest, ResponseMessage } from '@vsp/core';
 import { TableDefinition } from '@vsp/datatable';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 
@@ -32,5 +32,13 @@ export const OffendersActions = createActionGroup({
     'Restore Offender Request Success': props<{ offender: Offender }>(),
     'Restore Offender Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Set Restore Offender Response Message': props<{ message: ResponseMessage<void>}>(),
+    'Create Offender Comment Request': props<{ offenderId: string, comment: OffenderComment }>(),
+    'Create Offender Comment Request Success': props<{ message: ResponseMessage<OffenderComment> }>(),
+    'Create Offender Comment Request Failure': props<{ message: ResponseMessage<void> }>(),
+    'Set Create Offender Comment Request Response Message': props<{ message: ResponseMessage<void> }>(),
+    'Search Offender Comments Request': props<{ offenderId: string, filter: BasicQuerySearchFilter, pageRequest: PageRequest }>(),
+    'Search Offender Comments Request Success': props<{ page: Page<OffenderComment> }>(),
+    'Search Offender Comments Request Failure': props<{ message: ResponseMessage<void>}>(),
+    'Reset Search Offender Comments': emptyProps(),
   }
 });

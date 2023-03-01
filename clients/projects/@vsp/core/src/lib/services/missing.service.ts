@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { MissingPerson } from '../entities/missing-person.entity';
-import { Comment } from '../entities/comment.entity';
+import { BaseComment } from '../entities/base-comment.entity';
 import { MissingSearchFilter, PageRequest, Page } from '../models';
 import { DistanceUnit } from '../enums';
 import { AbstractCrudService } from './abstract-crud.service';

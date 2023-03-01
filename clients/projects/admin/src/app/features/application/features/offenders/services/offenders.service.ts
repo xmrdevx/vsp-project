@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EnvironmentService, Offender, Page, PageRequest } from '@vsp/core';
+import { EnvironmentService, Offender, OffenderComment, Page, PageRequest } from '@vsp/core';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 
 @Injectable({
@@ -20,17 +20,39 @@ export class OffendersService {
     );
   }
 
+  public createOffenderComment(offenderId: string, offenderComment: OffenderComment): Observable<OffenderComment> {
+    return this._http.post<OffenderComment>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/comments`,
+      offenderComment
+    );
+  }
+
   public searchOffenders(filter: BasicQuerySearchFilter, pageRequest: PageRequest): Observable<Page<Offender>> {
     const queryParams: {[key: string]: any} = !pageRequest ? {} : { 
       pageNumber: pageRequest.index,
       pageSize: pageRequest.size,
-      sortCol: pageRequest.sort.column,
-      sortDir: pageRequest.sort.direction,
+      column: pageRequest.sort.column,
+      direction: pageRequest.sort.direction,
       query: filter?.query || '',
       isDeleted: filter?.isDeleted ?? '',
     };
     return this._http.get<Page<Offender>>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/search`,
+      { params: queryParams }
+    );
+  }
+
+  public searchOffenderComments(offenderId: string, filter: BasicQuerySearchFilter, pageRequest: PageRequest): Observable<Page<OffenderComment>> {
+    const queryParams: {[key: string]: any} = !pageRequest ? {} : { 
+      pageNumber: pageRequest.index,
+      pageSize: pageRequest.size,
+      column: pageRequest.sort.column,
+      direction: pageRequest.sort.direction,
+      query: filter?.query || '',
+      isDeleted: filter?.isDeleted ?? '',
+    };
+    return this._http.get<Page<OffenderComment>>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/comments/search`,
       { params: queryParams }
     );
   }

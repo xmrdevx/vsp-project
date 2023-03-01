@@ -18,6 +18,7 @@ import { Observable, tap } from 'rxjs';
 import { OffendersActions, OffendersSelectors } from '../../store';
 import { defaultBasicQuerySearchWithDeletedFilter, defaultPageRequest } from '@vsp/admin/core/constants';
 import { defaultSecurityPermissionsSort } from '../../../security/features/security-permissions/constants/sort.defaults';
+import { defaultOffendersSort } from '../../constants/sort.defaults';
 
 @Component({
   selector: 'vsp-offenders-overview',
@@ -52,7 +53,7 @@ export class OffendersOverviewComponent {
   public offendersPage$: Observable<Page<Offender> | null> = this._store
       .select(OffendersSelectors.selectOffendersPage);
 
-  private _defaultPageRequest: PageRequest = defaultPageRequest;
+  private _defaultPageRequest: PageRequest = { ...defaultPageRequest, sort: {...defaultOffendersSort} } as PageRequest;
   public defaultSort: Sort = defaultSecurityPermissionsSort;
 
   public offendersSearchFilter!: BasicQuerySearchFilter | null;

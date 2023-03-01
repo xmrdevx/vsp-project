@@ -6,7 +6,7 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 
 import { FlattenPageCollectionPipe } from '@vsp/pipes';
-import { Comment, Page } from '@vsp/core';
+import { BaseComment, Page } from '@vsp/core';
 
 import { CommentComponent } from '../comment/comment.component';
 
@@ -28,5 +28,5 @@ import { CommentComponent } from '../comment/comment.component';
 })
 export class CommentListComponent {
   @Input()
-  public loadedPages: Page<Comment>[] | null = null;
+  public loadedPages: Page<BaseComment>[] | null = null;
 }

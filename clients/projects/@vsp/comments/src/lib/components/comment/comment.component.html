@@ -48,7 +48,10 @@
     </nz-comment-action>
 
     <!-- Reply Section -->
-    <nz-comment-action>Reply to</nz-comment-action>
+    <ng-container *ngIf="canReply">
+      <nz-comment-action>Reply to</nz-comment-action>
+    </ng-container>
+
 
     <!-- Comment Children -->
     <ng-container *ngIf="comment.children && comment.children.length">

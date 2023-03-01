@@ -67,7 +67,6 @@ export class AccountsService implements IAccountsService {
 
 
   public async searchUsers(filter: AccountUsersSearchFilter, pageable: IPageable): Promise<Page<UserDto>> {
-    console.log("filter is ", filter);
     const options: FindManyOptions<User> = filter?.query?.trim()?.length
       ? { 
         relations: ['tenant', 'tenant.account', 'profile'],
@@ -80,11 +79,9 @@ export class AccountsService implements IAccountsService {
         relations: ['tenant', 'tenant.account', 'profile'],
         where: [{ tenantId: filter.tenantId }] 
       };
-
-      console.log("options are ", options)
     
     const [users, count] = await this._usersRepository.findByPageable(pageable, options);
-    console.log('users', users)
+    
     return new Page<UserDto>(UserMapper.toDtoList(users), count, pageable);
   }
 

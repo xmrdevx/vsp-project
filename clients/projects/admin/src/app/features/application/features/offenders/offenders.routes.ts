@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { InitialOffenderCommentSearchLoadedGuard } from './guards/initial-offender-comment-search-loaded.guard';
 import { InitialOffendersSearchLoadedGuard } from './guards/initial-offenders-search-loaded.guard';
 import { SelectedOffenderLoadedGuard } from './guards/selected-offender-loaded.guard';
 
@@ -44,6 +45,9 @@ export const offendersRoutes: Routes = [
       },
       {
         path: 'profile',
+        canActivate: [
+          InitialOffenderCommentSearchLoadedGuard
+        ],
         loadComponent: () =>
           import('./pages/offender-profile/offender-profile.component').then(c => c.OffenderProfileComponent)
       },

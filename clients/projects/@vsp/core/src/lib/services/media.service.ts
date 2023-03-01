@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Media, Comment } from '../entities';
+import { Media, BaseComment } from '../entities';
 import { Page, PageRequest } from '../models';
 import { DistanceUnit } from '../enums';
 

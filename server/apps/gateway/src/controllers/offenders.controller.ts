@@ -296,12 +296,12 @@ export class OffendersController {
   
   @Get(':offenderId/comments/search')
   public searchOffenderComments(
-    @Query('offenderId') offenderId: string,
+    @Param('offenderId') offenderId: string,
     @Query() query: BasicSearchFilterQueryParams
   ): Observable<Page<OffenderCommentDto>> {
     const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
     const filter: OffenderCommentsSearchFilter = new OffenderCommentsSearchFilter({ 
-      query: query.query, isDeleted: query.isDeleted,
+      query: query.query, isDeleted: query.isDeleted, offenderId,
     });
     return this._offendersServiceClient
       .send(searchOffenderCommentsCommand, new SearchOffenderCommentsRequest({ filter, pageable }))

@@ -73,14 +73,9 @@
 
             <nz-row [nzGutter]="[16, 16]">
               <nz-col [nzSpan]="24">
-                <nz-form-item>
-                  <nz-form-control class="mb-3" [nzSpan]="24" nzErrorTip="Please write something here!">
-                    <textarea nz-input rows="4" placeholder="Add a Comment..."></textarea>
-                  </nz-form-control>
-                  <div class="text-right block w-100">
-                    <button nz-button nzType="primary">Comment</button>
-                  </div>
-                </nz-form-item>
+                <vsp-comment-form
+                    (submitComment)="onSubmitComment(offender.id, $event)">
+                </vsp-comment-form>
               </nz-col>
             </nz-row>
 

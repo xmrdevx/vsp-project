@@ -1,12 +1,12 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzCommentModule } from 'ng-zorro-antd/comment';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
-import { Comment, User } from '@vsp/core';
+import { BaseComment, BaseCommentLike, User } from '@vsp/core';
 
 import { CommentTimeStringPipe } from '../../pipes/comment-time-string.pipe';
 
@@ -28,14 +28,26 @@ import { CommentTimeStringPipe } from '../../pipes/comment-time-string.pipe';
 })
 export class CommentComponent {
   @Input()
-  public comment: Comment | null = null;
+  public comment: BaseComment | null = null;
+
+  @Input()
+  public canReply: boolean = false;
+
+  @Output()
+  public commentLikeChange: EventEmitter<BaseCommentLike> = new EventEmitter<BaseCommentLike>();
 
   public dislike(): void {
-    // @TODO
+    this.commentLikeChange.emit({
+      isLiked: false,
+      commentId: this.comment?.id,
+    } as BaseCommentLike);
   }
 
   public like(): void {
-    // @TODO
+    this.commentLikeChange.emit({
+      isLiked: true,
+      commentId: this.comment?.id,
+    } as BaseCommentLike);
   }
 
   public get commentAuthor(): string {

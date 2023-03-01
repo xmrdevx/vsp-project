@@ -1,0 +1,19 @@
+<form [formGroup]="commentForm" (ngSubmit)="submit(commentForm.value)" novalidate>
+  <nz-form-item>
+    <nz-form-control class="mb-3" [nzSpan]="24" nzErrorTip="Please write something here!">
+      <textarea 
+          nz-input 
+          rows="4" 
+          placeholder="Write something here..."
+          formControlName="message"></textarea>
+    </nz-form-control>
+    <div class="text-right block w-100">
+      <button 
+          nz-button 
+          nzType="primary"
+          type="submit">
+        Comment
+      </button>
+    </div>
+  </nz-form-item>
+</form>
