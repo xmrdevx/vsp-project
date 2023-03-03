@@ -21,6 +21,7 @@ import { defaultSecurityPermissionsSort } from '../../../security/features/secur
 import { defaultOffendersSort } from '../../constants/sort.defaults';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { OffendersCreateComponent } from '../offenders-create/offenders-create.component';
+import { OffendersUpdateComponent } from '../offenders-update/offenders-update.component';
 
 @Component({
   selector: 'vsp-offenders-overview',
@@ -114,6 +115,20 @@ export class OffendersOverviewComponent {
       nzTitle: undefined,
       nzFooter: null,
       nzContent: OffendersCreateComponent,
+      nzComponentParams: {
+        isModal: true
+      }
+    });
+  }
+
+  public onUpdateOffender(offenderId: string): void {
+    this._store
+      .dispatch(OffendersActions.getOffenderByIdRequest({ offenderId }));
+    
+    this._modalService.create({
+      nzTitle: undefined,
+      nzFooter: null,
+      nzContent: OffendersUpdateComponent,
       nzComponentParams: {
         isModal: true
       }

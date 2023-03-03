@@ -15,7 +15,7 @@ export const OffendersActions = createActionGroup({
     'Create Offender Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Set Create Offender Response Message': props<{ message: ResponseMessage<void>| null }>(),
     'Update Offender Request': props<{ offenderId: string, offender: Offender }>(),
-    'Update Offender Request Success': props<{ message: ResponseMessage<void>}>(),
+    'Update Offender Request Success': props<{ message: ResponseMessage<Offender>}>(),
     'Update Offender Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Set Update Offender Response Message': props<{ message: ResponseMessage<void>| null }>(),
     'Get Offender By Id Request': props<{ offenderId: string }>(),

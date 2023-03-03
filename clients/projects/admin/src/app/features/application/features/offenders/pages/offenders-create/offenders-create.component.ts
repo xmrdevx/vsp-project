@@ -47,7 +47,7 @@ export class OffendersCreateComponent {
   private readonly _store: Store = inject(Store);
   private readonly _router: Router = inject(Router);
   private readonly _messageService: NzMessageService = inject(NzMessageService);
-  private readonly _modalRef: NzModalRef = inject(NzModalRef);
+  private readonly _modalRef: NzModalRef | null = inject(NzModalRef, { optional: true });
 
   @Input()
   public isModal: boolean = false;

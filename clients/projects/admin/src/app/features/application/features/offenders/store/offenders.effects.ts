@@ -62,28 +62,29 @@ export class OffendersEffects {
   );
 
 
-  // public updateOffenderRequest = createEffect(() => this._actions
-  //   .pipe(
-  //     ofType(OffendersActions.updateOffenderRequest),
-  //     exhaustMap(({ offenderId, offender }) => 
-  //       this._offendersService.updateOffender(offenderId, offender)
-  //         .pipe(
-  //           mergeMap((offender) => of(OffendersActions.updateOffenderRequestSuccess({
-  //             message: {
-  //               status: ResponseStatus.SUCCESS,
-  //               message: 'Successfully created offender!'
-  //             } as ResponseMessage<void>
-  //           }))),
-  //           catchError((error: any) => of(OffendersActions.updateOffenderRequestFailure({
-  //             message: {
-  //               status: ResponseStatus.ERROR,
-  //               message: error?.error || 'Error creating offender!'
-  //             } as ResponseMessage<void>
-  //           })))
-  //         )
-  //     )
-  //   )
-  // );
+  public updateOffenderRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(OffendersActions.updateOffenderRequest),
+      exhaustMap(({ offenderId, offender }) => 
+        this._offendersService.updateOffender(offenderId, offender)
+          .pipe(
+            mergeMap((offender) => of(OffendersActions.updateOffenderRequestSuccess({
+              message: {
+                status: ResponseStatus.SUCCESS,
+                message: 'Successfully updated offender!',
+                payload: offender
+              } as ResponseMessage<Offender>
+            }))),
+            catchError((error: any) => of(OffendersActions.updateOffenderRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error?.error || 'Error updating offender!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
 
   public searchOffendersReqeust = createEffect(() => this._actions
     .pipe(

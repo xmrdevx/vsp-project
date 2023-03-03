@@ -47,15 +47,17 @@
             title="View profile">
           <i nz-icon nzType="folder-view"></i>
         </a>
-        <a 
+        <!-- This should show and hide based on screen width, mobile should link to router, desktop dialog/modal -->
+        <button
             class=""
-            [routerLink]="[row.id, 'edit']"
             nz-button 
             nzType="default" 
             nzSize="small"
-            title="Edit">
+            title="Edit"
+            type="button"
+            (click)="onUpdateOffender(row.id)">
           <i nz-icon nzType="edit"></i>
-        </a>
+        </button>
         <!-- <button
             title="Delete"
             nz-button 

@@ -10,9 +10,9 @@ import { OffendersActions } from './offenders.actions';
 
 export interface OffendersState {
   createOffenderResponseMessage: ResponseMessage<Offender | void> | null,
-  updateOffenderResponseMessage: ResponseMessage<void> | null,
-  deleteOffenderResponseMessage: ResponseMessage<void> | null,
-  restoreOffenderResponseMessage: ResponseMessage<void> | null
+  updateOffenderResponseMessage: ResponseMessage<Offender | void> | null,
+  deleteOffenderResponseMessage: ResponseMessage<Offender | void> | null,
+  restoreOffenderResponseMessage: ResponseMessage<Offender | void> | null
   offendersPage: Page<Offender> | null,
   offendersSearchFilter: BasicQuerySearchFilter | null,
   offendersTableDefinition: TableDefinition | null,
@@ -45,8 +45,14 @@ const handleCreateOffenderResponseMessage = (state: OffendersState, { message }:
 
 const handleUpdateOffenderResponseMessage = (state: OffendersState, { message }: any) => ({
   ...state,
-  updateOffenderResponseMessage: message
-});
+  updateOffenderResponseMessage: message,
+  selectedOffender: null,
+  offendersPage: !state?.offendersPage ? null : {
+    ...state.offendersPage,
+    elements: state.offendersPage?.elements
+      .map(offender => offender.id === message.payload.id ? message.payload : offender)
+  } as Page<Offender>
+} as OffendersState);
 
 
 const handleDeleteOffenderResponseMessage = (state: OffendersState, { message }: any) => ({
