@@ -34,6 +34,8 @@
 </ng-container>
 
 <ng-template #modalLayoutTemplate>
+  <h3 nz-typography style="margin-bottom:0;">Create Offender</h3>
+  <nz-divider class="my-1 py-1"></nz-divider>
   <ng-container
       [ngTemplateOutlet]="createOffenderFormTemplate"
       [ngTemplateOutletContext]="{ form: createOffenderForm }">
@@ -58,8 +60,6 @@
 </ng-template>
 
 <ng-template #createOffenderFormTemplate let-form="form">
-  <h3 nz-typography style="margin-bottom:0;">Create Offender</h3>
-  <nz-divider class="my-1 py-1"></nz-divider>
   <form class="block" [formGroup]="form">
     <vsp-offender-form></vsp-offender-form>
   </form>

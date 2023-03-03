@@ -16,13 +16,70 @@
             
             <!-- Details Section -->
             <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12">
-              <nz-card class="w-100 p-0 shadow-lg">
-                <vsp-offender-simple-profile
-                    [offender]="offender"
-                    [includeProfileLinks]="false"
-                    [maxSummaryLength]="300">
-                </vsp-offender-simple-profile>
-              </nz-card>
+              <nz-row [nzGutter]="[16,16]">
+
+                <!-- Basic Details Card -->
+                <nz-col [nzSpan]="24">
+                  <nz-card class="w-100 p-0 shadow-lg">
+                    <vsp-offender-simple-profile
+                        [offender]="offender"
+                        [includeProfileLinks]="false"
+                        [maxSummaryLength]="300">
+                    </vsp-offender-simple-profile>
+                  </nz-card>
+                </nz-col>
+
+                <!-- Known Addresses Card -->
+                <nz-col [nzSpan]="24">
+                  <nz-card class="block w-100 p-0 shadow-lg">
+                    <nz-page-header class="p-0">
+                      <div nz-page-header-title>
+                        <h3 nz-typography style="margin-bottom:0;">Known Addresses</h3>
+                      </div>
+                      <nz-page-header-extra>
+                        <button 
+                            nz-button 
+                            nzType="default" 
+                            nzSize="small">
+                          <i nz-icon nzType="global" nzTheme="outline"></i> Add Address
+                        </button>
+                      </nz-page-header-extra>
+                    </nz-page-header>
+
+                    <nz-divider class="mt-2 mb-4"></nz-divider>
+
+                    <div>
+                      known address list h ere...
+                    </div>
+                  </nz-card>
+                </nz-col>
+
+                <!-- Links Card -->
+                <nz-col [nzSpan]="24">
+                  <nz-card class="block w-100 p-0 shadow-lg">
+                    <nz-page-header class="p-0">
+                      <div nz-page-header-title>
+                        <h3 nz-typography style="margin-bottom:0;">Links</h3>
+                      </div>
+                      <nz-page-header-extra>
+                        <button 
+                            nz-button 
+                            nzType="default" 
+                            nzSize="small">
+                          <i nz-icon nzType="link" nzTheme="outline"></i> Add Link
+                        </button>
+                      </nz-page-header-extra>
+                    </nz-page-header>
+
+                    <nz-divider class="mt-2 mb-4"></nz-divider>
+
+                    <div>
+                      known link list h ere...
+                    </div>
+                  </nz-card>
+                </nz-col>
+              </nz-row>
+              
             </nz-col>
             
             <!-- Cases Section -->
@@ -33,7 +90,11 @@
                     <h3 nz-typography style="margin-bottom:0;">Cases</h3>
                   </div>
                   <nz-page-header-extra>
-                    <button nz-button nzType="default" nzSize="small">
+                    <button 
+                        nz-button 
+                        nzType="default" 
+                        nzSize="small"
+                        (click)="onCreateNewOffenderCase()">
                       <i nz-icon nzType="folder-add" nzTheme="outline"></i> Add Case
                     </button>
                   </nz-page-header-extra>

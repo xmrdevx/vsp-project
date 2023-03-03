@@ -18,6 +18,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
 import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, User } from '@vsp/core';
 import { OffenderSimpleProfileComponent } from '@vsp/offenders';
@@ -26,6 +27,7 @@ import { CommentFormComponent, CommentListComponent, CommentListSkeletonComponen
 import { OffendersActions, OffendersSelectors } from '../../store';
 import { OffenderCaseSimpleDetailsComponent } from 'projects/@vsp/offenders/src/lib/components/offender-case-simple-details/offender-case-simple-details.component';
 import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/constants/offenders-search.defaults';
+import { OffenderCasesCreateComponent } from '../offender-cases-create/offender-cases-create.component';
 
 @Component({
   selector: 'vsp-offender-profile',
@@ -53,6 +55,7 @@ import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/con
     NzGridModule,
     NzIconModule,
     NzInputModule,
+    NzModalModule,
     NzPageHeaderModule,
     NzMessageModule,
     NzTypographyModule,
@@ -64,6 +67,7 @@ import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/con
 export class OffenderProfileComponent implements OnDestroy {
   private readonly _store: Store = inject(Store);
   private readonly _route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly _modalService: NzModalService = inject(NzModalService);
 
   public selectedOffender$: Observable<Offender | null> = 
     this._store.select(OffendersSelectors.selectSelectedOffender);
@@ -97,6 +101,19 @@ export class OffenderProfileComponent implements OnDestroy {
         comment
       })
     )
+  }
+
+
+  public onCreateNewOffenderCase(): void {
+    this._modalService.create({
+      nzTitle: undefined,
+      nzFooter: null,
+      nzContent: OffenderCasesCreateComponent,
+      nzWidth: '700px',
+      nzComponentParams: {
+        isModal: true
+      }
+    });
   }
 
   ngOnDestroy(): void {
