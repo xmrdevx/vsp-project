@@ -1,27 +1,66 @@
-<nz-page-header class="py-0">
-  <div nz-page-header-title>
-    <h1 nz-typography>Create Offender</h1>
+<ng-container *ngIf="!isModal; else modalLayoutTemplate;">
+  <nz-page-header class="py-0">
+    <div nz-page-header-title>
+      <h1 nz-typography>Create Offender</h1>
+    </div>
+    <nz-page-header-extra>
+      <button
+          class="mr-1"
+          nz-button 
+          nzType="primary"
+          (click)="createOffender(createOffenderForm.value, true)">
+        Save
+      </button>
+      <button
+          nz-button 
+          nzType="primary"
+          nzGhost
+          (click)="createOffender(createOffenderForm.value, false)">
+        Save & Create Another
+      </button>
+    </nz-page-header-extra>
+  </nz-page-header>
+
+  <div [@fadeAnimation] class="px-3">
+    <nz-card class="w-100 p-0">
+      <form nz-form>
+        <ng-container
+            [ngTemplateOutlet]="createOffenderFormTemplate"
+            [ngTemplateOutletContext]="{ form: createOffenderForm }">
+        </ng-container>
+      </form>
+    </nz-card>
   </div>
-  <nz-page-header-extra>
+</ng-container>
+
+<ng-template #modalLayoutTemplate>
+  <ng-container
+      [ngTemplateOutlet]="createOffenderFormTemplate"
+      [ngTemplateOutletContext]="{ form: createOffenderForm }">
+  </ng-container>
+  <div class="text-right">
     <button
         class="mr-1"
         nz-button 
-        nzType="primary">
+        nzType="primary"
+        (click)="createOffender(createOffenderForm.value, true)">
       Save
     </button>
     <button
+        class="mr-1"
         nz-button 
         nzType="primary"
-        nzGhost>
+        nzGhost
+        (click)="createOffender(createOffenderForm.value, false)">
       Save & Create Another
     </button>
-  </nz-page-header-extra>
-</nz-page-header>
+  </div>
+</ng-template>
 
-<div [@fadeAnimation] class="px-4">
-  <nz-card class="w-100 p-0">
-    <form class="block">
-      Form here...
-    </form>
-  </nz-card>
-</div>
+<ng-template #createOffenderFormTemplate let-form="form">
+  <h3 nz-typography style="margin-bottom:0;">Create Offender</h3>
+  <nz-divider class="my-1 py-1"></nz-divider>
+  <form class="block" [formGroup]="form">
+    <vsp-offender-form></vsp-offender-form>
+  </form>
+</ng-template>

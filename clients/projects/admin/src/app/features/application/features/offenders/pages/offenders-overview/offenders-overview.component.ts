@@ -19,6 +19,8 @@ import { OffendersActions, OffendersSelectors } from '../../store';
 import { defaultBasicQuerySearchWithDeletedFilter, defaultPageRequest } from '@vsp/admin/core/constants';
 import { defaultSecurityPermissionsSort } from '../../../security/features/security-permissions/constants/sort.defaults';
 import { defaultOffendersSort } from '../../constants/sort.defaults';
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import { OffendersCreateComponent } from '../offenders-create/offenders-create.component';
 
 @Component({
   selector: 'vsp-offenders-overview',
@@ -36,6 +38,7 @@ import { defaultOffendersSort } from '../../constants/sort.defaults';
     NzBreadCrumbModule,
     NzCardModule,
     NzIconModule,
+    NzModalModule,
     NzPageHeaderModule,
     NzPopconfirmModule,
     NzTypographyModule,
@@ -46,6 +49,7 @@ import { defaultOffendersSort } from '../../constants/sort.defaults';
 })
 export class OffendersOverviewComponent {
   private readonly _store: Store = inject(Store);
+  private readonly _modalService: NzModalService = inject(NzModalService);
 
   public offendersTableDefinition$: Observable<TableDefinition | null> = this._store
       .select(OffendersSelectors.selectOffendersTableDefinition);
@@ -103,6 +107,17 @@ export class OffendersOverviewComponent {
     if (shouldReset) {
       this._store.dispatch(OffendersActions.resetOffendersTableDefinition());
     }
+  }
+
+  public onCreateNewOffender(): void {
+    this._modalService.create({
+      nzTitle: undefined,
+      nzFooter: null,
+      nzContent: OffendersCreateComponent,
+      nzComponentParams: {
+        isModal: true
+      }
+    });
   }
 
   private _searchOffenders(filter: BasicQuerySearchFilter | null, pageRequest: PageRequest): void {

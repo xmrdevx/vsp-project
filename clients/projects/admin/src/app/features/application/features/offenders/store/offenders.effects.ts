@@ -21,13 +21,14 @@ export class OffendersEffects {
             mergeMap((offender) => of(OffendersActions.createOffenderRequestSuccess({
               message: {
                 status: ResponseStatus.SUCCESS,
-                message: 'Successfully created offender!'
-              } as ResponseMessage<void>
+                message: 'Successfully created offender!',
+                payload: offender
+              } as ResponseMessage<Offender>
             }))),
             catchError((error: any) => of(OffendersActions.createOffenderRequestFailure({
               message: {
                 status: ResponseStatus.ERROR,
-                message: error?.error || 'Error creating offender!'
+                message: error?.error || 'Error creating offender!',
               } as ResponseMessage<void>
             })))
           )

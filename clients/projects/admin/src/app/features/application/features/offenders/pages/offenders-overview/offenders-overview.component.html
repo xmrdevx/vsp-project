@@ -3,11 +3,12 @@
     <h1  nz-typography>Offenders</h1>
   </div>
   <nz-page-header-extra>
-    <a  routerLink="./create" 
+    <button
+        (click)="onCreateNewOffender()"
         nz-button 
         nzType="primary">
       Create New Offender
-    </a>
+    </button>
   </nz-page-header-extra>
 </nz-page-header>
 

@@ -9,7 +9,7 @@ import { getDefaultOffendersOverviewTableDefinition } from '../pages/offenders-o
 import { OffendersActions } from './offenders.actions';
 
 export interface OffendersState {
-  createOffenderResponseMessage: ResponseMessage<void> | null,
+  createOffenderResponseMessage: ResponseMessage<Offender | void> | null,
   updateOffenderResponseMessage: ResponseMessage<void> | null,
   deleteOffenderResponseMessage: ResponseMessage<void> | null,
   restoreOffenderResponseMessage: ResponseMessage<void> | null
@@ -39,25 +39,25 @@ export const initialOffendersState: OffendersState = {
 
 const handleCreateOffenderResponseMessage = (state: OffendersState, { message }: any) => ({
   ...state,
-  handleCreateOffenderResponseMessage: message
+  createOffenderResponseMessage: message
 });
 
 
 const handleUpdateOffenderResponseMessage = (state: OffendersState, { message }: any) => ({
   ...state,
-  handleUpdateOffenderResponseMessage: message
+  updateOffenderResponseMessage: message
 });
 
 
 const handleDeleteOffenderResponseMessage = (state: OffendersState, { message }: any) => ({
   ...state,
-  handleDeleteOffenderResponseMessage: message
+  deleteOffenderResponseMessage: message
 });
 
 
 const handleRestoreOffenderResponseMessage = (state: OffendersState, { message }: any) => ({
   ...state,
-  handleRestoreOffenderResponseMessage: message
+  restoreOffenderResponseMessage: message
 });
 
 
@@ -71,7 +71,7 @@ const handleCreateOffenderCommentResponseMessage = (state: OffendersState, { mes
     : []
   return {
     ...state,
-    handleCreateOffenderCommentResponseMessage: message,
+    createOffenderCommentResponseMessage: message,
     loadedOffenderCommentPages: newLoadedOffenderCommentPages
   } as OffendersState
 };

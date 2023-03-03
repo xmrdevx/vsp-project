@@ -11,7 +11,7 @@ export const OffendersActions = createActionGroup({
     'Search Offenders Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Set Offenders Search Filter': props<{ filter: BasicQuerySearchFilter }>(),
     'Create Offender Request': props<{ offender: Offender }>(),
-    'Create Offender Request Success': props<{ message: ResponseMessage<void>}>(),
+    'Create Offender Request Success': props<{ message: ResponseMessage<Offender>}>(),
     'Create Offender Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Set Create Offender Response Message': props<{ message: ResponseMessage<void>| null }>(),
     'Update Offender Request': props<{ offenderId: string, offender: Offender }>(),

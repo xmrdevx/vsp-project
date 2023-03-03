@@ -1,0 +1,74 @@
+<div class="block" *ngIf="offenderForm" [formGroup]="offenderForm">
+  <div class="w-100" nz-row>
+    <!-- Secion - Profile Details -->
+    <div class="" nz-col nzSpan="24">
+      <!-- Profile Details Section -->
+      <ng-template
+          [ngTemplateOutlet]="profileDetailsSectionTemplate"
+          [ngTemplateOutletContext]="{ offenderForm }">
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<!-- Offender Profile Details Section -->
+<ng-template 
+    let-form="offenderForm" 
+    #profileDetailsSectionTemplate>
+  <ng-container [formGroup]="form">
+
+    <!-- User Avatar -->
+    <div class="my-5">
+      <nz-upload
+          class="avatar-uploader text-center"
+          [nzAction]="uploadAvatarUrl"
+          nzName="avatar"
+          nzListType="picture-card"
+          [nzShowUploadList]="false"
+          [nzBeforeUpload]="beforeUpload"
+          (nzChange)="handleChange($event)">
+        <ng-container *ngIf="!avatarUrl">
+          <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+          <div class="ant-upload-text">Upload</div>
+        </ng-container>
+        <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+      </nz-upload>
+      <!-- <img class="block mx-auto my-5" style="border-radius: 50%; width: 128px; height: 128px;" src="https://i.pravatar.cc/300" /> -->
+    </div>
+
+    <!-- First & Last Name -->
+    <nz-row [nzGutter]="[16,16]">
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+        <nz-form-item>
+          <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="firstName">First Name</nz-form-label>
+          <nz-form-control [nzXs]="24" nzErrorTip="Please input your First Name!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="firstName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+        <nz-form-item>
+          <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="lastName">Last Name</nz-form-label>
+          <nz-form-control [nzXs]="24" nzErrorTip="Please input your Last Name!">
+            <nz-input-group nzPrefixIcon="user">
+              <input type="text" nz-input formControlName="lastName" />
+            </nz-input-group>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+    </nz-row>
+
+    <!-- Summary -->
+    <nz-form-item>
+      <nz-form-label class="text-left" [nzXs]="24" nzFor="summary">Summary</nz-form-label>
+      <nz-form-control>
+        <textarea
+          nz-input
+          [nzAutosize]="{ minRows: 6, maxRows: 6 }"
+          formControlName="summary"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+  </ng-container>
+</ng-template>

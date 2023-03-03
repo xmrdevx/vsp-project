@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsDefined, IsNotEmpty } from 'class-validator';
+import { IsDefined, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreateOffenderDto {
   @IsDefined()
@@ -10,8 +10,7 @@ export class CreateOffenderDto {
   @IsNotEmpty()
   public lastName: string;
   
-  @IsDefined()
-  @IsNotEmpty()
+  @IsOptional()
   public avatarUrl: string;
   
   @IsDefined()
