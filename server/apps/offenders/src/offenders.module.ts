@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { 
   Account, 
-  Address, 
+  UserAddress, 
   OffenderCase, 
   Claim, 
   DeviceCode, 
@@ -55,7 +55,6 @@ import { OffenderCommentLikesRepository } from './repositories/offender-comment-
     }),
     TypeOrmModule.forFeature([
       Account,
-      Address,
       OffenderComment,
       OffenderCommentLike,
       OffenderCase,
@@ -68,6 +67,7 @@ import { OffenderCommentLikesRepository } from './repositories/offender-comment-
       Role,
       Tenant,
       User,
+      UserAddress,
     ])
   ],
   controllers: [

@@ -1,4 +1,4 @@
-export class CreateAddressDto {
+export class CreateUserAddressDto {
   public street?: string;
   public street2?: string;
   public city?: string;
@@ -6,7 +6,7 @@ export class CreateAddressDto {
   public zip?: string;
   public country?: string;
 
-  constructor(obj: Partial<CreateAddressDto>) {
+  constructor(obj: Partial<CreateUserAddressDto>) {
     Object.assign(this, obj);
   }
 }

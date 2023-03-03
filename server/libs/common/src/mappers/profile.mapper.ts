@@ -1,6 +1,6 @@
 import { ProfileDto } from '../dtos/identity';
 import { Profile } from '../entities/identity';
-import { AddressMapper } from './address.mapper';
+import { UserAddressMapper } from './user-address.mapper';
 
 export class ProfileMapper {
   public static toDto(entity: Profile): ProfileDto {
@@ -12,7 +12,7 @@ export class ProfileMapper {
       lastName: entity.lastName,
       summary: entity.summary,
       avatarUrl: entity.avatarUrl,
-      address: entity?.address ? AddressMapper.toDto(entity.address) : undefined
+      address: entity?.address ? UserAddressMapper.toDto(entity.address) : undefined
     });
   }
   

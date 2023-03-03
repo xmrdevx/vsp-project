@@ -1,12 +1,12 @@
 import { BaseDto } from '../base.dto';
-import { AddressDto } from './address.dto';
+import { UserAddressDto } from './user-address.dto';
 
 export class ProfileDto extends BaseDto {
   public firstName: string;
   public lastName: string;
   public summary: string | null | undefined;
   public avatarUrl: string | null | undefined;
-  public address: AddressDto | null | undefined;
+  public address: UserAddressDto | null | undefined;
 
   constructor(obj: Partial<ProfileDto>) {
     super();
@@ -18,7 +18,7 @@ export class ProfileDto extends BaseDto {
       lastName: obj?.lastName,
       summary: obj?.summary,
       avatarUrl: obj?.avatarUrl,
-      address: new AddressDto(obj?.address || {})
+      address: new UserAddressDto(obj?.address || {})
     });
   }
 }

@@ -1,5 +1,6 @@
 import { Column, Entity, JoinTable, ManyToMany, OneToMany } from 'typeorm';
 import { BaseTrackedEntity } from '../base-tracked.entity';
+import { Address } from '../shared';
 import { OffenderCase } from './offender-case.entity';
 import { OffenderComment } from './offender-comment.entity';
 
@@ -22,6 +23,14 @@ export class Offender extends BaseTrackedEntity {
 
   @OneToMany(type => OffenderComment, comment => comment.offender)
   public comments: OffenderComment[] | null | undefined;
+
+  @ManyToMany(type => Address, { eager: false })
+  @JoinTable({
+    name: 'offender_address',
+    joinColumn: { name: 'offender_id', referencedColumnName: "id" },
+    inverseJoinColumn: { name: 'address_id', referencedColumnName: "id" }
+  })
+  public addresses: Address[] | null | undefined;
 
   constructor(obj: Partial<Offender>) {
     super();

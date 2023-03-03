@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsDefined, IsNotEmpty, ValidateNested } from 'class-validator';
-import { CreateAddressDto } from './create-address.dto';
+import { CreateUserAddressDto } from './create-user-address.dto';
 
 export class CreateProfileDto {
   @IsDefined()
@@ -17,8 +17,8 @@ export class CreateProfileDto {
   @IsDefined()
   @IsNotEmpty()
   @ValidateNested()
-  @Type(() => CreateAddressDto)
-  public address: CreateAddressDto;
+  @Type(() => CreateUserAddressDto)
+  public address: CreateUserAddressDto;
 
   constructor(obj: Partial<CreateProfileDto>) {
     Object.assign(this, obj);

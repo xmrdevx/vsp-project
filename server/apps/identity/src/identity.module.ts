@@ -3,7 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthorizationModule } from '@vsp/authorization';
 
 import { Account, Client, PermissionTemplate, RefreshToken, Role, User } from '@vsp/common';
-import { Address } from '@vsp/common/entities/identity/address.entity';
+import { UserAddress } from '@vsp/common/entities/identity/user-address.entity';
 import { Claim } from '@vsp/common/entities/identity/claim.entity';
 import { DeviceCode } from '@vsp/common/entities/identity/device-code.entity';
 import { Profile } from '@vsp/common/entities/identity/profile.entity';
@@ -66,7 +66,6 @@ import { PermissionTemplatesService } from './services/permission-templates.serv
     }),
     TypeOrmModule.forFeature([
       Account,
-      Address,
       Claim,
       Client,
       DeviceCode,
@@ -75,7 +74,8 @@ import { PermissionTemplatesService } from './services/permission-templates.serv
       RefreshToken,
       Role,
       Tenant,
-      User
+      User,
+      UserAddress,
     ])
   ],
   controllers: [

@@ -1,5 +1,5 @@
 export * from './account.mapper';
-export * from './address.mapper';
+export * from './user-address.mapper';
 export * from './offender-case.mapper';
 export * from './claim.mapper';
 export * from './geo-location.mapper';

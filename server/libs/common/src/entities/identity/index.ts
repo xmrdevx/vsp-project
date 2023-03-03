@@ -1,5 +1,5 @@
 export * from './account.entity';
-export * from './address.entity';
+export * from './user-address.entity';
 export * from './claim.entity';
 export * from './client.entity';
 export * from './device-code.entity';

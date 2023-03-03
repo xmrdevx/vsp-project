@@ -3,7 +3,7 @@ import { BaseEntity } from "../base.entity";
 import { Profile } from "./profile.entity";
 
 @Entity({ name: 'app_address' })
-export class Address extends BaseEntity {
+export class UserAddress extends BaseEntity {
   @Column({ type: String, nullable: true })
   public street: string | null | undefined;
 
@@ -25,7 +25,7 @@ export class Address extends BaseEntity {
   @OneToOne(type => Profile, profile => profile.address)
   public profile: Profile;
 
-  constructor(obj: Partial<Address>) {
+  constructor(obj: Partial<UserAddress>) {
     super();
     Object.assign(this, obj);
   }
