@@ -19,6 +19,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { OffenderFormComponent } from '../../components/offender-form/offender-form.component';
 import { buildOffenderForm } from '../../components/offender-form/offender-form.builder';
 import { OffendersActions, OffendersSelectors } from '../../store';
+import { removeEmptyKeys } from '@vsp/admin/shared/utils';
 
 @Component({
   selector: 'vsp-offenders-create',
@@ -56,6 +57,7 @@ export class OffendersCreateComponent {
 
   public createOffender(offender: Offender, shouldRedirect: boolean = false): void {
     if (this.createOffenderForm.invalid) return;
+    removeEmptyKeys(offender);
     this._store.dispatch(OffendersActions.createOffenderRequest({ offender }));
     this._handleCreateOffenderResponseMessage(shouldRedirect);
   }

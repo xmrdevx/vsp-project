@@ -62,8 +62,8 @@
 
     <!-- Summary -->
     <nz-form-item>
-      <nz-form-label class="text-left" [nzXs]="24" nzFor="summary">Summary</nz-form-label>
-      <nz-form-control>
+      <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="summary">Summary</nz-form-label>
+      <nz-form-control nzErrorTip="Please input a summary!">
         <textarea
           nz-input
           [nzAutosize]="{ minRows: 6, maxRows: 6 }"
