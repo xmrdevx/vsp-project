@@ -58,7 +58,11 @@ import {
   createOffenderAddressCommand,
   GetResourceRequest,
   getOffenderAddressesCommand,
-  AccountDto} from '@vsp/common';
+  AccountDto,
+  createOffenderLinkCommand,
+  CreateLinkDto,
+  LinkDto,
+  getOffenderLinksCommand} from '@vsp/common';
 
 import { 
   EnrichBodyWithCreatedByInterceptor, 
@@ -338,19 +342,19 @@ export class OffendersController {
   @Get(':offenderId/links')
   public getOffenderLinks(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
     return this._offendersServiceClient
-      .send(getOffenderAddressesCommand, new GetResourceRequest<AccountDto[]>({ resourceId: offenderId }))
+      .send(getOffenderLinksCommand, new GetResourceRequest<LinkDto[]>({ resourceId: offenderId }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
 
   @Post(':offenderId/links')
   public createOffenderLink(
-      @Param('offenderId') offenderId: string, @Body() createAddressDto: CreateAddressDto): Observable<AddressDto> {
+      @Param('offenderId') offenderId: string, @Body() createLinkDto: CreateLinkDto): Observable<LinkDto> {
 
     return this._offendersServiceClient
       .send(
-        createOffenderAddressCommand,
-        new CreateResourceRequest<CreateAddressDto>({ resourceId: offenderId, resource: createAddressDto})
+        createOffenderLinkCommand,
+        new CreateResourceRequest<CreateLinkDto>({ resourceId: offenderId, resource: createLinkDto })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }

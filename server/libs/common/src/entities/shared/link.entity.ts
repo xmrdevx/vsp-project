@@ -1,12 +1,12 @@
-import { LinkType, Visibility } from '@vsp/common/enums';
-import { Point } from 'geojson';
-import { Column, Entity, OneToOne } from "typeorm";
+import { LinkType } from '../../enums/link-type.enum';
+import { Visibility } from '../../enums/visibility.enum';
+import { Column, Entity } from "typeorm";
 import { BaseEntity } from "../base.entity";
 
 @Entity()
-export class Address extends BaseEntity {
+export class Link extends BaseEntity {
   @Column({ type: 'enum', enum: LinkType, default: LinkType.DOCUMENTATION })
-  public type: string | null | undefined;
+  public type: LinkType;
 
   @Column()
   public name: string;
@@ -17,7 +17,7 @@ export class Address extends BaseEntity {
   @Column({ type: 'enum', enum: Visibility, default: Visibility.PRIVATE })
   public visibility: Visibility;
 
-  constructor(obj: Partial<Address>) {
+  constructor(obj: Partial<Link>) {
     super();
     Object.assign(this, obj);
   }

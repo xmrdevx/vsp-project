@@ -18,7 +18,10 @@ import {
   OffenderComment, 
   OffenderCommentLike, 
   ADDRESSES_REPOSITORY_TOKEN,
-  AddressesRepository} from '@vsp/common';
+  AddressesRepository,
+  LINKS_REPOSITORY_TOKEN,
+  LinksRepository, 
+  Link } from '@vsp/common';
 
 import { CoreModule, TypeOrmConfigService } from '@vsp/core';
 import { LoggerModule } from '@vsp/logger';
@@ -26,6 +29,8 @@ import { LoggerModule } from '@vsp/logger';
 import { OffendersController } from './controllers/offenders.controller';
 import { OffenderCasesController } from './controllers/offender-cases.controller';
 import { OffenderCommentsController } from './controllers/offender-comments.controller';
+import { OffenderAddressesController } from './controllers/offender-addresses.controller';
+import { OffenderLinksController } from './controllers/offender-links.controller';
 
 import { OFFENDER_CASES_SERVICE_TOKEN } from './interfaces/offender-cases-service.interface';
 import { OffenderCasesService } from './services/offender-cases.service';
@@ -49,8 +54,11 @@ import { OFFENDER_COMMENT_LIKES_REPOSITORY_TOKEN } from './interfaces/offender-c
 import { OffenderCommentLikesRepository } from './repositories/offender-comment-likes.repository';
 
 import { OFFENDER_ADDRESSES_SERVICE_TOKEN } from './interfaces/offender-addresses-service.interface';
-import { OffenderAddressesController } from './controllers/offender-addresses.controller';
 import { OffenderAddressesService } from './services/offender-addresses.service';
+
+import { OFFENDER_LINKS_SERVICE_TOKEN } from './interfaces/offender-links-service.interface';
+import { OffenderLinksService } from './services/offender-links.service';
+
 
 @Module({
   imports: [
@@ -69,6 +77,7 @@ import { OffenderAddressesService } from './services/offender-addresses.service'
       Claim,
       DeviceCode,
       GeoLocation,
+      Link,
       Offender,
       Profile,
       RefreshToken,
@@ -82,7 +91,8 @@ import { OffenderAddressesService } from './services/offender-addresses.service'
     OffendersController,
     OffenderCasesController,
     OffenderCommentsController,
-    OffenderAddressesController
+    OffenderAddressesController,
+    OffenderLinksController
   ],
   providers: [
     {
@@ -120,6 +130,14 @@ import { OffenderAddressesService } from './services/offender-addresses.service'
     {
       provide: ADDRESSES_REPOSITORY_TOKEN,
       useClass: AddressesRepository
+    },
+    {
+      provide: OFFENDER_LINKS_SERVICE_TOKEN,
+      useClass: OffenderLinksService
+    },
+    {
+      provide: LINKS_REPOSITORY_TOKEN,
+      useClass: LinksRepository
     }
   ],
 })

@@ -4,6 +4,7 @@ export * from './user-address.mapper';
 export * from './offender-case.mapper';
 export * from './claim.mapper';
 export * from './geo-location.mapper';
+export * from './link.mapper';
 export * from './permission-template.mapper';
 export * from './profile.mapper';
 export * from './offender.mapper';
