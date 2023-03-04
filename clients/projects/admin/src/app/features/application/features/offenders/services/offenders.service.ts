@@ -102,8 +102,8 @@ export class OffendersService {
     );
   }
 
-  public getOffenderLinks(offenderId: string): Observable<Address[]> {
-    return this._http.get<Address[]>(
+  public getOffenderLinks(offenderId: string): Observable<Link[]> {
+    return this._http.get<Link[]>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/links`
     );
   }

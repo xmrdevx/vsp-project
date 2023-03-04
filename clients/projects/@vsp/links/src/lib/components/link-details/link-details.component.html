@@ -1,0 +1,23 @@
+
+<div class="flex flex-row justify-content-between mb-1">
+  <small>
+    <nz-tag 
+        class="m-0"
+        [nzColor]="linkTypeBadgeColor">
+      <small>{{ link?.type | titlecase }}</small>
+    </nz-tag>
+  </small>
+  <small>
+    <nz-tag class="m-0">
+      {{ link?.visibility | titlecase }}
+    </nz-tag>
+  </small>
+</div>
+<div class="flex flex-row justify-content-between">
+  <small>Name: </small>
+  <small>{{ link?.name }}</small>
+</div>
+<div class="flex flex-row justify-content-between">
+  <small>Url: </small>
+  <small><a [href]="link?.url" target="_blank">{{ link?.url }}</a></small>
+</div>

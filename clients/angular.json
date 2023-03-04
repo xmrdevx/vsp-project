@@ -531,6 +531,72 @@
           }
         }
       }
+    },
+    "addresses": {
+      "projectType": "library",
+      "root": "projects/@vsp/addresses",
+      "sourceRoot": "projects/@vsp/addresses/src",
+      "prefix": "vsp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/@vsp/addresses/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/@vsp/addresses/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/@vsp/addresses/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/@vsp/addresses/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "links": {
+      "projectType": "library",
+      "root": "projects/@vsp/links",
+      "sourceRoot": "projects/@vsp/links/src",
+      "prefix": "vsp",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/@vsp/links/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/@vsp/links/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/@vsp/links/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/@vsp/links/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

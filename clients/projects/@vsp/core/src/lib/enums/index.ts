@@ -7,3 +7,4 @@ export * from './measurement-units.enum';
 export * from './person-sex.enum';
 export * from './role-types.enum';
 export * from './visibility.enum';
+export * from './link-type.enum';

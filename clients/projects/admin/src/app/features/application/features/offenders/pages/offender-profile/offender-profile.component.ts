@@ -28,6 +28,8 @@ import { OffendersActions, OffendersSelectors } from '../../store';
 import { OffenderCaseSimpleDetailsComponent } from 'projects/@vsp/offenders/src/lib/components/offender-case-simple-details/offender-case-simple-details.component';
 import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/constants/offenders-search.defaults';
 import { OffenderCasesCreateComponent } from '../offender-cases-create/offender-cases-create.component';
+import { AddressDetailsComponent } from '../../../../../../../../../@vsp/addresses/src/public-api';
+import { LinkDetailsComponent } from 'projects/@vsp/links/src/public-api';
 
 @Component({
   selector: 'vsp-offender-profile',
@@ -61,7 +63,9 @@ import { OffenderCasesCreateComponent } from '../offender-cases-create/offender-
     NzTypographyModule,
     RouterModule,
     OffenderCaseSimpleDetailsComponent,
-    OffenderSimpleProfileComponent
+    OffenderSimpleProfileComponent,
+    AddressDetailsComponent,
+    LinkDetailsComponent,
   ]
 })
 export class OffenderProfileComponent implements OnDestroy {

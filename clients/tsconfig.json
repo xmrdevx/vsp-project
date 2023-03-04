@@ -32,6 +32,12 @@
       ],
       "@vsp/comments": [
         "dist/@vsp/comments"
+      ],
+      "addresses": [
+        "dist/@vsp/addresses"
+      ],
+      "links": [
+        "dist/@vsp/links"
       ]
     },
     "outDir": "./dist/out-tsc",

@@ -49,8 +49,17 @@
                     <nz-divider class="mt-2 mb-4"></nz-divider>
 
                     <div>
-                      <pre>{{ (selectedOffenderAddresses$ | async) | json }}</pre>
+                      <ng-container *ngIf="selectedOffenderAddresses$ | async as addresses; else noAddressesTemplate">
+                        <ng-container *ngIf="addresses?.length; else noAddressesTemplate">
+                          <ng-container *ngFor="let address of addresses">
+                            <nz-card class="mb-3">
+                              <vsp-address-details [address]="address"></vsp-address-details>
+                            </nz-card>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
                     </div>
+
                   </nz-card>
                 </nz-col>
 
@@ -74,8 +83,17 @@
                     <nz-divider class="mt-2 mb-4"></nz-divider>
 
                     <div>
-                      <pre>{{ (selectedOffenderLinks$ | async) | json }}</pre>
+                      <ng-container *ngIf="selectedOffenderLinks$ | async as links; else noLinksTemplate">
+                        <ng-container *ngIf="links?.length; else noLinksTemplate">
+                          <ng-container *ngFor="let link of links">
+                            <nz-card class="mb-3">
+                              <vsp-link-details [link]="link"></vsp-link-details>
+                            </nz-card>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
                     </div>
+
                   </nz-card>
                 </nz-col>
               </nz-row>
@@ -192,6 +210,26 @@
     <nz-empty 
         nzNotFoundImage="simple"
         nzNotFoundContent="No offender comments to display!">
+    </nz-empty>
+  </nz-card>
+</ng-template>
+
+<!-- No Offender Addresses Template -->
+<ng-template #noAddressesTemplate>
+  <nz-card class="w-100 p-0">
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No offender addresses to display!">
+    </nz-empty>
+  </nz-card>
+</ng-template>
+
+<!-- No Offender Links Template -->
+<ng-template #noLinksTemplate>
+  <nz-card class="w-100 p-0">
+    <nz-empty 
+        nzNotFoundImage="simple"
+        nzNotFoundContent="No offender links to display!">
     </nz-empty>
   </nz-card>
 </ng-template>
