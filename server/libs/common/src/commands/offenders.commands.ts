@@ -60,3 +60,39 @@ export const searchOffenderCommentsCommand: MessagePatternCommand<void> = {
 export const createOffenderCommentCommand: MessagePatternCommand<void> = {
   cmd: 'create-offender-comment'
 } as MessagePatternCommand<void>;
+
+
+// Offender Addresses
+export const getOffenderAddressesCommand: MessagePatternCommand<void> = {
+  cmd: 'get-offender-addresses'
+} as MessagePatternCommand<void>;
+
+export const createOffenderAddressCommand: MessagePatternCommand<void> = {
+  cmd: 'create-offender-address'
+} as MessagePatternCommand<void>;
+
+export const updateOffenderAddressCommand: MessagePatternCommand<void> = {
+  cmd: 'update-offender-address'
+} as MessagePatternCommand<void>;
+
+export const deleteOffenderAddressCommand: MessagePatternCommand<void> = {
+  cmd: 'delete-offender-address'
+} as MessagePatternCommand<void>;
+
+
+// Offender Links
+export const getOffenderLinksCommand: MessagePatternCommand<void> = {
+  cmd: 'get-offender-links'
+} as MessagePatternCommand<void>;
+
+export const createOffenderLinkCommand: MessagePatternCommand<void> = {
+  cmd: 'create-offender-link'
+} as MessagePatternCommand<void>;
+
+export const updateOffenderLinkCommand: MessagePatternCommand<void> = {
+  cmd: 'update-offender-link'
+} as MessagePatternCommand<void>;
+
+export const deleteOffenderLinkCommand: MessagePatternCommand<void> = {
+  cmd: 'delete-offender-link'
+} as MessagePatternCommand<void>;

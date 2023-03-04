@@ -52,7 +52,13 @@ import {
   OffenderCommentDto,
   searchOffenderCommentsCommand,
   BasicQuerySearchFilter,
-  OffenderCommentsSearchFilter} from '@vsp/common';
+  OffenderCommentsSearchFilter,
+  AddressDto,
+  CreateAddressDto,
+  createOffenderAddressCommand,
+  GetResourceRequest,
+  getOffenderAddressesCommand,
+  AccountDto} from '@vsp/common';
 
 import { 
   EnrichBodyWithCreatedByInterceptor, 
@@ -136,15 +142,17 @@ export class OffendersController {
   public getLatestOffendersByCount(@Query('count') count: number): Observable<OffenderDto[]> {
     return this._offendersServiceClient
       .send(getLatestOffenderByCountCommand, new GetLatestOffendersRequestDto({ count }))
-      .pipe(catchError(error => throwError(() => new RpcException(error.response))))
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
 
   @Get(':offenderId')
   public getOffenderById(@Param('offenderId') offenderId: string): Observable<OffenderDto> {
+    
     return this._offendersServiceClient
       .send(getOffenderByIdCommand, new GetOffenderByIdRequest({ offenderId }))
-      .pipe(catchError(error => throwError(() => new RpcException(error.response))))
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+
   }
 
 
@@ -158,15 +166,15 @@ export class OffendersController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
   public updateOffender(
-    @Param('offenderId') offenderId: string, 
-    @Body() updateOffenderDto: UpdateOffenderDto
-  ): Observable<OffenderDto> {
+      @Param('offenderId') offenderId: string, @Body() updateOffenderDto: UpdateOffenderDto): Observable<OffenderDto> {
+    
     return this._offendersServiceClient
       .send(
         updateOffenderCommand, 
         new UpdateResourceRequest<UpdateOffenderDto>({ resourceId: offenderId, resource: updateOffenderDto })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+
   }
 
 
@@ -180,9 +188,8 @@ export class OffendersController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
   public deleteOffender(
-    @Body('deletedById') deletedById: string, 
-    @Param('offenderId') offenderId: string
-  ): Observable<OffenderDto> {
+      @Body('deletedById') deletedById: string, @Param('offenderId') offenderId: string): Observable<OffenderDto> {
+    
     return this._offendersServiceClient
       .send(
         deleteOffenderCommand, 
@@ -192,6 +199,7 @@ export class OffendersController {
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+
   }
 
 
@@ -209,8 +217,8 @@ export class OffendersController {
     EnrichBodyWithTenantInterceptor
   )
   public createOffenderCase(
-    @Body() createCaseDto: CreateCaseDto, @Param('offenderId') offenderId: string
-  ): Observable<OffenderCaseDto> {
+      @Body() createCaseDto: CreateCaseDto, @Param('offenderId') offenderId: string): Observable<OffenderCaseDto> {
+    
     return this._offendersServiceClient
       .send(
         createOffenderCaseCommand, 
@@ -232,10 +240,9 @@ export class OffendersController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
   public updatedOffenderCase(
-    @Body() updateCaseDto: UpdateOffenderCaseDto, 
-    @Param('offenderId') offenderId: string,
-    @Param('caseId') caseId: string
+    @Body() updateCaseDto: UpdateOffenderCaseDto, @Param('offenderId') offenderId: string, @Param('caseId') caseId: string
   ): Observable<OffenderCaseDto> {
+    
     return this._offendersServiceClient
       .send(
         updateOffenderCaseCommand, 
@@ -258,10 +265,9 @@ export class OffendersController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
   public deleteOffenderCase(
-    @Body('deletedById') deletedById: string, 
-    @Param('offenderId') offenderId: string,
-    @Param('caseId') caseId: string
+    @Body('deletedById') deletedById: string, @Param('offenderId') offenderId: string, @Param('caseId') caseId: string
   ): Observable<OffenderCaseDto> {
+    
     return this._offendersServiceClient
       .send(
         deleteOffenderCaseCommand, 
@@ -296,15 +302,56 @@ export class OffendersController {
   
   @Get(':offenderId/comments/search')
   public searchOffenderComments(
-    @Param('offenderId') offenderId: string,
-    @Query() query: BasicSearchFilterQueryParams
-  ): Observable<Page<OffenderCommentDto>> {
+      @Param('offenderId') offenderId: string, 
+      @Query() query: BasicSearchFilterQueryParams): Observable<Page<OffenderCommentDto>> {
+    
     const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
     const filter: OffenderCommentsSearchFilter = new OffenderCommentsSearchFilter({ 
       query: query.query, isDeleted: query.isDeleted, offenderId,
     });
     return this._offendersServiceClient
       .send(searchOffenderCommentsCommand, new SearchOffenderCommentsRequest({ filter, pageable }))
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+
+  @Get(':offenderId/addresses')
+  public getOffenderAddresses(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
+    return this._offendersServiceClient
+      .send(getOffenderAddressesCommand, new GetResourceRequest<AccountDto[]>({ resourceId: offenderId }))
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+
+  @Post(':offenderId/addresses')
+  public createOffenderAddress(
+      @Param('offenderId') offenderId: string, @Body() createAddressDto: CreateAddressDto): Observable<AddressDto> {
+
+    return this._offendersServiceClient
+      .send(
+        createOffenderAddressCommand,
+        new CreateResourceRequest<CreateAddressDto>({ resourceId: offenderId, resource: createAddressDto})
+      )
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+  @Get(':offenderId/links')
+  public getOffenderLinks(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
+    return this._offendersServiceClient
+      .send(getOffenderAddressesCommand, new GetResourceRequest<AccountDto[]>({ resourceId: offenderId }))
+      .pipe(catchError(error => throwError(() => new RpcException(error.response))));
+  }
+
+
+  @Post(':offenderId/links')
+  public createOffenderLink(
+      @Param('offenderId') offenderId: string, @Body() createAddressDto: CreateAddressDto): Observable<AddressDto> {
+
+    return this._offendersServiceClient
+      .send(
+        createOffenderAddressCommand,
+        new CreateResourceRequest<CreateAddressDto>({ resourceId: offenderId, resource: createAddressDto})
+      )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 }

@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { 
-  Account, 
+  Account,
+  Address,
   UserAddress, 
   OffenderCase, 
   Claim, 
@@ -15,7 +16,9 @@ import {
   Tenant, 
   User, 
   OffenderComment, 
-  OffenderCommentLike } from '@vsp/common';
+  OffenderCommentLike, 
+  ADDRESSES_REPOSITORY_TOKEN,
+  AddressesRepository} from '@vsp/common';
 
 import { CoreModule, TypeOrmConfigService } from '@vsp/core';
 import { LoggerModule } from '@vsp/logger';
@@ -45,6 +48,10 @@ import { OffenderCommentsRepository } from './repositories/offender-comments.rep
 import { OFFENDER_COMMENT_LIKES_REPOSITORY_TOKEN } from './interfaces/offender-comment-likes-repository.interface';
 import { OffenderCommentLikesRepository } from './repositories/offender-comment-likes.repository';
 
+import { OFFENDER_ADDRESSES_SERVICE_TOKEN } from './interfaces/offender-addresses-service.interface';
+import { OffenderAddressesController } from './controllers/offender-addresses.controller';
+import { OffenderAddressesService } from './services/offender-addresses.service';
+
 @Module({
   imports: [
     CoreModule.forRoot(),
@@ -55,6 +62,7 @@ import { OffenderCommentLikesRepository } from './repositories/offender-comment-
     }),
     TypeOrmModule.forFeature([
       Account,
+      Address,
       OffenderComment,
       OffenderCommentLike,
       OffenderCase,
@@ -73,7 +81,8 @@ import { OffenderCommentLikesRepository } from './repositories/offender-comment-
   controllers: [
     OffendersController,
     OffenderCasesController,
-    OffenderCommentsController
+    OffenderCommentsController,
+    OffenderAddressesController
   ],
   providers: [
     {
@@ -103,6 +112,14 @@ import { OffenderCommentLikesRepository } from './repositories/offender-comment-
     {
       provide: OFFENDER_COMMENT_LIKES_REPOSITORY_TOKEN,
       useClass: OffenderCommentLikesRepository
+    },
+    {
+      provide: OFFENDER_ADDRESSES_SERVICE_TOKEN,
+      useClass: OffenderAddressesService
+    },
+    {
+      provide: ADDRESSES_REPOSITORY_TOKEN,
+      useClass: AddressesRepository
     }
   ],
 })

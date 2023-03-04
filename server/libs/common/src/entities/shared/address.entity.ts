@@ -27,10 +27,10 @@ export class Address extends BaseEntity {
   public country: string | null | undefined;
 
   @Column({ type: 'float8', nullable: true, default: null })
-  public latitude: number;
+  public latitude: number | null | undefined;
 
   @Column({ type: 'float8', nullable: true, default: null  })
-  public longitude: number;
+  public longitude: number | null | undefined;
 
   @Column({ type: 'geography', spatialFeatureType: 'Point', srid: 4326, nullable: true, default: null })
   public location: Point | null | undefined;

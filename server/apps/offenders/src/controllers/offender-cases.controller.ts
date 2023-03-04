@@ -16,9 +16,9 @@ import {
   DeleteResourceRequest,
   UpdateResourceRequest,
   UpdateOffenderCaseDto,
-  DeleteOffenderCaseDto} from '@vsp/common';
+  DeleteOffenderCaseDto } from '@vsp/common';
 
-  import { LoggerService } from '@vsp/logger';
+import { LoggerService } from '@vsp/logger';
 import { OFFENDER_CASES_SERVICE_TOKEN, IOffenderCasesService } from '../interfaces/offender-cases-service.interface';
 
 @Controller('offenders/cases')

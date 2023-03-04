@@ -24,7 +24,7 @@ export class Offender extends BaseTrackedEntity {
   @OneToMany(type => OffenderComment, comment => comment.offender)
   public comments: OffenderComment[] | null | undefined;
 
-  @ManyToMany(type => Address, { eager: false })
+  @ManyToMany(type => Address, { eager: false, cascade: ['update'] })
   @JoinTable({
     name: 'offender_address',
     joinColumn: { name: 'offender_id', referencedColumnName: "id" },

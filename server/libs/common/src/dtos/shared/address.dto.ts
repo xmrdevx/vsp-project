@@ -1,6 +1,6 @@
 import { BaseDto } from '../base.dto';
 
-export class UserAddressDto extends BaseDto {
+export class AddressDto extends BaseDto {
   public street: string | null | undefined;
   public street2: string | null | undefined;
   public city: string | null | undefined;
@@ -10,7 +10,7 @@ export class UserAddressDto extends BaseDto {
   public latitude: number | null | undefined;
   public longitude: number | null | undefined;
 
-  constructor(obj: Partial<UserAddressDto>) {
+  constructor(obj: Partial<AddressDto>) {
     super();
     Object.assign(this, obj);
   }

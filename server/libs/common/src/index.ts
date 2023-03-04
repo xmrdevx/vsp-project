@@ -17,6 +17,7 @@ export * from './dtos/query';
 export * from './dtos/requests';
 export * from './dtos/search-filters';
 export * from './dtos/streams';
+export * from './dtos/shared';
 
 // Entities
 export * from './entities/base.entity';
@@ -25,6 +26,7 @@ export * from './entities/geocoding';
 export * from './entities/identity';
 export * from './entities/offenders';
 export * from './entities/streams';
+export * from './entities/shared';
 
 // Enums
 export * from './enums';

@@ -1,4 +1,5 @@
 export * from './account.mapper';
+export * from './account.mapper';
 export * from './user-address.mapper';
 export * from './offender-case.mapper';
 export * from './claim.mapper';
