@@ -48,13 +48,15 @@ import {
   defaultLeafletOffenderMarkerIcon, 
   defaultLeafletOptions, 
   defaultLeafletOffenderPopoverOptions, 
-  defaultLeafletOffenderTooltipOptions } from '../../constants/map.constants';
+  defaultLeafletOffenderTooltipOptions, 
+  defaultLeafletDrawOptions} from '../../constants/map.constants';
 
 import { ExploreStore } from '../../stores/explore-store.service';
 import { ExploreOffenderDialogContentComponent } from '../../components/explore-offender-dialog-content/explore-offender-dialog-content.component';
 import { ExploreMissingDialogContentComponent } from '../../components/explore-missing-dialog-content/explore-missing-dialog-content.component';
 import { ExploreCaseStatisticsComponent } from '../../components/explore-case-statistics/explore-case-statistics.component';
 import { ExploreMissingStatisticsComponent } from '../../components/explore-missing-statistics/explore-missing-statistics.component';
+import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
 
 @Component({
   selector: 'pjo-explore',
@@ -71,6 +73,7 @@ import { ExploreMissingStatisticsComponent } from '../../components/explore-miss
     ExploreMissingDialogContentComponent,
     ExploreMissingStatisticsComponent,
     ExploreOffenderDialogContentComponent,
+    LeafletDrawModule,
     LeafletModule,
     LeafletMarkerClusterModule,
     MissingPersonSimpleProfileComponent,
@@ -115,6 +118,7 @@ export class ExploreComponent implements OnInit, OnDestroy {
 
   public defaultLeafletLayerControls: LeafletControlLayersConfig = defaultLeafletLayerControls;
   public defaultLeafletOptions: any = defaultLeafletOptions;
+  public defaultLeafletDrawOptions: any = defaultLeafletDrawOptions;
   public defaultLeafletMarkerIcon = defaultLeafletMarkerIcon;
   public defaultLeafletOffenderMarkerIcon = defaultLeafletOffenderMarkerIcon;
   public defaultLeafletMissingMarkerIcon = defaultLeafletMissingMarkerIcon;

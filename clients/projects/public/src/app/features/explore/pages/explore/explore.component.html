@@ -45,7 +45,9 @@
       <div 
           class="map"
           leaflet
+          leafletDraw
           [leafletOptions]="defaultLeafletOptions"
+          [leafletDrawOptions]="defaultLeafletDrawOptions"
           [leafletLayersControl]="defaultLeafletLayerControls"
           [leafletMarkerCluster]="activeMarkers"
           [leafletMarkerClusterOptions]="markerClusterOptions"

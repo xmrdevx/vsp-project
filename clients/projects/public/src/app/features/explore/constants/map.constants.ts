@@ -1,5 +1,5 @@
 import { LeafletControlLayersConfig } from '@asymmetrik/ngx-leaflet';
-import { icon, marker, Point, TileLayer, tileLayer, tooltip, TooltipOptions } from 'leaflet';
+import { featureGroup, icon, marker, Point, TileLayer, tileLayer, tooltip, TooltipOptions } from 'leaflet';
 import { OffenderCase, MapMarker, MissingPerson } from '@vsp/core';
 
 export const streetMaps: TileLayer = tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -22,6 +22,35 @@ export const defaultLeafletOptions: any = {
   zoom: defaultUnitedStatesCoordinates.zoom,
   center: defaultUnitedStatesCoordinates.coordinates
 };
+
+export const defaultLeafletDrawOptions: any = {
+	position: 'topleft',
+	draw: {
+		marker: {
+			icon: icon({
+				iconSize: [ 25, 41 ],
+				iconAnchor: [ 13, 41 ],
+				iconUrl: '2b3e1faf89f94a4835397e7a43b4f77d.png',
+				iconRetinaUrl: '680f69f3c2e6b90c1812a813edf67fd7.png',
+				shadowUrl: 'a0c6cc1401c107b501efee6477816891.png'
+			})
+		},
+		polyline: false,
+		circle: {
+			shapeOptions: {
+				color: '#d4af37'
+			}
+		},
+		rectangle: {
+			shapeOptions: {
+				color: '#85bb65'
+			}
+		}
+	},
+	edit: {
+		featureGroup: featureGroup()
+	}
+};;
 
 export const defaultLeafletLayerControls: LeafletControlLayersConfig = {
   baseLayers: {

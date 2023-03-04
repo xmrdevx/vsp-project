@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ComponentStore, tapResponse } from '@ngrx/component-store';
 import { catchError, EMPTY, Observable, switchMap, take, tap } from 'rxjs';
 
-import { LoadingState, MissingPerson, Page, MissingSearchFilter, MissingService, PageRequest, Comment } from '@vsp/core';
+import { LoadingState, MissingPerson, Page, MissingSearchFilter, MissingService, PageRequest, BaseComment } from '@vsp/core';
 
 import { defaultMissingSearchFilter } from '../constants/missing-search.defaults';
 
