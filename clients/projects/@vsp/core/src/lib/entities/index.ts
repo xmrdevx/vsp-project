@@ -28,3 +28,7 @@ export * from './offenders/offender-comment-like.entity';
 export * from './offenders/offender-comment.entity';
 export * from './offenders/offender-case.entity';
 export * from './offenders/offender.entity';
+
+// Shared
+export * from './shared/address.entity';
+export * from './shared/link.entity';

@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { defaultBasicQuerySearchWithDeletedFilter } from '@vsp/admin/core/constants';
-import { Offender, OffenderComment, Page, ResponseMessage } from '@vsp/core';
+import { Address, Link, Offender, OffenderComment, Page, ResponseMessage } from '@vsp/core';
 import { TableDefinition } from '@vsp/datatable';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 
@@ -17,6 +17,8 @@ export interface OffendersState {
   offendersSearchFilter: BasicQuerySearchFilter | null,
   offendersTableDefinition: TableDefinition | null,
   selectedOffender: Offender | null,
+  selectedOffenderAddresses: Address[] | null,
+  selectedOffenderLinks: Link[] | null,
   createOffenderCommentResponseMessage: ResponseMessage<OffenderComment | void> | null,
   currentOffenderCommentsPage: Page<OffenderComment> | null,
   loadedOffenderCommentPages: Page<OffenderComment>[],
@@ -31,6 +33,8 @@ export const initialOffendersState: OffendersState = {
   offendersSearchFilter: defaultBasicQuerySearchWithDeletedFilter,
   offendersTableDefinition: getDefaultOffendersOverviewTableDefinition(),
   selectedOffender: null,
+  selectedOffenderAddresses: null,
+  selectedOffenderLinks: null,
   createOffenderCommentResponseMessage: null,
   currentOffenderCommentsPage: null,
   loadedOffenderCommentPages: [],
@@ -127,6 +131,18 @@ const handleResetSearchOffenderComments = (state: OffendersState, { page }: any)
 } as OffendersState);
 
 
+const handleGetOffenderAddressesRequestSuccess = (state: OffendersState, { addresses }: any) => ({
+  ...state,
+  selectedOffenderAddresses: addresses
+} as OffendersState);
+
+
+const handleGetOffenderLinksRequestSuccess = (state: OffendersState, { links }: any) => ({
+  ...state,
+  selectedOffenderLinks: links
+} as OffendersState);
+
+
 export const offendersFeature = createFeature({
   name: 'offenders',
   reducer: createReducer(
@@ -183,6 +199,14 @@ export const offendersFeature = createFeature({
     on(
       OffendersActions.resetSearchOffenderComments,
       handleResetSearchOffenderComments
+    ),
+    on(
+      OffendersActions.getOffenderAddressesRequestSuccess,
+      handleGetOffenderAddressesRequestSuccess
+    ),
+    on(
+      OffendersActions.getOffenderLinksRequestSuccess,
+      handleGetOffenderLinksRequestSuccess
     )
   )
 });

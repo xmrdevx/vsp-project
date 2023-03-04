@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, mergeMap, of, switchMap } from 'rxjs';
 
-import { Offender, OffenderComment, Page, ResponseMessage, ResponseStatus } from '@vsp/core';
+import { Address, Link, Offender, OffenderComment, Page, ResponseMessage, ResponseStatus } from '@vsp/core';
 
 import { OffendersService } from '../services/offenders.service';
 import { OffendersActions } from './offenders.actions';
@@ -241,4 +241,44 @@ export class OffendersEffects {
   //     ))
   //   )
   // )
+
+  public getOffenderAddresses = createEffect(() => this._actions
+    .pipe(
+      ofType(OffendersActions.getOffenderAddressesRequest),
+      switchMap(({ offenderId }) =>
+        this._offendersService.getOffenderAddresses(offenderId)
+          .pipe(
+            mergeMap((addresses: Address[]) => of(
+              OffendersActions.getOffenderAddressesRequestSuccess({ addresses })
+            )),
+            catchError((error: any) => of(OffendersActions.getOffenderAddressesRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error?.error || 'Error getting offender addresses'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
+
+  public getOffenderLinks = createEffect(() => this._actions
+    .pipe(
+      ofType(OffendersActions.getOffenderLinksRequest),
+      switchMap(({ offenderId }) =>
+        this._offendersService.getOffenderLinks(offenderId)
+          .pipe(
+            mergeMap((links: Link[]) => of(
+              OffendersActions.getOffenderLinksRequestSuccess({ links })
+            )),
+            catchError((error: any) => of(OffendersActions.getOffenderLinksRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error?.error || 'Error getting offender links'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
 }

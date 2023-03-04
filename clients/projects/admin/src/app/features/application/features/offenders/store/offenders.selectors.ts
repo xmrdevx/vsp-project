@@ -62,6 +62,18 @@ export const selectSelectedOffender = createSelector(
 );
 
 
+export const selectSelectedOffenderAddresses = createSelector(
+  selectOffendersState,
+  (state: OffendersState) => state.selectedOffenderAddresses
+);
+
+
+export const selectSelectedOffenderLinks = createSelector(
+  selectOffendersState,
+  (state: OffendersState) => state.selectedOffenderLinks
+);
+
+
 export const selectCurrentOffenderCommentsPage = createSelector(
   selectOffendersState,
   (state: OffendersState) => state.currentOffenderCommentsPage
@@ -86,4 +98,6 @@ export const OffendersSelectors = {
   selectUpdateOffenderResponseMessage,
   selectCurrentOffenderCommentsPage,
   selectLoadedOffenderCommentPages,
+  selectSelectedOffenderAddresses,
+  selectSelectedOffenderLinks
 };

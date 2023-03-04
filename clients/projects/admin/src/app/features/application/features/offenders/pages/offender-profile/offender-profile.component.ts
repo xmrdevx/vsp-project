@@ -20,7 +20,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
-import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, User } from '@vsp/core';
+import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, User, Address, Link } from '@vsp/core';
 import { OffenderSimpleProfileComponent } from '@vsp/offenders';
 import { CommentFormComponent, CommentListComponent, CommentListSkeletonComponent } from '@vsp/comments';
 
@@ -77,6 +77,12 @@ export class OffenderProfileComponent implements OnDestroy {
 
   public loadedOffenderCommentsPages$: Observable<Page<OffenderComment>[]> = 
     this._store.select(OffendersSelectors.selectLoadedOffenderCommentPages);
+
+  public selectedOffenderAddresses$: Observable<Address[] | null> = 
+    this._store.select(OffendersSelectors.selectSelectedOffenderAddresses);
+
+  public selectedOffenderLinks$: Observable<Link[] | null> = 
+    this._store.select(OffendersSelectors.selectSelectedOffenderLinks);
 
   public defaultInfiniteScrollSettings: InfiniteScrollSettings = defaultInfiniteScrollSettings;
 

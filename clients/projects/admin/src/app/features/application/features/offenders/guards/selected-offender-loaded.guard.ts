@@ -27,11 +27,9 @@ export class SelectedOffenderLoadedGuard implements CanActivate {
       .pipe(
         tap(offender => {
           if (!offender || offender.id !== offenderId) {
-            this._store.dispatch(
-              OffendersActions.getOffenderByIdRequest({ 
-                offenderId: offenderId 
-              })
-            );
+            this._store.dispatch(OffendersActions.getOffenderByIdRequest({ offenderId }));
+            this._store.dispatch(OffendersActions.getOffenderAddressesRequest({ offenderId }));
+            this._store.dispatch(OffendersActions.getOffenderLinksRequest({ offenderId }));
           }
         }),
         filter((offender: Offender | null) => !!offender && offender.id === offenderId),

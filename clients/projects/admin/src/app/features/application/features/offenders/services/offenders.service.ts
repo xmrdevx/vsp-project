@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { EnvironmentService, Offender, OffenderComment, Page, PageRequest } from '@vsp/core';
+import { Address, EnvironmentService, Link, Offender, OffenderComment, Page, PageRequest } from '@vsp/core';
 import { BasicQuerySearchFilter } from '@vsp/query-search-filters';
 
 @Injectable({
@@ -79,6 +79,32 @@ export class OffendersService {
   public restoreOffender(offenderId: string): Observable<Offender> {
     return this._http.delete<Offender>(
       `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/restore`
+    );
+  }
+
+  public createOffenderAddress(offenderId: string, address: Address): Observable<Address> {
+    return this._http.post<Address>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/addresses`,
+      address
+    );
+  }
+
+  public getOffenderAddresses(offenderId: string): Observable<Address[]> {
+    return this._http.get<Address[]>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/addresses`
+    );
+  }
+
+  public createOffenderLink(offenderId: string, link: Link): Observable<Link> {
+    return this._http.post<Link>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/links`,
+      link
+    );
+  }
+
+  public getOffenderLinks(offenderId: string): Observable<Address[]> {
+    return this._http.get<Address[]>(
+      `${this._environmentService.getBaseApiUrl()}/${this._endpointSlug}/${offenderId}/links`
     );
   }
 }

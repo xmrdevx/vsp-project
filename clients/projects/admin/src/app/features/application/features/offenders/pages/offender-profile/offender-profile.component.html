@@ -49,7 +49,7 @@
                     <nz-divider class="mt-2 mb-4"></nz-divider>
 
                     <div>
-                      known address list h ere...
+                      <pre>{{ (selectedOffenderAddresses$ | async) | json }}</pre>
                     </div>
                   </nz-card>
                 </nz-col>
@@ -74,7 +74,7 @@
                     <nz-divider class="mt-2 mb-4"></nz-divider>
 
                     <div>
-                      known link list h ere...
+                      <pre>{{ (selectedOffenderLinks$ | async) | json }}</pre>
                     </div>
                   </nz-card>
                 </nz-col>
