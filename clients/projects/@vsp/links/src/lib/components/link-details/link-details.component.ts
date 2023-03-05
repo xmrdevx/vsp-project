@@ -23,7 +23,7 @@ export class LinkDetailsComponent {
   public get linkTypeBadgeColor(): string {
     switch (this.link?.type) {
       case LinkType.DOCUMENTATION: return 'processing';
-      case LinkType.SOCIAL:        return 'social';
+      case LinkType.SOCIAL:        return 'success';
       case LinkType.OTHER:         return 'default';
       default:                     return 'default';
     }
