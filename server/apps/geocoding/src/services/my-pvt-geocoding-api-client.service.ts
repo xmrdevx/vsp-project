@@ -4,7 +4,7 @@ import { catchError, firstValueFrom, map, of } from 'rxjs';
 import { AxiosResponse } from 'axios';
 
 import { EnvironmentService } from '@vsp/core';
-import { GeocodingLocationDto, MapCoordinateDto, SearchGeoLocationsByTextRequestDto } from '@vsp/common';
+import { AddressDto, GeocodingLocationDto, MapCoordinateDto, SearchGeoLocationsByTextRequestDto } from '@vsp/common';
 
 import { IGeocodingApiClient } from '../interfaces/geocoding-api-client.interface';
 import { MyPvtLocation, MyPvtLocationsResponse } from '../models/my-pvt.models';
@@ -35,7 +35,21 @@ export class MyPvtGeocodingApiClientService implements IGeocodingApiClient {
               ...location.referencePosition,
               longitude: location?.referencePosition?.longitude || 0,
               latitude: location?.referencePosition?.latitude || 0
-            } satisfies MapCoordinateDto
+            } satisfies MapCoordinateDto,
+            address: {
+              street: `${location?.address?.houseNumber} ${location?.address?.street}`,
+              street2: '',
+              city: location?.address?.city || '',
+              state: location?.address?.state?.length 
+                ? location?.address?.state 
+                : location?.address?.province?.length 
+                  ? location?.address?.province
+                  : '',
+              zip: location?.address?.postalCode,
+              country: location?.address?.countryName,
+              longitude: location?.referencePosition?.longitude || 0,
+              latitude: location?.referencePosition?.latitude || 0
+            } as AddressDto
           } satisfies GeocodingLocationDto))),
           catchError(error => of([])) // return empty array on error
         )

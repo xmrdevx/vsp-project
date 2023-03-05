@@ -9,8 +9,21 @@ export interface MyPvtCoordinate {
   longitude: number,
 }
 
+export interface MyPvtAddress {
+  countryName: string,
+  state: string,
+  province: string,
+  postalCode: string | number,
+  city: string,
+  district: string,
+  subdistrict: string,
+  street: string,
+  houseNumber: string
+}
+
 export interface MyPvtLocation {
   referencePosition: MyPvtCoordinate,
   roadAccessPosition: MyPvtCoordinate,
   formattedAddress: string,
+  address: MyPvtAddress
 }
