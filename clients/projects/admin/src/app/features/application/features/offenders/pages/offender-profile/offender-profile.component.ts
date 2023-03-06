@@ -20,16 +20,17 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
-import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, User, Address, Link } from '@vsp/core';
+import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, User, Address, Link, GeocodingLocation } from '@vsp/core';
 import { OffenderSimpleProfileComponent } from '@vsp/offenders';
 import { CommentFormComponent, CommentListComponent, CommentListSkeletonComponent } from '@vsp/comments';
 
 import { OffendersActions, OffendersSelectors } from '../../store';
-import { OffenderCaseSimpleDetailsComponent } from 'projects/@vsp/offenders/src/lib/components/offender-case-simple-details/offender-case-simple-details.component';
+import { OffenderCaseSimpleDetailsComponent } from '@vsp/offenders';
 import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/constants/offenders-search.defaults';
 import { OffenderCasesCreateComponent } from '../offender-cases-create/offender-cases-create.component';
-import { AddressDetailsComponent } from '../../../../../../../../../@vsp/addresses/src/public-api';
-import { LinkDetailsComponent } from 'projects/@vsp/links/src/public-api';
+import { AddressDetailsComponent } from '@vsp/addresses';
+import { LinkDetailsComponent } from '@vsp/links';
+import { OffenderAddressCreateComponent } from '../offender-address-create/offender-address-create.component';
 
 @Component({
   selector: 'vsp-offender-profile',
@@ -120,8 +121,25 @@ export class OffenderProfileComponent implements OnDestroy {
       nzFooter: null,
       nzContent: OffenderCasesCreateComponent,
       nzWidth: '700px',
+      nzCloseOnNavigation: true,
+      nzMaskClosable: false,
       nzComponentParams: {
         isModal: true
+      }
+    });
+  }
+
+  public onCreateNewOffenderAddress(offenderId: string): void {
+    this._modalService.create({
+      nzTitle: undefined,
+      nzFooter: null,
+      nzContent: OffenderAddressCreateComponent,
+      nzWidth: '700px',
+      nzCloseOnNavigation: true,
+      nzMaskClosable: false,
+      nzComponentParams: {
+        isModal: true,
+        offenderId: offenderId
       }
     });
   }

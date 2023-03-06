@@ -32,6 +32,8 @@ export const OffendersActions = createActionGroup({
     'Restore Offender Request Success': props<{ offender: Offender }>(),
     'Restore Offender Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Set Restore Offender Response Message': props<{ message: ResponseMessage<void>}>(),
+    
+    // Offender Comments
     'Create Offender Comment Request': props<{ offenderId: string, comment: OffenderComment }>(),
     'Create Offender Comment Request Success': props<{ message: ResponseMessage<OffenderComment> }>(),
     'Create Offender Comment Request Failure': props<{ message: ResponseMessage<void> }>(),
@@ -40,9 +42,21 @@ export const OffendersActions = createActionGroup({
     'Search Offender Comments Request Success': props<{ page: Page<OffenderComment> }>(),
     'Search Offender Comments Request Failure': props<{ message: ResponseMessage<void>}>(),
     'Reset Search Offender Comments': emptyProps(),
+
+    // Offender Addresses
+    'Create Offender Address Request': props<{ offenderId: string, address: Address }>(),
+    'Create Offender Address Request Success': props<{ message: ResponseMessage<Address> }>(),
+    'Create Offender Address Request Failure': props<{ message: ResponseMessage<void> }>(),
+    'Set Create Offender Address Response Message': props<{ message: ResponseMessage<Address | void> | null }>(),
     'Get Offender Addresses Request': props<{ offenderId: string }>(),
     'Get Offender Addresses Request Success': props<{ addresses: Address[] }>(),
     'Get Offender Addresses Request Failure': props<{ message: ResponseMessage<void> }>(),
+
+    // Offender Links
+    'Create Offender Link Request': props<{ offenderId: string, link: Link }>(),
+    'Create Offender Link Request Success': props<{ message: ResponseMessage<Link> }>(),
+    'Create Offender Link Request Failure': props<{ message: ResponseMessage<void> }>(),
+    'Set Create Offender Link Response Message': props<{ message: ResponseMessage<Link | void> | null }>(),
     'Get Offender Links Request': props<{ offenderId: string }>(),
     'Get Offender Links Request Success': props<{ links: Link[] }>(),
     'Get Offender Links Request Failure': props<{ message: ResponseMessage<void> }>(),

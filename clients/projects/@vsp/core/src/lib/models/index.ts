@@ -56,3 +56,6 @@ export * from './search-filters/missing-search-filter.model';
 // Settings
 export * from './settings/infinite-scroll-settings.model';
 
+// List Options
+export * from './list-options/list-option.model';
+

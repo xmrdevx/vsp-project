@@ -20,6 +20,18 @@ export const selectCreateOffenderResponseMessage = createSelector(
 );
 
 
+export const selectCreateOffenderAddressResponseMessage = createSelector(
+  selectOffendersState,
+  (state: OffendersState) => state.createOffenderAddressResponseMessage
+);
+
+
+export const selectCreateOffenderLinkResponseMessage = createSelector(
+  selectOffendersState,
+  (state: OffendersState) => state.createOffenderLinkResponseMessage
+);
+
+
 export const selectUpdateOffenderResponseMessage = createSelector(
   selectOffendersState,
   (state: OffendersState) => state.updateOffenderResponseMessage
@@ -88,7 +100,9 @@ export const selectLoadedOffenderCommentPages = createSelector(
 
 export const OffendersSelectors = {
   selectCreateOffenderResponseMessage,
+  selectCreateOffenderAddressResponseMessage,
   selectCreateOffenderCommentResponseMessage,
+  selectCreateOffenderLinkResponseMessage,
   selectDeleteOffenderResponseMessage,
   selectOffendersPage,
   selectOffendersSearchFilter,

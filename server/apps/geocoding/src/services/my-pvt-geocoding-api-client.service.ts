@@ -12,6 +12,7 @@ import { MyPvtLocation, MyPvtLocationsResponse } from '../models/my-pvt.models';
 @Injectable()
 export class MyPvtGeocodingApiClientService implements IGeocodingApiClient {
   private readonly _baseApiUrl: string;
+  private readonly _defaultCountryCodes: string;
 
   constructor(
     private readonly _environmentService: EnvironmentService,
@@ -19,14 +20,18 @@ export class MyPvtGeocodingApiClientService implements IGeocodingApiClient {
   ) {
     const baseUri: string = this._environmentService.get('GEOCODING_BASE_URI');
     const apiKey: string = this._environmentService.get('GEOCODING_API_KEY');
-    const countryCodes: string = this._environmentService.get('GEOCODING_COUNTRY_CODES');
-    this._baseApiUrl = `${baseUri}?apiKey=${apiKey}&countryFilter=${countryCodes}`;
+    this._defaultCountryCodes = this._environmentService.get('GEOCODING_COUNTRY_CODES');
+    this._baseApiUrl = `${baseUri}?apiKey=${apiKey}`;
   }
 
   public async resolveLocationsFromText(request: SearchGeoLocationsByTextRequestDto): Promise<GeocodingLocationDto[]> {
+    const countryCodes: string = request?.country?.trim().length 
+      ? request.country 
+      : this._defaultCountryCodes;
+
     return await firstValueFrom(
       this._httpService
-        .get(`${this._baseApiUrl}&searchText=${request.text}`)
+        .get(`${this._baseApiUrl}&countryFilter=${countryCodes}&searchText=${request.text}`)
         .pipe(
           map((response: AxiosResponse<MyPvtLocationsResponse>) => response?.data?.locations || []),
           map((locations: MyPvtLocation[]) => locations.map(location => new GeocodingLocationDto({

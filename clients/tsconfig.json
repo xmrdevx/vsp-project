@@ -33,10 +33,10 @@
       "@vsp/comments": [
         "dist/@vsp/comments"
       ],
-      "addresses": [
+      "@vsp/addresses": [
         "dist/@vsp/addresses"
       ],
-      "links": [
+      "@vsp/links": [
         "dist/@vsp/links"
       ]
     },

@@ -20,9 +20,11 @@ export class GeocodingController {
 
   @Get('locations/by-text')
   @CacheTTL(86400) // Cache for 1 day
-  public searchLocationsByText(@Query('text') text: string): Observable<GeocodingLocationDto[]> {
+  public searchLocationsByText(
+      @Query('text') text: string, @Query('country') country: string = 'US'): Observable<GeocodingLocationDto[]> {
+
     return this._geocodingServiceClient
-      .send(searchLocationsByText, new SearchGeoLocationsByTextRequestDto({ text }))
+      .send(searchLocationsByText, new SearchGeoLocationsByTextRequestDto({ text, country }))
       .pipe(catchError(error => throwError(() => new RpcException(error))));
   }
 }

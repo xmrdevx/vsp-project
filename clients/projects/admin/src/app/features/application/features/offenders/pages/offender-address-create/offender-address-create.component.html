@@ -1,0 +1,66 @@
+<ng-container *ngIf="!isModal; else modalLayoutTemplate;">
+  <nz-page-header class="py-0">
+    <div nz-page-header-title>
+      <h1 nz-typography>Create Address</h1>
+    </div>
+    <nz-page-header-extra>
+      <button
+          class="mr-1"
+          nz-button 
+          nzType="primary"
+          (click)="createOffenderAddress(createOffenderAddressForm.value, true)">
+        Save
+      </button>
+      <button
+          nz-button 
+          nzType="primary"
+          nzGhost
+          (click)="createOffenderAddress(createOffenderAddressForm.value, false)">
+        Save & Create Another
+      </button>
+    </nz-page-header-extra>
+  </nz-page-header>
+
+  <div [@fadeAnimation] class="px-3">
+    <nz-card class="w-100 p-0">
+      <form nz-form>
+        <ng-container
+            [ngTemplateOutlet]="createOffenderAddressFormTemplate"
+            [ngTemplateOutletContext]="{ form: createOffenderAddressForm }">
+        </ng-container>
+      </form>
+    </nz-card>
+  </div>
+</ng-container>
+
+<ng-template #modalLayoutTemplate>
+  <h3 nz-typography style="margin-bottom:0;">Create Address</h3>
+  <nz-divider class="my-1 py-1"></nz-divider>
+  <ng-container
+      [ngTemplateOutlet]="createOffenderAddressFormTemplate"
+      [ngTemplateOutletContext]="{ form: createOffenderAddressForm }">
+  </ng-container>
+  <div class="text-right">
+    <button
+        class="mr-1"
+        nz-button 
+        nzType="primary"
+        (click)="createOffenderAddress(createOffenderAddressForm.value, true)">
+      Save
+    </button>
+    <button
+        class="mr-1"
+        nz-button 
+        nzType="primary"
+        nzGhost
+        (click)="createOffenderAddress(createOffenderAddressForm.value, false)">
+      Save & Create Another
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #createOffenderAddressFormTemplate let-form="form">
+  <form class="block" [formGroup]="form">
+    <vsp-offender-address-form></vsp-offender-address-form>
+  </form>
+</ng-template>

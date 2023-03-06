@@ -62,6 +62,56 @@ export class OffendersEffects {
   );
 
 
+  public createOffenderAddressRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(OffendersActions.createOffenderAddressRequest),
+      exhaustMap(({ offenderId, address }) => 
+        this._offendersService.createOffenderAddress(offenderId, address)
+          .pipe(
+            mergeMap((address: Address) => of(OffendersActions.createOffenderAddressRequestSuccess({
+              message: {
+                status: ResponseStatus.SUCCESS,
+                message: 'Successfully created address!',
+                payload: address
+              } as ResponseMessage<Address>
+            }))),
+            catchError((error: any) => of(OffendersActions.createOffenderAddressRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error?.error || 'Error creating address!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
+
+
+  public createOffenderLinkRequest = createEffect(() => this._actions
+    .pipe(
+      ofType(OffendersActions.createOffenderLinkRequest),
+      exhaustMap(({ offenderId, link }) => 
+        this._offendersService.createOffenderLink(offenderId, link)
+          .pipe(
+            mergeMap((link: Link) => of(OffendersActions.createOffenderLinkRequestSuccess({
+              message: {
+                status: ResponseStatus.SUCCESS,
+                message: 'Successfully created link!',
+                payload: link
+              } as ResponseMessage<Link>
+            }))),
+            catchError((error: any) => of(OffendersActions.createOffenderLinkRequestFailure({
+              message: {
+                status: ResponseStatus.ERROR,
+                message: error?.error || 'Error creating address!'
+              } as ResponseMessage<void>
+            })))
+          )
+      )
+    )
+  );
+
+
   public updateOffenderRequest = createEffect(() => this._actions
     .pipe(
       ofType(OffendersActions.updateOffenderRequest),

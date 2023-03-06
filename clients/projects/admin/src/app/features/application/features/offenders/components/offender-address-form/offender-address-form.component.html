@@ -1,0 +1,94 @@
+<nz-form-item class="mb-0">
+  <nz-form-control [nzXs]="24" nzErrorTip="Please input your First Name!">
+    <vsp-address-search-control
+        (selectedLocationChange)="onSelectedLocationChange($event)"></vsp-address-search-control>
+  </nz-form-control>
+</nz-form-item>
+
+<nz-divider></nz-divider>
+
+<ng-container *ngIf="offenderAddressForm" [formGroup]="offenderAddressForm">
+  <!-- Street Address -->
+  <nz-form-item>
+    <nz-form-label class="text-left" [nzXs]="24" nzFor="street">Street Address</nz-form-label>
+    <nz-form-control nzErrorTip="Please input a street!">
+      <input
+        nz-input
+        formControlName="street" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- Address Line 2-->
+  <nz-form-item>
+    <nz-form-label class="text-left" [nzXs]="24" nzFor="street2">Address Line 2</nz-form-label>
+    <nz-form-control nzErrorTip="Please input a street!">
+      <input
+        nz-input
+        formControlName="street2" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- City & State/Province -->
+  <nz-row [nzGutter]="[16,16]">
+    <!-- City -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label class="text-left" [nzXs]="24" nzFor="city">City</nz-form-label>
+        <nz-form-control [nzXs]="24" nzErrorTip="Please input your City!">
+          <input type="text" nz-input formControlName="city" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+    <!-- State / Province -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="6">
+      <nz-form-item>
+        <nz-form-label class="text-left" [nzXs]="24" nzFor="state">State/Province</nz-form-label>
+        <nz-form-control [nzXs]="24" nzErrorTip="Please input your State">
+          <input type="text" nz-input formControlName="state" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+    <!-- Country -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="6">
+      <nz-form-item>
+        <nz-form-label class="text-left" [nzXs]="24" nzFor="country">County</nz-form-label>
+        <nz-form-control nzErrorTip="Please input a country!">
+          <input
+            nz-input
+            formControlName="country" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+
+  <!-- Country -->
+  <nz-row [nzGutter]="[16,16]">
+    <!-- Latitude -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label class="text-left" [nzXs]="24" nzFor="latitude">Latitude</nz-form-label>
+        <nz-form-control nzErrorTip="Please input a latitude!">
+          <input
+            nz-input
+            formControlName="latitude" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+
+    <!-- Longitude -->
+    <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+      <nz-form-item>
+        <nz-form-label class="text-left" [nzXs]="24" nzFor="summary">Longitude</nz-form-label>
+        <nz-form-control nzErrorTip="Please input a longitude!">
+          <input
+            nz-input
+            formControlName="longitude" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+</ng-container>
+
+

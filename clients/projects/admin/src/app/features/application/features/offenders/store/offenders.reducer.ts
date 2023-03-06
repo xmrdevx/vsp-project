@@ -10,6 +10,8 @@ import { OffendersActions } from './offenders.actions';
 
 export interface OffendersState {
   createOffenderResponseMessage: ResponseMessage<Offender | void> | null,
+  createOffenderAddressResponseMessage: ResponseMessage<Address | void> | null,
+  createOffenderLinkResponseMessage: ResponseMessage<Link | void> | null,
   updateOffenderResponseMessage: ResponseMessage<Offender | void> | null,
   deleteOffenderResponseMessage: ResponseMessage<Offender | void> | null,
   restoreOffenderResponseMessage: ResponseMessage<Offender | void> | null
@@ -26,6 +28,8 @@ export interface OffendersState {
 
 export const initialOffendersState: OffendersState = {
   createOffenderResponseMessage: null,
+  createOffenderAddressResponseMessage: null,
+  createOffenderLinkResponseMessage: null,
   updateOffenderResponseMessage: null,
   deleteOffenderResponseMessage: null,
   restoreOffenderResponseMessage: null,
@@ -143,6 +147,36 @@ const handleGetOffenderLinksRequestSuccess = (state: OffendersState, { links }: 
 } as OffendersState);
 
 
+const handleCreateOfffenderAddressRequestSuccess = (state: OffendersState, { message }: any) => ({
+  ...state,
+  createOffenderAddressResponseMessage: message,
+  selectedOffenderAddresses: state.selectedOffenderAddresses?.length 
+    ? [message.payload, ...state.selectedOffenderAddresses]
+    : [message.payload]
+} as OffendersState);
+
+
+const handleCreateOffenderAddressResponseMessage = (state: OffendersState, { message }: any) => ({
+  ...state,
+  createOffenderAddressResponseMessage: message
+} as OffendersState);
+
+
+const handleCreateOfffenderLinkRequestSuccess = (state: OffendersState, { message }: any) => ({
+  ...state,
+  createOffenderAddressResponseMessage: message,
+  selectedOffenderLinks: state.selectedOffenderLinks?.length 
+    ? [message.payload, ...state.selectedOffenderLinks]
+    : [message.payload]
+} as OffendersState);
+
+
+const handleCreateOffenderLinkResponseMessage = (state: OffendersState, { message }: any) => ({
+  ...state,
+  createOffenderLinkResponseMessage: message
+} as OffendersState);
+
+
 export const offendersFeature = createFeature({
   name: 'offenders',
   reducer: createReducer(
@@ -207,6 +241,24 @@ export const offendersFeature = createFeature({
     on(
       OffendersActions.getOffenderLinksRequestSuccess,
       handleGetOffenderLinksRequestSuccess
-    )
+    ),
+    on(
+      OffendersActions.createOffenderAddressRequestSuccess,
+      handleCreateOfffenderAddressRequestSuccess
+    ),
+    on(
+      OffendersActions.createOffenderAddressRequestFailure,
+      OffendersActions.setCreateOffenderAddressResponseMessage,
+      handleCreateOffenderAddressResponseMessage
+    ),
+    on(
+      OffendersActions.createOffenderLinkRequestSuccess,
+      handleCreateOfffenderLinkRequestSuccess
+    ),
+    on(
+      OffendersActions.createOffenderLinkRequestFailure,
+      OffendersActions.setCreateOffenderLinkResponseMessage,
+      handleCreateOffenderLinkResponseMessage
+    ),
   )
 });

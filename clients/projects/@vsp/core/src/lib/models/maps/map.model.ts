@@ -1,3 +1,5 @@
+import { Address } from '../../entities/shared/address.entity';
+
 export interface MapBounds {
   northEast: MapCoordinate,
   southWest: MapCoordinate,
@@ -17,4 +19,5 @@ export interface MapMarker<T> {
 export interface GeocodingLocation {
   location: MapCoordinate,
   fullAddressString: string
+  address: Address
 }
