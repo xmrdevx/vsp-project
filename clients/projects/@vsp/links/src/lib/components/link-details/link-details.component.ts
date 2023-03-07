@@ -27,7 +27,7 @@ export class LinkDetailsComponent {
     switch (this.link?.type) {
       case LinkType.DOCUMENTATION: return 'processing';
       case LinkType.SOCIAL:        return 'success';
-      case LinkType.OTHER:         return 'default';
+      case LinkType.OTHER:         return 'warning';
       default:                     return 'default';
     }
   }
