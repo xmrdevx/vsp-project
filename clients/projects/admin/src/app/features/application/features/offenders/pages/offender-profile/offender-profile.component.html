@@ -75,7 +75,8 @@
                         <button 
                             nz-button 
                             nzType="default" 
-                            nzSize="small">
+                            nzSize="small"
+                            (click)="onCreateNewOffenderLink(offender.id)">
                           <i nz-icon nzType="link" nzTheme="outline"></i> Add Link
                         </button>
                       </nz-page-header-extra>
@@ -86,11 +87,8 @@
                     <div>
                       <ng-container *ngIf="selectedOffenderLinks$ | async as links; else noLinksTemplate">
                         <ng-container *ngIf="links?.length; else noLinksTemplate">
-                          <ng-container *ngFor="let link of links">
-                            <nz-card class="mb-3">
-                              <vsp-link-details [link]="link"></vsp-link-details>
-                            </nz-card>
-                          </ng-container>
+                          <vsp-link-details-list 
+                              [links]="links"></vsp-link-details-list>
                         </ng-container>
                       </ng-container>
                     </div>

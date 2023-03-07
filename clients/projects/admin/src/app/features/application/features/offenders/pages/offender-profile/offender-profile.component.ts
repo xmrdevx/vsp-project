@@ -29,8 +29,9 @@ import { OffenderCaseSimpleDetailsComponent } from '@vsp/offenders';
 import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/constants/offenders-search.defaults';
 import { OffenderCasesCreateComponent } from '../offender-cases-create/offender-cases-create.component';
 import { AddressDetailsComponent } from '@vsp/addresses';
-import { LinkDetailsComponent } from '@vsp/links';
+import { LinkDetailsListComponent } from '@vsp/links';
 import { OffenderAddressCreateComponent } from '../offender-address-create/offender-address-create.component';
+import { OffenderLinkCreateComponent } from '../offender-link-create/offender-link-create.component';
 
 @Component({
   selector: 'vsp-offender-profile',
@@ -66,7 +67,7 @@ import { OffenderAddressCreateComponent } from '../offender-address-create/offen
     OffenderCaseSimpleDetailsComponent,
     OffenderSimpleProfileComponent,
     AddressDetailsComponent,
-    LinkDetailsComponent,
+    LinkDetailsListComponent,
   ]
 })
 export class OffenderProfileComponent implements OnDestroy {
@@ -134,6 +135,21 @@ export class OffenderProfileComponent implements OnDestroy {
       nzTitle: undefined,
       nzFooter: null,
       nzContent: OffenderAddressCreateComponent,
+      nzWidth: '700px',
+      nzCloseOnNavigation: true,
+      nzMaskClosable: false,
+      nzComponentParams: {
+        isModal: true,
+        offenderId: offenderId
+      }
+    });
+  }
+
+  public onCreateNewOffenderLink(offenderId: string): void {
+    this._modalService.create({
+      nzTitle: undefined,
+      nzFooter: null,
+      nzContent: OffenderLinkCreateComponent,
       nzWidth: '700px',
       nzCloseOnNavigation: true,
       nzMaskClosable: false,

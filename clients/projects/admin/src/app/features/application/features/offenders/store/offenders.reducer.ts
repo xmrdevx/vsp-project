@@ -164,7 +164,7 @@ const handleCreateOffenderAddressResponseMessage = (state: OffendersState, { mes
 
 const handleCreateOfffenderLinkRequestSuccess = (state: OffendersState, { message }: any) => ({
   ...state,
-  createOffenderAddressResponseMessage: message,
+  createOffenderLinkResponseMessage: message,
   selectedOffenderLinks: state.selectedOffenderLinks?.length 
     ? [message.payload, ...state.selectedOffenderLinks]
     : [message.payload]

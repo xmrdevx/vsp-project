@@ -1,0 +1,68 @@
+<div class="block" *ngIf="linkForm" [formGroup]="linkForm">
+  <div class="w-100" nz-row>
+    <!-- Secion - Profile Details -->
+    <div class="" nz-col nzSpan="24">
+      <!-- Profile Details Section -->
+      <ng-template
+          [ngTemplateOutlet]="linkDetailsSectionTemplate"
+          [ngTemplateOutletContext]="{ linkForm }">
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<ng-template #linkDetailsSectionTemplate let-form="linkForm">
+  <ng-container *ngIf="linkForm" [formGroup]="linkForm">
+    
+    <!-- Type & Visibility Control -->
+    <nz-row [nzGutter]="[16, 16]">
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+        <nz-form-item>
+          <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="type">Type</nz-form-label>
+          <nz-form-control [nzXs]="24" nzErrorTip="Please select a Type!">
+            <nz-radio-group formControlName="type" nzButtonStyle="solid">
+              <label 
+                  *ngFor="let type of defaultLinkTypeListOptions"
+                  nz-radio-button 
+                  [nzValue]="type.value">
+                {{ type.label | titlecase }}
+              </label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <nz-col [nzXs]="24" [nzSm]="24" [nzMd]="12">
+        <nz-form-item>
+          <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="visibility">Visibility</nz-form-label>
+          <nz-form-control [nzXs]="24" nzErrorTip="Please select a Visibility!">
+            <nz-radio-group formControlName="visibility" nzButtonStyle="solid">
+              <label 
+                  *ngFor="let visibility of defaultVisibilityListOptions"
+                  nz-radio-button 
+                  [nzValue]="visibility.value">
+                {{ visibility.label | titlecase }}
+              </label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+    </nz-row>
+
+    <!-- Name -->
+    <nz-form-item>
+      <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+      <nz-form-control [nzXs]="24" nzErrorTip="Please input a Name!">
+        <input type="text" nz-input formControlName="name" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <!-- Url -->
+    <nz-form-item>
+      <nz-form-label class="text-left" [nzXs]="24" nzRequired nzFor="name">Url</nz-form-label>
+      <nz-form-control [nzXs]="24" nzErrorTip="Please input a Url!">
+        <input type="text" nz-input formControlName="url" />
+      </nz-form-control>
+    </nz-form-item>
+    
+  </ng-container>
+</ng-template>

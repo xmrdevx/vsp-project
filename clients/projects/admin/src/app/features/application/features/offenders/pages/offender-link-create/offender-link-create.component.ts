@@ -1,34 +1,32 @@
 import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Link, ResponseStatus } from '@vsp/core';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
-import { NzTypographyModule } from 'ng-zorro-antd/typography';
-
-import { AddressSearchControlComponent } from '@vsp/addresses';
-import { Address, GeocodingLocation, ResponseStatus } from '@vsp/core';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { OffenderAddressFormComponent } from '../../components/offender-address-form/offender-address-form.component';
-import { buildOffenderAddressFormGroup, defaultAddressFormValue } from '../../components/offender-address-form/offender-address-form.builder';
-import { Store } from '@ngrx/store';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { OffendersActions, OffendersSelectors } from '../../store';
-import { filter, take } from 'rxjs';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef } from 'ng-zorro-antd/modal';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { filter, take } from 'rxjs';
+
+import { buildLinkForm, defaultLinkFormValue } from '../../components/offender-link-form/offender-link-form.builder';
+import { OffenderLinkFormComponent } from '../../components/offender-link-form/offender-link-form.component';
+import { OffendersActions, OffendersSelectors } from '../../store';
 
 @Component({
-  selector: 'vsp-offender-address-create',
-  templateUrl: './offender-address-create.component.html',
-  styleUrls: ['./offender-address-create.component.scss'],
+  selector: 'vsp-offender-link-create',
+  templateUrl: './offender-link-create.component.html',
+  styleUrls: ['./offender-link-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
-    AddressSearchControlComponent,
     NgIf,
     NgTemplateOutlet,
     NzButtonModule,
@@ -38,12 +36,12 @@ import { NzModalRef } from 'ng-zorro-antd/modal';
     NzInputModule,
     NzPageHeaderModule,
     NzTypographyModule,
-    OffenderAddressFormComponent,
+    OffenderLinkFormComponent,
     ReactiveFormsModule,
     RouterModule,
   ]
 })
-export class OffenderAddressCreateComponent {
+export class OffenderLinkCreateComponent {
   private readonly _formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
   private readonly _messageService: NzMessageService = inject(NzMessageService);
   private readonly _store: Store = inject(Store);
@@ -55,22 +53,22 @@ export class OffenderAddressCreateComponent {
   @Input()
   public offenderId: string | null = null;
 
-  public createOffenderAddressForm: UntypedFormGroup = buildOffenderAddressFormGroup(this._formBuilder);
+  public createOffenderLinkForm: UntypedFormGroup = buildLinkForm(this._formBuilder);
 
-  public createOffenderAddress(address: Address, shouldRedirect: boolean): void {
-    if (!this.offenderId || this.createOffenderAddressForm.invalid) return;
-    this._handleCreateOffenderAddressResponse(shouldRedirect);
+  public createOffenderLink(link: Link, shouldRedirect: boolean): void {
+    if (!this.offenderId || this.createOffenderLinkForm.invalid) return;
+    this._handleCreateLinkResponse(shouldRedirect);
     this._store.dispatch(
-      OffendersActions.createOffenderAddressRequest({ 
+      OffendersActions.createOffenderLinkRequest({ 
         offenderId: this.offenderId, 
-        address: address 
+        link: link 
       })
     );
   }
 
-  private _handleCreateOffenderAddressResponse(shouldRedirect: boolean): void {
+  private _handleCreateLinkResponse(shouldRedirect: boolean): void {
     this._store
-      .select(OffendersSelectors.selectCreateOffenderAddressResponseMessage)
+      .select(OffendersSelectors.selectCreateOffenderLinkResponseMessage)
       .pipe(filter(message => !!message), take(1))
       .subscribe(message => {
         // Show response message in toast
@@ -81,10 +79,10 @@ export class OffenderAddressCreateComponent {
         }
 
         // Clear response message
-        this._store.dispatch(OffendersActions.setCreateOffenderAddressResponseMessage({ message: null }));
+        this._store.dispatch(OffendersActions.setCreateOffenderLinkResponseMessage({ message: null }));
 
         // Reset form
-        this._resetCreateOffenderAddressForm();
+        this._resetCreateLinkForm();
 
         // Redirect if should
         if (shouldRedirect) {
@@ -93,8 +91,8 @@ export class OffenderAddressCreateComponent {
       });
   }
 
-  private _resetCreateOffenderAddressForm(): void {
-    this.createOffenderAddressForm.reset();
-    this.createOffenderAddressForm.patchValue({ ...defaultAddressFormValue });
+  private _resetCreateLinkForm(): void {
+    this.createOffenderLinkForm.reset();
+    this.createOffenderLinkForm.patchValue({ ...defaultLinkFormValue });
   }
 }

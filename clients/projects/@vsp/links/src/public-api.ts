@@ -3,4 +3,5 @@
  */
 
 export * from './lib/components/link-details/link-details.component';
+export * from './lib/components/link-details-list/link-details-list.component';
 export * from './lib/components/link-details-skeleton/link-details-skeleton.component';

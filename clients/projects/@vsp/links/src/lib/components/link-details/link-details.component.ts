@@ -1,5 +1,5 @@
 import { TitleCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 import { NzTagModule } from 'ng-zorro-antd/tag';
 
@@ -17,6 +17,9 @@ import { Link, LinkType } from '@vsp/core';
   ]
 })
 export class LinkDetailsComponent {
+  @HostBinding('class')
+  public hostClasses: string = 'block w-100';
+
   @Input()
   public link: Link | null | undefined = null;
 
