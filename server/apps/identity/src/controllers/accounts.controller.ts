@@ -43,9 +43,11 @@ export class AccountsController {
   @Inject(USERS_SERVICE_TOKEN)
   private readonly _usersService: IUsersService
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(AccountsController.name);
   }
+  
   
   @MessagePattern(registerAccountCommand)
   public async registerAccount(registrationDto: RegistrationDto): Promise<UserDto | null> {
@@ -66,6 +68,7 @@ export class AccountsController {
     
   }
 
+  
   @MessagePattern(forgotPasswordCommand)
   public async forgotPassword(forgotPassword: ForgotPasswordDto): Promise<ResponseMessage<void>> {
     try {
@@ -76,6 +79,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(resetPasswordCommand)
   public async resetPassword(resetPassword: ResetPasswordDto): Promise<ResponseMessage<void>> {
     try {
@@ -86,6 +90,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(confirmEmailCommand)
   public async confirmEmail(confirmEmail: ConfirmEmailDto): Promise<ResponseMessage<void>> {
     try {
@@ -96,6 +101,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(doesEmailExistCommand)
   public async doesEmailExist(query: SimpleQueryRequestDto): Promise<SimpleExistsQueryResponseDto> {
     try {
@@ -106,6 +112,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(doesUsernameExistCommand)
   public async doesUsernameExist(query: SimpleQueryRequestDto): Promise<SimpleExistsQueryResponseDto> {
     try {
@@ -116,6 +123,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(searchAccountUsersCommand)
   public async searchAccountUsers(request: SearchAccountUsersRequest): Promise<Page<UserDto>> {
     try {
@@ -127,6 +135,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(createAccountUserCommand)
   public async createAccountUsers(request: CreateResourceRequest<CreateUserDto>): Promise<UserDto> {
     try {
@@ -137,6 +146,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(updateAccountUserCommand)
   public async updateAccountUsers(request: UpdateResourceRequest<UpdateUserDto>): Promise<UserDto> {
     try {
@@ -147,6 +157,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(lockoutAccountUserCommand)
   public async lockoutAccountUser(request: UpdateResourceRequest<LockoutUserRequest>): Promise<ResponseMessage<void>> {
     try {
@@ -157,6 +168,7 @@ export class AccountsController {
     }
   }
 
+  
   @MessagePattern(getAccountUserByIdCommand)
   public async getAccountUserById(request: GetResourceRequest<GetUserRequest>): Promise<UserDto> {
     try {

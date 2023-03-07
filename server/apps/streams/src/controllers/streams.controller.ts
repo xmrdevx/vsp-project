@@ -15,10 +15,12 @@ export class StreamsController {
   @Inject(STREAMS_SERVICE_TOKEN)
   private readonly _usersService: IStreamsService
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(StreamsController.name);
   }
 
+  
   @MessagePattern(createStreamCommand)
   public async createStream(): Promise<any> {
     try {
@@ -29,6 +31,7 @@ export class StreamsController {
     }
   }
 
+  
   @MessagePattern(validateStreamPreConnectCommand)
   public async validateStreamPreConnect(request: StreamPreConnectValidationRequestDto): Promise<any> {
     try {

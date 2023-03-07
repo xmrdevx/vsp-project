@@ -117,13 +117,13 @@ export class AccountsController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchAccountUsers(
-    @Body('tenantId') tenantId: string,
-    @Query() query: BasicSearchFilterQueryParams
-  ): Observable<Page<UserDto>> {
+      @Body('tenantId') tenantId: string, @Query() query: BasicSearchFilterQueryParams): Observable<Page<UserDto>> {
+    
     const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
     const filter: AccountUsersSearchFilter = new AccountUsersSearchFilter({ 
       query: query.query, tenantId
     });
+    
     return this._identityServiceClient
       .send(searchAccountUsersCommand, new SearchAccountUsersRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
@@ -175,9 +175,8 @@ export class AccountsController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public getAccountUserById(
-    @Param('userId') userId: string,
-    @Body() getUserRequest: GetUserRequest
-  ): Observable<UserDto> {
+      @Param('userId') userId: string, @Body() getUserRequest: GetUserRequest): Observable<UserDto> {
+    
     return this._identityServiceClient
       .send(
         getAccountUserByIdCommand,
@@ -198,9 +197,8 @@ export class AccountsController {
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public lockoutAccountUser(
-    @Param('userId') userId: string, 
-    @Body() lockoutUserRequest: LockoutUserRequest
-  ): Observable<ResponseMessage<void>> {
+      @Param('userId') userId: string, @Body() lockoutUserRequest: LockoutUserRequest): Observable<ResponseMessage<void>> {
+    
     return this._identityServiceClient
       .send(
         lockoutAccountUserCommand,

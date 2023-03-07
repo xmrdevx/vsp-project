@@ -11,10 +11,12 @@ export class OffenderLinksController {
   @Inject(OFFENDER_LINKS_SERVICE_TOKEN)
   private _offenderLinksService: IOffenderLinksService;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffenderLinksController.name);
   }
 
+  
   @MessagePattern(createOffenderLinkCommand)
   public async createOffenderAddress(request: CreateResourceRequest<CreateLinkDto>): Promise<LinkDto> {
     try {
@@ -26,6 +28,7 @@ export class OffenderLinksController {
     }
   }
 
+  
   @MessagePattern(getOffenderLinksCommand)
   public async getOffenderAddresses(request: GetResourceRequest<void>): Promise<LinkDto[]> {
     try {

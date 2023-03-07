@@ -35,26 +35,24 @@ export class OffenderCasesController {
   @Inject(OFFENDERS_SERVICE_TOKEN)
   private readonly _offendersServiceClient: ClientProxy;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffenderCasesController.name);
   }
 
+  
   @Post()
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
-    EnrichBodyWithCreatedByInterceptor,
-    EnrichBodyWithUpdatedByInterceptor,
-    EnrichBodyWithTenantInterceptor
+    EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor, EnrichBodyWithTenantInterceptor
   )
   public createCaseWithOffender(
-    @Body() createCaseWithOffenderDto: CreateOffenderCaseWithOffenderDto
-  ): Observable<OffenderCaseDto> {
+      @Body() createCaseWithOffenderDto: CreateOffenderCaseWithOffenderDto): Observable<OffenderCaseDto> {
+    
     return this._offendersServiceClient
       .send(
         createOffenderCaseWithOffenderCommand, 
@@ -65,6 +63,7 @@ export class OffenderCasesController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+  
   @Get('by-bounds/markers')
   public getCaseMarkersByBounds(@Query() query: MapBoundQueryParams): Observable<MapMarkerDto<OffenderCase>[]> {
     const mapBounds: MapBoundsDto = new MapBoundsDto({

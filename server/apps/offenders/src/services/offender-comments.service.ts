@@ -42,11 +42,8 @@ export class OffenderCommentsService implements IOffenderCommentsService {
 
 
   public async searchComments(
-    offenderId: string, 
-    offenderCommentsSearchFilter: OffenderCommentsSearchFilter,
-    pageable: IPageable
+    offenderId: string, offenderCommentsSearchFilter: OffenderCommentsSearchFilter, pageable: IPageable
   ): Promise<Page<OffenderCommentDto>> {
-
     if (!offenderId?.length) {
       throw new RpcException(
         new BadRequestException("Invalid offender id!")

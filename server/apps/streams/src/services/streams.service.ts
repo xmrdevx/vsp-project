@@ -15,14 +15,13 @@ export class StreamsService implements IStreamsService {
   @Inject(STREAM_KEYS_REPOSITORY_TOKEN)
   private readonly _streamKeysRepository: IStreamKeysRepository;
   
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(StreamsService.name);
   }
 
-  public async validatePreConnect(
-    request: StreamPreConnectValidationRequestDto
-  ): Promise<ResponseMessage<void>> {
-    
+  
+  public async validatePreConnect(request: StreamPreConnectValidationRequestDto): Promise<ResponseMessage<void>> {
     return new ResponseMessage<void>({
       status: ResponseStatus.SUCCESS,
       message: 'Successfully validated stream pre connect',

@@ -23,13 +23,11 @@ export class OffenderAddressesService implements IOffenderAddressesService {
 
   public async createAddress(offenderId: string, createAddressDto: CreateAddressDto): Promise<AddressDto> {
     const offenderWithAddresses: Offender = await this._findOffenderWithAddressesById(offenderId);
-
     const offenderAddress: Address = await this._addressesRepository.save(
       this._addressesRepository.create({...createAddressDto})
     )
 
     offenderWithAddresses.addresses?.push(offenderAddress);
-
     await this._offendersRepository.save(offenderWithAddresses);
 
     return offenderAddress;

@@ -29,6 +29,7 @@ export class OffenderCasesService {
   @Inject(OFFENDERS_REPOSITORY_TOKEN)
   private readonly _offendersRepository: IOffendersRepository;
 
+  
   constructor(private _logger: LoggerService) {
     this._logger.setContext(OffenderCasesService.name);
   }
@@ -168,6 +169,7 @@ export class OffenderCasesService {
       } satisfies MapMarkerDto<OffenderCaseDto>));
   }
 
+  
   private async _checkForExistingCase(caseId: string, offenderId: string): Promise<OffenderCase> {
     const existingCase: OffenderCase | null = await this._casesRepository.findByCondition({
       relations: ['offender'],

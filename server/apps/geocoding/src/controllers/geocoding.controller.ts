@@ -11,10 +11,12 @@ export class GeocodingController {
   @Inject(GEOCODING_SERVICE_TOKEN)
   private readonly _geocodingService: IGeocodingService;
 
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(GeocodingController.name);
   }
 
+  
   @MessagePattern(searchLocationsByText)
   public async searchLocationsByText(request: SearchGeoLocationsByTextRequestDto): Promise<GeocodingLocationDto[]> {
     try {

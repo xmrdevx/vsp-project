@@ -23,10 +23,12 @@ export class AuthService implements IAuthService {
   @Inject(USERS_SERVICE_TOKEN)
   private readonly _usersService: IUsersService;
   
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(AuthService.name);
   }
 
+  
   public async validateUser(credentials: Credentials): Promise<UserDetails | null> {
     try {
       return await this._usersService.validateUser(credentials);
@@ -35,6 +37,7 @@ export class AuthService implements IAuthService {
       throw error;
     }
   }
+
 
   public async signIn(user: UserDetails): Promise<AuthenticatedUser> {
     try {
@@ -48,6 +51,7 @@ export class AuthService implements IAuthService {
       throw error;
     }
   }
+
 
   public async refreshToken(tokens: TokenPair): Promise<TokenPair> {
     try {

@@ -18,7 +18,6 @@ import {
   OffenderMapper} from '@vsp/common';
 
 import { LoggerService } from '@vsp/logger';
-import { off } from 'process';
 
 import { OFFENDER_CASES_REPOSITORY_TOKEN, IOffenderCasesRepository } from '../interfaces/offender-cases-repository.interface';
 import { IOffendersRepository, OFFENDERS_REPOSITORY_TOKEN } from '../interfaces/offenders-repository.interface';
@@ -32,6 +31,7 @@ export class OffendersService implements IOffendersService {
   @Inject(OFFENDER_CASES_REPOSITORY_TOKEN)
   private readonly _casesRepository: IOffenderCasesRepository;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffendersService.name);
   }
@@ -170,6 +170,7 @@ export class OffendersService implements IOffendersService {
     return OffenderMapper.toDtoList(offenders);
   }
 
+  
   public async getOffenderById(offenderId: string): Promise<OffenderDto> {
     const offender: Offender | null =  await this._offendersRepository.findByCondition({
       relations: ['cases'],

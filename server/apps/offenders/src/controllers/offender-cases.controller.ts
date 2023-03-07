@@ -26,9 +26,11 @@ export class OffenderCasesController {
   @Inject(OFFENDER_CASES_SERVICE_TOKEN)
   private _casesService: IOffenderCasesService;
 
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffenderCasesController.name);
   }
+
 
   @MessagePattern(getOffenderCaseMarkersByBoundsCommand)
   public async getOffenderCaseMarkersByBounds(
@@ -42,6 +44,7 @@ export class OffenderCasesController {
     }
   }
 
+
   @MessagePattern(createOffenderCaseCommand)
   public async createOffenderCase(request: CreateResourceRequest<CreateCaseDto>): Promise<OffenderCaseDto> {
     try {
@@ -51,6 +54,7 @@ export class OffenderCasesController {
       throw error;
     }
   }
+
 
   @MessagePattern(createOffenderCaseWithOffenderCommand)
   public async createOffenderCaseWithOffender(request: CreateResourceRequest<CreateOffenderCaseWithOffenderDto>): Promise<OffenderCaseDto> {
@@ -62,6 +66,7 @@ export class OffenderCasesController {
     }
   }
 
+
   @MessagePattern(updateOffenderCaseCommand)
   public async updateOffenderCase(request: UpdateResourceRequest<UpdateOffenderCaseDto>): Promise<OffenderCaseDto> {
     try {
@@ -71,6 +76,7 @@ export class OffenderCasesController {
       throw error;
     }
   }
+
 
   @MessagePattern(deleteOffenderCaseCommand)
   public async deleteOffenderCase(request: DeleteResourceRequest<DeleteOffenderCaseDto>): Promise<OffenderCaseDto> {

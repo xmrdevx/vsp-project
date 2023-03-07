@@ -14,10 +14,12 @@ export class GeocodingController {
   @Inject(GEOCODING_SERVICE_TOKEN)
   private readonly _geocodingServiceClient: ClientProxy;
 
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(GeocodingController.name);
   }
 
+  
   @Get('locations/by-text')
   @CacheTTL(86400) // Cache for 1 day
   public searchLocationsByText(

@@ -72,9 +72,7 @@ export class PermissionsController {
   })
   @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
-  public getPermissionTemplates(
-    @Body() getPermissionTemplatesDto: GetPermissionTemplatesDto
-  ): Observable<any> {
+  public getPermissionTemplates(@Body() getPermissionTemplatesDto: GetPermissionTemplatesDto): Observable<any> {
     return this._identityServiceClient
       .send(
         getPermissionTemplatesCommand, 
@@ -93,13 +91,9 @@ export class PermissionsController {
   })
   @UseGuards(HasPermissionsGuard)
   @UseInterceptors(
-    EnrichBodyWithTenantInterceptor,
-    EnrichBodyWithCreatedByInterceptor,
-    EnrichBodyWithUpdatedByInterceptor  
+    EnrichBodyWithTenantInterceptor, EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor  
   )
-  public createPermissionTemplate(
-    @Body() createPermissionTemplateDto: CreatePermissionTemplateDto
-  ): Observable<any> {
+  public createPermissionTemplate(@Body() createPermissionTemplateDto: CreatePermissionTemplateDto): Observable<any> {
     return this._identityServiceClient
       .send(
         createPermissionTemplateCommand, 
@@ -118,13 +112,13 @@ export class PermissionsController {
   @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public searchPermissionTemplates(
-    @Body('tenantId') tenantId: string, 
-    @Query() query: BasicSearchFilterQueryParams
-  ): Observable<any> {
+      @Body('tenantId') tenantId: string, @Query() query: BasicSearchFilterQueryParams): Observable<any> {
+    
     const pageable: IPageable = PageRequest.from(query.index, query.size, query.column, query.direction);
     const filter: PermissionTemplatesSearchFilter = new PermissionTemplatesSearchFilter({ 
       query: query.query, isDeleted: query.isDeleted, tenantId,
     });
+    
     return this._identityServiceClient
       .send(searchPermissionTemplatesCommand, new SearchPermissionTemplatesRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
@@ -139,9 +133,8 @@ export class PermissionsController {
   @UseGuards(HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithTenantInterceptor)
   public getPermissionTemplateById(
-    @Param('templateId') templateId: string,
-    @Body() getPermissionTemplatesDto: GetPermissionTemplatesDto
-  ):  Observable<any> {
+      @Param('templateId') templateId: string, @Body() getPermissionTemplatesDto: GetPermissionTemplatesDto):  Observable<any> {
+    
     return this._identityServiceClient
       .send(
         getPermissionTemplateByIdCommand,
@@ -160,14 +153,11 @@ export class PermissionsController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.PERMISSION_TEMPLATES }]
   })
   @UseGuards(HasPermissionsGuard)
-  @UseInterceptors(
-    EnrichBodyWithTenantInterceptor,
-    EnrichBodyWithUpdatedByInterceptor  
-  )
+  @UseInterceptors(EnrichBodyWithTenantInterceptor, EnrichBodyWithUpdatedByInterceptor)
   public updatePermissionTemplate(
-    @Param('templateId') templateId: string,
-    @Body() updatePermissionTemplateDto: UpdatePermissionTemplateDto
-  ):  Observable<any> {
+      @Param('templateId') templateId: string,
+      @Body() updatePermissionTemplateDto: UpdatePermissionTemplateDto):  Observable<any> {
+    
     return this._identityServiceClient
       .send(
         updatePermissionTemplateCommand,
@@ -186,14 +176,11 @@ export class PermissionsController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.PERMISSION_TEMPLATES }]
   })
   @UseGuards(HasPermissionsGuard)
-  @UseInterceptors(
-    EnrichBodyWithTenantInterceptor,
-    EnrichBodyWithDeletedByInterceptor  
-  )
+  @UseInterceptors(EnrichBodyWithTenantInterceptor, EnrichBodyWithDeletedByInterceptor)
   public deletePermissionTemplate(
-    @Param('templateId') templateId: string,
-    @Body() deletePermissionTemplateDto: DeletePermissionTemplateDto
-  ): Observable<any> {
+      @Param('templateId') templateId: string,
+      @Body() deletePermissionTemplateDto: DeletePermissionTemplateDto): Observable<any> {
+    
     return this._identityServiceClient
       .send(
         deletePermissionTemplateCommand, 
@@ -212,14 +199,11 @@ export class PermissionsController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.PERMISSION_TEMPLATES }]
   })
   @UseGuards(HasPermissionsGuard)
-  @UseInterceptors(
-    EnrichBodyWithTenantInterceptor,
-    EnrichBodyWithUpdatedByInterceptor
-  )
+  @UseInterceptors(EnrichBodyWithTenantInterceptor, EnrichBodyWithUpdatedByInterceptor)
   public restorePermissionTemplate(
-    @Param('templateId') templateId: string,
-    @Body() restorePermissionTemplateDto: RestorePermissionTemplateDto
-  ): Observable<any> {
+      @Param('templateId') templateId: string,
+      @Body() restorePermissionTemplateDto: RestorePermissionTemplateDto): Observable<any> {
+    
     return this._identityServiceClient
       .send(
         restorePermissionTemplateCommand, 

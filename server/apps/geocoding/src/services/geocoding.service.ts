@@ -10,13 +10,15 @@ export class GeocodingService implements IGeocodingService {
   @Inject(GEOCODING_API_CLIENT_TOKEN)
   private readonly _geocodingApiClient: IGeocodingApiClient;
 
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(GeocodingService.name);
   }
 
+
   public async searchLocationsByText(
-    request: SearchGeoLocationsByTextRequestDto
-  ): Promise<GeocodingLocationDto[]> {
+      request: SearchGeoLocationsByTextRequestDto): Promise<GeocodingLocationDto[]> {
+    
     return await this._geocodingApiClient.resolveLocationsFromText(request);
   }
 }

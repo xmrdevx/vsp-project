@@ -23,13 +23,11 @@ export class OffenderLinksService implements IOffenderLinksService {
 
   public async createLink(offenderId: string, createLinkDto: CreateLinkDto): Promise<LinkDto> {
     const offenderWithLinks: Offender = await this._findOffenderWithLinksById(offenderId);
-
     const offenderLink: Link = await this._linksRepository.save(
       this._linksRepository.create({...createLinkDto})
     )
 
     offenderWithLinks.links?.push(offenderLink);
-
     await this._offendersRepository.save(offenderWithLinks);
 
     return offenderLink;

@@ -19,9 +19,11 @@ export class OffenderCommentsController {
   @Inject(OFFENDER_COMMENTS_SERVICE_TOKEN)
   private _offenderCommentsService: IOffenderCommentsService;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffenderCommentsController.name);
   }
+
 
   @MessagePattern(searchOffenderCommentsCommand)
   public async searchOffenderComments(request: SearchOffenderCommentsRequest): Promise<Page<any>> {
@@ -36,6 +38,7 @@ export class OffenderCommentsController {
     }
   }
 
+  
   @MessagePattern(createOffenderCommentCommand)
   public async createOffenderComment(
     request: CreateResourceRequest<CreateOffenderCommentDto>

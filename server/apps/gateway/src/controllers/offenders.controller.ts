@@ -78,6 +78,7 @@ export class OffendersController {
   @Inject(OFFENDERS_SERVICE_TOKEN)
   private readonly _offendersServiceClient: ClientProxy;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffendersController.name);
   }
@@ -86,15 +87,10 @@ export class OffendersController {
   @Post()
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDERS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDERS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
-  @UseInterceptors(
-    EnrichBodyWithCreatedByInterceptor, 
-    EnrichBodyWithUpdatedByInterceptor
-  )
+  @UseInterceptors(EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor)
   public createOffender(@Body() createOffenderDto: CreateOffenderDto): Observable<OffenderDto> {
     return this._offendersServiceClient
       .send(
@@ -152,20 +148,16 @@ export class OffendersController {
 
   @Get(':offenderId')
   public getOffenderById(@Param('offenderId') offenderId: string): Observable<OffenderDto> {
-    
     return this._offendersServiceClient
       .send(getOffenderByIdCommand, new GetOffenderByIdRequest({ offenderId }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
-
   }
 
 
   @Put(':offenderId')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDERS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDERS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
@@ -178,16 +170,13 @@ export class OffendersController {
         new UpdateResourceRequest<UpdateOffenderDto>({ resourceId: offenderId, resource: updateOffenderDto })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
-
   }
 
 
   @Delete(':offenderId')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDERS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDERS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
@@ -203,22 +192,17 @@ export class OffendersController {
         })
       )
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
-
   }
 
 
   @Post(':offenderId/cases')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
-    EnrichBodyWithCreatedByInterceptor,
-    EnrichBodyWithUpdatedByInterceptor,
-    EnrichBodyWithTenantInterceptor
+    EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor, EnrichBodyWithTenantInterceptor
   )
   public createOffenderCase(
       @Body() createCaseDto: CreateCaseDto, @Param('offenderId') offenderId: string): Observable<OffenderCaseDto> {
@@ -237,9 +221,7 @@ export class OffendersController {
   @Put(':offenderId/cases/:caseId')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDER_CASES }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
@@ -262,9 +244,7 @@ export class OffendersController {
   @Delete(':offenderId/cases/:caseId')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDER_CASES }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_DELETE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(EnrichBodyWithDeletedByInterceptor)
@@ -287,20 +267,15 @@ export class OffendersController {
   @Post(':offenderId/comments')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_COMMENTS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_COMMENTS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
-    EnrichBodyWithCreatedByInterceptor,
-    EnrichBodyWithUpdatedByInterceptor,
-    EnrichBodyWithCommentedByInterceptor,
+    EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor, EnrichBodyWithCommentedByInterceptor,
   )
   public createOffenderComment(
-    @Param('offenderId') offenderId: string, 
-    @Body() createOffendCommentDto: CreateOffenderCommentDto
-  ): Observable<any> {
+      @Param('offenderId') offenderId: string, @Body() createOffendCommentDto: CreateOffenderCommentDto): Observable<any> {
+    
     return this._offendersServiceClient
       .send(
         createOffenderCommentCommand, 
@@ -313,9 +288,7 @@ export class OffendersController {
   @Get(':offenderId/comments/search')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_COMMENTS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_COMMENTS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public searchOffenderComments(
@@ -326,6 +299,7 @@ export class OffendersController {
     const filter: OffenderCommentsSearchFilter = new OffenderCommentsSearchFilter({ 
       query: query.query, isDeleted: query.isDeleted, offenderId,
     });
+    
     return this._offendersServiceClient
       .send(searchOffenderCommentsCommand, new SearchOffenderCommentsRequest({ filter, pageable }))
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
@@ -335,9 +309,7 @@ export class OffendersController {
   @Get(':offenderId/addresses')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_ADDRESSES }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_ADDRESSES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public getOffenderAddresses(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
@@ -350,9 +322,7 @@ export class OffendersController {
   @Post(':offenderId/addresses')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_ADDRESSES }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_ADDRESSES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public createOffenderAddress(
@@ -370,9 +340,7 @@ export class OffendersController {
   @Get(':offenderId/links')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_LINKS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_LINKS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public getOffenderLinks(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
@@ -385,9 +353,7 @@ export class OffendersController {
   @Post(':offenderId/links')
   @Permissions({
     operation: ClaimAuthorizationOperations.ALL,
-    permissions: [
-      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_LINKS }
-    ]
+    permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_LINKS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public createOffenderLink(

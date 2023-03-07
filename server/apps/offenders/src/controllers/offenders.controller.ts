@@ -31,10 +31,12 @@ export class OffendersController {
   @Inject(OFFENDERS_SERVICE_TOKEN)
   private _offendersService: IOffendersService;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffendersController.name);
   }
 
+  
   @MessagePattern(searchOffendersCommand)
   public async searchOffenders(request: SearchOffendersRequest): Promise<Page<OffenderDto>> {
     try {
@@ -47,6 +49,7 @@ export class OffendersController {
     }
   }
 
+  
   @MessagePattern(searchOffendersByBoundsCommand)
   public async searchOffendersByBounds(request: SearchOffendersByBoundsRequest): Promise<Page<OffenderDto>> {
     try {
@@ -59,6 +62,7 @@ export class OffendersController {
     }
   }
 
+  
   @MessagePattern(getLatestOffenderByCountCommand)
   public async getLatestOffendersByCount(request: GetLatestOffendersRequestDto): Promise<OffenderDto[]> {
     try {
@@ -69,6 +73,7 @@ export class OffendersController {
     }
   }
 
+  
   @MessagePattern(getOffenderByIdCommand)
   public async getOffenderById(request: GetOffenderByIdRequest): Promise<OffenderDto> {
     try {
@@ -79,6 +84,7 @@ export class OffendersController {
     }
   }
 
+  
   @MessagePattern(createOffenderCommand)
   public async createOffender(request: CreateResourceRequest<CreateOffenderDto>): Promise<OffenderDto> {
     try {
@@ -89,6 +95,7 @@ export class OffendersController {
     }
   }
 
+  
   @MessagePattern(updateOffenderCommand)
   public async updateOffender(request: UpdateResourceRequest<UpdateOffenderDto>): Promise<OffenderDto> {
     try {
@@ -99,6 +106,7 @@ export class OffendersController {
     }
   }
 
+  
   @MessagePattern(deleteOffenderCommand)
   public async deleteOffender(request: DeleteResourceRequest<DeleteOffenderDto>): Promise<OffenderDto> {
     try {

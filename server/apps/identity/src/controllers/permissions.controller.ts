@@ -14,9 +14,11 @@ export class PermissionsController {
   @Inject(PERMISSION_TEMPLATES_SERVICE_TOKEN)
   public readonly _permissionTemplatesService: IPermissionTemplatesService;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(PermissionsController.name);
   }
+  
   
   @MessagePattern(getAvailablePermissionsCommand)
   public async getAvailablePermissions(): Promise<any> {
@@ -28,10 +30,10 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(getPermissionTemplatesCommand)
   public async getPermissionTemplates(
-    request: GetResourceRequest<GetPermissionTemplatesDto>
-  ): Promise<PermissionTemplateDto[]> {
+      request: GetResourceRequest<GetPermissionTemplatesDto>): Promise<PermissionTemplateDto[]> {
     try {
       console.log("getting templates")
       return await this._permissionTemplatesService.getTemplates(request.resource);
@@ -41,10 +43,10 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(createPermissionTemplateCommand)
   public async createPermissionTemplate(
-    request: CreateResourceRequest<CreatePermissionTemplateDto>
-  ): Promise<PermissionTemplateDto> {
+      request: CreateResourceRequest<CreatePermissionTemplateDto>): Promise<PermissionTemplateDto> {
     try {
       return await this._permissionTemplatesService.createTemplate(request.resource);
     } catch (error) {
@@ -53,6 +55,7 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(searchPermissionTemplatesCommand)
   public async searchPermissionTemplates(request: SearchPermissionTemplatesRequest): Promise<any> {
     try {
@@ -64,10 +67,10 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(updatePermissionTemplateCommand)
   public async updatePermissionTemplate(
-    request: UpdateResourceRequest<UpdatePermissionTemplateDto>
-  ): Promise<PermissionTemplateDto> {
+      request: UpdateResourceRequest<UpdatePermissionTemplateDto>): Promise<PermissionTemplateDto> {
     try {
       return await this._permissionTemplatesService.updateTemplate(request.resourceId, request.resource);
     } catch (error) {
@@ -76,6 +79,7 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(deletePermissionTemplateCommand)
   public async deletePermissionTemplateCommand(
     request: DeleteResourceRequest<DeletePermissionTemplateDto>
@@ -88,10 +92,10 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(restorePermissionTemplateCommand)
   public async restorePermissionTemplateCommand(
-    request: DeleteResourceRequest<RestorePermissionTemplateDto>
-  ): Promise<any> {
+      request: DeleteResourceRequest<RestorePermissionTemplateDto>): Promise<any> {
     try {
       return await this._permissionTemplatesService.restoreTemplate(request.resourceId, request.resource);
     } catch (error) {
@@ -100,10 +104,10 @@ export class PermissionsController {
     }
   }
 
+  
   @MessagePattern(getPermissionTemplateByIdCommand)
   public async getPermissionTemplateByIdCommand(
-    request: GetResourceRequest<GetPermissionTemplatesDto>
-  ): Promise<any> {
+      request: GetResourceRequest<GetPermissionTemplatesDto>): Promise<any> {
     try {
       return await this._permissionTemplatesService.getTemplateById(request.resourceId, request.resource);
     } catch (error) {

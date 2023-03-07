@@ -17,9 +17,11 @@ export class AuthController {
   @Inject(AUTH_SERVICE_TOKEN)
   private readonly _authService: IAuthService;
 
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(AuthController.name);
   }
+
 
   @MessagePattern(validateUserCommand)
   public async validateUser(credentials: Credentials): Promise<any> {
@@ -31,6 +33,7 @@ export class AuthController {
     }
   }
 
+
   @MessagePattern(signInCommand)
   public async signIn(user: UserDetails): Promise<any> {
     try {
@@ -41,6 +44,7 @@ export class AuthController {
     }
   }
 
+  
   @MessagePattern(refreshTokenCommand)
   public async refreshToken(tokens: TokenPair): Promise<any> {
     try {

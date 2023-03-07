@@ -20,9 +20,11 @@ export class AuthController {
   @Inject(IDENTITY_SERVICE_TOKEN)
   private readonly _identityServiceClient: ClientProxy;
 
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(AuthController.name);
   }
+
 
   @UseGuards(LocalAuthGuard)
   @Post('sign-in')
@@ -34,6 +36,7 @@ export class AuthController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))))
   }
 
+  
   @Post('refresh-token')
   @HttpCode(HttpStatus.OK)
   public refreshToken(@Body() tokens: TokenPair): Observable<any> {

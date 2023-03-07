@@ -18,6 +18,7 @@ export class StreamsController {
     this._logger.setContext(StreamsController.name);
   }
 
+  
   @Access(ClaimValues.LIVESTREAM)
   @UseGuards(HasAccessGuard)
   @Post()

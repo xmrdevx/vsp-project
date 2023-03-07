@@ -43,9 +43,11 @@ export class AccountsService implements IAccountsService {
   @Inject(CLAIMS_REPOSITORY_TOKEN)
   private readonly _claimsRepository: IClaimsRepository;
   
+  
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(AccountsService.name);
   }
+
 
   public async register(registration: RegistrationDto): Promise<UserDto | null> {
     // Get roles for account owner's user
@@ -134,6 +136,7 @@ export class AccountsService implements IAccountsService {
     return UserMapper.toDto(existingUser);
   }
 
+
   public async lockoutUser(userId: string, lockoutUserRequest: LockoutUserRequest): Promise<ResponseMessage<void>> {
     const existingUser: User | null = await this._usersRepository
       .findByCondition({
@@ -163,6 +166,7 @@ export class AccountsService implements IAccountsService {
     });
   }
 
+
   public async getUserById(userId: string, getUserRequest: GetUserRequest): Promise<UserDto> {
     const user: User | null = await this._usersRepository.findByCondition({
       relations: ['profile', 'profile.address', 'claims', 'roles'],
@@ -177,6 +181,7 @@ export class AccountsService implements IAccountsService {
 
     return UserMapper.toDto(user);
   }
+
 
   // @TODO There should be a clean way of doing this.
   // @Note Using spread operator cause inserts rather than updates and BeforeUpdate never fires.

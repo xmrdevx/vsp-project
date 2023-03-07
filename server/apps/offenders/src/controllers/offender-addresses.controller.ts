@@ -10,9 +10,11 @@ export class OffenderAddressesController {
   @Inject(OFFENDER_ADDRESSES_SERVICE_TOKEN)
   private _offenderAddressesService: IOffenderAddressesService;
 
+
   constructor(private readonly _logger: LoggerService) {
     this._logger.setContext(OffenderAddressesController.name);
   }
+
 
   @MessagePattern(createOffenderAddressCommand)
   public async createOffenderAddress(request: CreateResourceRequest<CreateAddressDto>): Promise<AddressDto> {
@@ -24,6 +26,7 @@ export class OffenderAddressesController {
       throw error;
     }
   }
+
 
   @MessagePattern(getOffenderAddressesCommand)
   public async getOffenderAddresses(request: GetResourceRequest<AddressDto[]>): Promise<AddressDto[]> {
