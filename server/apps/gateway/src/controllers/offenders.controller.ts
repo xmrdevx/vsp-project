@@ -285,7 +285,13 @@ export class OffendersController {
 
 
   @Post(':offenderId/comments')
-  @UseGuards(JwtAuthGuard)
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_COMMENTS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   @UseInterceptors(
     EnrichBodyWithCreatedByInterceptor,
     EnrichBodyWithUpdatedByInterceptor,
@@ -305,6 +311,13 @@ export class OffendersController {
 
   
   @Get(':offenderId/comments/search')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_COMMENTS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public searchOffenderComments(
       @Param('offenderId') offenderId: string, 
       @Query() query: BasicSearchFilterQueryParams): Observable<Page<OffenderCommentDto>> {
@@ -320,6 +333,13 @@ export class OffendersController {
 
 
   @Get(':offenderId/addresses')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_ADDRESSES }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public getOffenderAddresses(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
     return this._offendersServiceClient
       .send(getOffenderAddressesCommand, new GetResourceRequest<AccountDto[]>({ resourceId: offenderId }))
@@ -328,6 +348,13 @@ export class OffendersController {
 
 
   @Post(':offenderId/addresses')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_ADDRESSES }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public createOffenderAddress(
       @Param('offenderId') offenderId: string, @Body() createAddressDto: CreateAddressDto): Observable<AddressDto> {
 
@@ -339,7 +366,15 @@ export class OffendersController {
       .pipe(catchError(error => throwError(() => new RpcException(error.response))));
   }
 
+
   @Get(':offenderId/links')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_READ, value: ClaimValues.OFFENDER_LINKS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public getOffenderLinks(@Param('offenderId') offenderId: string): Observable<AddressDto[]> {
     return this._offendersServiceClient
       .send(getOffenderLinksCommand, new GetResourceRequest<LinkDto[]>({ resourceId: offenderId }))
@@ -348,6 +383,13 @@ export class OffendersController {
 
 
   @Post(':offenderId/links')
+  @Permissions({
+    operation: ClaimAuthorizationOperations.ALL,
+    permissions: [
+      { key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_LINKS }
+    ]
+  })
+  @UseGuards(JwtAuthGuard, HasPermissionsGuard)
   public createOffenderLink(
       @Param('offenderId') offenderId: string, @Body() createLinkDto: CreateLinkDto): Observable<LinkDto> {
 
