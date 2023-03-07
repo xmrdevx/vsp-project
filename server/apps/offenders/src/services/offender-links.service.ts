@@ -46,7 +46,8 @@ export class OffenderLinksService implements IOffenderLinksService {
     const offenderWithLinks: Offender | null = await this._offendersRepository
       .findByCondition({
         relations: ['links'],
-        where: { id: offenderId }
+        where: { id: offenderId },
+        order: { links: { updatedOn: 'DESC' } }
       });
 
     if (!offenderWithLinks) {

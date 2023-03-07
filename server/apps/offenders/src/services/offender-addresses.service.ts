@@ -45,7 +45,8 @@ export class OffenderAddressesService implements IOffenderAddressesService {
     const offenderWithAddresses: Offender | null = await this._offendersRepository
       .findByCondition({
         relations: ['addresses'],
-        where: { id: offenderId }
+        where: { id: offenderId },
+        order: { addresses: { updatedOn: 'DESC' } }
       });
 
     if (!offenderWithAddresses) {
