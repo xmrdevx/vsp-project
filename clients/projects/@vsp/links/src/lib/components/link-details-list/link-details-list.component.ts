@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Link } from '@vsp/core';
 import { NzListModule } from 'ng-zorro-antd/list';
@@ -11,7 +11,9 @@ import { LinkDetailsComponent } from '../link-details/link-details.component';
   styleUrls: ['./link-details-list.component.scss'],
   standalone: true,
   imports: [
+    NgClass,
     NgFor,
+    NgStyle,
     NzListModule,
     NzTypographyModule,
     LinkDetailsComponent,
@@ -20,4 +22,7 @@ import { LinkDetailsComponent } from '../link-details/link-details.component';
 export class LinkDetailsListComponent {
   @Input()
   public links: Link[] = [];
+
+  @Input()
+  public maxHeight: number | null | undefined = null;
 }

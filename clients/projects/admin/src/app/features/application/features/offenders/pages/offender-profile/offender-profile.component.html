@@ -88,7 +88,9 @@
                       <ng-container *ngIf="selectedOffenderLinks$ | async as links; else noLinksTemplate">
                         <ng-container *ngIf="links?.length; else noLinksTemplate">
                           <vsp-link-details-list 
-                              [links]="links"></vsp-link-details-list>
+                              [links]="links"
+                              [maxHeight]="500">
+                          </vsp-link-details-list>
                         </ng-container>
                       </ng-container>
                     </div>

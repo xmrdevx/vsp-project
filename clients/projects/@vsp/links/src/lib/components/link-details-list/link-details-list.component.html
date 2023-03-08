@@ -1,4 +1,7 @@
-<nz-list nzBordered>
+<nz-list 
+    nzBordered 
+    [ngClass]="{ 'link-details-list-scrollable': maxHeight }"
+    [ngStyle]="{ 'max-height': maxHeight ? maxHeight + 'px' : 'unset' }">
   <nz-list-item *ngFor="let link of links">
     <vsp-link-details [link]="link"></vsp-link-details>
   </nz-list-item>
