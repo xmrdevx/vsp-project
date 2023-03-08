@@ -6,6 +6,7 @@ import { PermissionsService } from '@vsp/admin/core/services';
 import { catchError, exhaustMap, mergeMap, of, switchMap } from 'rxjs';
 
 import { SecurityPermissionsActions } from './security-permissions.actions';
+import { PermissionsActions } from '@vsp/admin/store/permissions';
 
 @Injectable()
 export class SecurityPermissionsEffects {
@@ -18,11 +19,12 @@ export class SecurityPermissionsEffects {
       exhaustMap(({ permissionTemplate }) => 
         this._permissionsService.createTemplate(permissionTemplate)
           .pipe(
-            mergeMap((templateModulePermission) => of(SecurityPermissionsActions.createPermissionTemplateRequestSuccess({
+            mergeMap((permissionTemplate) => of(SecurityPermissionsActions.createPermissionTemplateRequestSuccess({
               message: {
                 status: ResponseStatus.SUCCESS,
-                message: 'Successfully created permission template!'
-              } as ResponseMessage<void>
+                message: 'Successfully created permission template!',
+                payload: permissionTemplate
+              } as ResponseMessage<PermissionTemplate>
             }))),
             catchError((error: any) => of(SecurityPermissionsActions.createPermissionTemplateRequestFailure({
               message: {
@@ -35,17 +37,42 @@ export class SecurityPermissionsEffects {
     )
   );
 
+  public createPermissionTemplateRequestSuccess = createEffect(() => this._actions
+    .pipe(
+      ofType(SecurityPermissionsActions.createPermissionTemplateRequestSuccess),
+      exhaustMap(({ message }) => 
+        of(
+          PermissionsActions
+            .addPermissionTemplateRequest({ permissionTemplate: message?.payload ? message.payload : null })
+        )
+      )
+    )
+  );
+
+  public updatePermissionTemplateRequestSuccess = createEffect(() => this._actions
+    .pipe(
+      ofType(SecurityPermissionsActions.updatePermissionTemplateRequestSuccess),
+      exhaustMap(({ message }) => 
+        of(
+          PermissionsActions
+            .updatePermissionTemplateRequest({ permissionTemplate: message?.payload ? message.payload : null })
+        )
+      )
+    )
+  );
+
   public updatePermissionTemplateRequest = createEffect(() => this._actions
     .pipe(
       ofType(SecurityPermissionsActions.updatePermissionTemplateRequest),
       exhaustMap(({ templateId, permissionTemplate }) => 
         this._permissionsService.updateTemplate(templateId, permissionTemplate)
           .pipe(
-            mergeMap((templateModulePermission) => of(SecurityPermissionsActions.updatePermissionTemplateRequestSuccess({
+            mergeMap((permissionTemplate) => of(SecurityPermissionsActions.updatePermissionTemplateRequestSuccess({
               message: {
                 status: ResponseStatus.SUCCESS,
-                message: 'Successfully created permission template!'
-              } as ResponseMessage<void>
+                message: 'Successfully created permission template!',
+                payload: permissionTemplate
+              } as ResponseMessage<PermissionTemplate>
             }))),
             catchError((error: any) => of(SecurityPermissionsActions.updatePermissionTemplateRequestFailure({
               message: {
@@ -121,7 +148,7 @@ export class SecurityPermissionsEffects {
           )
       )
     )
-  )
+  );
 
   public deletePermissionTemplateRequestSuccess = createEffect(() => this._actions
     .pipe(
@@ -144,6 +171,18 @@ export class SecurityPermissionsEffects {
       ))
     )
   )
+
+  public updatePermissionTemplatesAfterDeleteRequestSuccess = createEffect(() => this._actions
+    .pipe(
+      ofType(SecurityPermissionsActions.deletePermissionTemplateRequestSuccess),
+      exhaustMap(({ permissionTemplate }) => 
+        of(
+          PermissionsActions
+            .deletePermissionTemplateRequest({ permissionTemplate: permissionTemplate })
+        )
+      )
+    )
+  );
 
   public restorePermissionPermissionRequest = createEffect(() => this._actions
     .pipe(
@@ -188,4 +227,16 @@ export class SecurityPermissionsEffects {
       ))
     )
   )
+
+  public updatePermissionTemplatesAfterRestoreRequestSuccess = createEffect(() => this._actions
+    .pipe(
+      ofType(SecurityPermissionsActions.restorePermissionTemplateRequestSuccess),
+      exhaustMap(({ permissionTemplate }) => 
+        of(
+          PermissionsActions
+            .addPermissionTemplateRequest({ permissionTemplate: permissionTemplate })
+        )
+      )
+    )
+  );
 }

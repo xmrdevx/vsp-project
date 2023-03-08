@@ -13,6 +13,11 @@ export const PermissionsActions = createActionGroup({
     // Assignable permission templates
     'Get Permission Templates Request': emptyProps(),
     'Get Permission Templates Request Success': props<{ permissionTemplates: PermissionTemplate[] }>(),
-    'Get Permission Templates Request Failure': props<{ message: ResponseMessage<void>}>()
+    'Get Permission Templates Request Failure': props<{ message: ResponseMessage<void>}>(),
+
+    // Non Http Request Crud
+    'Add Permission Template Request': props<{ permissionTemplate: PermissionTemplate | null }>(),
+    'Update Permission Template Request': props<{ permissionTemplate: PermissionTemplate | null }>(),
+    'Delete Permission Template Request': props<{ permissionTemplate: PermissionTemplate | null }>(),
   }
 });
