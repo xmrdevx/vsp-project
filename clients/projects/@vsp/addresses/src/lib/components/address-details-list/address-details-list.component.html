@@ -1,0 +1,11 @@
+<nz-collapse 
+    nzAccordion 
+    style="background: #FFF !important;"
+    [ngClass]="{ 'address-details-list-scrollable': maxHeight }"
+    [ngStyle]="{ 'max-height': maxHeight ? maxHeight + 'px' : 'unset' }">
+  <nz-collapse-panel 
+      *ngFor="let address of addresses"
+      [nzHeader]="formatAddress(address) || ''">
+    <vsp-address-details [address]="address"></vsp-address-details>
+  </nz-collapse-panel>
+</nz-collapse>

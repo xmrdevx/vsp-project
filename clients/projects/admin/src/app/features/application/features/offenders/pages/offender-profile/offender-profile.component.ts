@@ -20,16 +20,16 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
-import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, User, Address, Link, GeocodingLocation } from '@vsp/core';
+import { OffenderComment, defaultInfiniteScrollSettings, fadeAnimation, InfiniteScrollSettings, Offender, Page, PageRequest, Address, Link } from '@vsp/core';
 import { OffenderSimpleProfileComponent } from '@vsp/offenders';
 import { CommentFormComponent, CommentListComponent, CommentListSkeletonComponent } from '@vsp/comments';
+import { AddressDetailsListComponent } from '@vsp/addresses';
+import { LinkDetailsListComponent } from '@vsp/links';
 
 import { OffendersActions, OffendersSelectors } from '../../store';
 import { OffenderCaseSimpleDetailsComponent } from '@vsp/offenders';
 import { defaultOffendersSearchFilter } from '@vsp/public/features/offenders/constants/offenders-search.defaults';
 import { OffenderCasesCreateComponent } from '../offender-cases-create/offender-cases-create.component';
-import { AddressDetailsComponent } from '@vsp/addresses';
-import { LinkDetailsListComponent } from '@vsp/links';
 import { OffenderAddressCreateComponent } from '../offender-address-create/offender-address-create.component';
 import { OffenderLinkCreateComponent } from '../offender-link-create/offender-link-create.component';
 
@@ -66,7 +66,7 @@ import { OffenderLinkCreateComponent } from '../offender-link-create/offender-li
     RouterModule,
     OffenderCaseSimpleDetailsComponent,
     OffenderSimpleProfileComponent,
-    AddressDetailsComponent,
+    AddressDetailsListComponent,
     LinkDetailsListComponent,
   ]
 })

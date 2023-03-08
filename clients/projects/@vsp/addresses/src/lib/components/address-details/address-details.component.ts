@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { Address } from '@vsp/core';
 
 @Component({
@@ -12,6 +12,9 @@ import { Address } from '@vsp/core';
   ]
 })
 export class AddressDetailsComponent {
+  @HostBinding('class')
+  public hostClasses: string = 'block w-100';
+
   @Input()
   public address: Address | null | undefined = null;
 }

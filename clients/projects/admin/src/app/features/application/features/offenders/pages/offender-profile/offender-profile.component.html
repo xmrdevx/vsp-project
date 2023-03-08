@@ -49,7 +49,7 @@
 
                     <nz-divider class="mt-2 mb-4"></nz-divider>
 
-                    <div>
+                    <!-- <div>
                       <ng-container *ngIf="selectedOffenderAddresses$ | async as addresses; else noAddressesTemplate">
                         <ng-container *ngIf="addresses?.length; else noAddressesTemplate">
                           <ng-container *ngFor="let address of addresses">
@@ -59,7 +59,16 @@
                           </ng-container>
                         </ng-container>
                       </ng-container>
-                    </div>
+                    </div> -->
+
+                    <ng-container *ngIf="selectedOffenderAddresses$ | async as addresses; else noAddressesTemplate">
+                      <ng-container *ngIf="addresses?.length; else noLinksTemplate">
+                        <vsp-address-details-list 
+                            [addresses]="addresses"
+                            [maxHeight]="500">
+                        </vsp-address-details-list>
+                      </ng-container>
+                    </ng-container>
 
                   </nz-card>
                 </nz-col>
@@ -84,16 +93,14 @@
 
                     <nz-divider class="mt-2 mb-4"></nz-divider>
 
-                    <div>
-                      <ng-container *ngIf="selectedOffenderLinks$ | async as links; else noLinksTemplate">
-                        <ng-container *ngIf="links?.length; else noLinksTemplate">
-                          <vsp-link-details-list 
-                              [links]="links"
-                              [maxHeight]="500">
-                          </vsp-link-details-list>
-                        </ng-container>
+                    <ng-container *ngIf="selectedOffenderLinks$ | async as links; else noLinksTemplate">
+                      <ng-container *ngIf="links?.length; else noLinksTemplate">
+                        <vsp-link-details-list 
+                            [links]="links"
+                            [maxHeight]="500">
+                        </vsp-link-details-list>
                       </ng-container>
-                    </div>
+                    </ng-container>
 
                   </nz-card>
                 </nz-col>
