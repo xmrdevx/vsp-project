@@ -20,6 +20,7 @@ import { fadeAnimation, EnvironmentService, ResponseMessage, RoleTypes } from '@
 import { RootState } from '@vsp/admin/store';
 import { AuthenticationActions, AuthenticationSelectors } from '../../store';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { VspAutoFocusControlDirective } from '@vsp/forms';
 
 @Component({
   selector: 'vsp-sign-in',
@@ -40,7 +41,8 @@ import { AsyncPipe, NgIf } from '@angular/common';
     NzInputModule,
     NzPageHeaderModule,
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    VspAutoFocusControlDirective
   ]
 })
 export class SignInComponent {

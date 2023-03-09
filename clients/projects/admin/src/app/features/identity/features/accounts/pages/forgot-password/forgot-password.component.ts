@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { ResponseMessage, fadeAnimation, ResponseStatus, adminClientIdentifier, ForgotPassword } from '@vsp/core';
+import { VspAutoFocusControlDirective } from '@vsp/forms';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -34,6 +35,7 @@ import { AccountsActions, AccountsSelectors } from '../../store';
     NzPageHeaderModule,
     ReactiveFormsModule,
     RouterLink,
+    VspAutoFocusControlDirective,
   ]
 })
 export class ForgotPasswordComponent implements OnInit, OnDestroy {

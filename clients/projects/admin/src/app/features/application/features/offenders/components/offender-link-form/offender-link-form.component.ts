@@ -8,6 +8,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 
 import { EnumToArrayPipe } from '@vsp/pipes';
 import { defaultLinkTypeListOptions, defaultVisibilityListOptions, ListOption } from '@vsp/core';
+import { VspAutoFocusControlDirective } from '@vsp/forms';
 
 
 @Component({
@@ -27,6 +28,7 @@ import { defaultLinkTypeListOptions, defaultVisibilityListOptions, ListOption } 
     NzRadioModule,
     ReactiveFormsModule,
     TitleCasePipe,
+    VspAutoFocusControlDirective,
   ]
 })
 export class OffenderLinkFormComponent implements OnInit {

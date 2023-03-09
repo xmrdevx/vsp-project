@@ -17,6 +17,7 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { fadeAnimation, ResponseMessage, ValidationPatterns, ResetPassword, MatchValidators, ResponseStatus } from '@vsp/core';
 
 import { AccountsActions, AccountsSelectors } from '../../store';
+import { VspAutoFocusControlDirective } from '@vsp/forms';
 
 @Component({
   selector: 'vsp-reset-password',
@@ -37,6 +38,7 @@ import { AccountsActions, AccountsSelectors } from '../../store';
     NzPageHeaderModule,
     ReactiveFormsModule,
     RouterLink,
+    VspAutoFocusControlDirective,
   ]
 })
 export class ResetPasswordComponent implements OnInit, OnDestroy {

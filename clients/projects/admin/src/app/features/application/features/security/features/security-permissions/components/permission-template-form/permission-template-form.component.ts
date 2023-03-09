@@ -31,7 +31,8 @@ import { VspClaimPermissionsControlComponent } from '@vsp/admin/shared/form-cont
     NzListModule,
     NzSwitchModule,
     ReactiveFormsModule,
-    VspClaimPermissionsControlComponent
+    VspAutoFocusControlDirective,
+    VspClaimPermissionsControlComponent,
   ]
 })
 export class PermissionTemplateFormComponent {
