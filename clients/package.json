@@ -7,7 +7,7 @@
     "start:admin": "ng serve --project admin --port 4201 --configuration=development",
     "start:public": "ng serve --project public --port 4200 --configuration=development",
     "build": "ng build",
-    "build:libs": "ng build core && ng build datatable && ng build forms && ng build query-search-filters && ng build pipes && ng build comments && ng build offenders && ng build addresses && ng build links",
+    "build:libs": "ng build core && ng build datatable && ng build forms && ng build query-search-filters && ng build pipes && ng build text && ng build comments && ng build offenders && ng build addresses && ng build links",
     "build:admin": "ng build --project admin",
     "build:public": "ng build --project public",
     "watch": "ng build --watch --configuration development",

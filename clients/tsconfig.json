@@ -38,6 +38,9 @@
       ],
       "@vsp/links": [
         "dist/@vsp/links"
+      ],
+      "@vsp/text": [
+        "dist/@vsp/text"
       ]
     },
     "outDir": "./dist/out-tsc",

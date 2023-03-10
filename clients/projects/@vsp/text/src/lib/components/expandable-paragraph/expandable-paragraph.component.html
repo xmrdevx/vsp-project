@@ -1,0 +1,9 @@
+<p nz-typogrpahy class="mb-0">{{ isExpanded ? text : processedText }}</p>
+<a 
+    *ngIf="textLength > collapsedMaxLength"
+    href="javascript: void(0);" 
+    role="button" 
+    (click)="toggle()" 
+    (keyup.enter)="toggle()">
+  {{ isExpanded ? collapsedLabel : expandedLabel }}
+</a>

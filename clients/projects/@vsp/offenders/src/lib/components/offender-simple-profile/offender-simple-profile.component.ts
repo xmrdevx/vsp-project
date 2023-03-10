@@ -8,6 +8,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
 import { Offender } from '@vsp/core';
+import { ExpandableParagraphComponent } from '@vsp/text';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { Offender } from '@vsp/core';
   imports: [
     DatePipe,
     EllipsisPipe,
+    ExpandableParagraphComponent,
     NgIf,
     NzAvatarModule,
     NzButtonModule,
