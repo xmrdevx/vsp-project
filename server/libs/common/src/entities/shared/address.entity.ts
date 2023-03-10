@@ -1,13 +1,13 @@
 import { Point } from 'geojson';
 import { Column, Entity, OneToOne } from "typeorm";
-import { BaseEntity } from "../base.entity";
+import { BaseTrackedEntity } from '../base-tracked.entity';
 
 /**
  * Note: There is also UserAddress entity in identity which relates to the user accounts.
  * This address entity relates to resources data and has nothing to do with user account/identity.
  */
 @Entity()
-export class Address extends BaseEntity {
+export class Address extends BaseTrackedEntity {
   @Column({ type: String, nullable: true })
   public street: string | null | undefined;
 

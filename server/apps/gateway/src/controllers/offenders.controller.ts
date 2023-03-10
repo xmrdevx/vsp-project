@@ -325,6 +325,7 @@ export class OffendersController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_ADDRESSES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor)
   public createOffenderAddress(
       @Param('offenderId') offenderId: string, @Body() createAddressDto: CreateAddressDto): Observable<AddressDto> {
 
@@ -356,6 +357,7 @@ export class OffendersController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_LINKS }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
+  @UseInterceptors(EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor)
   public createOffenderLink(
       @Param('offenderId') offenderId: string, @Body() createLinkDto: CreateLinkDto): Observable<LinkDto> {
 

@@ -1,10 +1,10 @@
 import { LinkType } from '../../enums/link-type.enum';
 import { Visibility } from '../../enums/visibility.enum';
-import { Column, Entity } from "typeorm";
-import { BaseEntity } from "../base.entity";
+import { Column, Entity } from 'typeorm';
+import { BaseTrackedEntity } from '../base-tracked.entity';
 
 @Entity()
-export class Link extends BaseEntity {
+export class Link extends BaseTrackedEntity {
   @Column({ type: 'enum', enum: LinkType, default: LinkType.DOCUMENTATION })
   public type: LinkType;
 

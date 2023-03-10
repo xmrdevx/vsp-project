@@ -20,6 +20,14 @@ export class CreateLinkDto {
   @IsNotEmpty()
   public visibility: Visibility;
 
+  @IsDefined()
+  @IsNotEmpty()
+  public createdById: string;
+
+  @IsDefined()
+  @IsNotEmpty()
+  public updatedById: string;
+  
   constructor(obj: Partial<CreateLinkDto>) {
     Object.assign(this, obj);
   }
