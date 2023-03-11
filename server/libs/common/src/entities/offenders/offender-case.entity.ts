@@ -6,6 +6,7 @@ import { Visibility } from '../../enums/visibility.enum';
 import { Offender } from './offender.entity';
 import { GeoLocation } from '../geocoding/geo-location.entity';
 import { Tenant } from '../identity/tenant.entity';
+import { Address } from '../shared';
 
 @Entity()
 export class OffenderCase extends BaseTrackedEntity {
@@ -34,9 +35,9 @@ export class OffenderCase extends BaseTrackedEntity {
   @Column({ type: String, nullable: true })
   public caughtAtId: string | null | undefined;
 
-  @OneToOne(type => GeoLocation, { nullable: true, cascade: ['insert'] })
+  @OneToOne(type => Address, { nullable: true, cascade: ['insert'] })
   @JoinColumn()
-  public caughtAt: GeoLocation | null | undefined;
+  public caughtAt: Address | null | undefined;
 
   @Column()
   public tenantId: string;

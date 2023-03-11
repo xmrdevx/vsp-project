@@ -1,12 +1,8 @@
 import { Body, Controller, Get, Inject, Post, Query, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { ApiTags } from '@nestjs/swagger';
-import { HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorization';
 
-import { 
-  EnrichBodyWithCreatedByInterceptor, 
-  EnrichBodyWithTenantInterceptor, 
-  EnrichBodyWithUpdatedByInterceptor } from '@vsp/authorization';
+import { EnrichBodyWithTenantInterceptor, HasPermissionsGuard, JwtAuthGuard, Permissions } from '@vsp/authorization';
 
 import { 
   OffenderCase, 
@@ -27,6 +23,7 @@ import {
 
 import { LoggerService } from '@vsp/logger';
 import { catchError, Observable, throwError } from 'rxjs';
+import { EnrichCreateOffenderRequestBodyInterceptor } from '../interceptors/enrich-create-offender-request-body.interceptor';
 
 
 @ApiTags('offenders')
@@ -47,12 +44,10 @@ export class OffenderCasesController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
-  @UseInterceptors(
-    EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor, EnrichBodyWithTenantInterceptor
-  )
+  @UseInterceptors(EnrichBodyWithTenantInterceptor, EnrichCreateOffenderRequestBodyInterceptor)
   public createCaseWithOffender(
       @Body() createCaseWithOffenderDto: CreateOffenderCaseWithOffenderDto): Observable<OffenderCaseDto> {
-    
+    console.log("body", createCaseWithOffenderDto);
     return this._offendersServiceClient
       .send(
         createOffenderCaseWithOffenderCommand, 

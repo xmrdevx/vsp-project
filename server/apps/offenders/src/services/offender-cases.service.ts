@@ -49,9 +49,16 @@ export class OffenderCasesService {
       this._casesRepository.create({ 
         ...createCaseDto,
         caughtAt: !createCaseDto?.caughtAt ? null : {
+          createdById: createCaseDto.createdById,
+          updatedById: createCaseDto.updatedById,
+          street: createCaseDto.caughtAt.street,
+          street2: createCaseDto.caughtAt.street2,
+          city: createCaseDto.caughtAt.city,
+          state: createCaseDto.caughtAt.state,
+          zip: createCaseDto.caughtAt.zip,
+          country: createCaseDto.caughtAt.country,
           latitude: createCaseDto.caughtAt.latitude,
           longitude: createCaseDto.caughtAt.longitude,
-          fullAddressString: createCaseDto.caughtAt.fullAddressString,
           location: {
             type: "Point",
             coordinates: [
@@ -74,9 +81,15 @@ export class OffenderCasesService {
       ...existingCase, 
       ...updateCaseDto,
       caughtAt: !updateCaseDto?.caughtAt ? null : {
+        updatedById: updateCaseDto.updatedById,
+        street: updateCaseDto.caughtAt.street,
+        street2: updateCaseDto.caughtAt.street2,
+        city: updateCaseDto.caughtAt.city,
+        state: updateCaseDto.caughtAt.state,
+        zip: updateCaseDto.caughtAt.zip,
+        country: updateCaseDto.caughtAt.country,
         latitude: updateCaseDto.caughtAt.latitude,
         longitude: updateCaseDto.caughtAt.longitude,
-        fullAddressString: updateCaseDto.caughtAt.fullAddressString,
         location: {
           type: "Point",
           coordinates: [
@@ -126,9 +139,16 @@ export class OffenderCasesService {
         ...createCaseWithOffenderDto, 
         offender: newOffender,
         caughtAt: !createCaseWithOffenderDto?.caughtAt ? null : {
+          createdById: createCaseWithOffenderDto.createdById,
+          updatedById: createCaseWithOffenderDto.updatedById,
+          street: createCaseWithOffenderDto.caughtAt.street,
+          street2: createCaseWithOffenderDto.caughtAt.street2,
+          city: createCaseWithOffenderDto.caughtAt.city,
+          state: createCaseWithOffenderDto.caughtAt.state,
+          zip: createCaseWithOffenderDto.caughtAt.zip,
+          country: createCaseWithOffenderDto.caughtAt.country,
           latitude: createCaseWithOffenderDto.caughtAt.latitude,
           longitude: createCaseWithOffenderDto.caughtAt.longitude,
-          fullAddressString: createCaseWithOffenderDto.caughtAt.fullAddressString,
           location: {
             type: "Point",
             coordinates: [

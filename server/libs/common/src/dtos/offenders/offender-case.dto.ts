@@ -3,6 +3,7 @@ import { CaseStatus } from '../../enums/case-status.enum';
 import { BaseDto } from '../base.dto';
 import { GeoLocationDto } from '../geocoding/geo-location.dto';
 import { OffenderDto } from './offender.dto';
+import { AddressDto } from '../shared';
 
 export class OffenderCaseDto extends BaseDto {
   public openedOn: Date;
@@ -11,7 +12,7 @@ export class OffenderCaseDto extends BaseDto {
   public visibility: Visibility;
   public summary: string | null | undefined;
   public offender: OffenderDto | null | undefined;
-  public caughtAt: GeoLocationDto | null | undefined;  
+  public caughtAt: AddressDto | null | undefined;  
 
   constructor(obj: Partial<OffenderCaseDto>) {
     super();

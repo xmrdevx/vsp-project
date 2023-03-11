@@ -5,6 +5,7 @@ import { IsDefined, IsNotEmpty, IsOptional, ValidateNested } from 'class-validat
 import { CaseStatus } from '../../enums/case-status.enum';
 import { Visibility } from '../../enums/visibility.enum';
 import { GeoLocationDto } from '../geocoding/geo-location.dto';
+import { CreateAddressDto } from '../shared';
 import { CreateGeoLocationDto } from './create-geo-location.dto';
 
 export class UpdateOffenderCaseDto {
@@ -34,6 +35,6 @@ export class UpdateOffenderCaseDto {
 
   @IsOptional()
   @ValidateNested()
-  @Type(() => CreateGeoLocationDto)
-  public caughtAt: CreateGeoLocationDto;
+  @Type(() => CreateAddressDto)
+  public caughtAt: CreateAddressDto;
 }

@@ -1,5 +1,6 @@
 import { OffenderCaseDto } from '../dtos/offenders';
 import { OffenderCase } from '../entities/offenders';
+import { AddressMapper } from './address.mapper';
 import { GeoLocationMapper } from './geo-location.mapper';
 import { OffenderMapper } from './offender.mapper';
 
@@ -15,7 +16,7 @@ export class OffenderCaseMapper {
       visibility: entity.visibility,
       summary: entity.summary,
       offender: entity?.offender ? OffenderMapper.toDto(entity.offender) : undefined,
-      caughtAt: entity?.caughtAt ? GeoLocationMapper.toDto(entity.caughtAt) : undefined
+      caughtAt: entity?.caughtAt ? AddressMapper.toDto(entity.caughtAt) : undefined
     });
   }
   

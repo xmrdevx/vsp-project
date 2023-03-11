@@ -70,6 +70,8 @@ import {
   EnrichBodyWithDeletedByInterceptor, 
   EnrichBodyWithTenantInterceptor } from '@vsp/authorization';
 import { EnrichBodyWithCommentedByInterceptor } from '@vsp/authorization/interceptors/enrich-body-with-commented-by.interceptor';
+import { EnrichCreateOffenderRequestBodyInterceptor } from '../interceptors/enrich-create-offender-request-body.interceptor';
+import { EnrichUpdateOffenderRequestBodyInterceptor } from '../interceptors/enrich-update-offender-request-body.interceptor';
 
 @ApiTags('offenders')
 @Controller('offenders')
@@ -201,9 +203,7 @@ export class OffendersController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_CREATE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
-  @UseInterceptors(
-    EnrichBodyWithCreatedByInterceptor, EnrichBodyWithUpdatedByInterceptor, EnrichBodyWithTenantInterceptor
-  )
+  @UseInterceptors(EnrichBodyWithTenantInterceptor, EnrichCreateOffenderRequestBodyInterceptor)
   public createOffenderCase(
       @Body() createCaseDto: CreateCaseDto, @Param('offenderId') offenderId: string): Observable<OffenderCaseDto> {
     
@@ -224,7 +224,7 @@ export class OffendersController {
     permissions: [{ key: ClaimAuthorizationTypes.CAN_UPDATE, value: ClaimValues.OFFENDER_CASES }]
   })
   @UseGuards(JwtAuthGuard, HasPermissionsGuard)
-  @UseInterceptors(EnrichBodyWithUpdatedByInterceptor)
+  @UseInterceptors(EnrichUpdateOffenderRequestBodyInterceptor)
   public updatedOffenderCase(
     @Body() updateCaseDto: UpdateOffenderCaseDto, @Param('offenderId') offenderId: string, @Param('caseId') caseId: string
   ): Observable<OffenderCaseDto> {

@@ -21,6 +21,8 @@ import { StreamsController } from './controllers/streams.controller';
 import { GeocodingController } from './controllers/geocoding.controller';
 import { OffendersController } from './controllers/offenders.controller';
 import { OffenderCasesController } from './controllers/offender-cases.controller';
+import { EnrichCreateOffenderRequestBodyInterceptor } from './interceptors/enrich-create-offender-request-body.interceptor';
+import { EnrichUpdateOffenderRequestBodyInterceptor } from './interceptors/enrich-update-offender-request-body.interceptor';
 
 @Module({
   imports: [
@@ -50,7 +52,9 @@ import { OffenderCasesController } from './controllers/offender-cases.controller
     offendersMicroserviceProvider,
     JwtStrategy,
     LocalStrategy,
-    HttpCacheInterceptor
+    HttpCacheInterceptor,
+    EnrichCreateOffenderRequestBodyInterceptor,
+    EnrichUpdateOffenderRequestBodyInterceptor,
   ],
 })
 export class GatewayModule {}

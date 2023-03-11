@@ -7,95 +7,95 @@ START TRANSACTION;
 ---------------------------
 
 -- GEO LOCATIONS
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('143f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.92136037, -104.95969780, (ST_SetSRID(ST_MakePoint(-104.95969780, 39.92136037), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '143f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.92136037, -104.95969780, (ST_SetSRID(ST_MakePoint(-104.95969780, 39.92136037), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('243f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.93726098, -104.74199110, (ST_SetSRID(ST_MakePoint(-104.74199110, 39.93726098), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '243f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.93726098, -104.74199110, (ST_SetSRID(ST_MakePoint(-104.74199110, 39.93726098), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('343f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.95394772, -105.39017961, (ST_SetSRID(ST_MakePoint(-105.39017961, 39.95394772), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '343f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.95394772, -105.39017961, (ST_SetSRID(ST_MakePoint(-105.39017961, 39.95394772), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('443f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.06044501, -104.81215989, (ST_SetSRID(ST_MakePoint(-104.81215989, 40.06044501), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '443f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.06044501, -104.81215989, (ST_SetSRID(ST_MakePoint(-104.81215989, 40.06044501), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('543f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.95243864, -105.10571088, (ST_SetSRID(ST_MakePoint(-105.10571088, 39.95243864), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '543f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.95243864, -105.10571088, (ST_SetSRID(ST_MakePoint(-105.10571088, 39.95243864), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('643f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.10228979, -104.76060716, (ST_SetSRID(ST_MakePoint(-104.76060716, 40.10228979), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '643f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.10228979, -104.76060716, (ST_SetSRID(ST_MakePoint(-104.76060716, 40.10228979), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('743f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.98923410, -105.21355269, (ST_SetSRID(ST_MakePoint(-105.21355269, 39.98923410), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '743f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.98923410, -105.21355269, (ST_SetSRID(ST_MakePoint(-105.21355269, 39.98923410), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('843f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.03102184, -105.33735526, (ST_SetSRID(ST_MakePoint(-105.33735526, 40.03102184), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '843f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.03102184, -105.33735526, (ST_SetSRID(ST_MakePoint(-105.33735526, 40.03102184), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('943f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.98960836, -104.89086923, (ST_SetSRID(ST_MakePoint(-104.89086923, 39.98960836), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '943f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.98960836, -104.89086923, (ST_SetSRID(ST_MakePoint(-104.89086923, 39.98960836), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('043f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.00598767, -105.18870227, (ST_SetSRID(ST_MakePoint(-105.18870227, 40.00598767), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '043f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.00598767, -105.18870227, (ST_SetSRID(ST_MakePoint(-105.18870227, 40.00598767), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('113f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.81393956, -105.22284458, (ST_SetSRID(ST_MakePoint(-105.22284458, 39.81393956), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '113f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.81393956, -105.22284458, (ST_SetSRID(ST_MakePoint(-105.22284458, 39.81393956), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('123f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.00140230, -105.30747925, (ST_SetSRID(ST_MakePoint(-105.30747925, 40.00140230), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '123f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.00140230, -105.30747925, (ST_SetSRID(ST_MakePoint(-105.30747925, 40.00140230), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('133f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.21964355, -104.93625659, (ST_SetSRID(ST_MakePoint(-104.93625659, 40.21964355), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '133f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.21964355, -104.93625659, (ST_SetSRID(ST_MakePoint(-104.93625659, 40.21964355), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('144f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.99658821, -104.84981450, (ST_SetSRID(ST_MakePoint(-104.84981450, 39.99658821), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '144f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.99658821, -104.84981450, (ST_SetSRID(ST_MakePoint(-104.84981450, 39.99658821), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('153f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.77469159, -105.08986024, (ST_SetSRID(ST_MakePoint(-105.08986024, 39.77469159), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '153f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.77469159, -105.08986024, (ST_SetSRID(ST_MakePoint(-105.08986024, 39.77469159), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('163f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.87424122, -105.30400377, (ST_SetSRID(ST_MakePoint(-105.30400377, 39.87424122), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '163f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.87424122, -105.30400377, (ST_SetSRID(ST_MakePoint(-105.30400377, 39.87424122), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('173f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.78724901, -104.72352569, (ST_SetSRID(ST_MakePoint(-104.72352569, 39.78724901), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '173f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.78724901, -104.72352569, (ST_SetSRID(ST_MakePoint(-104.72352569, 39.78724901), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('183f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.79130064, -105.10717023, (ST_SetSRID(ST_MakePoint(-105.10717023, 39.79130064), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '183f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.79130064, -105.10717023, (ST_SetSRID(ST_MakePoint(-105.10717023, 39.79130064), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('193f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.85454599, -105.25636662, (ST_SetSRID(ST_MakePoint(-105.25636662, 39.85454599), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '193f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.85454599, -105.25636662, (ST_SetSRID(ST_MakePoint(-105.25636662, 39.85454599), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('103f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.18158891, -105.03599735, (ST_SetSRID(ST_MakePoint(-105.03599735, 40.18158891), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '103f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.18158891, -105.03599735, (ST_SetSRID(ST_MakePoint(-105.03599735, 40.18158891), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('213f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.15040966, -104.99229624, (ST_SetSRID(ST_MakePoint(-104.99229624, 40.15040966), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '213f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.15040966, -104.99229624, (ST_SetSRID(ST_MakePoint(-104.99229624, 40.15040966), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('223f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.03308952, -104.70715658, (ST_SetSRID(ST_MakePoint(-104.70715658, 40.03308952), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '223f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.03308952, -104.70715658, (ST_SetSRID(ST_MakePoint(-104.70715658, 40.03308952), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('233f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.90262666, -104.66149627, (ST_SetSRID(ST_MakePoint(-104.66149627, 39.90262666), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '233f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.90262666, -104.66149627, (ST_SetSRID(ST_MakePoint(-104.66149627, 39.90262666), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('244f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.84305015, -105.13491621, (ST_SetSRID(ST_MakePoint(-105.13491621, 39.84305015), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '244f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.84305015, -105.13491621, (ST_SetSRID(ST_MakePoint(-105.13491621, 39.84305015), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('253f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.97150241, -105.12749826, (ST_SetSRID(ST_MakePoint(-105.12749826, 39.97150241), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '253f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.97150241, -105.12749826, (ST_SetSRID(ST_MakePoint(-105.12749826, 39.97150241), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('263f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.80065276, -104.89957589, (ST_SetSRID(ST_MakePoint(-104.89957589, 39.80065276), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '263f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.80065276, -104.89957589, (ST_SetSRID(ST_MakePoint(-104.89957589, 39.80065276), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('273f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.70654743, -105.21609824, (ST_SetSRID(ST_MakePoint(-105.21609824, 39.70654743), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '273f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.70654743, -105.21609824, (ST_SetSRID(ST_MakePoint(-105.21609824, 39.70654743), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('283f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.99210029, -105.21302555, (ST_SetSRID(ST_MakePoint(-105.21302555, 39.99210029), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '283f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.99210029, -105.21302555, (ST_SetSRID(ST_MakePoint(-105.21302555, 39.99210029), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('293f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.81999446, -104.73083251, (ST_SetSRID(ST_MakePoint(-104.73083251, 39.81999446), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '293f154d-9a1b-4815-8760-7fd7a0d9b8cc', 39.81999446, -104.73083251, (ST_SetSRID(ST_MakePoint(-104.73083251, 39.81999446), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('303f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.01295800, -105.05514796, (ST_SetSRID(ST_MakePoint(-105.05514796, 40.01295800), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '303f154d-9a1b-4815-8760-7fd7a0d9b8cc', 40.01295800, -105.05514796, (ST_SetSRID(ST_MakePoint(-105.05514796, 40.01295800), 4326)));
 
 
 -- offender
@@ -287,95 +287,95 @@ VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661
 ---------------------------
 
 -- geo_location
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b5adf1-a0fd-4b02-ae51-51b4289d440c', 43.05371971,-82.11499753, (ST_SetSRID(ST_MakePoint(-82.11499753,43.05371971), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b5adf1-a0fd-4b02-ae51-51b4289d440c', 43.05371971,-82.11499753, (ST_SetSRID(ST_MakePoint(-82.11499753,43.05371971), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('16b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.90788051,-83.23370956, (ST_SetSRID(ST_MakePoint(-83.23370956,42.90788051), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '16b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.90788051,-83.23370956, (ST_SetSRID(ST_MakePoint(-83.23370956,42.90788051), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('34b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.28290211,-82.53240259, (ST_SetSRID(ST_MakePoint(-82.53240259,42.28290211), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '34b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.28290211,-82.53240259, (ST_SetSRID(ST_MakePoint(-82.53240259,42.28290211), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('33b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.87523465,-83.62752155, (ST_SetSRID(ST_MakePoint(-83.62752155,42.87523465), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '33b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.87523465,-83.62752155, (ST_SetSRID(ST_MakePoint(-83.62752155,42.87523465), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('12b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.41293783,-82.90550309, (ST_SetSRID(ST_MakePoint(-82.90550309,42.41293783), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '12b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.41293783,-82.90550309, (ST_SetSRID(ST_MakePoint(-82.90550309,42.41293783), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('32b5cdf1-a0fd-4b02-ae51-51b4289d440c', 42.75274306,-83.44258818, (ST_SetSRID(ST_MakePoint(-83.44258818,42.75274306), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '32b5cdf1-a0fd-4b02-ae51-51b4289d440c', 42.75274306,-83.44258818, (ST_SetSRID(ST_MakePoint(-83.44258818,42.75274306), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('35b3cdf1-a0fd-4b02-ae51-51b4289d440c', 43.03725831,-83.29774383, (ST_SetSRID(ST_MakePoint(-83.29774383,43.03725831), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '35b3cdf1-a0fd-4b02-ae51-51b4289d440c', 43.03725831,-83.29774383, (ST_SetSRID(ST_MakePoint(-83.29774383,43.03725831), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('3ab5adf1-a0fd-4b02-ae51-51b4289d440c', 43.01859121,-82.50692472, (ST_SetSRID(ST_MakePoint(-82.50692472,43.01859121), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3ab5adf1-a0fd-4b02-ae51-51b4289d440c', 43.01859121,-82.50692472, (ST_SetSRID(ST_MakePoint(-82.50692472,43.01859121), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('32b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.62843845,-82.21449196, (ST_SetSRID(ST_MakePoint(-82.21449196,42.62843845), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '32b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.62843845,-82.21449196, (ST_SetSRID(ST_MakePoint(-82.21449196,42.62843845), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('11b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.74436615,-82.58015319, (ST_SetSRID(ST_MakePoint(-82.58015319,42.74436615), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '11b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.74436615,-82.58015319, (ST_SetSRID(ST_MakePoint(-82.58015319,42.74436615), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('22b5adf1-a0fd-4b02-ae51-51b4289d440c', 43.1314665,-83.37372757,  (ST_SetSRID(ST_MakePoint(-83.37372757,43.13146650), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '22b5adf1-a0fd-4b02-ae51-51b4289d440c', 43.1314665,-83.37372757,  (ST_SetSRID(ST_MakePoint(-83.37372757,43.13146650), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('43b5adf1-a0fd-4b02-ae51-51b4289d440c', 43.02754514,-82.67157907, (ST_SetSRID(ST_MakePoint(-82.67157907,43.02754514), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '43b5adf1-a0fd-4b02-ae51-51b4289d440c', 43.02754514,-82.67157907, (ST_SetSRID(ST_MakePoint(-82.67157907,43.02754514), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('16b2adf1-a0fd-4b02-ae51-51b4289d440c', 42.619461,-83.65410497,   (ST_SetSRID(ST_MakePoint(-83.65410497,42.61946100), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '16b2adf1-a0fd-4b02-ae51-51b4289d440c', 42.619461,-83.65410497,   (ST_SetSRID(ST_MakePoint(-83.65410497,42.61946100), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('66b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.57824701,-83.4181568,  (ST_SetSRID(ST_MakePoint(-83.41815680,42.57824701), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '66b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.57824701,-83.4181568,  (ST_SetSRID(ST_MakePoint(-83.41815680,42.57824701), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('88b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.35973814,-83.33191534, (ST_SetSRID(ST_MakePoint(-83.33191534,42.35973814), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '88b5adf1-a0fd-4b02-ae51-51b4289d440c', 42.35973814,-83.33191534, (ST_SetSRID(ST_MakePoint(-83.33191534,42.35973814), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b6adf1-a0fd-4b02-ae51-51b4289d440c', 42.6061772,-82.80223761,  (ST_SetSRID(ST_MakePoint(-82.80223761,42.60617720), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b6adf1-a0fd-4b02-ae51-51b4289d440c', 42.6061772,-82.80223761,  (ST_SetSRID(ST_MakePoint(-82.80223761,42.60617720), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b1adf1-a0fd-4b02-ae51-51b4289d440c', 43.44870626,-82.88548535, (ST_SetSRID(ST_MakePoint(-82.88548535,43.44870626), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b1adf1-a0fd-4b02-ae51-51b4289d440c', 43.44870626,-82.88548535, (ST_SetSRID(ST_MakePoint(-82.88548535,43.44870626), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b8adf1-a0fd-4b02-ae51-51b4289d440c', 42.39374218,-82.26732515, (ST_SetSRID(ST_MakePoint(-82.26732515,42.39374218), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b8adf1-a0fd-4b02-ae51-51b4289d440c', 42.39374218,-82.26732515, (ST_SetSRID(ST_MakePoint(-82.26732515,42.39374218), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b52df1-a0fd-4b02-ae51-51b4289d440c', 43.08516909,-82.96633807, (ST_SetSRID(ST_MakePoint(-82.96633807,43.08516909), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b52df1-a0fd-4b02-ae51-51b4289d440c', 43.08516909,-82.96633807, (ST_SetSRID(ST_MakePoint(-82.96633807,43.08516909), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b57df1-a0fd-4b02-ae51-51b4289d440c', 42.20158489,-82.22474704, (ST_SetSRID(ST_MakePoint(-82.22474704,42.20158489), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b57df1-a0fd-4b02-ae51-51b4289d440c', 42.20158489,-82.22474704, (ST_SetSRID(ST_MakePoint(-82.22474704,42.20158489), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b51df1-a0fd-4b02-ae51-51b4289d440c', 43.46640312,-82.9428936,  (ST_SetSRID(ST_MakePoint(-82.94289360,43.46640312), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b51df1-a0fd-4b02-ae51-51b4289d440c', 43.46640312,-82.9428936,  (ST_SetSRID(ST_MakePoint(-82.94289360,43.46640312), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b5bdf1-a0fd-4b02-ae51-51b4289d440c', 42.66808714,-82.53808274, (ST_SetSRID(ST_MakePoint(-82.53808274,42.66808714), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b5bdf1-a0fd-4b02-ae51-51b4289d440c', 42.66808714,-82.53808274, (ST_SetSRID(ST_MakePoint(-82.53808274,42.66808714), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b5cdf1-a0fd-4b02-ae51-51b4289d440c', 42.96913922,-82.17206752, (ST_SetSRID(ST_MakePoint(-82.17206752,42.96913922), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b5cdf1-a0fd-4b02-ae51-51b4289d440c', 42.96913922,-82.17206752, (ST_SetSRID(ST_MakePoint(-82.17206752,42.96913922), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b5ddf1-a0fd-4b02-ae51-51b4289d440c', 42.99699251,-82.6455679,  (ST_SetSRID(ST_MakePoint(-82.64556790,42.99699251), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b5ddf1-a0fd-4b02-ae51-51b4289d440c', 42.99699251,-82.6455679,  (ST_SetSRID(ST_MakePoint(-82.64556790,42.99699251), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b59df1-a0fd-4b02-ae51-51b4289d440c', 42.45369314,-83.46460832, (ST_SetSRID(ST_MakePoint(-83.46460832,42.45369314), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b59df1-a0fd-4b02-ae51-51b4289d440c', 42.45369314,-83.46460832, (ST_SetSRID(ST_MakePoint(-83.46460832,42.45369314), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b53df1-a0fd-4b02-ae51-51b4289d440c', 43.24439463,-83.290614,   (ST_SetSRID(ST_MakePoint(-83.29061400,43.24439463), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b53df1-a0fd-4b02-ae51-51b4289d440c', 43.24439463,-83.290614,   (ST_SetSRID(ST_MakePoint(-83.29061400,43.24439463), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b3adf1-a0fd-4b02-ae51-51b4289d440c', 42.67924878,-82.32770896, (ST_SetSRID(ST_MakePoint(-82.32770896,42.67924878), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b3adf1-a0fd-4b02-ae51-51b4289d440c', 42.67924878,-82.32770896, (ST_SetSRID(ST_MakePoint(-82.32770896,42.67924878), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b55df1-a0fd-4b02-ae51-51b4289d440c', 42.78221086,-83.62394466, (ST_SetSRID(ST_MakePoint(-83.62394466,42.78221086), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b55df1-a0fd-4b02-ae51-51b4289d440c', 42.78221086,-83.62394466, (ST_SetSRID(ST_MakePoint(-83.62394466,42.78221086), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b2bdf1-a0fd-4b02-ae51-51b4289d440c', 42.77404705,-81.95754757, (ST_SetSRID(ST_MakePoint(-81.95754757,42.77404705), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b2bdf1-a0fd-4b02-ae51-51b4289d440c', 42.77404705,-81.95754757, (ST_SetSRID(ST_MakePoint(-81.95754757,42.77404705), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('36b1cdf1-a0fd-4b02-ae51-51b4289d440c', 42.85952647,-82.54769275, (ST_SetSRID(ST_MakePoint(-82.54769275,42.85952647), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '36b1cdf1-a0fd-4b02-ae51-51b4289d440c', 42.85952647,-82.54769275, (ST_SetSRID(ST_MakePoint(-82.54769275,42.85952647), 4326)));
 
 
 -- offender
@@ -568,155 +568,155 @@ VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661
 ----------------------
 
 -- GEOLOCATIONS
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee01', 42.97690766,-77.78027053, (ST_SetSRID(ST_MakePoint(-77.78027053, 42.97690766), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee01', 42.97690766,-77.78027053, (ST_SetSRID(ST_MakePoint(-77.78027053, 42.97690766), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee02', 42.83906959,-77.23940662, (ST_SetSRID(ST_MakePoint(-77.23940662, 42.83906959), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee02', 42.83906959,-77.23940662, (ST_SetSRID(ST_MakePoint(-77.23940662, 42.83906959), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee03', 43.18208435,-76.99727199, (ST_SetSRID(ST_MakePoint(-76.99727199, 43.18208435), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee03', 43.18208435,-76.99727199, (ST_SetSRID(ST_MakePoint(-76.99727199, 43.18208435), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee04', 42.78865360,-77.58683878, (ST_SetSRID(ST_MakePoint(-77.58683878, 42.78865360), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee04', 42.78865360,-77.58683878, (ST_SetSRID(ST_MakePoint(-77.58683878, 42.78865360), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee05', 42.90413343,-77.86651596, (ST_SetSRID(ST_MakePoint(-77.86651596, 42.90413343), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee05', 42.90413343,-77.86651596, (ST_SetSRID(ST_MakePoint(-77.86651596, 42.90413343), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee06', 43.58430755,-77.74035108, (ST_SetSRID(ST_MakePoint(-77.74035108, 43.58430755), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee06', 43.58430755,-77.74035108, (ST_SetSRID(ST_MakePoint(-77.74035108, 43.58430755), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee07', 42.89271083,-78.01282118, (ST_SetSRID(ST_MakePoint(-78.01282118, 42.89271083), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee07', 42.89271083,-78.01282118, (ST_SetSRID(ST_MakePoint(-78.01282118, 42.89271083), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee08', 42.95594051,-78.06203730, (ST_SetSRID(ST_MakePoint(-78.06203730, 42.95594051), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee08', 42.95594051,-78.06203730, (ST_SetSRID(ST_MakePoint(-78.06203730, 42.95594051), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee09', 43.47539687,-77.75439300, (ST_SetSRID(ST_MakePoint(-77.75439300, 43.47539687), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee09', 43.47539687,-77.75439300, (ST_SetSRID(ST_MakePoint(-77.75439300, 43.47539687), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee10', 42.80590304,-77.46842651, (ST_SetSRID(ST_MakePoint(-77.46842651, 42.80590304), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee10', 42.80590304,-77.46842651, (ST_SetSRID(ST_MakePoint(-77.46842651, 42.80590304), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee11', 42.88070687,-77.28672487, (ST_SetSRID(ST_MakePoint(-77.28672487, 42.88070687), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee11', 42.88070687,-77.28672487, (ST_SetSRID(ST_MakePoint(-77.28672487, 42.88070687), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee12', 43.12467956,-78.17125484, (ST_SetSRID(ST_MakePoint(-78.17125484, 43.12467956), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee12', 43.12467956,-78.17125484, (ST_SetSRID(ST_MakePoint(-78.17125484, 43.12467956), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee13', 43.49984044,-77.31930094, (ST_SetSRID(ST_MakePoint(-77.31930094, 43.49984044), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee13', 43.49984044,-77.31930094, (ST_SetSRID(ST_MakePoint(-77.31930094, 43.49984044), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee14', 43.46324080,-77.36517046, (ST_SetSRID(ST_MakePoint(-77.36517046, 43.46324080), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee14', 43.46324080,-77.36517046, (ST_SetSRID(ST_MakePoint(-77.36517046, 43.46324080), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee15', 43.56974723,-77.60456986, (ST_SetSRID(ST_MakePoint(-77.60456986, 43.56974723), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee15', 43.56974723,-77.60456986, (ST_SetSRID(ST_MakePoint(-77.60456986, 43.56974723), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee16', 42.74315388,-77.65585408, (ST_SetSRID(ST_MakePoint(-77.65585408, 42.74315388), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee16', 42.74315388,-77.65585408, (ST_SetSRID(ST_MakePoint(-77.65585408, 42.74315388), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee17', 43.30366751,-77.12390399, (ST_SetSRID(ST_MakePoint(-77.12390399, 43.30366751), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee17', 43.30366751,-77.12390399, (ST_SetSRID(ST_MakePoint(-77.12390399, 43.30366751), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee18', 43.58959479,-77.51959555, (ST_SetSRID(ST_MakePoint(-77.51959555, 43.58959479), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee18', 43.58959479,-77.51959555, (ST_SetSRID(ST_MakePoint(-77.51959555, 43.58959479), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee19', 43.00786495,-77.12836251, (ST_SetSRID(ST_MakePoint(-77.12836251, 43.00786495), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee19', 43.00786495,-77.12836251, (ST_SetSRID(ST_MakePoint(-77.12836251, 43.00786495), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee20', 42.74050011,-77.63732159, (ST_SetSRID(ST_MakePoint(-77.63732159, 42.74050011), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee20', 42.74050011,-77.63732159, (ST_SetSRID(ST_MakePoint(-77.63732159, 42.74050011), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee21', 43.39528236,-77.56232311, (ST_SetSRID(ST_MakePoint(-77.56232311, 43.39528236), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee21', 43.39528236,-77.56232311, (ST_SetSRID(ST_MakePoint(-77.56232311, 43.39528236), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee22', 43.18426011,-77.04869265, (ST_SetSRID(ST_MakePoint(-77.04869265, 43.18426011), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee22', 43.18426011,-77.04869265, (ST_SetSRID(ST_MakePoint(-77.04869265, 43.18426011), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee23', 43.10448170,-77.20501105, (ST_SetSRID(ST_MakePoint(-77.20501105, 43.10448170), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee23', 43.10448170,-77.20501105, (ST_SetSRID(ST_MakePoint(-77.20501105, 43.10448170), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee24', 43.26407623,-77.79360330, (ST_SetSRID(ST_MakePoint(-77.79360330, 43.26407623), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee24', 43.26407623,-77.79360330, (ST_SetSRID(ST_MakePoint(-77.79360330, 43.26407623), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee25', 43.20781162,-77.61135165, (ST_SetSRID(ST_MakePoint(-77.61135165, 43.20781162), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee25', 43.20781162,-77.61135165, (ST_SetSRID(ST_MakePoint(-77.61135165, 43.20781162), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee26', 43.08007243,-77.16075325, (ST_SetSRID(ST_MakePoint(-77.16075325, 43.08007243), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee26', 43.08007243,-77.16075325, (ST_SetSRID(ST_MakePoint(-77.16075325, 43.08007243), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee27', 43.56541381,-77.67866450, (ST_SetSRID(ST_MakePoint(-77.67866450, 43.56541381), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee27', 43.56541381,-77.67866450, (ST_SetSRID(ST_MakePoint(-77.67866450, 43.56541381), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee28', 43.00339963,-77.72846568, (ST_SetSRID(ST_MakePoint(-77.72846568, 43.00339963), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee28', 43.00339963,-77.72846568, (ST_SetSRID(ST_MakePoint(-77.72846568, 43.00339963), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee29', 43.05729016,-77.08649913, (ST_SetSRID(ST_MakePoint(-77.08649913, 43.05729016), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee29', 43.05729016,-77.08649913, (ST_SetSRID(ST_MakePoint(-77.08649913, 43.05729016), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee30', 43.09023974,-77.84069826, (ST_SetSRID(ST_MakePoint(-77.84069826, 43.09023974), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee30', 43.09023974,-77.84069826, (ST_SetSRID(ST_MakePoint(-77.84069826, 43.09023974), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee31', 43.29832787,-77.89726275, (ST_SetSRID(ST_MakePoint(-77.89726275, 43.29832787), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee31', 43.29832787,-77.89726275, (ST_SetSRID(ST_MakePoint(-77.89726275, 43.29832787), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee32', 43.11801199,-78.13897428, (ST_SetSRID(ST_MakePoint(-78.13897428, 43.11801199), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee32', 43.11801199,-78.13897428, (ST_SetSRID(ST_MakePoint(-78.13897428, 43.11801199), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee33', 42.93174180,-77.17577072, (ST_SetSRID(ST_MakePoint(-77.17577072, 42.93174180), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee33', 42.93174180,-77.17577072, (ST_SetSRID(ST_MakePoint(-77.17577072, 42.93174180), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee34', 42.96554816,-77.98789090, (ST_SetSRID(ST_MakePoint(-77.98789090, 42.96554816), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee34', 42.96554816,-77.98789090, (ST_SetSRID(ST_MakePoint(-77.98789090, 42.96554816), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee35', 43.24851669,-77.93254297, (ST_SetSRID(ST_MakePoint(-77.93254297, 43.24851669), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee35', 43.24851669,-77.93254297, (ST_SetSRID(ST_MakePoint(-77.93254297, 43.24851669), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee36', 43.20941032,-77.75955208, (ST_SetSRID(ST_MakePoint(-77.75955208, 43.20941032), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee36', 43.20941032,-77.75955208, (ST_SetSRID(ST_MakePoint(-77.75955208, 43.20941032), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee37', 43.49977016,-77.73845414, (ST_SetSRID(ST_MakePoint(-77.73845414, 43.49977016), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee37', 43.49977016,-77.73845414, (ST_SetSRID(ST_MakePoint(-77.73845414, 43.49977016), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee38', 43.58523460,-77.60834076, (ST_SetSRID(ST_MakePoint(-77.60834076, 43.58523460), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee38', 43.58523460,-77.60834076, (ST_SetSRID(ST_MakePoint(-77.60834076, 43.58523460), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee39', 42.85578685,-77.65821268, (ST_SetSRID(ST_MakePoint(-77.65821268, 42.85578685), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee39', 42.85578685,-77.65821268, (ST_SetSRID(ST_MakePoint(-77.65821268, 42.85578685), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee40', 43.37946961,-77.26764677, (ST_SetSRID(ST_MakePoint(-77.26764677, 43.37946961), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee40', 43.37946961,-77.26764677, (ST_SetSRID(ST_MakePoint(-77.26764677, 43.37946961), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee41', 43.31743723,-77.90658203, (ST_SetSRID(ST_MakePoint(-77.90658203, 43.31743723), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee41', 43.31743723,-77.90658203, (ST_SetSRID(ST_MakePoint(-77.90658203, 43.31743723), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee42', 43.10927644,-77.09563648, (ST_SetSRID(ST_MakePoint(-77.09563648, 43.10927644), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee42', 43.10927644,-77.09563648, (ST_SetSRID(ST_MakePoint(-77.09563648, 43.10927644), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee43', 43.21561249,-77.70803315, (ST_SetSRID(ST_MakePoint(-77.70803315, 43.21561249), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee43', 43.21561249,-77.70803315, (ST_SetSRID(ST_MakePoint(-77.70803315, 43.21561249), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee44', 42.99971631,-77.38223133, (ST_SetSRID(ST_MakePoint(-77.38223133, 42.99971631), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee44', 42.99971631,-77.38223133, (ST_SetSRID(ST_MakePoint(-77.38223133, 42.99971631), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee45', 42.90575403,-77.84977661, (ST_SetSRID(ST_MakePoint(-77.84977661, 42.90575403), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee45', 42.90575403,-77.84977661, (ST_SetSRID(ST_MakePoint(-77.84977661, 42.90575403), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee46', 43.00114799,-78.07186480, (ST_SetSRID(ST_MakePoint(-78.07186480, 43.00114799), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee46', 43.00114799,-78.07186480, (ST_SetSRID(ST_MakePoint(-78.07186480, 43.00114799), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee47', 42.99075998,-77.43921655, (ST_SetSRID(ST_MakePoint(-77.43921655, 42.99075998), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee47', 42.99075998,-77.43921655, (ST_SetSRID(ST_MakePoint(-77.43921655, 42.99075998), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee48', 43.25545620,-78.09282643, (ST_SetSRID(ST_MakePoint(-78.09282643, 43.25545620), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee48', 43.25545620,-78.09282643, (ST_SetSRID(ST_MakePoint(-78.09282643, 43.25545620), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee49', 42.99237595,-77.67621918, (ST_SetSRID(ST_MakePoint(-77.67621918, 42.99237595), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee49', 42.99237595,-77.67621918, (ST_SetSRID(ST_MakePoint(-77.67621918, 42.99237595), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3fa7852b-82e4-4bbc-b3a3-e3e94205ee50', 42.92969039,-77.86312624, (ST_SetSRID(ST_MakePoint(-77.86312624, 42.92969039), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3fa7852b-82e4-4bbc-b3a3-e3e94205ee50', 42.92969039,-77.86312624, (ST_SetSRID(ST_MakePoint(-77.86312624, 42.92969039), 4326)));
 
 
 -- offender
@@ -1028,155 +1028,155 @@ VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661
 ---------------------
 
 -- GEO LOCATIONS
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc01', 28.38135805, -81.04129574, (ST_SetSRID(ST_MakePoint(-81.04129574, 28.38135805), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc01', 28.38135805, -81.04129574, (ST_SetSRID(ST_MakePoint(-81.04129574, 28.38135805), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc02', 28.95329997, -81.36887410, (ST_SetSRID(ST_MakePoint(-81.36887410, 28.95329997), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc02', 28.95329997, -81.36887410, (ST_SetSRID(ST_MakePoint(-81.36887410, 28.95329997), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc03', 28.66854339, -81.62733139, (ST_SetSRID(ST_MakePoint(-81.62733139, 28.66854339), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc03', 28.66854339, -81.62733139, (ST_SetSRID(ST_MakePoint(-81.62733139, 28.66854339), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc04', 28.23340603, -81.42145090, (ST_SetSRID(ST_MakePoint(-81.42145090, 28.23340603), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc04', 28.23340603, -81.42145090, (ST_SetSRID(ST_MakePoint(-81.42145090, 28.23340603), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc05', 28.74888614, -81.70285219, (ST_SetSRID(ST_MakePoint(-81.70285219, 28.74888614), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc05', 28.74888614, -81.70285219, (ST_SetSRID(ST_MakePoint(-81.70285219, 28.74888614), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc06', 28.32195972, -81.72701803, (ST_SetSRID(ST_MakePoint(-81.72701803, 28.32195972), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc06', 28.32195972, -81.72701803, (ST_SetSRID(ST_MakePoint(-81.72701803, 28.32195972), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc07', 28.27838675, -81.53440273, (ST_SetSRID(ST_MakePoint(-81.53440273, 28.27838675), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc07', 28.27838675, -81.53440273, (ST_SetSRID(ST_MakePoint(-81.53440273, 28.27838675), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc08', 28.71553295, -81.14901026, (ST_SetSRID(ST_MakePoint(-81.14901026, 28.71553295), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc08', 28.71553295, -81.14901026, (ST_SetSRID(ST_MakePoint(-81.14901026, 28.71553295), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc09', 28.13400848, -81.53057464, (ST_SetSRID(ST_MakePoint(-81.53057464, 28.13400848), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc09', 28.13400848, -81.53057464, (ST_SetSRID(ST_MakePoint(-81.53057464, 28.13400848), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc10', 28.75471973, -81.39120868, (ST_SetSRID(ST_MakePoint(-81.39120868, 28.75471973), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc10', 28.75471973, -81.39120868, (ST_SetSRID(ST_MakePoint(-81.39120868, 28.75471973), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc11', 28.61989100, -81.47262932, (ST_SetSRID(ST_MakePoint(-81.47262932, 28.61989100), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc11', 28.61989100, -81.47262932, (ST_SetSRID(ST_MakePoint(-81.47262932, 28.61989100), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc12', 28.34061855, -81.44979478, (ST_SetSRID(ST_MakePoint(-81.44979478, 28.34061855), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc12', 28.34061855, -81.44979478, (ST_SetSRID(ST_MakePoint(-81.44979478, 28.34061855), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc13', 28.65733872, -81.27814268, (ST_SetSRID(ST_MakePoint(-81.27814268, 28.65733872), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc13', 28.65733872, -81.27814268, (ST_SetSRID(ST_MakePoint(-81.27814268, 28.65733872), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc14', 28.61531840, -81.65923110, (ST_SetSRID(ST_MakePoint(-81.65923110, 28.61531840), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc14', 28.61531840, -81.65923110, (ST_SetSRID(ST_MakePoint(-81.65923110, 28.61531840), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc15', 28.51480292, -81.87188020, (ST_SetSRID(ST_MakePoint(-81.87188020, 28.51480292), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc15', 28.51480292, -81.87188020, (ST_SetSRID(ST_MakePoint(-81.87188020, 28.51480292), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc16', 28.17488518, -81.64249575, (ST_SetSRID(ST_MakePoint(-81.64249575, 28.17488518), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc16', 28.17488518, -81.64249575, (ST_SetSRID(ST_MakePoint(-81.64249575, 28.17488518), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc17', 28.42109188, -81.70578427, (ST_SetSRID(ST_MakePoint(-81.70578427, 28.42109188), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc17', 28.42109188, -81.70578427, (ST_SetSRID(ST_MakePoint(-81.70578427, 28.42109188), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc18', 28.65126721, -81.32553865, (ST_SetSRID(ST_MakePoint(-81.32553865, 28.65126721), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc18', 28.65126721, -81.32553865, (ST_SetSRID(ST_MakePoint(-81.32553865, 28.65126721), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc19', 28.56628810, -81.67540256, (ST_SetSRID(ST_MakePoint(-81.67540256, 28.56628810), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc19', 28.56628810, -81.67540256, (ST_SetSRID(ST_MakePoint(-81.67540256, 28.56628810), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc20', 28.30243576, -81.78114318, (ST_SetSRID(ST_MakePoint(-81.78114318, 28.30243576), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc20', 28.30243576, -81.78114318, (ST_SetSRID(ST_MakePoint(-81.78114318, 28.30243576), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc21', 28.61092566, -81.47154409, (ST_SetSRID(ST_MakePoint(-81.47154409, 28.61092566), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc21', 28.61092566, -81.47154409, (ST_SetSRID(ST_MakePoint(-81.47154409, 28.61092566), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc22', 28.52729867, -81.75178063, (ST_SetSRID(ST_MakePoint(-81.75178063, 28.52729867), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc22', 28.52729867, -81.75178063, (ST_SetSRID(ST_MakePoint(-81.75178063, 28.52729867), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc23', 28.88946050, -81.47922534, (ST_SetSRID(ST_MakePoint(-81.47922534, 28.88946050), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc23', 28.88946050, -81.47922534, (ST_SetSRID(ST_MakePoint(-81.47922534, 28.88946050), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc24', 28.74876761, -81.48965198, (ST_SetSRID(ST_MakePoint(-81.48965198, 28.74876761), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc24', 28.74876761, -81.48965198, (ST_SetSRID(ST_MakePoint(-81.48965198, 28.74876761), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc25', 28.41137833, -81.25593951, (ST_SetSRID(ST_MakePoint(-81.25593951, 28.41137833), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc25', 28.41137833, -81.25593951, (ST_SetSRID(ST_MakePoint(-81.25593951, 28.41137833), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc26', 28.84458240, -81.35428122, (ST_SetSRID(ST_MakePoint(-81.35428122, 28.84458240), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc26', 28.84458240, -81.35428122, (ST_SetSRID(ST_MakePoint(-81.35428122, 28.84458240), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc27', 28.79847922, -81.02715740, (ST_SetSRID(ST_MakePoint(-81.02715740, 28.79847922), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc27', 28.79847922, -81.02715740, (ST_SetSRID(ST_MakePoint(-81.02715740, 28.79847922), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc28', 28.52084830, -81.27030134, (ST_SetSRID(ST_MakePoint(-81.27030134, 28.52084830), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc28', 28.52084830, -81.27030134, (ST_SetSRID(ST_MakePoint(-81.27030134, 28.52084830), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc29', 28.33204513, -81.66780620, (ST_SetSRID(ST_MakePoint(-81.66780620, 28.33204513), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc29', 28.33204513, -81.66780620, (ST_SetSRID(ST_MakePoint(-81.66780620, 28.33204513), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc30', 28.20675596, -81.34214263, (ST_SetSRID(ST_MakePoint(-81.34214263, 28.20675596), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc30', 28.20675596, -81.34214263, (ST_SetSRID(ST_MakePoint(-81.34214263, 28.20675596), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc31', 28.60293501, -81.51463398, (ST_SetSRID(ST_MakePoint(-81.51463398, 28.60293501), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc31', 28.60293501, -81.51463398, (ST_SetSRID(ST_MakePoint(-81.51463398, 28.60293501), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc32', 28.40328351, -81.83914947, (ST_SetSRID(ST_MakePoint(-81.83914947, 28.40328351), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc32', 28.40328351, -81.83914947, (ST_SetSRID(ST_MakePoint(-81.83914947, 28.40328351), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc33', 28.78858993, -81.57301584, (ST_SetSRID(ST_MakePoint(-81.57301584, 28.78858993), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc33', 28.78858993, -81.57301584, (ST_SetSRID(ST_MakePoint(-81.57301584, 28.78858993), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc34', 28.31476933, -81.30184084, (ST_SetSRID(ST_MakePoint(-81.30184084, 28.31476933), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc34', 28.31476933, -81.30184084, (ST_SetSRID(ST_MakePoint(-81.30184084, 28.31476933), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc35', 28.90460005, -81.53671989, (ST_SetSRID(ST_MakePoint(-81.53671989, 28.90460005), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc35', 28.90460005, -81.53671989, (ST_SetSRID(ST_MakePoint(-81.53671989, 28.90460005), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc36', 28.58753416, -81.03430328, (ST_SetSRID(ST_MakePoint(-81.03430328, 28.58753416), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc36', 28.58753416, -81.03430328, (ST_SetSRID(ST_MakePoint(-81.03430328, 28.58753416), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc37', 28.68046109, -81.22935956, (ST_SetSRID(ST_MakePoint(-81.22935956, 28.68046109), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc37', 28.68046109, -81.22935956, (ST_SetSRID(ST_MakePoint(-81.22935956, 28.68046109), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc38', 28.80875625, -81.68229460, (ST_SetSRID(ST_MakePoint(-81.68229460, 28.80875625), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc38', 28.80875625, -81.68229460, (ST_SetSRID(ST_MakePoint(-81.68229460, 28.80875625), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc39', 28.84890387, -81.64975802, (ST_SetSRID(ST_MakePoint(-81.64975802, 28.84890387), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc39', 28.84890387, -81.64975802, (ST_SetSRID(ST_MakePoint(-81.64975802, 28.84890387), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc40', 28.68892325, -81.10004022, (ST_SetSRID(ST_MakePoint(-81.10004022, 28.68892325), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc40', 28.68892325, -81.10004022, (ST_SetSRID(ST_MakePoint(-81.10004022, 28.68892325), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc41', 28.72493410, -81.21606578, (ST_SetSRID(ST_MakePoint(-81.21606578, 28.72493410), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc41', 28.72493410, -81.21606578, (ST_SetSRID(ST_MakePoint(-81.21606578, 28.72493410), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc42', 28.41378117, -81.62080202, (ST_SetSRID(ST_MakePoint(-81.62080202, 28.41378117), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc42', 28.41378117, -81.62080202, (ST_SetSRID(ST_MakePoint(-81.62080202, 28.41378117), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc43', 28.65162799, -81.45396797, (ST_SetSRID(ST_MakePoint(28.65162799, -81.45396797), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc43', 28.65162799, -81.45396797, (ST_SetSRID(ST_MakePoint(28.65162799, -81.45396797), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc44', 28.58221724, -81.46229125, (ST_SetSRID(ST_MakePoint(-81.46229125, 28.58221724), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc44', 28.58221724, -81.46229125, (ST_SetSRID(ST_MakePoint(-81.46229125, 28.58221724), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc45', 28.72637181, -81.57518486, (ST_SetSRID(ST_MakePoint(-81.57518486, 28.72637181), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc45', 28.72637181, -81.57518486, (ST_SetSRID(ST_MakePoint(-81.57518486, 28.72637181), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc46', 28.33301548, -81.63510298, (ST_SetSRID(ST_MakePoint(-81.63510298, 28.33301548), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc46', 28.33301548, -81.63510298, (ST_SetSRID(ST_MakePoint(-81.63510298, 28.33301548), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc47', 28.70527163, -81.54105209, (ST_SetSRID(ST_MakePoint(-81.54105209, 28.70527163), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc47', 28.70527163, -81.54105209, (ST_SetSRID(ST_MakePoint(-81.54105209, 28.70527163), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc48', 28.50506084, -81.85458105, (ST_SetSRID(ST_MakePoint(-81.85458105, 28.50506084), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc48', 28.50506084, -81.85458105, (ST_SetSRID(ST_MakePoint(-81.85458105, 28.50506084), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc49', 28.86439214, -81.16066515, (ST_SetSRID(ST_MakePoint(-81.16066515, 28.86439214), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc49', 28.86439214, -81.16066515, (ST_SetSRID(ST_MakePoint(-81.16066515, 28.86439214), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('42649166-aac5-4b34-a4f5-e62be0becc50', 28.61035696, -81.18194579, (ST_SetSRID(ST_MakePoint(-81.18194579, 28.61035696), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '42649166-aac5-4b34-a4f5-e62be0becc50', 28.61035696, -81.18194579, (ST_SetSRID(ST_MakePoint(-81.18194579, 28.61035696), 4326)));
 
 
 -- offender
@@ -1488,71 +1488,71 @@ VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661
 ---------------------
 
 -- Geo Locations
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168701', 33.83631397, -117.69719125, (ST_SetSRID(ST_MakePoint(-117.69719125, 33.83631397), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168701', 33.83631397, -117.69719125, (ST_SetSRID(ST_MakePoint(-117.69719125, 33.83631397), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168702', 34.06269991, -117.65229468, (ST_SetSRID(ST_MakePoint(-117.65229468, 34.06269991), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168702', 34.06269991, -117.65229468, (ST_SetSRID(ST_MakePoint(-117.65229468, 34.06269991), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168703', 34.41097289, -117.02884738, (ST_SetSRID(ST_MakePoint(-117.02884738, 34.41097289), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168703', 34.41097289, -117.02884738, (ST_SetSRID(ST_MakePoint(-117.02884738, 34.41097289), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168704', 34.05082190, -117.08416729, (ST_SetSRID(ST_MakePoint(-117.08416729, 34.05082190), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168704', 34.05082190, -117.08416729, (ST_SetSRID(ST_MakePoint(-117.08416729, 34.05082190), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168705', 33.81563106, -117.60129815, (ST_SetSRID(ST_MakePoint(-117.60129815, 33.81563106), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168705', 33.81563106, -117.60129815, (ST_SetSRID(ST_MakePoint(-117.60129815, 33.81563106), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168706', 34.21214435, -117.79739615, (ST_SetSRID(ST_MakePoint(-117.79739615, 34.21214435), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168706', 34.21214435, -117.79739615, (ST_SetSRID(ST_MakePoint(-117.79739615, 34.21214435), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168707', 34.38616916, -117.05984140, (ST_SetSRID(ST_MakePoint(-117.05984140, 34.38616916), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168707', 34.38616916, -117.05984140, (ST_SetSRID(ST_MakePoint(-117.05984140, 34.38616916), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168708', 33.95400180, -117.40237535, (ST_SetSRID(ST_MakePoint(-117.40237535, 33.95400180), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168708', 33.95400180, -117.40237535, (ST_SetSRID(ST_MakePoint(-117.40237535, 33.95400180), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168709', 33.88560157, -117.28163326, (ST_SetSRID(ST_MakePoint(-117.28163326, 33.88560157), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168709', 33.88560157, -117.28163326, (ST_SetSRID(ST_MakePoint(-117.28163326, 33.88560157), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168710', 34.04541382, -116.92718072, (ST_SetSRID(ST_MakePoint(-116.92718072, 34.04541382), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168710', 34.04541382, -116.92718072, (ST_SetSRID(ST_MakePoint(-116.92718072, 34.04541382), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168711', 34.02856729, -117.46176689, (ST_SetSRID(ST_MakePoint(-117.46176689, 34.02856729), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168711', 34.02856729, -117.46176689, (ST_SetSRID(ST_MakePoint(-117.46176689, 34.02856729), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168712', 33.97577353, -116.85541043, (ST_SetSRID(ST_MakePoint(-116.85541043, 33.97577353), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168712', 33.97577353, -116.85541043, (ST_SetSRID(ST_MakePoint(-116.85541043, 33.97577353), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168713', 34.42261912, -116.98444110, (ST_SetSRID(ST_MakePoint(-116.98444110, 34.42261912), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168713', 34.42261912, -116.98444110, (ST_SetSRID(ST_MakePoint(-116.98444110, 34.42261912), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168714', 34.10324141, -117.69161727, (ST_SetSRID(ST_MakePoint(-117.69161727, 34.10324141), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168714', 34.10324141, -117.69161727, (ST_SetSRID(ST_MakePoint(-117.69161727, 34.10324141), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168715', 33.72387849, -117.16718622, (ST_SetSRID(ST_MakePoint(-117.16718622, 33.72387849), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168715', 33.72387849, -117.16718622, (ST_SetSRID(ST_MakePoint(-117.16718622, 33.72387849), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168716', 33.75562412, -117.20084592, (ST_SetSRID(ST_MakePoint(-117.20084592, 33.75562412), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168716', 33.75562412, -117.20084592, (ST_SetSRID(ST_MakePoint(-117.20084592, 33.75562412), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168717', 34.17936934, -117.01611145, (ST_SetSRID(ST_MakePoint(-117.01611145, 34.17936934), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168717', 34.17936934, -117.01611145, (ST_SetSRID(ST_MakePoint(-117.01611145, 34.17936934), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168718', 34.01572681, -117.11078142, (ST_SetSRID(ST_MakePoint(-117.11078142, 34.01572681), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168718', 34.01572681, -117.11078142, (ST_SetSRID(ST_MakePoint(-117.11078142, 34.01572681), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168719', 34.06822120, -116.93783881, (ST_SetSRID(ST_MakePoint(-116.93783881, 34.06822120), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168719', 34.06822120, -116.93783881, (ST_SetSRID(ST_MakePoint(-116.93783881, 34.06822120), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168720', 34.01098817, -117.53859839, (ST_SetSRID(ST_MakePoint(-117.53859839, 34.01098817), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168720', 34.01098817, -117.53859839, (ST_SetSRID(ST_MakePoint(-117.53859839, 34.01098817), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168721', 33.91600303, -117.75479814, (ST_SetSRID(ST_MakePoint(-117.75479814, 33.91600303), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168721', 33.91600303, -117.75479814, (ST_SetSRID(ST_MakePoint(-117.75479814, 33.91600303), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location")
-VALUES ('3678f3bc-b929-4d34-a328-00695c168722', 34.49178159, -117.14664708, (ST_SetSRID(ST_MakePoint(-117.14664708, 34.49178159), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location")
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', '3678f3bc-b929-4d34-a328-00695c168722', 34.49178159, -117.14664708, (ST_SetSRID(ST_MakePoint(-117.14664708, 34.49178159), 4326)));
 
 
 -- offender
@@ -1696,155 +1696,155 @@ VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661
 -----------------------
 
 -- GEO LOCATIONS
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214600', 39.31112716,-74.17019313, (ST_SetSRID(ST_MakePoint(-74.17019313,39.31112716), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214600', 39.31112716,-74.17019313, (ST_SetSRID(ST_MakePoint(-74.17019313,39.31112716), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214601', 39.36506385,-74.27219727, (ST_SetSRID(ST_MakePoint(-74.27219727,39.36506385), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214601', 39.36506385,-74.27219727, (ST_SetSRID(ST_MakePoint(-74.27219727,39.36506385), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214602', 39.54401433,-74.16847132, (ST_SetSRID(ST_MakePoint(-74.16847132,39.54401433), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214602', 39.54401433,-74.16847132, (ST_SetSRID(ST_MakePoint(-74.16847132,39.54401433), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214603', 39.60801123,-74.42074294, (ST_SetSRID(ST_MakePoint(-74.42074294,39.60801123), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214603', 39.60801123,-74.42074294, (ST_SetSRID(ST_MakePoint(-74.42074294,39.60801123), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214604', 39.25127777,-74.61918054, (ST_SetSRID(ST_MakePoint(-74.61918054,39.25127777), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214604', 39.25127777,-74.61918054, (ST_SetSRID(ST_MakePoint(-74.61918054,39.25127777), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214605', 39.23605843,-74.11572658, (ST_SetSRID(ST_MakePoint(-74.11572658,39.23605843), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214605', 39.23605843,-74.11572658, (ST_SetSRID(ST_MakePoint(-74.11572658,39.23605843), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214606', 39.49476606,-74.52245119, (ST_SetSRID(ST_MakePoint(-74.52245119,39.49476606), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214606', 39.49476606,-74.52245119, (ST_SetSRID(ST_MakePoint(-74.52245119,39.49476606), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214607', 39.58583779,-74.41628561, (ST_SetSRID(ST_MakePoint(-74.41628561,39.58583779), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214607', 39.58583779,-74.41628561, (ST_SetSRID(ST_MakePoint(-74.41628561,39.58583779), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214608', 39.17237178,-74.25451580, (ST_SetSRID(ST_MakePoint(-74.25451580,39.17237178), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214608', 39.17237178,-74.25451580, (ST_SetSRID(ST_MakePoint(-74.25451580,39.17237178), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214609', 39.24458613,-74.27169805, (ST_SetSRID(ST_MakePoint(-74.27169805,39.24458613), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214609', 39.24458613,-74.27169805, (ST_SetSRID(ST_MakePoint(-74.27169805,39.24458613), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214610', 39.55083318,-74.22937147, (ST_SetSRID(ST_MakePoint(-74.22937147,39.55083318), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214610', 39.55083318,-74.22937147, (ST_SetSRID(ST_MakePoint(-74.22937147,39.55083318), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214611', 39.46490401,-74.65901576, (ST_SetSRID(ST_MakePoint(-74.65901576,39.46490401), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214611', 39.46490401,-74.65901576, (ST_SetSRID(ST_MakePoint(-74.65901576,39.46490401), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214612', 39.53198836,-74.36205067, (ST_SetSRID(ST_MakePoint(-74.36205067,39.53198836), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214612', 39.53198836,-74.36205067, (ST_SetSRID(ST_MakePoint(-74.36205067,39.53198836), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214613', 39.24526456,-74.23545353, (ST_SetSRID(ST_MakePoint(-74.23545353,39.24526456), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214613', 39.24526456,-74.23545353, (ST_SetSRID(ST_MakePoint(-74.23545353,39.24526456), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214614', 39.25933962,-74.26958757, (ST_SetSRID(ST_MakePoint(-74.26958757,39.25933962), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214614', 39.25933962,-74.26958757, (ST_SetSRID(ST_MakePoint(-74.26958757,39.25933962), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214615', 39.17692446,-74.47090985, (ST_SetSRID(ST_MakePoint(-74.47090985,39.17692446), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214615', 39.17692446,-74.47090985, (ST_SetSRID(ST_MakePoint(-74.47090985,39.17692446), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214616', 39.44839322,-74.25732334, (ST_SetSRID(ST_MakePoint(-74.25732334,39.44839322), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214616', 39.44839322,-74.25732334, (ST_SetSRID(ST_MakePoint(-74.25732334,39.44839322), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214617', 39.22727135,-74.58746302, (ST_SetSRID(ST_MakePoint(-74.58746302,39.22727135), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214617', 39.22727135,-74.58746302, (ST_SetSRID(ST_MakePoint(-74.58746302,39.22727135), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214618', 39.33488410,-74.77465433, (ST_SetSRID(ST_MakePoint(-74.77465433,39.33488410), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214618', 39.33488410,-74.77465433, (ST_SetSRID(ST_MakePoint(-74.77465433,39.33488410), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214619', 39.17127924,-74.62676461, (ST_SetSRID(ST_MakePoint(-74.62676461,39.17127924), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214619', 39.17127924,-74.62676461, (ST_SetSRID(ST_MakePoint(-74.62676461,39.17127924), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214620', 39.54468205,-74.72139984, (ST_SetSRID(ST_MakePoint(-74.72139984,39.54468205), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214620', 39.54468205,-74.72139984, (ST_SetSRID(ST_MakePoint(-74.72139984,39.54468205), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214621', 39.22781264,-74.62693686, (ST_SetSRID(ST_MakePoint(-74.62693686,39.22781264), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214621', 39.22781264,-74.62693686, (ST_SetSRID(ST_MakePoint(-74.62693686,39.22781264), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214622', 39.27183377,-74.67891241, (ST_SetSRID(ST_MakePoint(-74.67891241,39.27183377), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214622', 39.27183377,-74.67891241, (ST_SetSRID(ST_MakePoint(-74.67891241,39.27183377), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214623', 39.59697493,-74.45002668, (ST_SetSRID(ST_MakePoint(-74.45002668,39.59697493), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214623', 39.59697493,-74.45002668, (ST_SetSRID(ST_MakePoint(-74.45002668,39.59697493), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214624', 39.14551277,-74.36964682, (ST_SetSRID(ST_MakePoint(-74.36964682,39.14551277), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214624', 39.14551277,-74.36964682, (ST_SetSRID(ST_MakePoint(-74.36964682,39.14551277), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214625', 39.34683159,-74.17998517, (ST_SetSRID(ST_MakePoint(-74.17998517,39.34683159), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214625', 39.34683159,-74.17998517, (ST_SetSRID(ST_MakePoint(-74.17998517,39.34683159), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214626', 39.61969637,-74.47422456, (ST_SetSRID(ST_MakePoint(-74.47422456,39.61969637), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214626', 39.61969637,-74.47422456, (ST_SetSRID(ST_MakePoint(-74.47422456,39.61969637), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214627', 39.40494722,-74.48117820, (ST_SetSRID(ST_MakePoint(-74.48117820,39.40494722), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214627', 39.40494722,-74.48117820, (ST_SetSRID(ST_MakePoint(-74.48117820,39.40494722), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214628', 39.32320527,-74.15408291, (ST_SetSRID(ST_MakePoint(-74.15408291,39.32320527), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214628', 39.32320527,-74.15408291, (ST_SetSRID(ST_MakePoint(-74.15408291,39.32320527), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214629', 39.33000535,-74.07829295, (ST_SetSRID(ST_MakePoint(-74.07829295,39.33000535), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214629', 39.33000535,-74.07829295, (ST_SetSRID(ST_MakePoint(-74.07829295,39.33000535), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214630', 39.18696763,-74.30924353, (ST_SetSRID(ST_MakePoint(-74.30924353,39.18696763), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214630', 39.18696763,-74.30924353, (ST_SetSRID(ST_MakePoint(-74.30924353,39.18696763), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214631', 39.35275378,-74.07691739, (ST_SetSRID(ST_MakePoint(-74.07691739,39.35275378), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214631', 39.35275378,-74.07691739, (ST_SetSRID(ST_MakePoint(-74.07691739,39.35275378), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214632', 39.50798557,-74.14215173, (ST_SetSRID(ST_MakePoint(-74.14215173,39.50798557), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214632', 39.50798557,-74.14215173, (ST_SetSRID(ST_MakePoint(-74.14215173,39.50798557), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214633', 39.36417630,-74.42369023, (ST_SetSRID(ST_MakePoint(-74.42369023,39.36417630), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214633', 39.36417630,-74.42369023, (ST_SetSRID(ST_MakePoint(-74.42369023,39.36417630), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214634', 39.54508380,-74.43781504, (ST_SetSRID(ST_MakePoint(-74.43781504,39.54508380), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214634', 39.54508380,-74.43781504, (ST_SetSRID(ST_MakePoint(-74.43781504,39.54508380), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214635', 39.40207661,-74.52222943, (ST_SetSRID(ST_MakePoint(-74.52222943,39.40207661), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214635', 39.40207661,-74.52222943, (ST_SetSRID(ST_MakePoint(-74.52222943,39.40207661), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214636', 39.36006313,-74.57092099, (ST_SetSRID(ST_MakePoint(-74.57092099,39.36006313), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214636', 39.36006313,-74.57092099, (ST_SetSRID(ST_MakePoint(-74.57092099,39.36006313), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214637', 39.30490058,-74.67492248, (ST_SetSRID(ST_MakePoint(-74.67492248,39.30490058), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214637', 39.30490058,-74.67492248, (ST_SetSRID(ST_MakePoint(-74.67492248,39.30490058), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214638', 39.46528834,-74.53970628, (ST_SetSRID(ST_MakePoint(-74.53970628,39.46528834), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214638', 39.46528834,-74.53970628, (ST_SetSRID(ST_MakePoint(-74.53970628,39.46528834), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214639', 39.46620175,-74.15309646, (ST_SetSRID(ST_MakePoint(-74.15309646,39.46620175), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214639', 39.46620175,-74.15309646, (ST_SetSRID(ST_MakePoint(-74.15309646,39.46620175), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214640', 39.42167318,-74.39077530, (ST_SetSRID(ST_MakePoint(-74.39077530,39.42167318), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214640', 39.42167318,-74.39077530, (ST_SetSRID(ST_MakePoint(-74.39077530,39.42167318), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214641', 39.23333677,-74.57910308, (ST_SetSRID(ST_MakePoint(-74.57910308,39.23333677), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214641', 39.23333677,-74.57910308, (ST_SetSRID(ST_MakePoint(-74.57910308,39.23333677), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214642', 39.38188425,-74.10254055, (ST_SetSRID(ST_MakePoint(-74.10254055,39.38188425), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214642', 39.38188425,-74.10254055, (ST_SetSRID(ST_MakePoint(-74.10254055,39.38188425), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214643', 39.11595107,-74.27552265, (ST_SetSRID(ST_MakePoint(-74.27552265,39.11595107), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214643', 39.11595107,-74.27552265, (ST_SetSRID(ST_MakePoint(-74.27552265,39.11595107), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214644', 39.38734541,-74.77672168, (ST_SetSRID(ST_MakePoint(-74.77672168,39.38734541), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214644', 39.38734541,-74.77672168, (ST_SetSRID(ST_MakePoint(-74.77672168,39.38734541), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214645', 39.08666862,-74.44871531, (ST_SetSRID(ST_MakePoint(-74.44871531,39.08666862), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214645', 39.08666862,-74.44871531, (ST_SetSRID(ST_MakePoint(-74.44871531,39.08666862), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214646', 39.27997877,-74.55334221, (ST_SetSRID(ST_MakePoint(-74.55334221,39.27997877), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214646', 39.27997877,-74.55334221, (ST_SetSRID(ST_MakePoint(-74.55334221,39.27997877), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214647', 39.22013211,-74.55627882, (ST_SetSRID(ST_MakePoint(-74.55627882,39.22013211), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214647', 39.22013211,-74.55627882, (ST_SetSRID(ST_MakePoint(-74.55627882,39.22013211), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214648', 39.55609971,-74.70251065, (ST_SetSRID(ST_MakePoint(-74.70251065,39.55609971), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214648', 39.55609971,-74.70251065, (ST_SetSRID(ST_MakePoint(-74.70251065,39.55609971), 4326)));
 
-INSERT INTO geo_location (id, latitude, longitude, "location") 
-VALUES ('d4580117-654d-445b-bf86-eedc0b214649', 39.15443341,-74.64536396, (ST_SetSRID(ST_MakePoint(-74.64536396,39.15443341), 4326)));
+INSERT INTO "address" (created_by_id, updated_by_id, street, street2, city, "state", zip, country, id, latitude, longitude, "location") 
+VALUES ('37a85307-14af-4223-a93b-3ddb661194b0', '37a85307-14af-4223-a93b-3ddb661194b0', '', '', '', '', '', '', 'd4580117-654d-445b-bf86-eedc0b214649', 39.15443341,-74.64536396, (ST_SetSRID(ST_MakePoint(-74.64536396,39.15443341), 4326)));
 
 
 -- offender
